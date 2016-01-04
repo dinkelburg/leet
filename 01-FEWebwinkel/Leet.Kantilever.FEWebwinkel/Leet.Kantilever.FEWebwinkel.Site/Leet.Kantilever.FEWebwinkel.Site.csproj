@@ -193,6 +193,7 @@
     <Content Include="..\..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
     </Content>
+    <None Include="Properties\PublishProfiles\FEWebwinkel_Publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
