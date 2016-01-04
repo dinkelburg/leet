@@ -58,15 +58,15 @@
     <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\..\99-Shared\leet.snk">
+    <Content Include="..\..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
-    </CodeAnalysisDictionary>
+    </Content>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\99-Shared\KantileverDictionary.xml">
+    <CodeAnalysisDictionary Include="..\..\..\99-Shared\KantileverDictionary.xml">
       <Link>KantileverDictionary.xml</Link>
-    </Content>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
