@@ -13,7 +13,7 @@ using Leet.Kantilever.FEWebwinkel.Site.Models;
 namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : Controller 
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
