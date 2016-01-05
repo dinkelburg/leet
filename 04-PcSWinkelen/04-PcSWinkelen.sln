@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSWinkelen.Contract", "Leet.Kantilever.PcSWinkelen.Contract\Leet.Kantilever.PcSWinkelen.Contract.csproj", "{D11F7225-8382-4E20-B6EB-A8AD20376625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSWinkelen.Implementation", "Leet.Kantilever.PcSWinkelen.Implementation\Leet.Kantilever.PcSWinkelen.Implementation.csproj", "{78AE79FF-3929-4A3B-9385-656BA3543D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSWinkelen.Implementation.Tests", "Leet.Kantilever.PcSWinkelen.Implementation.Tests\Leet.Kantilever.PcSWinkelen.Implementation.Tests.csproj", "{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSWinkelen.Host", "Leet.Kantilever.PcSWinkelen.Host\Leet.Kantilever.PcSWinkelen.Host.csproj", "{AED9B595-6941-4218-A6B6-54C6B9AFB29A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED9B595-6941-4218-A6B6-54C6B9AFB29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED9B595-6941-4218-A6B6-54C6B9AFB29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED9B595-6941-4218-A6B6-54C6B9AFB29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED9B595-6941-4218-A6B6-54C6B9AFB29A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
