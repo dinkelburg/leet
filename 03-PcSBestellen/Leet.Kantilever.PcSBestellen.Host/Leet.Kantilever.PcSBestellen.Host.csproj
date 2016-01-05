@@ -79,6 +79,7 @@
     <Content Include="..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
     </Content>
+    <None Include="Properties\PublishProfiles\PcSBestellen_Publish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
