@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AED9B595-6941-4218-A6B6-54C6B9AFB29A}</ProjectGuid>
+    <ProjectGuid>{98A230BC-335F-4F6E-8302-2863B1A6132B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leet.Kantilever.PcSWinkelen.Host</RootNamespace>
-    <AssemblyName>Leet.Kantilever.PcSWinkelen.Host</AssemblyName>
+    <RootNamespace>Leet.Kantilever.BSKlantbeheer.Host</RootNamespace>
+    <AssemblyName>Leet.Kantilever.BSKlantbeheer.Host</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -81,7 +81,7 @@
     <Content Include="..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
     </Content>
-    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -90,13 +90,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Contract\Leet.Kantilever.PcSWinkelen.Contract.csproj">
-      <Project>{d11f7225-8382-4e20-b6eb-a8ad20376625}</Project>
-      <Name>Leet.Kantilever.PcSWinkelen.Contract</Name>
+    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.Contract\Leet.Kantilever.BSKlantbeheer.Contract.csproj">
+      <Project>{f0b58535-28ab-4e35-8423-4b8c383a4c59}</Project>
+      <Name>Leet.Kantilever.BSKlantbeheer.Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Implementation\Leet.Kantilever.PcSWinkelen.Implementation.csproj">
-      <Project>{78ae79ff-3929-4a3b-9385-656ba3543d86}</Project>
-      <Name>Leet.Kantilever.PcSWinkelen.Implementation</Name>
+    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.Implementation\Leet.Kantilever.BSKlantbeheer.Implementation.csproj">
+      <Project>{a5dd920e-7baa-486d-acb0-db5d47b63df7}</Project>
+      <Name>Leet.Kantilever.BSKlantbeheer.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -118,9 +118,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>44348</DevelopmentServerPort>
+          <DevelopmentServerPort>44660</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44348/</IISUrl>
+          <IISUrl>http://localhost:44660/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{78AE79FF-3929-4A3B-9385-656BA3543D86}</ProjectGuid>
+    <ProjectGuid>{5C3C482C-6F86-4616-A93E-7F743F81610A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leet.Kantilever.PcSWinkelen.Implementation</RootNamespace>
-    <AssemblyName>Leet.Kantilever.PcSWinkelen.Implementation</AssemblyName>
+    <RootNamespace>Leet.Kantilever.BSBestellingenbeheer.Implementation</RootNamespace>
+    <AssemblyName>Leet.Kantilever.BSBestellingenbeheer.Implementation</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -56,24 +56,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WinkelenServiceHandler.cs" />
+    <Compile Include="BestellingenbeheerServiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
     </None>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Contract\Leet.Kantilever.PcSWinkelen.Contract.csproj">
-      <Project>{d11f7225-8382-4e20-b6eb-a8ad20376625}</Project>
-      <Name>Leet.Kantilever.PcSWinkelen.Contract</Name>
+    <ProjectReference Include="..\Leet.Kantilever.BSBestellingenbeheer.Contract\Leet.Kantilever.BSBestellingenbeheer.Contract.csproj">
+      <Project>{2adbeb4d-91b4-4226-b879-12e44e1ec5f1}</Project>
+      <Name>Leet.Kantilever.BSBestellingenbeheer.Contract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\99-Shared\KantileverDictionary.xml">
+    <CodeAnalysisDictionary Include="..\..\99-Shared\KantileverDictionary.xml">
       <Link>KantileverDictionary.xml</Link>
-    </Content>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
