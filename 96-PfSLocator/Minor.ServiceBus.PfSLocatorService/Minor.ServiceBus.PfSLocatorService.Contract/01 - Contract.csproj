@@ -64,7 +64,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\svcutil.exe" ^
- /d:"$(SolutionDir)..\99-Shared\02-PfSLocatorService\Contract" ^
+ /d:"$(SolutionDir)..\..\99-Shared\02-PfSLocatorService\Contract" ^
  Minor.ServiceBus.PfSLocatorService.Contract.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
