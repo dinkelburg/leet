@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<wsdl:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="urn:kantilever:bscatalogusbeheer:v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="urn:kantilever:bscatalogusbeheer:v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:kantilever:bscatalogusbeheer:v1/Imports">
+      <xsd:import namespace="urn:kantilever:bscatalogusbeheer:v1" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:common:fouten:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" />
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="urn:kantilever:bscatalogusbeheer:v1">
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" />
+      <xsd:element name="UpdateCatalogus">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" nillable="true" xmlns:q1="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q1:MsgUpdateCatalogusRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateCatalogusResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="UpdateCatalogusResult" nillable="true" xmlns:q2="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q2:MsgUpdateCatalogusResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindProductById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" nillable="true" xmlns:q3="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q3:MsgFindProductByIdRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindProductByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="FindProductByIdResult" nillable="true" xmlns:q4="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q4:MsgFindProductByIdResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindProducts">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" nillable="true" xmlns:q5="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q5:MsgFindProductsRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindProductsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="FindProductsResult" nillable="true" xmlns:q6="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q6:MsgFindProductsResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindLeveranciers">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" nillable="true" xmlns:q7="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q7:MsgFindLeveranciersRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindLeveranciersResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="FindLeveranciersResult" nillable="true" xmlns:q8="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q8:MsgFindLeveranciersResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindCategorieen">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="message" nillable="true" xmlns:q9="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q9:MsgFindCategorieenRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="FindCategorieenResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="FindCategorieenResult" nillable="true" xmlns:q10="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" type="q10:MsgFindCategorieenResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1">
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:common:fouten:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" />
+      <xsd:complexType name="MsgUpdateCatalogusRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ProductUpdateList" nillable="true" xmlns:q11="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" type="q11:ProductUpdateCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgUpdateCatalogusRequest" nillable="true" type="tns:MsgUpdateCatalogusRequest" />
+      <xsd:complexType name="MsgUpdateCatalogusResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Resultaten" nillable="true" xmlns:q12="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" type="q12:ProductUpdateResultaatCollection" />
+          <xsd:element name="Succes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Foutmelding" nillable="true" xmlns:q13="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q13:FoutMelding">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgUpdateCatalogusResult" nillable="true" type="tns:MsgUpdateCatalogusResult" />
+      <xsd:complexType name="MsgFindProductByIdRequest">
+        <xsd:sequence>
+          <xsd:element name="Id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindProductByIdRequest" nillable="true" type="tns:MsgFindProductByIdRequest" />
+      <xsd:complexType name="MsgFindProductByIdResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Product" nillable="true" xmlns:q14="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" type="q14:Product" />
+          <xsd:element name="Succes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Foutmelding" nillable="true" xmlns:q15="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q15:FoutMelding">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindProductByIdResult" nillable="true" type="tns:MsgFindProductByIdResult" />
+      <xsd:complexType name="MsgFindProductsRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="NaamFilter" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="BeschrijvingFilter" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="MinimumPrijs" nillable="true" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="MaximumPrijs" nillable="true" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="Categorie" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Leverancier" nillable="true" type="xsd:int" />
+          <xsd:element name="Sorteerveld" type="tns:Sorteerveld" />
+          <xsd:element name="Sorteerrichting" type="tns:Sorteerrichting" />
+          <xsd:element name="AlleenLeverbareProducten" type="xsd:boolean" />
+          <xsd:element name="Page" type="xsd:int" />
+          <xsd:element name="PageSize" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindProductsRequest" nillable="true" type="tns:MsgFindProductsRequest" />
+      <xsd:simpleType name="Sorteerveld">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Naam" />
+          <xsd:enumeration value="Prijs" />
+          <xsd:enumeration value="LeverancierNaam" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="Sorteerveld" nillable="true" type="tns:Sorteerveld" />
+      <xsd:simpleType name="Sorteerrichting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Oplopend" />
+          <xsd:enumeration value="Aflopend" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="Sorteerrichting" nillable="true" type="tns:Sorteerrichting" />
+      <xsd:complexType name="MsgFindProductsResult">
+        <xsd:sequence>
+          <xsd:element name="Products" nillable="true" xmlns:q16="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" type="q16:ProductCollection">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Page" type="xsd:int" />
+          <xsd:element name="PageSize" type="xsd:int" />
+          <xsd:element name="PageCount" type="xsd:int" />
+          <xsd:element name="Succes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Foutmelding" nillable="true" xmlns:q17="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q17:FoutMelding">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindProductsResult" nillable="true" type="tns:MsgFindProductsResult" />
+      <xsd:complexType name="MsgFindLeveranciersRequest">
+        <xsd:sequence>
+          <xsd:element name="NaamFilter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindLeveranciersRequest" nillable="true" type="tns:MsgFindLeveranciersRequest" />
+      <xsd:complexType name="MsgFindLeveranciersResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Leveranciers" nillable="true" xmlns:q18="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" type="q18:LeverancierCollection" />
+          <xsd:element name="Succes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Foutmelding" nillable="true" xmlns:q19="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q19:FoutMelding">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindLeveranciersResult" nillable="true" type="tns:MsgFindLeveranciersResult" />
+      <xsd:complexType name="MsgFindCategorieenRequest">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:element name="MsgFindCategorieenRequest" nillable="true" type="tns:MsgFindCategorieenRequest" />
+      <xsd:complexType name="MsgFindCategorieenResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Categorieen" nillable="true" xmlns:q20="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" type="q20:CategorieCollection" />
+          <xsd:element name="Succes" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Foutmelding" nillable="true" xmlns:q21="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q21:FoutMelding">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MsgFindCategorieenResult" nillable="true" type="tns:MsgFindCategorieenResult" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1">
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:common:fouten:v1" />
+      <xsd:complexType name="ProductUpdateCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProductUpdate" nillable="true" type="tns:ProductUpdate" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductUpdateCollection" nillable="true" type="tns:ProductUpdateCollection" />
+      <xsd:complexType name="ProductUpdate">
+        <xsd:sequence>
+          <xsd:element name="UpdateActie" type="tns:UpdateActie" />
+          <xsd:element name="Product" nillable="true" xmlns:q22="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" type="q22:Product">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductUpdate" nillable="true" type="tns:ProductUpdate" />
+      <xsd:simpleType name="UpdateActie">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="UpdateOrInsert" />
+          <xsd:enumeration value="Remove" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="UpdateActie" nillable="true" type="tns:UpdateActie" />
+      <xsd:complexType name="ProductUpdateResultaatCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ProductUpdateResultaat" nillable="true" type="tns:ProductUpdateResultaat" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductUpdateResultaatCollection" nillable="true" type="tns:ProductUpdateResultaatCollection" />
+      <xsd:complexType name="ProductUpdateResultaat">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="ProductRef" nillable="true" xmlns:q23="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" type="q23:ProductRef" />
+          <xsd:element minOccurs="0" name="FoutMelding" nillable="true" xmlns:q24="urn:schemas-www-kantilever-nl:common:fouten:v1" type="q24:FoutMelding" />
+          <xsd:element minOccurs="0" name="Success" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductUpdateResultaat" nillable="true" type="tns:ProductUpdateResultaat" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1">
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" />
+      <xsd:complexType name="Product">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="AfbeeldingURL" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Beschrijving" nillable="true" type="xsd:string" />
+          <xsd:element name="LeverancierNaam" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LeveranciersProductId" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="LeverbaarTot" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="LeverbaarVanaf" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="Naam" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Prijs" nillable="true" type="xsd:decimal" />
+          <xsd:element minOccurs="0" name="CategorieLijst" nillable="true" xmlns:q25="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" type="q25:CategorieCollection" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Product" nillable="true" type="tns:Product" />
+      <xsd:complexType name="ProductRef">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" type="xsd:int" />
+          <xsd:element minOccurs="0" name="LeveranciersProductId" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductRef" nillable="true" type="tns:ProductRef" />
+      <xsd:complexType name="ProductCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ProductCollection" nillable="true" type="tns:ProductCollection" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1">
+      <xsd:complexType name="CategorieCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Categorie" nillable="true" type="tns:Categorie" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="CategorieCollection" nillable="true" type="tns:CategorieCollection" />
+      <xsd:complexType name="Categorie">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" nillable="true" type="xsd:int" />
+          <xsd:element name="Naam" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Categorie" nillable="true" type="tns:Categorie" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:common:fouten:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:common:fouten:v1">
+      <xsd:complexType name="FoutMelding">
+        <xsd:sequence>
+          <xsd:element name="Bron" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Nummer" type="xsd:int" />
+          <xsd:element name="Melding" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Niveau" type="tns:FoutErnst" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FoutMelding" nillable="true" type="tns:FoutMelding" />
+      <xsd:simpleType name="FoutErnst">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Kritisch" />
+          <xsd:enumeration value="Waarschuwing" />
+          <xsd:enumeration value="Melding" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="FoutErnst" nillable="true" type="tns:FoutErnst" />
+    </xsd:schema>
+    <xsd:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1">
+      <xsd:complexType name="LeverancierCollection">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Leverancier" nillable="true" type="tns:Leverancier" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LeverancierCollection" nillable="true" type="tns:LeverancierCollection" />
+      <xsd:complexType name="Leverancier">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Id" nillable="true" type="xsd:int" />
+          <xsd:element minOccurs="0" name="Naam" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Leverancier" nillable="true" type="tns:Leverancier" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICatalogusBeheer_UpdateCatalogus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCatalogus" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_UpdateCatalogus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCatalogusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindProductById_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindProductById" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindProductById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindProductByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindProducts" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindLeveranciers_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindLeveranciers" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindLeveranciers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindLeveranciersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindCategorieen_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindCategorieen" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogusBeheer_FindCategorieen_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindCategorieenResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICatalogusBeheer">
+    <wsdl:operation name="UpdateCatalogus">
+      <wsdl:input wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/UpdateCatalogus" message="tns:ICatalogusBeheer_UpdateCatalogus_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/UpdateCatalogusResponse" message="tns:ICatalogusBeheer_UpdateCatalogus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindProductById">
+      <wsdl:input wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindProductById" message="tns:ICatalogusBeheer_FindProductById_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindProductByIdResponse" message="tns:ICatalogusBeheer_FindProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindProducts">
+      <wsdl:input wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindProducts" message="tns:ICatalogusBeheer_FindProducts_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindProductsResponse" message="tns:ICatalogusBeheer_FindProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindLeveranciers">
+      <wsdl:input wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindLeveranciers" message="tns:ICatalogusBeheer_FindLeveranciers_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindLeveranciersResponse" message="tns:ICatalogusBeheer_FindLeveranciers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCategorieen">
+      <wsdl:input wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindCategorieen" message="tns:ICatalogusBeheer_FindCategorieen_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:bscatalogusbeheer:v1/ICatalogusBeheer/FindCategorieenResponse" message="tns:ICatalogusBeheer_FindCategorieen_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

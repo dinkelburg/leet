@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <locationData xmlns="urn:minor-servicebus-fileservicelocator:locationData">
   <serviceLocation>
-    <name>PcSOnderhoud</name>
+    <name>BSCatalogusBeheer</name>
     <profile>Development</profile>
-    <metadataAddress>http://localhost:46332/PcSOnderhoudService.svc/meta</metadataAddress>
-  </serviceLocation>
-  <serviceLocation>
-    <name>PcSOnderhoud</name>
-    <profile>Release</profile>
-    <metadataAddress>http://localhost/Baleru/PcSOnderhoud/PcSOnderhoudService.svc/meta</metadataAddress>
+    <metadataAddress>http://minorbldsrv:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
   </serviceLocation>
 </locationData>
