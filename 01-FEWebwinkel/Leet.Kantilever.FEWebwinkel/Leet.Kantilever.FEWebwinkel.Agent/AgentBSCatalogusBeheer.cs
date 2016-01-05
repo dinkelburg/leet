@@ -26,7 +26,7 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             var productCollection = proxy.FindProducts(new MsgFindProductsRequest
             {
                 Page = page.HasValue ? page.Value : 1,
-                PageSize = 10,
+                PageSize = 12,
             });
 
             return productCollection.Products;
