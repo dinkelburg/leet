@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="servicelocation"
+    targetNamespace="urn:minor-servicebus-fileservicelocator:locationData"
+    xmlns:tns="urn:minor-servicebus-fileservicelocator:locationData"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+>
+  <xsd:element name="locationData">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="serviceLocation" type="tns:serviceLocation" ></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+       
+  <xsd:complexType name="serviceLocation">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"></xsd:element>
+      <xsd:element name="profile" type="xsd:string"></xsd:element>
+      <xsd:element name="metadataAddress" type="xsd:string"></xsd:element>
+      <xsd:element name="version" type="xsd:decimal" nillable="true"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
