@@ -21,7 +21,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
                 Naam = product.Naam,
                 LeverancierNaam = product.LeverancierNaam,
                 Prijs = product.Prijs,
-                AfbeeldingPad = product.AfbeeldingURL,
+                AfbeeldingPad = Util.AfbeeldingPrefix + product.AfbeeldingURL,
             }); ;
 
             return View(products);
