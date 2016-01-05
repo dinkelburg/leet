@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:minor:servicebus:pfslocatorservice" elementFormDefault="qualified" targetNamespace="urn:minor:servicebus:pfslocatorservice" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:minor:servicebus:pfslocatorservice:schema" />
+  <xs:element name="FindMetadataEndpointAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceLocation" nillable="true" xmlns:q1="urn:minor:servicebus:pfslocatorservice:schema" type="q1:ServiceLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindMetadataEndpointAddressResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindMetadataEndpointAddressResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

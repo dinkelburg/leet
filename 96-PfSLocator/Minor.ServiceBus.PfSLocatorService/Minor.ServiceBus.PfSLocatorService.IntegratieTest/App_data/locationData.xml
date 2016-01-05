@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<locationData xmlns="urn:minor-servicebus-fileservicelocator:locationData">
+  <serviceLocation>
+    <name>BSVoertuigEnKlantbeheer</name>
+    <profile>Development</profile>
+    <metadataAddress>http://localhost:20653/BSVoertuigEnKlantbeheer.svc/meta</metadataAddress>
+  </serviceLocation>
+  <serviceLocation>
+    <name>BSVoertuigEnKlantbeheer</name>
+    <profile>Release</profile>
+    <metadataAddress>http://localhost/Baleru/BSVoertuigEnKlantbeheer/BSVoertuigEnKlantbeheer.svc/meta</metadataAddress>
+  </serviceLocation>
+</locationData>
