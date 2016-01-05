@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.Contract", "Leet.Kantilever.BSBestellingenbeheer.Contract\Leet.Kantilever.BSBestellingenbeheer.Contract.csproj", "{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.Implementation", "Leet.Kantilever.BSBestellingenbeheer.Implementation\Leet.Kantilever.BSBestellingenbeheer.Implementation.csproj", "{5C3C482C-6F86-4616-A93E-7F743F81610A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests", "Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests\Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests.csproj", "{47FA0239-EBAD-4552-A960-E8B60318FF2D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5C3C482C-6F86-4616-A93E-7F743F81610A} = {5C3C482C-6F86-4616-A93E-7F743F81610A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.Host", "Leet.Kantilever.BSBestellingenbeheer.Host\Leet.Kantilever.BSBestellingenbeheer.Host.csproj", "{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C3C482C-6F86-4616-A93E-7F743F81610A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C3C482C-6F86-4616-A93E-7F743F81610A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C3C482C-6F86-4616-A93E-7F743F81610A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C3C482C-6F86-4616-A93E-7F743F81610A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FA0239-EBAD-4552-A960-E8B60318FF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FA0239-EBAD-4552-A960-E8B60318FF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FA0239-EBAD-4552-A960-E8B60318FF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FA0239-EBAD-4552-A960-E8B60318FF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
