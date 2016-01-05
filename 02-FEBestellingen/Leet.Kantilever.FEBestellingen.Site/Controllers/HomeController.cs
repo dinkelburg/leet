@@ -8,6 +8,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
     public class HomeController : Controller
     {
+        [ExcludeFilter(typeof(AuthorizeAttribute)]
         public ActionResult Index()
         {
             return View();
