@@ -19,12 +19,13 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             _factory = new ServiceFactory<ICatalogusBeheer>("BSCatalogusBeheer");
         }
 
-        public ProductCollection FindAllProducts()
+        public ProductCollection FindAllProducts(int? page)
         {
+
             var proxy = _factory.CreateAgent();
             var productCollection = proxy.FindProducts(new MsgFindProductsRequest
             {
-                Page = 1,
+                Page = page.HasValue ? page.Value : 1,
                 PageSize = 10,
             });
 

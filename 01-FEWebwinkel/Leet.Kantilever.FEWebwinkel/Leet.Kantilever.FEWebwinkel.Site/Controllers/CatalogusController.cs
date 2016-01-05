@@ -11,11 +11,11 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
     public class CatalogusController : Controller
     {
         // GET: Catalogus
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             AgentBSCatalogusBeheer agent = new AgentBSCatalogusBeheer();
 
-            var products = agent.FindAllProducts().Select(product => new ProductVM
+            var products = agent.FindAllProducts(page).Select(product => new ProductVM
             {
                 ID = product.Id,
                 Naam = product.Naam,
