@@ -19,6 +19,11 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             _factory = new ServiceFactory<ICatalogusBeheer>("BSCatalogusBeheer");
         }
 
+        public AgentBSCatalogusBeheer(ServiceFactory<ICatalogusBeheer> factory)
+        {
+            _factory = factory;
+        }
+
         public ProductCollection FindAllProducts(int? page)
         {
 
