@@ -8,7 +8,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Users = "*")]
+        
         public ActionResult Index()
         {
             return View();
