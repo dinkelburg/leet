@@ -18,19 +18,12 @@
           .css('top', oldOffset.top)
           .css('zIndex', 1000);
         $new.hide();
-        $old.hide();
         //animate the $temp to the position of the new img
         $temp.animate({ 'top': newOffset.top, 'left': newOffset.left }, 'slow', function () {
             //callback function, we remove $old and $temp and show $new
             $new.show();
-            $old.remove();
             $temp.remove();
         });
-
-
-
-
-        $(this).animate({ 'zoom': 1.5 }, 100);
         // Split 'prod-' from 'prod-123'
         var productId = this.id.split('-')[1];
         $('#winkelmand-counter').html(+$('#winkelmand-counter').html() + 1);
