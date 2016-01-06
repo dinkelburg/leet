@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Leet.Kantilever.FEBestellingen.Site.Models.OrderRegelViewModel>
+
+@{
+    ViewBag.Title = "Bestelling inpakken";
+}
+
+<h2>Bestelling inpakken</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leverancier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leverancierscode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aantal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Leverancier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Leverancierscode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aantal)
+        </td>
+    </tr>
+}
+</table>
+<div class="text-center">
+    @Html.ActionLink("Bestelling is ingepakt", "FinishOrder", "Home", new { @class = "btn btn-primary center-block" })
+</div>

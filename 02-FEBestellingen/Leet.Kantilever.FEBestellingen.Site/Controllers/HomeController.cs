@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Leet.Kantilever.FEBestellingen.Site.Managers;
 using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
     public class HomeController : Controller
     {
+        private IOrderManager _manager;
+
+        public HomeController()
+        {
+            _manager = new OrderManager();
+        }
+
+        public HomeController(IOrderManager manager)
+        {
+            _manager = manager;
+        }
         
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult About()
+        
+        public ActionResult ViewOrder(int id)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(_manager.GetOrderRegelsForOrder(id));
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
