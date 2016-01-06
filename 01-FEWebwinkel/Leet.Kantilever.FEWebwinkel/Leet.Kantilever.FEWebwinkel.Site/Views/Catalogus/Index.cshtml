@@ -1,7 +1,15 @@
 ﻿@model IEnumerable<Leet.Kantilever.FEWebwinkel.Site.ViewModels.ProductVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Catalogus";
+    if (Request.Params["page"] != null)
+    {
+        ViewBag.Page = Request.Params["page"].AsInt();
+    }
+    else if (Request.Params["page"] == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
 <h2>Catalogus</h2>
@@ -9,7 +17,7 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 col-sm-12 artikel">
+        <div class="col-md-4 col-sm-6 col-xs-12 artikel">
             <div class="row">
             <div class="col-md-11">
             <img height="50" src="@Html.DisplayFor(modelItem => item.AfbeeldingPad)">
@@ -21,7 +29,7 @@
                     <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
                 </div>
                 <div class="col-md-6 no-padding">
-                    Toevoegen
+                    <button class="btn btn-kanti">In winkelmandje</button>
                 </div>
             </div>
                 </div>
@@ -29,3 +37,14 @@
         </div>
     }
 </div>
+<nav>
+    <ul class="pager">
+        @{
+            if (ViewBag.Page != 1)
+            {
+                <li>@Html.ActionLink("Vorige", "Index", new { page = ViewBag.Page - 1 })</li>
+            }
+        }
+        <li>@Html.ActionLink("Volgende", "Index", new { page = ViewBag.Page + 1 })</li>
+    </ul>
+</nav>
