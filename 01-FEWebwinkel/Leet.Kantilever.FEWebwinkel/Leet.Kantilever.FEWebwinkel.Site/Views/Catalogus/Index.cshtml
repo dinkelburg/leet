@@ -1,7 +1,15 @@
 ﻿@model IEnumerable<Leet.Kantilever.FEWebwinkel.Site.ViewModels.ProductVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Catalogus";
+    if (Request.Params["page"] != null)
+    {
+        ViewBag.Page = Request.Params["page"].AsInt();
+    }
+    else if (Request.Params["page"] == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
 <h2>Catalogus</h2>
@@ -29,3 +37,14 @@
         </div>
     }
 </div>
+<nav>
+    <ul class="pager">
+        @{
+            if (ViewBag.Page != 1)
+            {
+                <li>@Html.ActionLink("Vorige", "Index", new { page = ViewBag.Page - 1 })</li>
+            }
+        }
+        <li>@Html.ActionLink("Volgende", "Index", new { page = ViewBag.Page + 1 })</li>
+    </ul>
+</nav>
