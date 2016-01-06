@@ -44,8 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Minor.ServiceBus.Agent.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ad43e0a7da9d5a7, processorArchitecture=MSIL">
-      <HintPath>..\packages\AgentServiceBus.1.0.0.4\lib\net452\Minor.ServiceBus.Agent.Implementation.dll</HintPath>
+    <Reference Include="Minor.ServiceBus.Agent.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=73e451069382071b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Minor.Caespi.ServiceBus.Agent.1.0.0.3\lib\net452\Minor.ServiceBus.Agent.Implementation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
     <Compile Include="GeneratedTypes.cs" />
+    <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
