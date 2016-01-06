@@ -11,7 +11,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             get
             {
-                return "/Resources/Product/";
+                return "../Resources/Product/";
             }
         }
     }
