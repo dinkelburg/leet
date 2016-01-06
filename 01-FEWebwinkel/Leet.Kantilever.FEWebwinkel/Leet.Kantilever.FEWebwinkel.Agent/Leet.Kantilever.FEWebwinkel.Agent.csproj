@@ -101,7 +101,7 @@
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Kantilever.BsCatalogusbeheer.Categorie.V1" ^
 /n:"urn:schemas-www-kantilever-nl:common:fouten:v1,Kantilever.BsCatalogusbeheer.Fouten.V1" ^
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1,Kantilever.BsCatalogusbeheer.Leverancier.V1" ^
-"$(SolutionDir)\..\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Schema\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
+"$(SolutionDir)\..\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contract\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
