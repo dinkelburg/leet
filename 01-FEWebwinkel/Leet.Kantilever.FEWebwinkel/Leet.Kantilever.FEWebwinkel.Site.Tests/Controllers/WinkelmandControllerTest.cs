@@ -11,19 +11,37 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
     public class WinkelmandControllerTest
     {
         [TestMethod]
-        public void ToonInhoudTest()
+        public void ToonLegeWinkelmand()
         {
             //arrange 
             WinkelmandController controller = new WinkelmandController();
             controller.ControllerContext = Helper.CreateContext(controller);
-            Helper.SetCookie("winkelmandjeInhoud", controller);
 
             //act           
             var result = controller.Index() as ViewResult;
 
             //assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result.Model, typeof(WinkelmandVM));
+            Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
+        }
+
+        [TestMethod]
+        public void ToonGevuldeWinkelmand()
+        {
+            //arrange 
+            WinkelmandController controller = new WinkelmandController();
+            controller.ControllerContext = Helper.CreateContext(controller);
+            //mock van de PcSWinkelen agent maken 
+            //mock een neplijst laten returnen
+            //context een guid string cookie geven
+
+            //act           
+            var result = controller.Index() as ViewResult;
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.ViewName.ToString(), "Index");
+            // check result.model list length
         }
     }
 }
