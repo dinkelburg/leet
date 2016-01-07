@@ -196,6 +196,7 @@
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\Images\banner.png" />
+    <Content Include="Content\Winkelmand.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -307,6 +308,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Catalogus\Index.cshtml" />
     <Content Include="Views\Winkelmand\Index.cshtml" />
+    <Content Include="Views\Winkelmand\Winkelmandoverzicht.cshtml" />
     <Content Include="Views\Winkelmand\LegeWinkelmand.cshtml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
