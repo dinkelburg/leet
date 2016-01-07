@@ -87,7 +87,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
             var result = controller.ViewOrder(1);
 
             // Assert
-            mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.Once, "Method not called once");
+            mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.AtLeastOnce, "Method not called");
+            mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.Once, "Method not called more than once");
         }
 
 
