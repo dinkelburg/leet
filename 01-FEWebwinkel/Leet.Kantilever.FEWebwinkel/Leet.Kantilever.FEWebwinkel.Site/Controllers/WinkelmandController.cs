@@ -28,38 +28,50 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Winkelmand
         public ActionResult Index()
         {
-            var winkelmand = new WinkelmandVM
-            {
-                Producten = new List<WinkelmandVM.WinkelmandRijVM>
-            {
-                new WinkelmandVM.WinkelmandRijVM { Naam = "Fiets, blauw", Aantal = 1, Prijs = 299.00M },
-                new WinkelmandVM.WinkelmandRijVM { Naam = "Fietsketting", Aantal = 2, Prijs = 30M },
-                new WinkelmandVM.WinkelmandRijVM { Naam = "Koplamp, Batavus", Aantal = 5, Prijs = 15M },
-                new WinkelmandVM.WinkelmandRijVM { Naam = "Zadel, Comfizit", Aantal = 2, Prijs = 7.95M },
-            }
-            };
+            var clientIdCookie = Request.Cookies.Get("clientId");
+            string clientIdString;
 
-            var clientId = Request.Cookies.Get("clientId");
-            if (clientId == null)
+            if (clientIdCookie == null)
             {
+                clientIdString = Guid.NewGuid().ToString();
+                Response.Cookies.Add(new HttpCookie("clientId", clientIdString));
+
+                //if there was no clientId cookie present, a new one is made,
+                //and go to the empty basket page right away. 
                 return View("LegeWinkelmand");
             }
-            return View(winkelmand);
+            else
+            {
+                clientIdString = clientIdCookie.Value;
+            }
 
-            //1 PcSWinkelen aanroepen
-            //2 clientId.Value aan PcS geven
-            //3 ontvang lijst met objecten
-            //4 lijst naar view passen        
+            var requestMessage = new VraagWinkelmandRequestMessage
+            {
+                ClientID = clientIdString
+            };
+
+            var winkelmand = _winkelAgent.GetWinkelmandje(requestMessage);
+            var winkelmandVM = CreateWinkelmandVM(winkelmand);
+
+            return View(winkelmandVM);
         }
 
-        public ActionResult VoegProductToe(long artikelId, int aantal)
-        {
-            var clientId = Request.Cookies.Get("clientId");
 
-            if (clientId == null)
+
+        public ActionResult VoegProductToe(int artikelId, int aantal)
+        {
+            var clientIdCookie = Request.Cookies.Get("clientId");
+            string clientIdString;
+
+            if (clientIdCookie == null)
             {
-                //no clientId to add product row to, throw Bad Request message.
-                return new HttpStatusCodeResult(400);
+                // If no clientId cookie was found, make a new cookie.
+                clientIdString = Guid.NewGuid().ToString();
+                Response.Cookies.Add(new HttpCookie("clientId", clientIdString));
+            }
+            else
+            {
+                clientIdString = clientIdCookie.Value;
             }
 
             var requestMessage = new ToevoegenWinkelmandRequestMessage()
@@ -67,22 +79,35 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
                 BestelProduct = new BestelProduct
                 {
                     Aantal = aantal,
-                    ClientID = clientId.Value,
+                    ClientID = clientIdString,
                     ProductID = artikelId
                 },
             };
 
-
             _winkelAgent.VoegProductToe(requestMessage);
-
-            //1 PcSWinkelen aanroepen
-            //2 clientId.Value aan PcS geven, en artikelId en aantal
-            // aantal momenteel standaard op 1 zetten totdat er in de frontend een textbox voor aantal is.
-            //3 ontvang response
-            //4 return "alles is gelukt" message
 
             return new HttpStatusCodeResult(204);
         }
 
+
+        private WinkelmandVM CreateWinkelmandVM(WinkelmandResponseMessage message)
+        {
+            var winkelmand = new WinkelmandVM
+            {
+                Producten = new List<WinkelmandVM.WinkelmandRijVM>()
+            };
+
+            foreach (var item in message.Winkelmand)
+            {
+                winkelmand.Producten.Add(new WinkelmandVM.WinkelmandRijVM
+                {
+                    Aantal = item.Aantal,
+                    Naam = item.Product.Naam,
+                    Prijs = item.Product.Prijs
+                });
+            }
+
+            return winkelmand;
+        }
     }
 }
