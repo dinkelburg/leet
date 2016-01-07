@@ -31,19 +31,22 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
         public ActionResult VoegProductToe(string artikelId, int aantal)
         {
+            var clientId = Request.Cookies.Get("clientId");
+
+            if (clientId == null)
+            {
+                //no clientId to add product row to, throw error message.
+                return new HttpStatusCodeResult(400);
+            }
+
+            //1 PcSWinkelen aanroepen
+            //2 clientId.Value aan PcS geven, en artikelId en aantal
+            // aantal momenteel standaard op 1 zetten totdat er in de frontend een textbox voor aantal is.
+            //3 ontvang response
+            //4 return "alles is gelukt" message
+
             return new HttpStatusCodeResult(200);
         }
-
-        //private WinkelmandVM DeserializeCookie(string cookieValue)
-        //{
-        //    JavaScriptSerializer serializer = new JavaScriptSerializer();
-        //    var model = serializer.Deserialize<WinkelmandModel>(cookieValue);
-        //    var viewModel = new WinkelmandVM();
-
-        //    //TODO: validatie voor model. 
-        //    //TODO: model omzetten naar ViewModel
-
-        //    return viewModel;
-        //}
+        
     }
 }
