@@ -19,7 +19,7 @@
     <xsd:sequence>
       <xsd:element name="ID" type="xsd:long" />
       <xsd:element name="Bestelnummer" type="xsd:long"/>
-      <xsd:element name="Bestellingsregel" type="tns:Bestellingsregel" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="Bestellingsregel" type="tns:Bestellingsregel" minOccurs="1" maxOccurs="unbounded" />
       <xsd:element name="Klant" type="klant:Klant" />
     </xsd:sequence>
   </xsd:complexType>

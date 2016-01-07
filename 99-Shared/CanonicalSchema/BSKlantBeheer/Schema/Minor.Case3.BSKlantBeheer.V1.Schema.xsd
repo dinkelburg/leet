@@ -19,7 +19,7 @@
       <xsd:element name="Postcode" type="tns:Postcode" />
       <xsd:element name="Telefoon" type="xsd:string" />
       <xsd:element name="Telefoonnummer" type="xsd:string" />
-      <xsd:element name="e-mailadres" type="xsd:string" nillable="true" />
+      <xsd:element name="E-mailadres" type="xsd:string" nillable="true" />
     </xsd:sequence>
   </xsd:complexType>
 
