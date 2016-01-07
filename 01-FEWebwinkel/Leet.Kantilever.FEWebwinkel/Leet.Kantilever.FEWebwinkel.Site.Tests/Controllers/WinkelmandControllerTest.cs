@@ -43,5 +43,16 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             Assert.AreEqual(result.ViewName.ToString(), "Index");
             // check result.model list length
         }
+
+        [TestMethod]
+        public void ProductAanWinkelmandToevoegen()
+        {
+            //arrange 
+            WinkelmandController controller = new WinkelmandController();
+            controller.ControllerContext = Helper.CreateContext(controller);
+
+            //act
+            var result = controller.VoegProductToe("123", 1);
+        }
     }
 }
