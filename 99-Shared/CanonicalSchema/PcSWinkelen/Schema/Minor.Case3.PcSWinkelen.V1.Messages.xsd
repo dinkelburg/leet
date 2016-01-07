@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="Minor"
+    targetNamespace="urn:minor-case3-pcswinkelen:v1:messages"
+    xmlns:tns="urn:minor-case3-pcswinkelen:v1:messages"
+    xmlns:winkelmand="urn:minor-case3-pcswinkelen:v1:schema"
+    elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xsd:import namespace="urn:minor-case3-pcswinkelen:v1:schema"
+            schemaLocation="Minor.Case3.PcSWinkelen.V1.Schema.xsd" />
+
+  <xsd:element name="ToevoegenWinkelmandRequestMessage" type="tns:ToevoegenWinkelmandRequestMessage" />
+  <xsd:element name="WinkelmandResponseMessage" type="tns:WinkelmandResponseMessage" />
+  <xsd:element name="VraagWinkelmandRequestMessage" type="tns:VraagWinkelmandRequestMessage" />
+  
+  <xsd:complexType name="ToevoegenWinkelmandRequestMessage" >
+    <xsd:sequence>
+      <xsd:element name="BestelProduct" type="winkelmand:BestelProduct" minOccurs ="1" maxOccurs="1" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="WinkelmandResponseMessage" >
+    <xsd:sequence>
+      <xsd:element name="Winkelmand" type="winkelmand:Winkelmand" minOccurs ="1" maxOccurs="1" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="VraagWinkelmandRequestMessage">
+    <xsd:sequence>
+    <xsd:element name="ClientID" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
+
+
+

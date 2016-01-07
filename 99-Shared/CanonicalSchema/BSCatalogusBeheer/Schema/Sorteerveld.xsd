@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:simpleType name="Sorteerveld">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Naam"/>
+			<xs:enumeration value="Prijs"/>
+			<xs:enumeration value="LeverancierNaam"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
