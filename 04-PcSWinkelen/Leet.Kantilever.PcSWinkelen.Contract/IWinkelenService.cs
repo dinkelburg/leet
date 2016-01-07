@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leet.Kantilever.PcSWinkelen.V1.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,8 +13,10 @@ namespace Leet.Kantilever.PcSWinkelen.Contract
     public interface IWinkelenService
     {
         [OperationContract]
-        string GetData(int value);
+        WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
+
     }
 }
