@@ -32,8 +32,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             //1 PcSWinkelen aanroepen
             //2 clientId.Value aan PcS geven
             //3 ontvang lijst met objecten
-            //4 lijst naar view passen
-            
+            //4 lijst naar view passen        
         }
 
         public ActionResult VoegProductToe(string artikelId, int aantal)
@@ -42,7 +41,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
             if (clientId == null)
             {
-                //no clientId to add product row to, throw error message.
+                //no clientId to add product row to, throw Bad Request message.
                 return new HttpStatusCodeResult(400);
             }
 
@@ -52,7 +51,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             //3 ontvang response
             //4 return "alles is gelukt" message
 
-            return new HttpStatusCodeResult(200);
+            return new HttpStatusCodeResult(204);
         }
         
     }
