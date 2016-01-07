@@ -23,17 +23,20 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             _factory = factory;
         }
-
+        
         public ProductCollection FindProducts(int? page)
         {
-            var proxy = _factory.CreateAgent();
-            var productCollection = proxy.FindProducts(new MsgFindProductsRequest
-            {
-                Page = page.HasValue ? page.Value : 1,
-                PageSize = 12,
-            });
 
-            return productCollection.Products;
+            using (var p = _factory.CreateAgent() as IDisposable)
+            {
+                var proxy = p as ICatalogusBeheer;
+                var productCollection = proxy.FindProducts(new MsgFindProductsRequest
+                {
+                    Page = page.HasValue ? page.Value : 1,
+                    PageSize = 12,
+                });
+                return productCollection.Products;
+            }            
         }
     }
 }

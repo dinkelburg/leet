@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" xmlns:f="urn:schemas-www-kantilever-nl:common:fouten:v1" xmlns:pro="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" schemaLocation="ProductRef.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:common:fouten:v1" schemaLocation="../../Common/V1/FoutMelding.xsd"/>
+	<xs:complexType name="ProductUpdateResultaat">
+		<xs:sequence>
+			<xs:element name="ProductRef" type="pro:ProductRef" nillable="true" minOccurs="0"/>
+			<xs:element name="FoutMelding" type="f:FoutMelding" nillable="true" minOccurs="0"/>
+			<xs:element name="Success" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductUpdateResultaatCollection">
+		<xs:sequence>
+			<xs:element name="ProductUpdateResultaat" type="tns:ProductUpdateResultaat" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

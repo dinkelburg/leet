@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" xmlns:cat="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" schemaLocation="Categorie.xsd"/>
+	<xs:complexType name="Product">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="AfbeeldingURL" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="Beschrijving" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="LeverancierNaam" type="xs:string" nillable="false"/>
+			<xs:element name="LeveranciersProductId" type="xs:string" nillable="false"/>
+			<xs:element name="LeverbaarTot" type="xs:dateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="LeverbaarVanaf" type="xs:dateTime" nillable="true" minOccurs="0"/>
+			<xs:element name="Naam" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="Prijs" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="CategorieLijst" type="cat:CategorieCollection" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ProductCollection">
+		<xs:sequence>
+			<xs:element name="Product" type="tns:Product" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
