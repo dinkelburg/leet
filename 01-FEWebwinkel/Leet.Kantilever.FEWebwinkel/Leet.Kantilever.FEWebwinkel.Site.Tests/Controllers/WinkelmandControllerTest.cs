@@ -31,6 +31,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             //arrange 
             WinkelmandController controller = new WinkelmandController();
             controller.ControllerContext = Helper.CreateContext(controller);
+            //mock van de PcSWinkelen agent maken 
+            //mock een neplijst laten returnen
+            //context een guid string cookie geven
 
             //act           
             var result = controller.Index() as ViewResult;
@@ -38,6 +41,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             //assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName.ToString(), "Index");
+            // check result.model list length
         }
     }
 }
