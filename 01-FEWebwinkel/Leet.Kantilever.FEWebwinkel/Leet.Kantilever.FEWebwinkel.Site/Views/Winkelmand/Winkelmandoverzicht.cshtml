@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Leet.Kantilever.FEWebwinkel.Site.ViewModels.WinkelmandVM.WinkelmandRijVM>
+<thead>
+    <tr>
+        <th>@Html.DisplayNameFor(p => p.Naam)</th>
+        <th>@Html.DisplayNameFor(p => p.Prijs)</th>
+        <th>@Html.DisplayNameFor(p => p.Aantal)</th>
+        <th>@Html.DisplayNameFor(p => p.TotaalPrijs)</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach (var product in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => product.Naam)
+            </td>
+            <td>
+                &euro; @Html.DisplayFor(modelitem => product.Prijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelitem => product.Aantal)
+            </td>
+            <td>
+                &euro; @Html.DisplayFor(modelitem => product.TotaalPrijs)
+            </td>
+        </tr>
+    }
+</tbody>

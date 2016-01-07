@@ -14,10 +14,15 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Winkelmand
         public ActionResult Index()
         {
-            var winkelmandCookie = HttpContext.Request.Cookies.Get("kantileet_winkelmand");
-            var viewModel = DeserializeCookie(winkelmandCookie.Value);
+            var winkelmand = new WinkelmandVM { Producten = new List<WinkelmandVM.WinkelmandRijVM>
+            {
+                new WinkelmandVM.WinkelmandRijVM { Naam = "Fiets, blauw", Aantal = 1, Prijs = 299.00M },
+                new WinkelmandVM.WinkelmandRijVM { Naam = "Fietsketting", Aantal = 2, Prijs = 30M },
+                new WinkelmandVM.WinkelmandRijVM { Naam = "Koplamp, Batavus", Aantal = 5, Prijs = 15M },
+                new WinkelmandVM.WinkelmandRijVM { Naam = "Zadel, Comfizit", Aantal = 2, Prijs = 7.95M }, 
+            }};
         
-            return View(viewModel);
+            return View(winkelmand);
         }
 
         private WinkelmandVM DeserializeCookie(string cookieValue)
