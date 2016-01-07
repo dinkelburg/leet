@@ -24,9 +24,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         
         public ActionResult ViewOrder(int id)
         {
-
             return View(_manager.GetOrderRegelsForOrder(id));
         }
-
     }
 }

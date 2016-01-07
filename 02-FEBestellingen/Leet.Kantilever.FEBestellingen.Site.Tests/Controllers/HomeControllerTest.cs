@@ -46,19 +46,6 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
         #endregion
 
         [TestMethod]
-        public void Index()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void ViewOrderReturnsViewResult()
         {
             // Arrange
@@ -88,7 +75,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
 
             // Assert
             mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.AtLeastOnce, "Method not called");
-            mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.Once, "Method not called more than once");
+            mock.Verify(om => om.GetOrderRegelsForOrder(1), Times.Once, "Method called more than once");
         }
 
 
