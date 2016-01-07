@@ -60,6 +60,7 @@
     <Compile Include="AgentBSCatalogusBeheer.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
+    <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +103,13 @@
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Kantilever.BsCatalogusbeheer.Categorie.V1" ^
 /n:"urn:schemas-www-kantilever-nl:common:fouten:v1,Kantilever.BsCatalogusbeheer.Fouten.V1" ^
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1,Kantilever.BsCatalogusbeheer.Leverancier.V1" ^
-"$(SolutionDir)\..\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
+"$(SolutionDir)\..\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"
+
+svcutil.exe ^
+  /d:"$(ProjectDir) " ^
+  /out:PcSWinkelenGeneratedTypes.cs ^
+  "$(SolutionDir)\..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\kantileverpcswinkelenv1.wsdl" ^
+  "$(SolutionDir)\..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

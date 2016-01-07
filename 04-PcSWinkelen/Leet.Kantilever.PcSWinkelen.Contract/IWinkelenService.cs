@@ -8,8 +8,7 @@ using System.Text;
 
 namespace Leet.Kantilever.PcSWinkelen.Contract
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract]
+    [ServiceContract(Namespace = "urn:kantilever:pcswinkelen:v1")]
     public interface IWinkelenService
     {
         [OperationContract]

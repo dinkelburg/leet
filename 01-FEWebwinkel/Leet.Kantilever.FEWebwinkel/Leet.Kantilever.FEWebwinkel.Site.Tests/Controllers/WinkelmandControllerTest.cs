@@ -4,6 +4,8 @@ using Leet.Kantilever.FEWebwinkel.Site.Controllers;
 using Leet.Kantilever.FEWebwinkel.Site.Tests;
 using System.Web.Mvc;
 using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
+using Moq;
+using minorcase3pcswinkelen.v1.messages;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 {
@@ -48,11 +50,15 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
         public void ProductAanWinkelmandToevoegen()
         {
             //arrange 
-            WinkelmandController controller = new WinkelmandController();
+            var mock = new Mock<IWinkelenService>();
+            WinkelmandController controller = new WinkelmandController(mock.Object as IWinkelenService);
             controller.ControllerContext = Helper.CreateContext(controller);
+            mock.Setup(m => m.VoegProductToe(It.IsAny<ToevoegenWinkelmandRequestMessage>()));
 
             //act
-            var result = controller.VoegProductToe("123", 1);
+            var result = controller.VoegProductToe(123, 1);
+
+            //assert
         }
     }
 }

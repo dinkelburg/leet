@@ -98,12 +98,17 @@
   <PropertyGroup>
     <PreBuildEvent>svcutil.exe ^
    /dconly ^
-   /out:$(ProjectDir)Schema\GeneratedTypes.cs ^
+   /out:"$(ProjectDir)\Schema\GeneratedTypes.cs" ^
    /n:"urn:minor-case3-pcswinkelen:v1:messages,Leet.Kantilever.PcSWinkelen.V1.Messages" ^
    /n:"urn:minor-case3-pcswinkelen:v1:schema,Leet.Kantilever.PcSWinkelen.V1.Schema" ^
    "$(SolutionDir)..\99-shared\CanonicalSchema\BSCatalogusBeheer\Schema\Product.xsd" ^
    "$(SolutionDir)..\99-shared\CanonicalSchema\BSCatalogusBeheer\Schema\Categorie.xsd" ^
    "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Schema\*.xsd"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>svcutil ^
+/d:"$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts" ^
+Leet.Kantilever.PcSWinkelen.Contract.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

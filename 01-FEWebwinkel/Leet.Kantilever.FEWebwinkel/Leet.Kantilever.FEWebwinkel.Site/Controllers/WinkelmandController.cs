@@ -1,5 +1,7 @@
 ﻿using Leet.Kantilever.FEWebwinkel.Site.Models;
 using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
+using minorcase3pcswinkelen.v1.messages;
+using minorcase3pcswinkelen.v1.schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +13,31 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
     public class WinkelmandController : Controller
     {
+        private IWinkelenService _winkelAgent;
+
+        public WinkelmandController()
+        {
+
+        }
+
+        public WinkelmandController(IWinkelenService winkelAgent)
+        {
+            _winkelAgent = winkelAgent;
+        }
+
         // GET: Winkelmand
         public ActionResult Index()
         {
-            var winkelmand = new WinkelmandVM { Producten = new List<WinkelmandVM.WinkelmandRijVM>
+            var winkelmand = new WinkelmandVM
+            {
+                Producten = new List<WinkelmandVM.WinkelmandRijVM>
             {
                 new WinkelmandVM.WinkelmandRijVM { Naam = "Fiets, blauw", Aantal = 1, Prijs = 299.00M },
                 new WinkelmandVM.WinkelmandRijVM { Naam = "Fietsketting", Aantal = 2, Prijs = 30M },
                 new WinkelmandVM.WinkelmandRijVM { Naam = "Koplamp, Batavus", Aantal = 5, Prijs = 15M },
-                new WinkelmandVM.WinkelmandRijVM { Naam = "Zadel, Comfizit", Aantal = 2, Prijs = 7.95M }, 
-            }};
+                new WinkelmandVM.WinkelmandRijVM { Naam = "Zadel, Comfizit", Aantal = 2, Prijs = 7.95M },
+            }
+            };
 
             var clientId = Request.Cookies.Get("clientId");
             if (clientId == null)
@@ -35,7 +52,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             //4 lijst naar view passen        
         }
 
-        public ActionResult VoegProductToe(string artikelId, int aantal)
+        public ActionResult VoegProductToe(long artikelId, int aantal)
         {
             var clientId = Request.Cookies.Get("clientId");
 
@@ -45,6 +62,19 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
                 return new HttpStatusCodeResult(400);
             }
 
+            var requestMessage = new ToevoegenWinkelmandRequestMessage()
+            {
+                BestelProduct = new BestelProduct
+                {
+                    Aantal = aantal,
+                    ClientID = clientId.Value,
+                    ProductID = artikelId
+                },
+            };
+
+
+            _winkelAgent.VoegProductToe(requestMessage);
+
             //1 PcSWinkelen aanroepen
             //2 clientId.Value aan PcS geven, en artikelId en aantal
             // aantal momenteel standaard op 1 zetten totdat er in de frontend een textbox voor aantal is.
@@ -53,6 +83,6 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
             return new HttpStatusCodeResult(204);
         }
-        
+
     }
 }

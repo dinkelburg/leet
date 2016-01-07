@@ -1,0 +1,3 @@
+-	Moeten producten zonder prijs getoond worden?
+-	Moet de catalogus alleen leverbare producten tonen?
+-	Is de leverancierscode hetzelfde als de leveranciersproduct id?
