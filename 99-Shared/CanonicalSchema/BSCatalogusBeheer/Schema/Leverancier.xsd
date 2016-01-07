@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:complexType name="Leverancier">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="Naam" type="xs:string" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LeverancierCollection">
+		<xs:sequence>
+			<xs:element name="Leverancier" type="tns:Leverancier" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

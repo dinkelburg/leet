@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" xmlns:pro="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" schemaLocation="Product.xsd"/>
+	<xs:include schemaLocation="UpdateActie.xsd"/>
+	<xs:complexType name="ProductUpdate">
+		<xs:sequence>
+			<xs:element name="UpdateActie" type="tns:UpdateActie"/>
+			<xs:element name="Product" type="pro:Product"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductUpdateCollection">
+		<xs:sequence>
+			<xs:element name="ProductUpdate" type="tns:ProductUpdate" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

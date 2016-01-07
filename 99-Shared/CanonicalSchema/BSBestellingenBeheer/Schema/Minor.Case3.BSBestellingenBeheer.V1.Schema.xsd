@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="Minor"
+    targetNamespace="urn:minor-case3-bsbestellingenbeheer:v1:schema"
+    xmlns:tns="urn:minor-case3-bsbestellingenbeheer:v1:schema"
+    xmlns:klant="urn:minor-case3-bsklantbeheer:v1:schema"
+    xmlns:product="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1"
+    elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+  <xsd:import namespace="urn:minor-case3-bsklantbeheer:v1:schema" 
+              schemaLocation="../../BSKlantBeheer/Schema/Minor.Case3.BSKlantBeheer.V1.Schema.xsd" />
+
+  <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1"
+              schemaLocation="../../BSCatalogusBeheer/Schema/Product.xsd" />
+  
+  <xsd:element name="Bestelling" type="tns:Bestelling"/> 
+  
+  <xsd:complexType name="Bestelling">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:long" />
+      <xsd:element name="Bestelnummer" type="xsd:long"/>
+      <xsd:element name="Bestellingsregel" type="tns:Bestellingsregel" minOccurs="0" maxOccurs="unbounded" />
+      <xsd:element name="Klant" type="klant:Klant" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Bestellingsregel">
+    <xsd:sequence>
+      <xsd:element name="Product" type="product:Product" />
+      <xsd:element name="Aantal" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="BestellingCollection">
+    <xsd:sequence>
+      <xsd:element name ="Bestelling" type="tns:Bestelling" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>  
+</xsd:schema>
