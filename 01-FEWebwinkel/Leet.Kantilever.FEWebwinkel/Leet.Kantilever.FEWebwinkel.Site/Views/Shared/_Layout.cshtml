@@ -6,11 +6,12 @@
     <title>@ViewBag.Title - Kantilever</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="../../../Content/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
     <div class="col-md-12">
-        <img class="col-md-12 col-xs-12 col-sm-12" src="/Content/Images/banner.png" />
+        @{ 
+            <img class="col-md-12 col-xs-12 col-sm-12" src="@Util.BaseUrl/Content/Images/banner.png" />
+        }
     </div>
     <div class="navbar navbar-kanti">
         <div class="container">
