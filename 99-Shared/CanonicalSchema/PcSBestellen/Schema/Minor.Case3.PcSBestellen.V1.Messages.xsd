@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="Minor"
+    targetNamespace="urn:minor-case3-pcsbestellen:v1:messages"
+    xmlns:tns="urn:minor-case3-pcsbestellen:v1:messages"
+    xmlns:schema="urn:minor-case3-pcsbestellen:v1:schema"
+    elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+  <xsd:import namespace="urn:minor-case3-pcsbestellen:v1:schema"
+              schemaLocation="Minor.Case3.PcSBestellen.V1.Schema.xsd" />
+
+  <xsd:element name="BestellingenRequestMessage" type="tns:BestellingenRequestMessage"/>
+
+  <xsd:element name="BestellingenResponseMessage" type="tns:BestellingenResponseMessage"/>
+
+  <xsd:complexType name="BestellingenRequestMessage">
+    <xsd:sequence>
+      <xsd:element name="BestellingId" type="xsd:long" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="BestellingenResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="Result" type="schema:BestellingCollection" />
+      <xsd:element name="ResultCount" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
