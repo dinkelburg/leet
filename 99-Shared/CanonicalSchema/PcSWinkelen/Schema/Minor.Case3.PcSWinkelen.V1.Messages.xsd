@@ -12,7 +12,7 @@
 
   <xsd:element name="ToevoegenWinkelmandRequestMessage" type="tns:ToevoegenWinkelmandRequestMessage" />
   <xsd:element name="WinkelmandResponseMessage" type="tns:WinkelmandResponseMessage" />
-  <xsd:element name="VraagWinkelmandRequestMessage" type="tns:WinkelmandResponseMessage" />
+  <xsd:element name="VraagWinkelmandRequestMessage" type="tns:VraagWinkelmandRequestMessage" />
   
   <xsd:complexType name="ToevoegenWinkelmandRequestMessage" >
     <xsd:sequence>
@@ -31,7 +31,6 @@
     <xsd:element name="ClientID" type="xsd:string" />
     </xsd:sequence>
   </xsd:complexType>
-
 </xsd:schema>
 
 

@@ -13,7 +13,7 @@
   <xsd:complexType name="BestelProduct">
     <xsd:sequence>
       <xsd:element name="ProductID" type="xsd:long" />
-      <xsd:element name="Aantal" type="xsd:string"/>
+      <xsd:element name="Aantal" type="xsd:int"/>
       <xsd:element name="ClientID" type="xsd:string" />
     </xsd:sequence>
   </xsd:complexType>
