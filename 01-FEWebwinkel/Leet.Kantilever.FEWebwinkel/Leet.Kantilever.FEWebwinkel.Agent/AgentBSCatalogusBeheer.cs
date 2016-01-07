@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent
 {
-    public class AgentBSCatalogusBeheer
+    public class AgentBSCatalogusBeheer : IAgentBSCatalogusBeheer
     {
         private ServiceFactory<ICatalogusBeheer> _factory;
 
@@ -24,9 +24,8 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             _factory = factory;
         }
 
-        public ProductCollection FindAllProducts(int? page)
+        public ProductCollection FindProducts(int? page)
         {
-
             var proxy = _factory.CreateAgent();
             var productCollection = proxy.FindProducts(new MsgFindProductsRequest
             {
