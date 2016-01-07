@@ -16,21 +16,4 @@
     <profile>Release</profile>
     <metadataAddress>http://minorbldsrv:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
   </serviceLocation>
-  
-  <!--  -->
-  <serviceLocation>
-    <name>BSCatalogusBeheer</name>
-    <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv/leet/BSBestellingenBeheer/Service.svc</metadataAddress>
-  </serviceLocation>
-  <serviceLocation>
-    <name>BSCatalogusBeheer</name>
-    <profile>Acceptatie</profile>
-    <metadataAddress>http://minorbldsrv/leet/BSBestellingenBeheer/Service.svc</metadataAddress>
-  </serviceLocation>
-  <serviceLocation>
-    <name>BSCatalogusBeheer</name>
-    <profile>Release</profile>
-    <metadataAddress>http://minorbldsrv/leet/release/BSBestellingenBeheer/Service.svc</metadataAddress>
-  </serviceLocation>
 </locationData>
