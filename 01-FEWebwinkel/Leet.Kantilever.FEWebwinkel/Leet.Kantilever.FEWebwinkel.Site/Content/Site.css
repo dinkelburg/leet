@@ -20,6 +20,10 @@ body, h1, h2, h3, h4, h5, h6, p {
     color: #fff;
 }
 
+#winkelmand {
+    cursor: pointer;
+}
+
 .no-padding {
     padding: 0px;
 }

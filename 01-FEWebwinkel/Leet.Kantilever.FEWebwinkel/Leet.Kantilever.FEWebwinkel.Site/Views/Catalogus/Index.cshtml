@@ -17,22 +17,23 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 col-sm-6 col-xs-12 artikel">
+        <div class="col-md-3 col-sm-6 col-xs-12 artikel">
             <div class="row">
-            <div class="col-md-11">
-            <img height="50" src="@Html.DisplayFor(modelItem => item.AfbeeldingPad)">
-            <h4>@Html.DisplayFor(modelItem => item.Naam)</h4>
-            <p>@Html.DisplayFor(modelItem => item.LeverancierNaam)</p>
-            <div class="col-md-12 no-padding">
-                <div class="col-md-6 no-padding">
-                    <p>Voorraad</p>
-                    <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
-                </div>
-                <div class="col-md-6 no-padding">
-                    <button class="btn btn-kanti">In winkelmandje</button>
-                </div>
-            </div>
-                </div>
+                <div class="col-md-11">
+                    <img height="50" src="@Html.DisplayFor(modelItem => item.AfbeeldingPad)">
+                    <h4>@Html.DisplayFor(modelItem => item.Naam)</h4>
+                    <p>@Html.DisplayFor(modelItem => item.LeverancierNaam)</p>
+                    <div class="col-md-12 no-padding">
+                        <div class="col-md-6 no-padding">
+                            <p>Voorraad</p>
+                            <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
+                            <p>@Html.DisplayFor(modelItem => item.ID)</p>
+                        </div>
+                        <div class="col-md-6 no-padding">
+                            <button id="prod-@item.ID" class="btn btn-kanti mandBtn"><span class="fa fa-shopping-cart"></span></button>
+                        </div>
+                    </div>
+               </div>
            </div>
         </div>
     }
@@ -48,3 +49,6 @@
         <li>@Html.ActionLink("Volgende", "Index", new { page = ViewBag.Page + 1 })</li>
     </ul>
 </nav>
+@section scripts {
+    <script src="../../../Scripts/winkelmandje.js" language="javascript" type="text/javascript"></script>
+}

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent
 {
-    public class AgentBSCatalogusBeheer
+    public class AgentBSCatalogusBeheer : IAgentBSCatalogusBeheer
     {
         private ServiceFactory<ICatalogusBeheer> _factory;
 
@@ -23,18 +23,20 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             _factory = factory;
         }
-
-        public ProductCollection FindAllProducts(int? page)
+        
+        public ProductCollection FindProducts(int? page)
         {
 
-            var proxy = _factory.CreateAgent();
-            var productCollection = proxy.FindProducts(new MsgFindProductsRequest
+            using (var p = _factory.CreateAgent() as IDisposable)
             {
-                Page = page.HasValue ? page.Value : 1,
-                PageSize = 12,
-            });
-
-            return productCollection.Products;
+                var proxy = p as ICatalogusBeheer;
+                var productCollection = proxy.FindProducts(new MsgFindProductsRequest
+                {
+                    Page = page.HasValue ? page.Value : 1,
+                    PageSize = 12,
+                });
+                return productCollection.Products;
+            }            
         }
     }
 }

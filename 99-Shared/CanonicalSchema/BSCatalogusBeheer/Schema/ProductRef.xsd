@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:complexType name="ProductRef">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:int" minOccurs="0"/>
+			<xs:element name="LeveranciersProductId" type="xs:string" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductRefCollection">
+		<xs:sequence>
+			<xs:element name="ProductRef" type="tns:ProductRef" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

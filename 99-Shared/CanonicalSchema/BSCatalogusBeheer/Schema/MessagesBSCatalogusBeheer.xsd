@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" xmlns:pu="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" xmlns:c="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" xmlns:p="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" xmlns:l="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" xmlns:f="urn:schemas-www-kantilever-nl:common:fouten:v1" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:include schemaLocation="Sorteerveld.xsd"/>
+	<xs:include schemaLocation="Sorteerrichting.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" schemaLocation="ProductUpdate.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" schemaLocation="Categorie.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" schemaLocation="Product.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1" schemaLocation="Leverancier.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1" schemaLocation="ProductUpdateResultaat.xsd"/>
+	<xs:import namespace="urn:schemas-www-kantilever-nl:common:fouten:v1" schemaLocation="..\..\Common\V1\FoutMelding.xsd"/>
+	<xs:complexType name="MsgUpdateCatalogusRequest">
+		<xs:sequence>
+			<xs:element name="ProductUpdateList" type="pu:ProductUpdateCollection" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgUpdateCatalogusResult">
+		<xs:sequence>
+			<xs:element name="Resultaten" type="pu:ProductUpdateResultaatCollection" nillable="true" minOccurs="0"/>
+			<xs:element name="Succes" type="xs:boolean"/>
+			<xs:element name="Foutmelding" type="f:FoutMelding" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindProductByIdRequest">
+		<xs:sequence>
+			<xs:element name="Id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindProductByIdResult">
+		<xs:sequence>
+			<xs:element name="Product" type="p:Product" nillable="true" minOccurs="0"/>
+			<xs:element name="Succes" type="xs:boolean"/>
+			<xs:element name="Foutmelding" type="f:FoutMelding" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindProductsRequest">
+		<xs:sequence>
+			<xs:element name="NaamFilter" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="BeschrijvingFilter" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="MinimumPrijs" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="MaximumPrijs" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="Categorie" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="Leverancier" type="xs:int" nillable="true" minOccurs="0"/>
+			<xs:element name="Sorteerveld" type="tns:Sorteerveld" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="Sorteerrichting" type="tns:Sorteerrichting" nillable="false" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="AlleenLeverbareProducten" type="xs:boolean"/>
+			<xs:element name="Page" type="xs:int"/>
+			<xs:element name="PageSize" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindProductsResult">
+		<xs:sequence>
+			<xs:element name="Products" type="p:ProductCollection"/>
+			<xs:element name="Page" type="xs:int"/>
+			<xs:element name="PageSize" type="xs:int"/>
+			<xs:element name="PageCount" type="xs:int"/>
+			<xs:element name="Succes" type="xs:boolean"/>
+			<xs:element name="Foutmelding" type="f:FoutMelding" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindLeveranciersRequest">
+		<xs:sequence>
+			<xs:element name="NaamFilter" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindLeveranciersResult">
+		<xs:sequence>
+			<xs:element name="Leveranciers" type="l:LeverancierCollection" nillable="true" minOccurs="0"/>
+			<xs:element name="Succes" type="xs:boolean"/>
+			<xs:element name="Foutmelding" type="f:FoutMelding" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MsgFindCategorieenRequest">
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="MsgFindCategorieenResult">
+		<xs:sequence>
+			<xs:element name="Categorieen" type="c:CategorieCollection" nillable="true" minOccurs="0"/>
+			<xs:element name="Succes" type="xs:boolean"/>
+			<xs:element name="Foutmelding" type="f:FoutMelding" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
