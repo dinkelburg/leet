@@ -14,22 +14,36 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Winkelmand
         public ActionResult Index()
         {
-            var winkelmandCookie = HttpContext.Request.Cookies.Get("kantileet_winkelmand");
-            var viewModel = DeserializeCookie(winkelmandCookie.Value);
-        
-            return View(viewModel);
+            var clientId = Request.Cookies.Get("clientId");
+            
+            if(clientId == null)
+            {
+                return View("LegeWinkelmand");
+            }
+
+            //1 PcSWinkelen aanroepen
+            //2 clientId.Value aan PcS geven
+            //3 ontvang lijst met objecten
+            //4 lijst naar view passen
+
+            return View();
         }
 
-        private WinkelmandVM DeserializeCookie(string cookieValue)
+        public ActionResult VoegProductToe(string artikelId, int aantal)
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            var model = serializer.Deserialize<WinkelmandModel>(cookieValue);
-            var viewModel = new WinkelmandVM();
-
-            //TODO: validatie voor model. 
-            //TODO: model omzetten naar ViewModel
-
-            return viewModel;
+            return new HttpStatusCodeResult(200);
         }
+
+        //private WinkelmandVM DeserializeCookie(string cookieValue)
+        //{
+        //    JavaScriptSerializer serializer = new JavaScriptSerializer();
+        //    var model = serializer.Deserialize<WinkelmandModel>(cookieValue);
+        //    var viewModel = new WinkelmandVM();
+
+        //    //TODO: validatie voor model. 
+        //    //TODO: model omzetten naar ViewModel
+
+        //    return viewModel;
+        //}
     }
 }

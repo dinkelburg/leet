@@ -271,6 +271,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Catalogus\Index.cshtml" />
     <Content Include="Views\Winkelmand\Index.cshtml" />
+    <Content Include="Views\Winkelmand\LegeWinkelmand.cshtml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
