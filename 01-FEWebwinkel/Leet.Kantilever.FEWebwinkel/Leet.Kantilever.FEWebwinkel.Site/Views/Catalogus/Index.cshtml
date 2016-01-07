@@ -30,7 +30,7 @@
                             <p>@Html.DisplayFor(modelItem => item.ID)</p>
                         </div>
                         <div class="col-md-6 no-padding">
-                            <button id="prod-@item.ID" class="btn btn-kanti mandBtn"><i class="fa fa-shopping-cart"></i></button>
+                            <button id="prod-@item.ID" class="btn btn-kanti mandBtn"><span class="fa fa-shopping-cart"></span></button>
                         </div>
                     </div>
                </div>
@@ -49,3 +49,6 @@
         <li>@Html.ActionLink("Volgende", "Index", new { page = ViewBag.Page + 1 })</li>
     </ul>
 </nav>
+@section scripts {
+    <script src="../../../Scripts/winkelmandje.js" language="javascript" type="text/javascript"></script>
+}
