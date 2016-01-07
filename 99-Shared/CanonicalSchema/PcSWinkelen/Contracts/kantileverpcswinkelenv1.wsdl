@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="urn:kantilever:pcswinkelen:v1" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="urn:kantilever:pcswinkelen:v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:kantilever:pcswinkelen:v1/Imports">
+      <xsd:import namespace="urn:kantilever:pcswinkelen:v1" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="urn:minor-case3-pcswinkelen:v1:messages" />
+      <xsd:import namespace="urn:minor-case3-pcswinkelen:v1:schema" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" />
+      <xsd:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWinkelenService_VoegProductToe_InputMessage">
+    <wsdl:part name="parameters" element="tns:VoegProductToe" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelenService_VoegProductToe_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VoegProductToeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelenService_GetWinkelmandje_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinkelmandje" />
+  </wsdl:message>
+  <wsdl:message name="IWinkelenService_GetWinkelmandje_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinkelmandjeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWinkelenService">
+    <wsdl:operation name="VoegProductToe">
+      <wsdl:input wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToe" message="tns:IWinkelenService_VoegProductToe_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToeResponse" message="tns:IWinkelenService_VoegProductToe_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWinkelmandje">
+      <wsdl:input wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandje" message="tns:IWinkelenService_GetWinkelmandje_InputMessage" />
+      <wsdl:output wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandjeResponse" message="tns:IWinkelenService_GetWinkelmandje_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DefaultBinding_IWinkelenService" type="tns:IWinkelenService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="VoegProductToe">
+      <soap:operation soapAction="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWinkelmandje">
+      <soap:operation soapAction="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>
