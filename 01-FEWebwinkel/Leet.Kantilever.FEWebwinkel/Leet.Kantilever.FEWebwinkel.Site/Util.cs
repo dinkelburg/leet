@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 
 namespace Leet.Kantilever.FEWebwinkel.Site
 {
@@ -11,7 +12,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             get
             {
-                return "Resources/Product/";
+                return HostingEnvironment.MapPath("~/Resources/Product/");
             }
         }
     }
