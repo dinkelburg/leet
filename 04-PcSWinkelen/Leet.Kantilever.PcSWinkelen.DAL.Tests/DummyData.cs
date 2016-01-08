@@ -21,7 +21,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
                 LeverbaarVanaf = new DateTime(2015, 1, 7),
                 Naam = "Product Naam",
                 Prijs = 123.54M,
-                ClientID = "ID01"
+                ClientId = "ID01"
             };
         }
 
@@ -39,7 +39,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
                     LeverbaarVanaf = new DateTime(2015, 1, 7),
                     Naam = "Product Naam",
                     Prijs = 123.54M,
-                    ClientID = "ID01",
+                    ClientId = "ID01",
                 },
                 new Product
                 {
@@ -51,7 +51,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
                     LeverbaarVanaf = new DateTime(2015, 1, 7),
                     Naam = "Product Naam1",
                     Prijs = 125.54M,
-                    ClientID = "ID01",
+                    ClientId = "ID01",
                 },
             };
         }

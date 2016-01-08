@@ -8,7 +8,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Entities
 {
     public class Product
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
         public string AfbeeldingURL { get; set; }
         public string Beschrijving { get; set; }
         public string LeverancierNaam { get; set; }
@@ -17,6 +17,6 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Entities
         public DateTime LeverbaarVanaf { get; set; }
         public string Naam { get; set; }
         public decimal Prijs { get; set; }
-        public string ClientID { get; set; }
+        public string ClientId { get; set; }
     }
 }

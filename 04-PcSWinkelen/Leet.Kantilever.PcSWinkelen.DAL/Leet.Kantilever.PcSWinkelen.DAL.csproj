@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDataMapper.cs" />
     <Compile Include="ProductDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +70,11 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\99-Shared\KantileverDictionary.xml">
+      <Link>KantileverDictionary.xml</Link>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,11 +13,11 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             return productCollection.Select(product => new ProductVM
             {
-                ID = product.Id,
+                Id = product.Id,
                 Naam = product.Naam,
                 LeverancierNaam = product.LeverancierNaam,
                 Prijs = product.Prijs,
-                AfbeeldingPad = Util.AfbeeldingPrefix + product.AfbeeldingURL,
+                AfbeeldingPad = Utility.AfbeeldingPrefix + product.AfbeeldingURL,
             });
         }
     }

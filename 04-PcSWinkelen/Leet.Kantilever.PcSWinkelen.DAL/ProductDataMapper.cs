@@ -20,11 +20,11 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
             }
         }
 
-        public IEnumerable<Product> FindByClientId(string clientID)
+        public IEnumerable<Product> FindByClientId(string clientId)
         {
             using (var context = new WinkelenContext())
             {
-                return context.Products.Where(product => product.ClientID == clientID).ToList();
+                return context.Products.Where(product => product.ClientId == clientId).ToList();
             }
         }
 

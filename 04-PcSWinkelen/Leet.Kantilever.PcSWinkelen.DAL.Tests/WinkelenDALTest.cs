@@ -67,7 +67,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
                 Assert.AreEqual(expextedProducts[i].LeverbaarVanaf, products[i].LeverbaarVanaf);
                 Assert.AreEqual(expextedProducts[i].Naam, products[i].Naam);
                 Assert.AreEqual(expextedProducts[i].Prijs, products[i].Prijs);
-                Assert.AreEqual(expextedProducts[i].ClientID, products[i].ClientID);
+                Assert.AreEqual(expextedProducts[i].ClientId, products[i].ClientId);
             }
         }
     }

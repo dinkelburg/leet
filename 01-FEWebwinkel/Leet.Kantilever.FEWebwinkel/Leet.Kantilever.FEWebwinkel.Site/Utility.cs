@@ -6,7 +6,7 @@ using System.Web.Hosting;
 
 namespace Leet.Kantilever.FEWebwinkel.Site
 {
-    public static class Util
+    public static class Utility
     {
         public static string AfbeeldingPrefix
         {

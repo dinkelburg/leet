@@ -90,16 +90,16 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         }
 
 
-        private WinkelmandVM CreateWinkelmandVM(WinkelmandResponseMessage message)
+        private static WinkelmandVM CreateWinkelmandVM(WinkelmandResponseMessage message)
         {
             var winkelmand = new WinkelmandVM
             {
-                Producten = new List<WinkelmandVM.WinkelmandRijVM>()
+                Producten = new List<WinkelmandRijVM>()
             };
 
             foreach (var item in message.Winkelmand)
             {
-                winkelmand.Producten.Add(new WinkelmandVM.WinkelmandRijVM
+                winkelmand.Producten.Add(new WinkelmandRijVM
                 {
                     Aantal = item.Aantal,
                     Naam = item.Product.Naam,
