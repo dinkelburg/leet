@@ -107,7 +107,7 @@
    "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Schema\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\svcutil.exe" ^
+    <PostBuildEvent>svcutil.exe ^
 /d:"$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts" ^
 Leet.Kantilever.PcSWinkelen.Contract.dll</PostBuildEvent>
   </PropertyGroup>
