@@ -10,7 +10,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
     /// <summary>
     /// This class provides dummy data for test purposes
     /// </summary>
-    public static class DummyData
+    public static class DummyDataDAL
     {
         /// <summary>
         /// Dummy data for Product 

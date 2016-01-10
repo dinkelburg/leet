@@ -15,7 +15,7 @@ namespace Leet.Kantilever.PcSWinkelen.Contract
         WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
 
         [OperationContract]
-        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
+        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
 
     }
 }

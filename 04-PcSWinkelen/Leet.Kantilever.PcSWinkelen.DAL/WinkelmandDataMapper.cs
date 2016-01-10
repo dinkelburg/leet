@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Leet.Kantilever.PcSWinkelen.DAL
 {
-    public class WinkelmandDataMapper : IDataMapper<Winkelmand, long>
+    public class WinkelmandDataMapper : IDataMapper<Winkelmand>
     {
         /// <summary>
         /// Insert a product into the database and add the product to the winkelmand.
@@ -20,7 +20,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
             using (var context = new WinkelenContext())
             {
 
-                var existingProduct = context.Products.SingleOrDefault(p => p.LeveranciersProductId == product.LeveranciersProductId && p.Winkelmand.ClientID == clientID);
+                var existingProduct = context.Products.SingleOrDefault(p => p.CatalogusProductID == product.CatalogusProductID && p.Winkelmand.ClientID == clientID);
                 if (existingProduct != null)
                 {
                     existingProduct.Aantal += product.Aantal;

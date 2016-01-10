@@ -18,7 +18,7 @@
   <xs:element name="GetWinkelmandje">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="toevoegenWinkelmandReqMessage" nillable="true" xmlns:q3="urn:minor-case3-pcswinkelen:v1:messages" type="q3:VraagWinkelmandRequestMessage" />
+        <xs:element minOccurs="0" name="vraagWinkelmandReqMessage" nillable="true" xmlns:q3="urn:minor-case3-pcswinkelen:v1:messages" type="q3:VraagWinkelmandRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

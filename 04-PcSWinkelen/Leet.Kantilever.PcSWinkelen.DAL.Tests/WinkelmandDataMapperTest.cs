@@ -29,7 +29,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             {
                 // Arrange
                 WinkelmandDataMapper mapper = new WinkelmandDataMapper();
-                var product = DummyData.GetProduct();
+                var product = DummyDataDAL.GetProduct();
 
                 // Act
                 mapper.AddProductToWinkelmand(product, "Client02");
@@ -50,7 +50,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             {
                 // Arrange
                 WinkelmandDataMapper mapper = new WinkelmandDataMapper();
-                var product = DummyData.GetProduct();
+                var product = DummyDataDAL.GetProduct();
 
                 // Act
                 mapper.AddProductToWinkelmand(product, "Client01");
@@ -71,7 +71,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             {
                 // Arrange
                 WinkelmandDataMapper mapper = new WinkelmandDataMapper();
-                var product = DummyData.GetProduct();
+                var product = DummyDataDAL.GetProduct();
 
                 // Act
                 mapper.AddProductToWinkelmand(product, "Client01");
@@ -95,7 +95,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             {
                 // Arrange
                 WinkelmandDataMapper mapper = new WinkelmandDataMapper();
-                var product = DummyData.GetProduct();
+                var product = DummyDataDAL.GetProduct();
 
                 // Act
                 mapper.AddProductToWinkelmand(product, "Client01");
@@ -124,7 +124,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
 
             // Assert
             Assert.AreEqual(1, winkelmanden.Count());
-            AssertWinkelmand(winkelmanden.First(), DummyData.GetWinkelmand());
+            AssertWinkelmand(winkelmanden.First(), DummyDataDAL.GetWinkelmand());
         }
 
 
@@ -138,7 +138,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             var winkelmand = mapper.FindWinkelmandByClientId("Client01");
 
             // Assert
-            AssertWinkelmand(winkelmand, DummyData.GetWinkelmand());
+            AssertWinkelmand(winkelmand, DummyDataDAL.GetWinkelmand());
         }
 
         [TestMethod]
