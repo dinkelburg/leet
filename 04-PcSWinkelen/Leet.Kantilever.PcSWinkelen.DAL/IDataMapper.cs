@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leet.Kantilever.PcSWinkelen.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
 {
     public interface IDataMapper<T, U>
     {
-        IEnumerable<T> FindByClientId(string id);
-        void Insert(T item);
+        T FindWinkelmandByClientId(string id);
+        void AddProductToWinkelmand(Product product, string clientID);
         IEnumerable<T> FindAll();
     }
 }

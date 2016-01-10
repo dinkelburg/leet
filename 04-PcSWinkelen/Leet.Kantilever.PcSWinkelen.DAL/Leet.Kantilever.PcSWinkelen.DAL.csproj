@@ -57,10 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Mapping\ProductMapping.cs" />
+    <Compile Include="Entities\Mapping\WinkelmandMapping.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Winkelmand.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDataMapper.cs" />
-    <Compile Include="ProductDataMapper.cs" />
+    <Compile Include="WinkelmandDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinkelenContext.cs" />
   </ItemGroup>

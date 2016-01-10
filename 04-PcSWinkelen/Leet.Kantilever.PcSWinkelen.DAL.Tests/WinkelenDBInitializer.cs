@@ -9,9 +9,9 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
     {
         protected override void Seed(WinkelenContext context)
         {
-            var products = DummyData.GetProducts();
+            var winkelmand = DummyData.GetWinkelmand();
 
-            context.Products.AddRange(products);
+            context.Winkelmanden.Add(winkelmand);
 
             base.Seed(context);
         }

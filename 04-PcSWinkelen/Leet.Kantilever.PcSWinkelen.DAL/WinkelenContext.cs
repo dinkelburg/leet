@@ -1,4 +1,5 @@
 ﻿using Leet.Kantilever.PcSWinkelen.DAL.Entities;
+using Leet.Kantilever.PcSWinkelen.DAL.Entities.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,5 +13,13 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
     {
         public WinkelenContext() : base("WinkelenContext") { }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Winkelmand> Winkelmanden { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new ProductMapping());
+            modelBuilder.Configurations.Add(new WinkelmandMapping());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
