@@ -8,6 +8,8 @@ using Moq;
 using minorcase3pcswinkelen.v1.messages;
 using minorcase3pcswinkelen.v1.schema;
 using schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
+using Leet.Kantilever.FEWebwinkel.Agent;
+using System.Collections.Generic;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 {
@@ -18,8 +20,10 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
         public void ToonLegeWinkelmand()
         {
             //arrange 
-            WinkelmandController controller = new WinkelmandController();
+            var mock = new Mock<IAgentPcSWinkelen>();
+            WinkelmandController controller = new WinkelmandController(mock.Object as IAgentPcSWinkelen);
             controller.ControllerContext = Helper.CreateContext(controller);
+            mock.Setup(m => m.GetWinkelmand(It.IsAny<string>())).Returns(new Winkelmand());
 
             //act           
             var result = controller.Index() as ViewResult;
@@ -33,17 +37,54 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
         public void ToonWinkelmandZonderClientId()
         {
             //arrange 
-            var mock = new Mock<IWinkelenService>();
-            WinkelmandController controller = new WinkelmandController(mock.Object as IWinkelenService);
+            var mock = new Mock<IAgentPcSWinkelen>();
+            WinkelmandController controller = new WinkelmandController(mock.Object as IAgentPcSWinkelen);
             controller.ControllerContext = Helper.CreateContext(controller);
+            mock.Setup(m => m.GetWinkelmand(It.IsAny<string>())).Returns(new Winkelmand());
 
-            var winkelmandResponseMessage =
-            #region winkelmand Mock ResponseMessage
-            new WinkelmandResponseMessage
-            {
-                Winkelmand = new Winkelmand
-                    {
-                         new WinkelmandRegel
+            //act           
+            var result = controller.Index() as ViewResult;
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
+        }
+
+        [TestMethod]
+        public void ProductAanWinkelmandToevoegenZonderClientId()
+        {
+            //arrange          
+            var mock = new Mock<IAgentPcSWinkelen>();
+            WinkelmandController controller = new WinkelmandController(mock.Object as IAgentPcSWinkelen);
+
+            //A controllercontext doesn't have any cookies in it by default so no further action is needed.
+            controller.ControllerContext = Helper.CreateContext(controller);
+            mock.Setup(m => m.VoegProductToeAanWinkelmand(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>()));
+
+            //act
+            var result = controller.VoegProductToe(123, 1) as HttpStatusCodeResult;
+
+            //assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(204, result.StatusCode);
+            Assert.IsNotNull(controller.Response.Cookies.Get("clientId"));
+        }
+
+        [TestMethod]
+        public void ToonGevuldeWinkelmand()
+        {
+            //arrange
+            var mock = new Mock<IAgentPcSWinkelen>();
+            WinkelmandController controller = new WinkelmandController(mock.Object as IAgentPcSWinkelen);
+            controller.ControllerContext = Helper.CreateContext(controller);
+            Helper.SetCookie("clientId", controller);
+
+            Winkelmand winkelmand = new Winkelmand();
+
+            winkelmand.AddRange(
+            #region winkelmand Mock
+            new List<WinkelmandRegel> {
+                new WinkelmandRegel
                          {
                              Aantal = 1,
                              Product = new Product()
@@ -70,40 +111,18 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
                                  Prijs = 9001
                              }
                          },
-                    }
-            };
+            });
             #endregion
 
-            mock.Setup(m => m.GetWinkelmandje(It.IsAny<VraagWinkelmandRequestMessage>())).Returns(winkelmandResponseMessage);
-            //context een guid string cookie geven
+            mock.Setup(m => m.GetWinkelmand(It.IsAny<string>())).Returns(winkelmand);
 
-            //act           
+            //act 
             var result = controller.Index() as ViewResult;
+            var winkelmandCount = (result.Model as WinkelmandVM).Producten.Count;
 
             //assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
-            // check result.model list length
-        }
-
-        [TestMethod]
-        public void ProductAanWinkelmandToevoegenZonderClientId()
-        {
-            //arrange          
-            var mock = new Mock<IWinkelenService>();
-            WinkelmandController controller = new WinkelmandController(mock.Object as IWinkelenService);
-
-            //A controllercontext doesn't have any cookies in it by default so no further action is needed.
-            controller.ControllerContext = Helper.CreateContext(controller);
-            mock.Setup(m => m.VoegProductToe(It.IsAny<ToevoegenWinkelmandRequestMessage>()));
-
-            //act
-            var result = controller.VoegProductToe(123, 1) as HttpStatusCodeResult;
-
-            //assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(204, result.StatusCode);
-            Assert.IsNotNull(controller.Response.Cookies.Get("clientId"));
+            Assert.AreEqual(3, winkelmandCount);
         }
     }
 }
