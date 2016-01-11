@@ -10,20 +10,22 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
     public class CatalogusController : Controller
     {
+        private IAgentBSCatalogusBeheer _agent;
+
+        public CatalogusController()
+        {
+            _agent = new AgentBSCatalogusBeheer();
+        }
+
+        public CatalogusController(IAgentBSCatalogusBeheer agent)
+        {
+            _agent = agent;
+        }
+
         // GET: Catalogus
         public ActionResult Index(int? page)
         {
-            AgentBSCatalogusBeheer agent = new AgentBSCatalogusBeheer();
-
-            var products = agent.FindAllProducts(page).Select(product => new ProductVM
-            {
-                ID = product.Id,
-                Naam = product.Naam,
-                LeverancierNaam = product.LeverancierNaam,
-                Prijs = product.Prijs,
-                AfbeeldingPad = Util.AfbeeldingPrefix + product.AfbeeldingURL,
-            }); ;
-
+            var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
             return View(products);
         }
     }

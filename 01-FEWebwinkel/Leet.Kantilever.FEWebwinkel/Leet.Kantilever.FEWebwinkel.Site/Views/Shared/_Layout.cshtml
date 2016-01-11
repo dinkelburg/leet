@@ -4,13 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Kantilever</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="col-md-12">
-        <img class="col-md-12" src="~/Content/Images/banner.png" />
+        @{ 
+            <img class="col-md-12 col-xs-12 col-sm-12" src="@Util.BaseUrl/Content/Images/banner.png" />
+        }
     </div>
     <div class="navbar navbar-kanti">
         <div class="container">
@@ -24,10 +26,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Catalogus", "Index", "Catalogus")</li>
                 </ul>
-                 @*@Html.Partial("_LoginPartial")*@
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="winkelmand">
+                        <a id="winkelmand"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

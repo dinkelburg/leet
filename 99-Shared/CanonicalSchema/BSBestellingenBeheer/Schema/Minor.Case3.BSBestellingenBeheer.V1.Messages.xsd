@@ -2,27 +2,38 @@
 <xsd:schema id="Minor"
     targetNamespace="urn:minor-case3-bsbestellingenbeheer:v1:messages"
     xmlns:tns="urn:minor-case3-bsbestellingenbeheer:v1:messages"
-    xmlns:schema="urn:minor-case3-bsbestellingenbeheer:v1:schema"
+    xmlns:bestelling="urn:minor-case3-bsbestellingenbeheer:v1:schema"
     elementFormDefault="qualified"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 >
-  <xsd:import namespace="urn:minor-case3-bsbestellingenbeheer:v1:schema" 
+
+  <xsd:import namespace="urn:minor-case3-bsbestellingenbeheer:v1:schema"
               schemaLocation="Minor.Case3.BSBestellingenBeheer.V1.Schema.xsd" />
 
-  <xsd:element name="BestellingenRequestMessage" type="tns:BestellingenRequestMessage"/>
-  
-  <xsd:element name="BestellingenResponseMessage" type="tns:BestellingenResponseMessage"/>   
-  
-  <xsd:complexType name="BestellingenRequestMessage">
+
+  <xsd:element name="GetAllBestellingenRequestMessage"/>
+
+  <xsd:element name="GetAllBestellingenResponseMessage" type="tns:GetAllBestellingenResponseMessage"/>
+
+  <xsd:element name="GetBestellingByIDRequestMessage" type="tns:GetBestellingByIDRequestMessage" />
+
+  <xsd:element name="GetBestellingByIDResponseMessage" type="tns:GetBestellingByIDResponseMessage" />
+
+  <xsd:complexType name="GetAllBestellingenResponseMessage">
     <xsd:sequence>
-      <xsd:element name="BestellingId" type="xsd:long" />
+      <xsd:element name="BestellingCollection" type="bestelling:BestellingCollection" />
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:complexType name="BestellingenResponseMessage">
+  <xsd:complexType name="GetBestellingByIDRequestMessage">
     <xsd:sequence>
-      <xsd:element name="Result" type="schema:BestellingCollection" />
-      <xsd:element name="ResultCount" type="xsd:int" />
+      <xsd:element name="BestellingsID" type="xsd:long" />
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="GetBestellingByIDResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="Bestelling" type="bestelling:Bestelling" />
     </xsd:sequence>
   </xsd:complexType>
 </xsd:schema>

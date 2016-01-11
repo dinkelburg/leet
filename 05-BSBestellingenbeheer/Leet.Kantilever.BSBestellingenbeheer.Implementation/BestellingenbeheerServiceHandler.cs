@@ -12,17 +12,15 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
-        public BestellingenResponseMessage FindAllBestelling()
+        public GetAllBestellingenResponseMessage FindAllBestelling()
         {
             var bestellingen = new BestellingCollection();
 
-            return new BestellingenResponseMessage { Result = bestellingen, ResultCount = bestellingen.Count() };
+            return new GetAllBestellingenResponseMessage { BestellingCollection = bestellingen};
         }
 
-        public BestellingenResponseMessage FindBestelling(BestellingenRequestMessage m)
+        public GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m)
         {
-            var bestellingen = new BestellingCollection();
-
             var regels = new BestellingsregelCollection();
             regels.AddRange(new List<Bestellingsregel> {
                 new Bestellingsregel { ProductId = 1, Aantal = 5, Prijs = 15.00M },
@@ -31,19 +29,18 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
                 new Bestellingsregel { ProductId = 4, Aantal = 1, Prijs = 19.99M },
             });
 
-            bestellingen.Add(new Bestelling {
+            var bestelling = new Bestelling
+            {
                 Besteldatum = DateTime.Now,
                 Bestellingsregels = regels,
-                ID = m.BestellingId,
+                ID = m.BestellingsID,
                 KlantID = 61015
-            });
+            };
 
-            return new BestellingenResponseMessage
+            return new GetBestellingByIDResponseMessage
             {
-                Result = bestellingen,
-                ResultCount = bestellingen.Count()
+                Bestelling = bestelling,
             };
         }
-        
     }
 }

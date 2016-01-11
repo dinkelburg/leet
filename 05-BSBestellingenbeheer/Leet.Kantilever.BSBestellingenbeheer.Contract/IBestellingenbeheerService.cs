@@ -12,9 +12,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Contract
     public interface IBestellingenbeheerService
     {
         [OperationContract]
-        BestellingenResponseMessage FindBestelling(BestellingenRequestMessage m);
+        GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m);
 
-        BestellingenResponseMessage FindAllBestelling();
+        GetAllBestellingenResponseMessage FindAllBestelling();
 
 
     }

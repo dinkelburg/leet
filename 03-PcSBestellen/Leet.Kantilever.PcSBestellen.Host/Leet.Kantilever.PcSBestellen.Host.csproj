@@ -67,7 +67,9 @@
       <Link>KantileverDictionary.xml</Link>
     </Content>
     <Content Include="Service.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +82,9 @@
       <Link>leet.snk</Link>
     </Content>
     <None Include="Properties\PublishProfiles\PcSBestellen_Publish.pubxml" />
+    <None Include="Web.Acceptatie.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -106,6 +111,15 @@
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>..\..\99-Shared\leet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Acceptatie|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

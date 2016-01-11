@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSBestellen.Contract", "Leet.Kantilever.PcSBestellen.Contract\Leet.Kantilever.PcSBestellen.Contract.csproj", "{1B895677-0730-45A5-9386-47DE79459571}"
 EndProject
@@ -11,28 +11,53 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSBestelle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSBestellen.Implementation.Tests", "Leet.Kantilever.PcSBestellen.Implementation.Tests\Leet.Kantilever.PcSBestellen.Implementation.Tests.csproj", "{E86AA004-BB2B-4EE0-8036-F3267BAA5201}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSBestellen.Agent", "Leet.Kantilever.PcSBestellen.Agent\Leet.Kantilever.PcSBestellen.Agent.csproj", "{775D7897-1EC4-4BE7-84BC-BA81129934A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.PcSBestellen.Agent.Tests", "Leet.Kantilever.PcSBestellen.Agent.Tests\Leet.Kantilever.PcSBestellen.Agent.Tests.csproj", "{664ABB5C-2F08-444E-9D90-B51DA8A133EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Acceptatie|Any CPU = Acceptatie|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B895677-0730-45A5-9386-47DE79459571}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
+		{1B895677-0730-45A5-9386-47DE79459571}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
 		{1B895677-0730-45A5-9386-47DE79459571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B895677-0730-45A5-9386-47DE79459571}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B895677-0730-45A5-9386-47DE79459571}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B895677-0730-45A5-9386-47DE79459571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
+		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
 		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{483330ED-75CF-4304-A9F9-007AA6022ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270CD123-444C-48E1-B886-315EDC8D483D}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
+		{270CD123-444C-48E1-B886-315EDC8D483D}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
 		{270CD123-444C-48E1-B886-315EDC8D483D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{270CD123-444C-48E1-B886-315EDC8D483D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{270CD123-444C-48E1-B886-315EDC8D483D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{270CD123-444C-48E1-B886-315EDC8D483D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
+		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
 		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E86AA004-BB2B-4EE0-8036-F3267BAA5201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{775D7897-1EC4-4BE7-84BC-BA81129934A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664ABB5C-2F08-444E-9D90-B51DA8A133EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
