@@ -1,15 +1,21 @@
 ﻿using Kantilever.BsCatalogusbeheer.Messages.V1;
 using Kantilever.BsCatalogusbeheer.Product.V1;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using minorcase3pcswinkelen.v1.messages;
+using minorcase3pcswinkelen.v1.schema;
+using BSCatalogusBeheer = schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
 {
+    /// <summary>
+    /// This class provides dummy data for test purposes
+    /// </summary>
     public static class DummyData
     {
+
+        /// <summary>
+        /// Dummy data for MsgFindProductsResult 
+        /// </summary>
+        /// <returns>Dummy MsgFindProductsResult</returns>
         public static MsgFindProductsResult GetMsgFindProductsResult()
         {
             return new MsgFindProductsResult
@@ -22,6 +28,36 @@ namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
             };
         }
 
+        /// <summary>
+        /// Dummy data for WinkelmandResponseMessage 
+        /// </summary>
+        /// <returns>Dummy WinkelmandResponseMessage</returns>
+        public static WinkelmandResponseMessage GetWinkelmandResponseMessage()
+        {
+            Winkelmand winkelmand = new Winkelmand();
+            winkelmand.Add(new WinkelmandRegel
+            {
+                Aantal = 1,
+                Product = new BSCatalogusBeheer.Product
+                {
+                    Id = 1,
+                    Naam = "HL Road Frame - Black, 58",
+                    LeverancierNaam = "Koga Miyata",
+                    AfbeeldingURL = "no_image_available_small.gif",
+                    Prijs = 1431.50M,
+                }
+            });
+
+            return new WinkelmandResponseMessage
+            {
+                Winkelmand = winkelmand,
+            };
+        }
+
+        /// <summary>
+        /// Dummy data for ProductCollection 
+        /// </summary>
+        /// <returns>Dummy ProductCollection</returns>
         public static ProductCollection GetProductCollection()
         {
             return new ProductCollection()

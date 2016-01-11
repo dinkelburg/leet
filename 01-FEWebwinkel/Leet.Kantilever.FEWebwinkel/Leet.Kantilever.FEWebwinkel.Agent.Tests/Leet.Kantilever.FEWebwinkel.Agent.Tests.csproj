@@ -59,6 +59,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheerTest.cs" />
+    <Compile Include="AgentPcSWinkelenTest.cs" />
     <Compile Include="DummyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
