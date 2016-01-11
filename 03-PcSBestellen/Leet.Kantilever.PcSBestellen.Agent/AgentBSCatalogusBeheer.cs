@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.PcSBestellen.Agent
 {
-    public class AgentBSCatalogusBeheer
+    public class AgentBSCatalogusBeheer : IAgentBSCatalogusBeheer
     {
         private ServiceFactory<ICatalogusBeheer> _factory;
 
