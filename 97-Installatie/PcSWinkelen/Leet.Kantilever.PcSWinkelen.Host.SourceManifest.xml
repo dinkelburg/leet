@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <IisApp path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Release\Package\PackageTmp" />
-  <setAcl path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <IisApp path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" />
+  <setAcl path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

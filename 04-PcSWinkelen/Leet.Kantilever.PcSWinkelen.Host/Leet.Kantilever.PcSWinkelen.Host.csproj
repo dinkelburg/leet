@@ -134,8 +134,8 @@
     <PublishDatabaseSettings>
       <Objects>
         <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
-          <Destination Path="" />
-          <Object Type="DbFullSql" Enabled="False">
+          <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
+          <Object Type="DbFullSql" Enabled="True">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
