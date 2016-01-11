@@ -20,7 +20,7 @@
 
   <xsd:complexType name="Bestellingsregel">
     <xsd:sequence>
-      <xsd:element name="ProductId" type="xsd:long" />
+      <xsd:element name="ProductID" type="xsd:long" />
       <xsd:element name="Aantal" type="xsd:int" />
       <xsd:element name="Prijs" type="xsd:decimal" />
     </xsd:sequence>

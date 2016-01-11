@@ -23,10 +23,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         {
             var regels = new BestellingsregelCollection();
             regels.AddRange(new List<Bestellingsregel> {
-                new Bestellingsregel { ProductId = 1, Aantal = 5, Prijs = 15.00M },
-                new Bestellingsregel { ProductId = 5, Aantal = 3, Prijs = 102.00M },
-                new Bestellingsregel { ProductId = 8, Aantal = 15, Prijs = 33.20M },
-                new Bestellingsregel { ProductId = 4, Aantal = 1, Prijs = 19.99M },
+                new Bestellingsregel { ProductID = 1, Aantal = 5, Prijs = 15.00M },
+                new Bestellingsregel { ProductID = 5, Aantal = 3, Prijs = 102.00M },
+                new Bestellingsregel { ProductID = 8, Aantal = 15, Prijs = 33.20M },
+                new Bestellingsregel { ProductID = 4, Aantal = 1, Prijs = 19.99M },
             });
 
             var bestelling = new Bestelling
