@@ -103,6 +103,11 @@
  "$(SolutionDir)..\99-Shared\CanonicalSchema\BSCatalogusBeheer\Schema\Product.xsd" ^
  "$(SolutionDir)..\99-Shared\CanonicalSchema\BSCatalogusBeheer\Schema\Categorie.xsd"</PreBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>svcutil ^
+/d:"$(SolutionDir)..\99-Shared\CanonicalSchema\PcSBestellen\Contracts" ^
+  Leet.Kantilever.PcSBestellen.Contract.dll</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

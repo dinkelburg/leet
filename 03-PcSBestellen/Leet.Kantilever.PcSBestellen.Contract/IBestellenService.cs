@@ -12,7 +12,9 @@ namespace Leet.Kantilever.PcSBestellen.Contract
     [ServiceContract(Namespace = "urn:leet:kantilever:pcsbestellen:v1")]
     public interface IBestellenService
     {
-       [OperationContract]
+        [OperationContract]
+        GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling();
+
         [OperationContract]
         GetAllBestellingenResponseMessage FindAllBestellingen();
         [OperationContract]

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,7 +67,16 @@
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Kantilever.BsCatalogusbeheer.Categorie.V1" ^
 /n:"urn:schemas-www-kantilever-nl:common:fouten:v1,Kantilever.BsCatalogusbeheer.Fouten.V1" ^
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1,Kantilever.BsCatalogusbeheer.Leverancier.V1" ^
-  "$(SolutionDir)..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"
+
+svcutil ^
+  /out:$(ProjectDir)BSBestellingenbeheerGeneratedTypes.cs ^
+  /n:"urn:leet:kantilever:bsbestellingenbeheer:v1/Imports,Leet.Kantilever.BSBestellingenbeheer.V1.Imports" ^
+  /n:"urn:leet:kantilever:bsbestellingenbeheer:v1,Leet.Kantilever.BSBestellingenbeheer.V1" ^
+  /n:"urn:minor-case3-bsbestellingenbeheer:v1:messages,Leet.Kantilever.BSBestellingenbeheer.V1.Messages" ^
+  /n:"urn:minor-case3-bsbestellingenbeheer:v1:schema,Leet.Kantilever.BSBestellingenbeheer.V1.Schema" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Contracts\leetkantileverbsbestellingenbeheerv1.wsdl" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

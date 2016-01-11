@@ -23,9 +23,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             throw new NotImplementedException();
         }
 
-        public void PlaceHolder()
+        public GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling()
         {
-            
+            throw new NotImplementedException();
         }
+
     }
 }
