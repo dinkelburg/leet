@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using Kantilever.BsCatalogusbeheer.V1;
 
 namespace Leet.Kantilever.PcSBestellen.Agent.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class AgentTests
     {
         [TestMethod]
         public void TestGetOneProductById()
