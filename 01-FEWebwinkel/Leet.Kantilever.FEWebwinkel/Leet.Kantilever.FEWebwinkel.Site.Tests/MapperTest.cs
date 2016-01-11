@@ -11,18 +11,18 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests
     [TestClass]
     public class MapperTest
     {
-        [TestMethod]
-        public void MapToProductVMListTest()
-        {
-            // Arrange
-            var productCollection = DummyData.GetProductCollection();
+        //[TestMethod]
+        //public void MapToProductVMListTest()
+        //{
+        //    // Arrange
+        //    var productCollection = DummyData.GetProductCollection();
 
-            // Act
-            var ProductVMList = Mapper.MapToProductVMList(productCollection);
+        //    // Act
+        //    var ProductVMList = Mapper.MapToProductVMList(productCollection);
 
-            // Assert
-            AssertProductCollectionWithProductVMList(productCollection, ProductVMList);
-        }
+        //    // Assert
+        //    AssertProductCollectionWithProductVMList(productCollection, ProductVMList);
+        //}
 
         private static void AssertProductCollectionWithProductVMList(ProductCollection productCollection, IEnumerable<ProductVM> productVMList)
         {
