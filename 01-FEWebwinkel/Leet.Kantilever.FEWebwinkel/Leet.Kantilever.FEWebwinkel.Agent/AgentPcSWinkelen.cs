@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent
 {
-    public class AgentPcSWinkelen
+    public class AgentPcSWinkelen : IAgentPcSWinkelen
     {
         private ServiceFactory<IWinkelenService> _factory;
 

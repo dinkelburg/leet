@@ -62,6 +62,7 @@
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
+    <Compile Include="IAgentPcSWinkelen.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
