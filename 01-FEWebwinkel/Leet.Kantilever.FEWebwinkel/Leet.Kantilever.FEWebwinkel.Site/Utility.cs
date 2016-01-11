@@ -8,11 +8,21 @@ namespace Leet.Kantilever.FEWebwinkel.Site
 {
     public static class Utility
     {
+        public static string BaseUrl
+        {
+            get
+            {
+                var request = HttpContext.Current.Request;
+                return request.Url.Scheme + "://" + request.Url.Authority +
+                                        request.ApplicationPath.TrimEnd('/') + "/";
+            }
+        }
+
         public static string AfbeeldingPrefix
         {
             get
             {
-                return HostingEnvironment.MapPath("~/Resources/Product/");
+                return BaseUrl + "Resources/Product/";
             }
         }
     }

@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Kantilever</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="../../../Content/font-awesome/css/font-awesome.min.css">
-    @RenderSection("stylesheets", required: false);
 </head>
 <body>
     <div class="col-md-12">
-        <img class="col-md-12 col-xs-12 col-sm-12" src="/Content/Images/banner.png" />
+        @{ 
+            <img class="col-md-12 col-xs-12 col-sm-12" src="@Util.BaseUrl/Content/Images/banner.png" />
+        }
     </div>
     <div class="navbar navbar-kanti">
         <div class="container">
@@ -45,6 +46,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/winkelmandje")
     @RenderSection("scripts", required: false)
 </body>
 </html>
