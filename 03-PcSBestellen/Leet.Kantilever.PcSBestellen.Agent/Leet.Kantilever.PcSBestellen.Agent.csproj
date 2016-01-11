@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="BSBestellingenbeheerAgent.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
+    <Compile Include="IBSBestellingenbeheerAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
