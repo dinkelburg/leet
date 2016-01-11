@@ -1,4 +1,5 @@
-﻿using Leet.Kantilever.FEWebwinkel.Site.Models;
+﻿using Leet.Kantilever.FEWebwinkel.Agent;
+using Leet.Kantilever.FEWebwinkel.Site.Models;
 using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
 using minorcase3pcswinkelen.v1.messages;
 using minorcase3pcswinkelen.v1.schema;
@@ -13,14 +14,14 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
     public class WinkelmandController : Controller
     {
-        private IWinkelenService _winkelAgent;
+        private IAgentPcSWinkelen _winkelAgent;
 
         public WinkelmandController()
         {
-
+            _winkelAgent = new AgentPcSWinkelen();
         }
 
-        public WinkelmandController(IWinkelenService winkelAgent)
+        public WinkelmandController(IAgentPcSWinkelen winkelAgent)
         {
             _winkelAgent = winkelAgent;
         }
@@ -28,29 +29,15 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Winkelmand
         public ActionResult Index()
         {
-            var clientIdCookie = Request.Cookies.Get("clientId");
-            string clientIdString;
+            string clientIdString = CheckClientID(Request, Response);
 
-            if (clientIdCookie == null)
+            var winkelmand = _winkelAgent.GetWinkelmand(clientIdString);
+
+            if (winkelmand.Count == 0)
             {
-                clientIdString = Guid.NewGuid().ToString();
-                Response.Cookies.Add(new HttpCookie("clientId", clientIdString));
-
-                //if there was no clientId cookie present, a new one is made,
-                //and go to the empty basket page right away. 
                 return View("LegeWinkelmand");
             }
-            else
-            {
-                clientIdString = clientIdCookie.Value;
-            }
 
-            var requestMessage = new VraagWinkelmandRequestMessage
-            {
-                ClientID = clientIdString
-            };
-
-            var winkelmand = _winkelAgent.GetWinkelmandje(requestMessage);
             var winkelmandVM = CreateWinkelmandVM(winkelmand);
 
             return View(winkelmandVM);
@@ -60,46 +47,24 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
         public ActionResult VoegProductToe(int artikelId, int aantal)
         {
-            var clientIdCookie = Request.Cookies.Get("clientId");
-            string clientIdString;
+            string clientIdString = CheckClientID(Request, Response);
 
-            if (clientIdCookie == null)
-            {
-                // If no clientId cookie was found, make a new cookie.
-                clientIdString = Guid.NewGuid().ToString();
-                Response.Cookies.Add(new HttpCookie("clientId", clientIdString));
-            }
-            else
-            {
-                clientIdString = clientIdCookie.Value;
-            }
-
-            var requestMessage = new ToevoegenWinkelmandRequestMessage()
-            {
-                BestelProduct = new BestelProduct
-                {
-                    Aantal = aantal,
-                    ClientID = clientIdString,
-                    ProductID = artikelId
-                },
-            };
-
-            _winkelAgent.VoegProductToe(requestMessage);
+            _winkelAgent.VoegProductToeAanWinkelmand(artikelId, aantal, clientIdString);
 
             return new HttpStatusCodeResult(204);
         }
 
 
-        private static WinkelmandVM CreateWinkelmandVM(WinkelmandResponseMessage message)
+        private static WinkelmandVM CreateWinkelmandVM(Winkelmand winkelmand)
         {
-            var winkelmand = new WinkelmandVM
+            var newWinkelmand = new WinkelmandVM
             {
                 Producten = new List<WinkelmandRijVM>()
             };
 
-            foreach (var item in message.Winkelmand)
+            foreach (var item in winkelmand)
             {
-                winkelmand.Producten.Add(new WinkelmandRijVM
+                newWinkelmand.Producten.Add(new WinkelmandRijVM
                 {
                     Aantal = item.Aantal,
                     Naam = item.Product.Naam,
@@ -107,7 +72,25 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
                 });
             }
 
-            return winkelmand;
+            return newWinkelmand;
+        }
+
+        public static string CheckClientID(HttpRequestBase request, HttpResponseBase response)
+        {
+            var clientIDCookie = request.Cookies.Get("clientId");
+            string clientId;
+
+            if (clientIDCookie == null)
+            {
+                clientId = Guid.NewGuid().ToString();
+                response.Cookies.Add(new HttpCookie("clientId", clientId));
+            }
+            else
+            {
+                clientId = clientIDCookie.Value;
+            }
+            return clientId;
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
 {
     public class ProductVM
     {
-        public long? Id { get; set; }
+        public long? ID { get; set; }
         public string Naam { get; set; }
         public decimal? Prijs { get; set; }
         public string LeverancierNaam { get; set; }

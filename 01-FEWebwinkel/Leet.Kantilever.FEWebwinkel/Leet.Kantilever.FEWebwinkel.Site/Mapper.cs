@@ -13,7 +13,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             return productCollection.Select(product => new ProductVM
             {
-                Id = product.Id,
+                ID = product.Id,
                 Naam = product.Naam,
                 LeverancierNaam = product.LeverancierNaam,
                 Prijs = product.Prijs,

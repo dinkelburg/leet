@@ -29,7 +29,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests
             var productVMArray = productVMList.ToArray();
             for (int i = 0; i < productCollection.Count; i++)
             {
-                Assert.AreEqual(productVMArray[i].Id, productCollection[i].Id);
+                Assert.AreEqual(productVMArray[i].ID, productCollection[i].Id);
                 Assert.AreEqual(productVMArray[i].Naam, productCollection[i].Naam);
                 Assert.AreEqual(productVMArray[i].LeverancierNaam, productCollection[i].LeverancierNaam);
                 Assert.AreEqual(productVMArray[i].AfbeeldingPad, Utility.AfbeeldingPrefix + productCollection[i].AfbeeldingURL);

@@ -38,7 +38,14 @@
       <Word>Winkelmandje</Word>
       <Word>Er</Word>
       <Word>geen</Word>
+      <Word>Aan</Word>
 
     </Recognized>
   </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>ID</Acronym>
+      <Acronym>Pc</Acronym>
+    </CasingExceptions>
+  </Acronyms>
 </Dictionary>

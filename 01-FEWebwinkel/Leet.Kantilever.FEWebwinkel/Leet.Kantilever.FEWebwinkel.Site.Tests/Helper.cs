@@ -42,6 +42,16 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests
                     var winkelmandinhoudCookie = new HttpCookie("kantileet_winkelmand", serializer.Serialize(CreateWinkelmandCookie()));
                     controller.HttpContext.Request.Cookies.Add(winkelmandinhoudCookie);
                     break;
+
+                case "clientId":
+                    var clientIdCookie = new HttpCookie("clientId", serializer.Serialize(Guid.NewGuid().ToString()));
+                    controller.HttpContext.Request.Cookies.Add(clientIdCookie);
+                    break;
+
+                case "badClientId":
+                    var badClientIdCookie = new HttpCookie("clientId", serializer.Serialize("asdf"));
+                    controller.HttpContext.Request.Cookies.Add(badClientIdCookie);
+                    break;
             }
         }
 

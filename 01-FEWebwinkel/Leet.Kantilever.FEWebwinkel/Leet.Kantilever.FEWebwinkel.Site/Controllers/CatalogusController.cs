@@ -25,12 +25,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Catalogus
         public ActionResult Index(int? page)
         {
-            var clientIdCookie = Request.Cookies.Get("clientId");
-            if (clientIdCookie == null)
-            {
-                clientIdCookie = new HttpCookie("clientId", Guid.NewGuid().ToString());
-                Response.Cookies.Add(clientIdCookie);
-            }
+            WinkelmandController.CheckClientID(Request, Response);
 
             var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
             return View(products);
