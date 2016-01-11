@@ -13,6 +13,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
         [ClassInitialize]
         public static void InitailzeClass(TestContext testContext)
         {
+            var type = typeof(System.Data.Entity.Infrastructure.SqlConnectionFactory);
             Database.SetInitializer(new WinkelenDBInitializer());
 
             using (var context = new WinkelenContext())
