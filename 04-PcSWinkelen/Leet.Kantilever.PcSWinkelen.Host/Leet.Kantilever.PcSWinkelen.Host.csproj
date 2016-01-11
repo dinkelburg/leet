@@ -133,7 +133,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
+        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
           <Destination Path="" />
           <Object Type="DbFullSql" Enabled="False">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
