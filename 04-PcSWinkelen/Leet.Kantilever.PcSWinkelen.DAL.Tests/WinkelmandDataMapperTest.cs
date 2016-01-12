@@ -14,7 +14,6 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
         public static void InitailzeClass(TestContext testContext)
         {
             Database.SetInitializer(new WinkelenDBInitializer());
-            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
 
             using (var context = new WinkelenContext())
             {
