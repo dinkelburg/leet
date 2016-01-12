@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
+using System.Linq;
+using System.Collections.Generic;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 {
@@ -20,18 +23,21 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
         [TestMethod]
-        public void thisShouldDescribeTheTest()
+        public void TestGetBestellingen()
         {
             // Arrange
 
             // Act
 
             // Assert
+
+            List<Bestelling> bestellingen = new List<Bestelling>();
             using (var context = new BestellingContext())
             {
-                context.Bestellingen.Add(DummyDataDAL.GetBestelling());
+                bestellingen = context.Bestellingen.ToList();
 
             }
+            Assert.AreEqual(1, bestellingen.Count);
 
         }
     }
