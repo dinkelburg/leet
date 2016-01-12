@@ -11,6 +11,7 @@ using schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
 using Leet.Kantilever.FEWebwinkel.Agent;
 using System.Collections.Generic;
 using System.Web;
+using Leet.Kantilever.FEWebwinkel.Agent.Tests;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 {
@@ -30,8 +31,10 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             var result = controller.Index() as ViewResult;
 
             //assert
+            
             Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
+            Assert.IsNull(result.ViewBag.CountProduct);
         }
 
         [TestMethod]
@@ -49,6 +52,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             //assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
+            Assert.IsNull(result.ViewBag.CountProduct);
         }
 
         [TestMethod]
@@ -60,14 +64,16 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 
             //A controllercontext doesn't have any cookies in it by default so no further action is needed.
             controller.ControllerContext = Helper.CreateContext(controller);
-            mock.Setup(m => m.VoegProductToeAanWinkelmand(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>()));
+            mock.Setup(m => m.VoegProductToeAanWinkelmand(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>())).Returns(DummyData.GetWinkelmand());
 
             //act
-            var result = controller.VoegProductToe(123, 1) as HttpStatusCodeResult;
+            var result = controller.VoegProductToe(123, 1) as JsonResult;
 
             //assert
+            mock.Verify(m => m.VoegProductToeAanWinkelmand(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>()));
+
             Assert.IsNotNull(result);
-            Assert.AreEqual(204, result.StatusCode);
+            Assert.IsNotNull(result.Data);
             Assert.IsNotNull(controller.Response.Cookies.Get("clientId"));
         }
 

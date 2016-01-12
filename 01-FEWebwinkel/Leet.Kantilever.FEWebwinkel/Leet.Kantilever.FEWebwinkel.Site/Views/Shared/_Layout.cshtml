@@ -31,7 +31,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="winkelmand">
-                        <a id="winkelmand" href="@Url.Action("Index", "Winkelmand")"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
+                        <a id="winkelmand" href="@Url.Action("Index", "Winkelmand")"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">@ViewBag.CountProduct</span>)<span id="winkelmand-target"></span></a>
                     </li>
                 </ul>
             </div>

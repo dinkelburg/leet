@@ -15,16 +15,21 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
         public void IndexWithoutPageTest()
         {
             // Arrange
-            var mock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
-            mock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
-            CatalogusController controller = new CatalogusController(mock.Object);
+            var agentBSCatalogusBeheerMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
+            agentBSCatalogusBeheerMock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
+            var agentPcSWinkelen = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
+            agentPcSWinkelen.Setup(agent => agent.GetWinkelmand(It.IsAny<string>())).Returns(DummyData.GetWinkelmand());
+
+
+            CatalogusController controller = new CatalogusController(agentBSCatalogusBeheerMock.Object, agentPcSWinkelen.Object);
             controller.ControllerContext = Helper.CreateContext(controller);
 
             // Act
             ViewResult result = controller.Index(null) as ViewResult;
 
             // Assert
-            mock.Verify(agent => agent.FindProducts(It.IsAny<int?>()));
+            agentBSCatalogusBeheerMock.Verify(agent => agent.FindProducts(It.IsAny<int?>()));
+            agentPcSWinkelen.Verify(agent => agent.GetWinkelmand(It.IsAny<string>()));
             Assert.IsNotNull(result);
         }
 
@@ -32,16 +37,20 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
         public void IndexWithPageTest()
         {
             // Arrange
-            var mock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
-            mock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
-            CatalogusController controller = new CatalogusController(mock.Object);
+            var agentBSCatalogusBeheerMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
+            agentBSCatalogusBeheerMock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
+            var agentPcSWinkelen = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
+            agentPcSWinkelen.Setup(agent => agent.GetWinkelmand(It.IsAny<string>())).Returns(DummyData.GetWinkelmand());
+
+            CatalogusController controller = new CatalogusController(agentBSCatalogusBeheerMock.Object, agentPcSWinkelen.Object);
             controller.ControllerContext = Helper.CreateContext(controller);
 
             // Act
             ViewResult result = controller.Index(1) as ViewResult;
 
             // Assert
-            mock.Verify(agent => agent.FindProducts(It.IsAny<int?>()));
+            agentBSCatalogusBeheerMock.Verify(agent => agent.FindProducts(It.IsAny<int?>()));
+            agentPcSWinkelen.Verify(agent => agent.GetWinkelmand(It.IsAny<string>()));
             Assert.IsNotNull(result);
         }
     }

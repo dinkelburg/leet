@@ -3,6 +3,7 @@ using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
 using minorcase3pcswinkelen.v1.schema;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,7 +46,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             }
 
             var winkelmandVM = CreateWinkelmandVM(winkelmand);
-
+            ViewBag.CountProduct = winkelmandVM.Producten.Sum(p => p.Aantal);
             return View(winkelmandVM);
         }
 
@@ -63,7 +64,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
             var winkelmand = _winkelAgent.VoegProductToeAanWinkelmand(productID, aantal, clientIdString);
 
-            return Json(new { CountProduct = winkelmand.Count }, JsonRequestBehavior.AllowGet);
+            return Json(new { CountProduct = winkelmand.Sum(p => p.Aantal) }, JsonRequestBehavior.AllowGet);
         }
 
 

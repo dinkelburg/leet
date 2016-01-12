@@ -13,7 +13,7 @@
                 Aantal: 1
             },
             success: function (response) {
-                alert(response.CountProduct)
+                //alert(response.CountProduct)
                 // Animate button
                 // Get the clicked button
                 var $old = $button;
@@ -37,7 +37,7 @@
                     $temp.remove();
                 });
 
-                $('#winkelmand-counter').html(+$('#winkelmand-counter').html() + 1);
+                $('#winkelmand-counter').html(response.CountProduct);
             },
             error: function (xhr, status, error) {
                 alert("Fout: " + error);

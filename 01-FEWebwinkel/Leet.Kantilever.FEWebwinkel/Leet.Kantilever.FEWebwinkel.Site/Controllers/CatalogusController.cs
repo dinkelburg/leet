@@ -10,23 +10,26 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
     public class CatalogusController : Controller
     {
-        private IAgentBSCatalogusBeheer _agent;
+        private IAgentBSCatalogusBeheer _bsCatalogusAgent;
+        private IAgentPcSWinkelen _winkelAgent;
 
         /// <summary>
         /// The default controller.
         /// </summary>
         public CatalogusController()
         {
-            _agent = new AgentBSCatalogusBeheer();
+            _bsCatalogusAgent = new AgentBSCatalogusBeheer();
+            _winkelAgent = new AgentPcSWinkelen();
         }
 
         /// <summary>
         /// A constructor that allows injecting a different IAgentBSCatalogusBeheer object.
         /// </summary>
         /// <param name="agent"></param>
-        public CatalogusController(IAgentBSCatalogusBeheer agent)
+        public CatalogusController(IAgentBSCatalogusBeheer bsCatalogusAgent, IAgentPcSWinkelen winkelAgent)
         {
-            _agent = agent;
+            _bsCatalogusAgent = bsCatalogusAgent;
+            _winkelAgent = winkelAgent;
         }
 
         // GET: Catalogus
@@ -37,9 +40,13 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         /// <returns></returns>
         public ActionResult Index(int? page)
         {
-            Utility.CheckClientID(Request, Response);
+            string clientID = Utility.CheckClientID(Request, Response);
 
-            var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
+            var products = Mapper.MapToProductVMList(_bsCatalogusAgent.FindProducts(page));
+
+            var winkelmand = _winkelAgent.GetWinkelmand(clientID);
+            ViewBag.CountProduct = winkelmand.Sum(p => p.Aantal);
+
             return View(products);
         }
     }
