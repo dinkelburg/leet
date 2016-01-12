@@ -55,6 +55,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IKlantbeheerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

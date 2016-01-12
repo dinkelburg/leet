@@ -62,6 +62,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="IBestellenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

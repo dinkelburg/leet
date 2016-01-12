@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:kantilever:pcswinkelen:v1" elementFormDefault="qualified" targetNamespace="urn:kantilever:pcswinkelen:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:minor-case3-pcswinkelen:v1:messages" />
+  <xs:element name="VoegProductToe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="toevoegenWinkelmandReqMessage" nillable="true" xmlns:q1="urn:minor-case3-pcswinkelen:v1:messages" type="q1:ToevoegenWinkelmandRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VoegProductToeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="VoegProductToeResult" nillable="true" xmlns:q2="urn:minor-case3-pcswinkelen:v1:messages" type="q2:WinkelmandResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWinkelmandje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="vraagWinkelmandReqMessage" nillable="true" xmlns:q3="urn:minor-case3-pcswinkelen:v1:messages" type="q3:VraagWinkelmandRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWinkelmandjeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetWinkelmandjeResult" nillable="true" xmlns:q4="urn:minor-case3-pcswinkelen:v1:messages" type="q4:WinkelmandResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

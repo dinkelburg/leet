@@ -1,34 +1,53 @@
-﻿using Kantilever.BsCatalogusbeheer.Messages.V1;
+﻿using Kantilever.BsCatalogusbeheer.V1;
+using Kantilever.BsCatalogusbeheer.Messages.V1;
 using Minor.ServiceBus.Agent.Implementation;
-using Kantilever.BsCatalogusbeheer.V1;
-using Kantilever.BsCatalogusbeheer.Product.V1;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Kantilever.BsCatalogusbeheer.Product.V1;
 
 namespace Leet.Kantilever.PcSWinkelen.Agent
 {
-    public class AgentBSCatalogusBeheer
+    public class AgentBSCatalogusBeheer : IAgentBSCatalogusBeheer
     {
         private ServiceFactory<ICatalogusBeheer> _factory;
 
+        /// <summary>
+        /// Constructor to instantiate AgentBSCatalogusBeheer with a SerciceFactory
+        /// </summary>
         public AgentBSCatalogusBeheer()
         {
             _factory = new ServiceFactory<ICatalogusBeheer>("BSCatalogusBeheer");
         }
-        
-        public Product FindProductByID(int productID)
+
+        /// <summary>
+        /// Constructor to instantiate AgentBSCatalogusBeheer and to inject a SerciceFactory mock
+        /// </summary>
+        /// <param name="factory">ServiceFactory mock</param>
+        public AgentBSCatalogusBeheer(ServiceFactory<ICatalogusBeheer> factory)
         {
-            using (var p = _factory.CreateAgent() as IDisposable)
-            {
-                var proxy = p as ICatalogusBeheer;
-                var responseMessage = proxy.FindProductById(new MsgFindProductByIdRequest
-                {
-                    Id = productID,
-                });
-
-                return responseMessage.Product;
-            }
-
+            _factory = factory;
         }
 
+        /// <summary>
+        /// Find a product by id in the BSCatalogusBeheer
+        /// </summary>
+        /// <param name="id">Id of product</param>
+        /// <returns>The product that matches the given id</returns>
+        public Product FindProductById(int id)
+        {
+            var proxy = _factory.CreateAgent();
+
+            var productResult = proxy.FindProductById(new MsgFindProductByIdRequest { Id = id });
+
+            if (productResult.Succes)
+            {
+                return productResult.Product;
+            }
+
+            return null;
+        }
     }
 }

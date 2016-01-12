@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" elementFormDefault="qualified" targetNamespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" />
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AfbeeldingURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Beschrijving" nillable="true" type="xs:string" />
+      <xs:element name="LeverancierNaam" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LeveranciersProductId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LeverbaarTot" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LeverbaarVanaf" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Naam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prijs" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CategorieLijst" nillable="true" xmlns:q1="urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1" type="q1:CategorieCollection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+</xs:schema>

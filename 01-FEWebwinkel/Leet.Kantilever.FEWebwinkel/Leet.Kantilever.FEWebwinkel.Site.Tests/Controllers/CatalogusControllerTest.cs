@@ -18,6 +18,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             var mock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
             mock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
             CatalogusController controller = new CatalogusController(mock.Object);
+            controller.ControllerContext = Helper.CreateContext(controller);
 
             // Act
             ViewResult result = controller.Index(null) as ViewResult;
@@ -34,6 +35,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             var mock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
             mock.Setup(agent => agent.FindProducts(It.IsAny<int?>())).Returns(DummyData.GetProductCollection());
             CatalogusController controller = new CatalogusController(mock.Object);
+            controller.ControllerContext = Helper.CreateContext(controller);
 
             // Act
             ViewResult result = controller.Index(1) as ViewResult;
