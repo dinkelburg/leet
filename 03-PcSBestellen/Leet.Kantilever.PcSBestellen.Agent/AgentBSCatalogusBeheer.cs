@@ -24,6 +24,11 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             _factory = factory;
         }
 
+        /// <summary>
+        /// Get a collection of Products with the ID's that belong to them
+        /// </summary>
+        /// <param name="ids">ID's of the corresponding products</param>
+        /// <returns></returns>
         public IEnumerable<Product> GetProductsById(int[] ids)
         {
             List<Product> products = new List<Product>();
@@ -38,7 +43,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
                 }
                 else
                 {
-                    throw new Exception(result.Foutmelding.Melding);
+                    throw new KeyNotFoundException(result.Foutmelding.Melding);
                 }
             }
             return products;            
