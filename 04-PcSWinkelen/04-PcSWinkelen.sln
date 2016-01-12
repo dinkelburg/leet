@@ -26,20 +26,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
-		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
 		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D11F7225-8382-4E20-B6EB-A8AD20376625}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
-		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
 		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78AE79FF-3929-4A3B-9385-656BA3543D86}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
-		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
 		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B66B3A92-4A0F-40B2-BA11-BA25ADA2530A}.Release|Any CPU.ActiveCfg = Release|Any CPU
