@@ -150,9 +150,9 @@
       <Objects>
         <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql" Enabled="True">
-            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Test_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
-            <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaAndData.sql" Transacted="True" />
+          <Object Type="DbFullSql" Enabled="False">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Test_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="False" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_DataOnly.sql" Transacted="True" />
           </Object>
           <Object Type="DbFullSql" Enabled="True">
             <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
