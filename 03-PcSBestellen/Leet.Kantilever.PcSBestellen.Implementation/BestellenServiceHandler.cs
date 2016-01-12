@@ -1,6 +1,4 @@
-﻿
-using Leet.Kantilever.PcSBestellen.Contract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,6 +8,7 @@ using Leet.Kantilever.PcSBestellen.V1.Messages;
 using Leet.Kantilever.PcSBestellen.Agent;
 using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
+using Leet.Kantilever.PcSBestellen.Contract;
 
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
@@ -59,7 +58,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             }
 
             //Return data
-            return new GetAllBestellingenResponseMessage() { Result = bestellingCollection };
+            return new GetAllBestellingenResponseMessage() { BestellingCollection = bestellingCollection };
         }
 
         /// <summary>
@@ -98,7 +97,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             //Quick and dirty fix
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = FindAllBestellingen().Result.First()
+                Bestelling = FindAllBestellingen().BestellingCollection.First(),
             };
         }
 

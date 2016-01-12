@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leet.Kantilever.PcSWinkelen.V1.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -7,13 +8,14 @@ using System.Text;
 
 namespace Leet.Kantilever.PcSWinkelen.Contract
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
-    [ServiceContract]
+    [ServiceContract(Namespace = "urn:kantilever:pcswinkelen:v1")]
     public interface IWinkelenService
     {
         [OperationContract]
-        string GetData(int value);
+        WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
 
-        // TODO: Add your service operations here
+        [OperationContract]
+        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
+
     }
 }

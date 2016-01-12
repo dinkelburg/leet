@@ -44,6 +44,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -59,14 +63,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="WinkelenServiceHandlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Agent.Tests\Leet.Kantilever.PcSWinkelen.Agent.Tests.csproj">
+      <Project>{45d25d7d-d5cd-4e9b-a9d5-aed21aebb688}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.Agent.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Agent\Leet.Kantilever.PcSWinkelen.Agent.csproj">
+      <Project>{1b0689b8-cf5f-4fc5-bb32-e0409a974825}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.Agent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Contract\Leet.Kantilever.PcSWinkelen.Contract.csproj">
+      <Project>{d11f7225-8382-4e20-b6eb-a8ad20376625}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL.Tests\Leet.Kantilever.PcSWinkelen.DAL.Tests.csproj">
+      <Project>{0d3d628e-73d9-4505-a959-7aedb48dc1dd}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.DAL.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL\Leet.Kantilever.PcSWinkelen.DAL.csproj">
+      <Project>{9201b319-c53c-4ed0-ae55-51f5f50f657b}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Implementation\Leet.Kantilever.PcSWinkelen.Implementation.csproj">
       <Project>{78ae79ff-3929-4a3b-9385-656ba3543d86}</Project>
       <Name>Leet.Kantilever.PcSWinkelen.Implementation</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -1,0 +1,18 @@
+﻿table.winkelmandje > thead > tr > th {
+    background : #AAB1E4;
+    border-bottom: none;
+}
+
+table.winkelmandje th:first-child {
+    border-bottom-left-radius: 7px;
+    border-top-left-radius: 7px;
+}
+
+table.winkelmandje th:last-child {
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+table.winkelmandje tr:nth-child(even) {
+    background-color: #dcdff7;
+}

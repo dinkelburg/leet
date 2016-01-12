@@ -39,7 +39,7 @@
 
   <xsd:complexType name="GetAllBestellingenResponseMessage">
     <xsd:sequence>
-      <xsd:element name="Result" type="schema:BestellingCollection" />
+      <xsd:element name="BestellingCollection" type="schema:BestellingCollection" />
     </xsd:sequence>
   </xsd:complexType>
  

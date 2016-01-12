@@ -11,7 +11,7 @@
 <body>
     <div class="col-md-12">
         @{ 
-            <img class="col-md-12 col-xs-12 col-sm-12" src="@Util.BaseUrl/Content/Images/banner.png" />
+            <img class="col-md-12 col-xs-12 col-sm-12" src="@Utility.BaseUrl/Content/Images/banner.png" />
         }
     </div>
     <div class="navbar navbar-kanti">
@@ -46,6 +46,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/winkelmandje")
     @RenderSection("scripts", required: false)
 </body>
 </html>
