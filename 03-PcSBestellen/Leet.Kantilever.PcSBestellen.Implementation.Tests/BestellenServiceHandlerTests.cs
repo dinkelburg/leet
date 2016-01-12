@@ -119,18 +119,18 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             Assert.IsNotNull(result);
             Assert.IsInstanceOfType(result, typeof(GetAllBestellingenResponseMessage));
                 //Orders
-            Assert.AreEqual(result.Result.Count, 1);
-            Assert.AreEqual(result.Result.First().ID, 124M);
+            Assert.AreEqual(result.BestellingCollection.Count, 1);
+            Assert.AreEqual(result.BestellingCollection.First().ID, 124M);
                 //OrderRegels
-            Assert.AreEqual(1, result.Result.First().BestellingsregelCollection.Count);
-            Assert.AreEqual(1, result.Result.First().BestellingsregelCollection.First().Aantal);
+            Assert.AreEqual(1, result.BestellingCollection.First().BestellingsregelCollection.Count);
+            Assert.AreEqual(1, result.BestellingCollection.First().BestellingsregelCollection.First().Aantal);
                 //Product
-            Assert.AreEqual(1,result.Result.First().BestellingsregelCollection.First().Product.Id);
-            Assert.AreEqual(105,result.Result.First().BestellingsregelCollection.First().Product.Prijs);
-            Assert.AreEqual("Batavus sport blauw", result.Result.First().BestellingsregelCollection.First().Product.Naam);
-            Assert.AreEqual("De boer fietsen", result.Result.First().BestellingsregelCollection.First().Product.LeverancierNaam);
-            Assert.AreEqual("DBF15432", result.Result.First().BestellingsregelCollection.First().Product.LeveranciersProductId);
-            Assert.AreEqual(new DateTime(2010, 4, 6), result.Result.First().BestellingsregelCollection.First().Product.LeverbaarVanaf);
+            Assert.AreEqual(1,result.BestellingCollection.First().BestellingsregelCollection.First().Product.Id);
+            Assert.AreEqual(105,result.BestellingCollection.First().BestellingsregelCollection.First().Product.Prijs);
+            Assert.AreEqual("Batavus sport blauw", result.BestellingCollection.First().BestellingsregelCollection.First().Product.Naam);
+            Assert.AreEqual("De boer fietsen", result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeverancierNaam);
+            Assert.AreEqual("DBF15432", result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeveranciersProductId);
+            Assert.AreEqual(new DateTime(2010, 4, 6), result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeverbaarVanaf);
         }
     }
 }

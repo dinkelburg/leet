@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using minorcase3pcsbestellen.v1.schema;
-using Leet.Kantilever.FEBestellingen.Site.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using Leet.Kantilever.FEBestellingen.Site;
+using Leet.Kantilever.FEBestellingen.Site.ViewModels;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Tests
 {
