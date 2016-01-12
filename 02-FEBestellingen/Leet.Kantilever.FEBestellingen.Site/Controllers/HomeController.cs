@@ -1,5 +1,4 @@
-﻿using Leet.Kantilever.FEBestellingen.Site.Managers;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
@@ -9,7 +8,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 
         public HomeController()
         {
-            _manager = new OrderManager();
+            //_manager = new BestellingManager();
         }
 
         public HomeController(IOrderManager manager)
@@ -22,9 +21,9 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View();
         }
         
-        public ActionResult ViewOrder(int id)
-        {
-            return View(_manager.GetOrderRegelsForOrder(id));
-        }
+        //public ActionResult ViewOrder(int id)
+        //{
+        //    return View(_manager.GetOrderRegelsForOrder(id));
+        //}
     }
 }
