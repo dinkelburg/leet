@@ -11,7 +11,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
     public class WinkelmandDataMapperTest
     {
         [ClassInitialize]
-        public static void InitializeClass(TestContext testContext)
+        public static void ClassInitialize(TestContext testContext)
         {
             Database.SetInitializer(new WinkelenDBInitializer());
 
