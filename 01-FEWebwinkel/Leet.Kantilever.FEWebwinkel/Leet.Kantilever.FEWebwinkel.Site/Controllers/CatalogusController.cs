@@ -23,6 +23,11 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         }
 
         // GET: Catalogus
+        /// <summary>
+        /// Shows a specific page of the catalogus.
+        /// </summary>
+        /// <param name="page">The page to show.</param>
+        /// <returns></returns>
         public ActionResult Index(int? page)
         {
             WinkelmandController.CheckClientID(Request, Response);

@@ -23,6 +23,13 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             _factory = factory;
         }
 
+        /// <summary>
+        /// Adds a product to a customers Winkelmand so he can order it at a later point in time.
+        /// </summary>
+        /// <param name="productID">The ID of the product to add</param>
+        /// <param name="aantal">The number of the same product to add.</param>
+        /// <param name="clientID">The ID of the client adding the product.</param>
+        /// <returns></returns>
         public Winkelmand VoegProductToeAanWinkelmand(int productID, int aantal, string clientID)
         {
             var proxy = _factory.CreateAgent();
@@ -40,6 +47,11 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             return reqMessage.Winkelmand;
         }
 
+        /// <summary>
+        /// Returns the Winkelmand of a client.
+        /// </summary>
+        /// <param name="clientID">The ID of the client to return the Winkelmand of.</param>
+        /// <returns></returns>
         public Winkelmand GetWinkelmand(string clientID)
         {
             var proxy = _factory.CreateAgent();
