@@ -11,7 +11,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
 {
     public class WinkelenContext : DbContext
     {
-        public WinkelenContext() : base("name=WinkelenContext") { }
+        public WinkelenContext() : base("Name=WinkelenContext") { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Winkelmand> Winkelmanden { get; set; }
 
