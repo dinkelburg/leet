@@ -61,9 +61,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         {
             string clientIdString = Utility.CheckClientID(Request, Response);
 
-            _winkelAgent.VoegProductToeAanWinkelmand(productID, aantal, clientIdString);
+            var winkelmand = _winkelAgent.VoegProductToeAanWinkelmand(productID, aantal, clientIdString);
 
-            return new HttpStatusCodeResult(204);
+            return Json(new { CountProduct = winkelmand.Count }, JsonRequestBehavior.AllowGet);
         }
 
 

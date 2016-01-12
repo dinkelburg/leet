@@ -6,13 +6,14 @@
 
         // Execute Ajax request to put product in cart
         $.ajax({
-            url: "Winkelmand/VoegProductToe",
+            url: "/Winkelmand/VoegProductToe",
             method: "GET",
             data: {
                 ProductId: productId,
                 Aantal: 1
             },
-            success: function () {
+            success: function (response) {
+                alert(response.CountProduct)
                 // Animate button
                 // Get the clicked button
                 var $old = $button;

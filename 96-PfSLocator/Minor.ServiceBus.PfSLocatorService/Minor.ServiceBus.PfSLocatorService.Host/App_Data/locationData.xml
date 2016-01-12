@@ -4,7 +4,7 @@
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
+    <metadataAddress>http://localhost:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
@@ -21,7 +21,7 @@
   <serviceLocation>
     <name>PcSWinkelen</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv/Leet/PcSWinkelen/PcSWinkelenService.svc/mex</metadataAddress>
+    <metadataAddress>http://localhost:44348/PcSWinkelenService.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>PcSWinkelen</name>
