@@ -45,12 +45,12 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
+        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql">
+          <Object Type="DbFullSql" Enabled="False">
             <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
           </Object>
-          <Object Type="DbFullSql" Enabled="True">
+          <Object Type="DbFullSql" Enabled="False">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Release\AutoScripts\WinkelenContext-Deployment_SchemaOnly.sql" Transacted="True" />
           </Object>
@@ -148,13 +148,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
+        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql" Enabled="True">
+          <Object Type="DbFullSql" Enabled="False">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
-          <Object Type="DbFullSql">
+          <Object Type="DbFullSql" Enabled="False">
             <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
           </Object>
         </ObjectGroup>
