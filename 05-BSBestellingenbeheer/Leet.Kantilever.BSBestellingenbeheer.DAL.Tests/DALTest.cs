@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
+using System.Transactions;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 {
@@ -26,18 +27,31 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         public void TestGetBestellingen()
         {
             // Arrange
+            List<Bestelling> bestellingen = new List<Bestelling>();
 
             // Act
-
-            // Assert
-
-            List<Bestelling> bestellingen = new List<Bestelling>();
             using (var context = new BestellingContext())
             {
                 bestellingen = context.Bestellingen.ToList();
 
             }
+
+            // Assert
             Assert.AreEqual(1, bestellingen.Count);
+        }
+
+
+        [TestMethod]
+        public void GetBestellingByIDTest()
+        {
+            // Arrange
+            using (var scope = new TransactionScope())
+            {
+
+            }
+            // Act
+
+            // Assert
 
         }
     }

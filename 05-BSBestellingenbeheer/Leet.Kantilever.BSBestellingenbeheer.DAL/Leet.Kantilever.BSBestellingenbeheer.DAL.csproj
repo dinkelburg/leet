@@ -52,6 +52,8 @@
     <Compile Include="BestellingContext.cs" />
     <Compile Include="entities\Bestelling.cs" />
     <Compile Include="entities\BestellingsRegel.cs" />
+    <Compile Include="mappers\BestellingDataMapper.cs" />
+    <Compile Include="mappers\IDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
