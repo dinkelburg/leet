@@ -1,4 +1,5 @@
 ﻿using Leet.Kantilever.FEWebwinkel.Agent;
+using Leet.Kantilever.FEWebwinkel.Site.Attributes;
 using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
+    [KantileverAuthorize]
     public class CatalogusController : Controller
     {
         private IAgentBSCatalogusBeheer _agent;

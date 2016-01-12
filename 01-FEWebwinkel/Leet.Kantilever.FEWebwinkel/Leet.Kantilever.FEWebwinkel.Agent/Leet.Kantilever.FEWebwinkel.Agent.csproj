@@ -58,11 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="AgentBSKlantBeheer.cs" />
     <Compile Include="AgentPcSWinkelen.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
+    <Compile Include="IAgentBSKlantBeheer.cs" />
     <Compile Include="IAgentPcSWinkelen.cs" />
+    <Compile Include="Klant.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

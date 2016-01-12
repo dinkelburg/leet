@@ -13,6 +13,13 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("Login", "Login",
+                new { controller = "Authentication", action = "Login" }
+            );
+
+            routes.MapRoute("Logout", "Logout",
+                new { controller = "Authentication", action = "Logout" }
+            );
 
             routes.MapRoute(
                 name: "Default",

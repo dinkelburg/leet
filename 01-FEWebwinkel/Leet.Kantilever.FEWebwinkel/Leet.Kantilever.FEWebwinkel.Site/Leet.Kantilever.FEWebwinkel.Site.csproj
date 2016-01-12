@@ -169,7 +169,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\KantileverAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
+    <Compile Include="Helper\HashHelper.cs" />
+    <Compile Include="ViewModels\LoginModel.cs" />
     <Compile Include="Controllers\WinkelmandController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -276,13 +280,13 @@
     <Content Include="Views\Winkelmand\Index.cshtml" />
     <Content Include="Views\Winkelmand\Winkelmandoverzicht.cshtml" />
     <Content Include="Views\Winkelmand\LegeWinkelmand.cshtml" />
+    <Content Include="Views\Authentication\Login.cshtml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Winkelmand\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
