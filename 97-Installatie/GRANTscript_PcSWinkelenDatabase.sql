@@ -25,6 +25,13 @@ BEGIN
 END
 GO
 
+USE [master]
+GO
+
+/****** Object:  Database [Leet_PcSWinkelenDatabase]    Script Date: 12/01/2016 10:29:32 AM ******/
+IF  NOT EXISTS (SELECT name FROM master.dbo.sysdatabases WHERE name = N'Leet_PcSWinkelenDatabase')
+CREATE DATABASE [Leet_PcSWinkelenDatabase]
+
 USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
