@@ -17,6 +17,7 @@ namespace Leet.Kantilever.PcSBestellen.Contract
 
         [OperationContract]
         GetAllBestellingenResponseMessage FindAllBestellingen();
+
         [OperationContract]
         GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage);
     }

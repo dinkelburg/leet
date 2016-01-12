@@ -9,11 +9,11 @@
   <xsd:import namespace="urn:minor-case3-pcsbestellen:v1:schema"
               schemaLocation="Minor.Case3.PcSBestellen.V1.Schema.xsd" />
 
-
+  <xsd:element name="getVolgendeOpenBestellingRequestMessage" />
   <xsd:element name="GetVolgendeOpenBestellingResponseMessage" type="tns:GetVolgendeOpenBestellingResponseMessage"/>
+  
   <xsd:element name="GetAllBestellingenRequestMessage"/>
   <xsd:element name="GetAllBestellingenResponseMessage" type="tns:GetAllBestellingenResponseMessage"/>
-
 
   <xsd:element name="GetBestellingByIDRequestMessage" type="tns:GetBestellingByIDRequestMessage"/>
   <xsd:element name="GetBestellingByIDResponseMessage" type="tns:GetBestellingByIDResponseMessage"/>
