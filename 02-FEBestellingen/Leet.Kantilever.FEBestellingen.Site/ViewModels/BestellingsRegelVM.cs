@@ -5,11 +5,10 @@ using System.Web;
 
 namespace Leet.Kantilever.FEBestellingen.Site.ViewModels
 {
-    public class OrderRegelVM
+    public class BestellingsRegelVM
     {
-        public string Naam { get; set; }
-        public string Leverancier { get; set; }
-        public long Leverancierscode { get; set; }
+        public string ProductNaam { get; set; }
+        public string Leverancierscode { get; set; }
         public int Aantal { get; set; }
 
     }

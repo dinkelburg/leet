@@ -55,7 +55,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             }
 
             //Return data
-            return new GetAllBestellingenResponseMessage() { Result = bestellingCollection };
+            return new GetAllBestellingenResponseMessage() { BestellingCollection = bestellingCollection };
         }
 
         public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
@@ -85,7 +85,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             //Quick and dirty fix
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = FindAllBestellingen().Result.First()
+                Bestelling = FindAllBestellingen().BestellingCollection.First(),
             };
         }
 
