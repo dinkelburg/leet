@@ -15,7 +15,7 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
 
         public AgentPcSWinkelen()
         {
-            _factory = new ServiceFactory<IWinkelenService>("BSCatalogusBeheer");
+            _factory = new ServiceFactory<IWinkelenService>("PcSWinkelen");
         }
 
         public AgentPcSWinkelen(ServiceFactory<IWinkelenService> factory)

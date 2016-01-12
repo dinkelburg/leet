@@ -1,14 +1,10 @@
-﻿using Leet.Kantilever.FEWebwinkel.Agent;
-using Leet.Kantilever.FEWebwinkel.Site.Models;
+using Leet.Kantilever.FEWebwinkel.Agent;
 using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
-using minorcase3pcswinkelen.v1.messages;
 using minorcase3pcswinkelen.v1.schema;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 {
@@ -91,5 +87,5 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             return newWinkelmand;
         }
 
+        }
     }
-}

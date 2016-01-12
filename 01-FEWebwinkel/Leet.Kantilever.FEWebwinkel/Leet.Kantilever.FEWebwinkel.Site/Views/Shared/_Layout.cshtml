@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Kantilever</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="../../../Content/font-awesome/css/font-awesome.min.css">
-    @RenderSection("stylesheets", required: false);
 </head>
 <body>
     <div class="col-md-12">
-        <img class="col-md-12 col-xs-12 col-sm-12" src="/Content/Images/banner.png" />
+        @{ 
+            <img class="col-md-12 col-xs-12 col-sm-12" src="@Utility.BaseUrl/Content/Images/banner.png" />
+        }
     </div>
     <div class="navbar navbar-kanti">
         <div class="container">
@@ -21,7 +22,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Kantilever", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*<span class="navbar-brand">Kantilever</span>*@
+                @Html.ActionLink("Kantilever", "Index", "Catalogus", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -29,7 +31,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="winkelmand">
-                        <a id="winkelmand"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
+                        <a id="winkelmand" href="@Url.Action("Index", "Winkelmand")"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
                     </li>
                 </ul>
             </div>
@@ -45,6 +47,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/winkelmandje")
     @RenderSection("scripts", required: false)
 </body>
 </html>
