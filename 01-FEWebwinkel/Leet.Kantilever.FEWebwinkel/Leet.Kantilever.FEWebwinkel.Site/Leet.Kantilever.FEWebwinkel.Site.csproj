@@ -169,6 +169,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BtwConfigSection.cs" />
+    <Compile Include="BtwHelper.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\WinkelmandController.cs" />
     <Compile Include="Global.asax.cs">
@@ -282,7 +284,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Winkelmand\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
