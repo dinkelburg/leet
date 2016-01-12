@@ -58,14 +58,14 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         /// Adds a product to the winkelmand for the customer to order at a later time. 
         /// Is used in AJAX calls.
         /// </summary>
-        /// <param name="artikelId">The ID of the product to add to the winkelmand</param>
+        /// <param name="productID">The ID of the product to add to the winkelmand</param>
         /// <param name="aantal">The amount of the product to add.</param>
         /// <returns></returns>
-        public ActionResult VoegProductToe(int artikelId, int aantal)
+        public ActionResult VoegProductToe(int productID, int aantal)
         {
             string clientIdString = Utility.CheckClientID(Request, Response);
 
-            _winkelAgent.VoegProductToeAanWinkelmand(artikelId, aantal, clientIdString);
+            _winkelAgent.VoegProductToeAanWinkelmand(productID, aantal, clientIdString);
 
             return new HttpStatusCodeResult(204);
         }
