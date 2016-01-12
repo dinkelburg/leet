@@ -10,7 +10,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 {
     public class BestellingContext : DbContext
     {
-        public BestellingContext() : base("BestellingContext") { }
+        public BestellingContext() : base("name=BestellingContext") { }
 
         public DbSet<Bestelling> Bestellingen { get; set; }
 
