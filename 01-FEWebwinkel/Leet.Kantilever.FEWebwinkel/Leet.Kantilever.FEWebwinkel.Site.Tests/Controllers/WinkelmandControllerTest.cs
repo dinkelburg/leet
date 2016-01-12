@@ -10,6 +10,7 @@ using minorcase3pcswinkelen.v1.schema;
 using schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
 using Leet.Kantilever.FEWebwinkel.Agent;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 {
@@ -123,6 +124,64 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             //assert
             Assert.IsNotNull(result);
             Assert.AreEqual(3, winkelmandCount);
+        }
+
+        [TestMethod]
+        public void ClientIdZonderRequest()
+        {
+            //arrange
+            var exceptionCaught = false;
+            var context = new Mock<HttpContextBase>();
+            var responseMock = new Mock<HttpResponseBase>();
+
+            context.SetupGet(c => c.Response)
+                   .Returns(responseMock.Object);
+
+            string message = string.Empty;
+
+            //act
+            try
+            {
+                var result = Utility.CheckClientID(null, responseMock.Object);
+            }
+            catch (ArgumentNullException ex)
+            {
+                exceptionCaught = true;
+                message = ex.Message;
+            }
+
+            //assert
+            Assert.IsTrue(exceptionCaught);
+            Assert.AreEqual("The request object was null.\r\nParameter name: request", message);
+        }
+
+        [TestMethod]
+        public void ClientIdZonderResponse()
+        {
+            //arrange
+            var exceptionCaught = false;
+            string message = string.Empty;
+
+            var context = new Mock<HttpContextBase>();
+            var requestMock = new Mock<HttpRequestBase>();
+
+            context.SetupGet(c => c.Request)
+                   .Returns(requestMock.Object);
+
+            //act
+            try
+            {
+                var result = Utility.CheckClientID(requestMock.Object, null);
+            }
+            catch (ArgumentNullException ex)
+            {
+                exceptionCaught = true;
+                message = ex.Message;
+            }
+
+            //assert
+            Assert.IsTrue(exceptionCaught);
+            Assert.AreEqual("The response object was null.\r\nParameter name: response", message);
         }
     }
 }

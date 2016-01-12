@@ -16,20 +16,30 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
     {
         private IAgentPcSWinkelen _winkelAgent;
 
+        /// <summary>
+        /// The default controller.
+        /// </summary>
         public WinkelmandController()
         {
             _winkelAgent = new AgentPcSWinkelen();
         }
 
+        /// <summary>
+        /// A constructor that allows injecting a different IAgentPcSWinkelen object.
+        /// </summary>
+        /// <param name="winkelAgent"></param>
         public WinkelmandController(IAgentPcSWinkelen winkelAgent)
         {
             _winkelAgent = winkelAgent;
         }
 
-        // GET: Winkelmand
+        /// <summary>
+        /// Shows the contents of the customer's winkelmand.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            string clientIdString = CheckClientID(Request, Response);
+            string clientIdString = Utility.CheckClientID(Request, Response);
 
             var winkelmand = _winkelAgent.GetWinkelmand(clientIdString);
 
@@ -44,10 +54,16 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         }
 
 
-
+        /// <summary>
+        /// Adds a product to the winkelmand for the customer to order at a later time. 
+        /// Is used in AJAX calls.
+        /// </summary>
+        /// <param name="artikelId">The ID of the product to add to the winkelmand</param>
+        /// <param name="aantal">The amount of the product to add.</param>
+        /// <returns></returns>
         public ActionResult VoegProductToe(int artikelId, int aantal)
         {
-            string clientIdString = CheckClientID(Request, Response);
+            string clientIdString = Utility.CheckClientID(Request, Response);
 
             _winkelAgent.VoegProductToeAanWinkelmand(artikelId, aantal, clientIdString);
 
@@ -75,22 +91,5 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             return newWinkelmand;
         }
 
-        public static string CheckClientID(HttpRequestBase request, HttpResponseBase response)
-        {
-            var clientIDCookie = request.Cookies.Get("clientId");
-            string clientId;
-
-            if (clientIDCookie == null)
-            {
-                clientId = Guid.NewGuid().ToString();
-                response.Cookies.Add(new HttpCookie("clientId", clientId));
-            }
-            else
-            {
-                clientId = clientIDCookie.Value;
-            }
-            return clientId;
-
-        }
     }
 }

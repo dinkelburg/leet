@@ -12,11 +12,18 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
     {
         private IAgentBSCatalogusBeheer _agent;
 
+        /// <summary>
+        /// The default controller.
+        /// </summary>
         public CatalogusController()
         {
             _agent = new AgentBSCatalogusBeheer();
         }
 
+        /// <summary>
+        /// A constructor that allows injecting a different IAgentBSCatalogusBeheer object.
+        /// </summary>
+        /// <param name="agent"></param>
         public CatalogusController(IAgentBSCatalogusBeheer agent)
         {
             _agent = agent;
@@ -30,7 +37,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         /// <returns></returns>
         public ActionResult Index(int? page)
         {
-            WinkelmandController.CheckClientID(Request, Response);
+            Utility.CheckClientID(Request, Response);
 
             var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
             return View(products);
