@@ -1,9 +1,11 @@
 ﻿using Minor.ServiceBus.Agent.Implementation;
+using minorcase3leet.v1.functionalerror;
 using minorcase3pcswinkelen.v1.messages;
 using minorcase3pcswinkelen.v1.schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -56,12 +58,19 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             var proxy = _factory.CreateAgent();
 
-            var reqMessage = proxy.GetWinkelmandje(new VraagWinkelmandRequestMessage
+            try
             {
-                ClientID = clientID,
-            });
+                var reqMessage = proxy.GetWinkelmandje(new VraagWinkelmandRequestMessage
+                {
+                    ClientID = clientID,
+                });
 
-            return reqMessage.Winkelmand;
+                return reqMessage.Winkelmand;
+            }
+            catch (FaultException<FunctionalErrorList> ex)
+            {
+                return new Winkelmand();
+            }
         }
 
     }

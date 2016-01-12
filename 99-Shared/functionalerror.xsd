@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema 
-  xmlns:tns="urn:case2-baleru:functionalerror" 
+  xmlns:tns="urn:minor-case3-leet:v1:functionalerror" 
   elementFormDefault="qualified" 
-  targetNamespace="urn:case2-baleru:functionalerror" 
+  targetNamespace="urn:minor-case3-leet:v1:functionalerror" 
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="FunctionalErrorDetail">
     <xs:sequence>
