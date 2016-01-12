@@ -1,6 +1,4 @@
-﻿
-using Leet.Kantilever.PcSBestellen.Contract;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,7 +8,7 @@ using Leet.Kantilever.PcSBestellen.V1.Messages;
 using Leet.Kantilever.PcSBestellen.Agent;
 using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
-using System.Linq;
+using Leet.Kantilever.PcSBestellen.Contract;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {

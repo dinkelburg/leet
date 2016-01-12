@@ -25,6 +25,8 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         // GET: Catalogus
         public ActionResult Index(int? page)
         {
+            WinkelmandController.CheckClientID(Request, Response);
+
             var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
             return View(products);
         }

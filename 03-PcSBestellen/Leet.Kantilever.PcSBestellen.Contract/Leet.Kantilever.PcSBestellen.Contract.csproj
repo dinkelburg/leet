@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneratedTypes.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IBestellenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

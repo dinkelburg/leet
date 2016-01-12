@@ -1,0 +1,24 @@
+﻿@model Leet.Kantilever.FEWebwinkel.Site.ViewModels.WinkelmandVM
+
+@{
+    ViewBag.Title = "Index";
+
+}
+@section stylesheets {
+    @Styles.Render("~/Content/Winkelmand.css")
+}
+
+<div>
+    <h4>Winkelmandje</h4>
+    <hr />
+    <table class="table winkelmandje">
+
+        @Html.Partial("Winkelmandoverzicht", Model.Producten)
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">@Html.DisplayNameFor(model => model.Totaalprijs)</td>
+                <td>&euro; @Html.DisplayFor(model => model.Totaalprijs)</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

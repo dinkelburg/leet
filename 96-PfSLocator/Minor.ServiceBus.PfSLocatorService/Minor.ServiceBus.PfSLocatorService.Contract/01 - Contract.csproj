@@ -55,6 +55,7 @@
     <Compile Include="DTO\FunctionalException.cs" />
     <Compile Include="DTO\ServiceLocation.cs" />
     <Compile Include="DTO\ServiceLocationServiceFault.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IServiceLocatorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,7 +64,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\svcutil.exe" ^
+    <PostBuildEvent>svcutil.exe ^
  /d:"$(SolutionDir)..\..\99-Shared\02-PfSLocatorService\Contract" ^
  Minor.ServiceBus.PfSLocatorService.Contract.dll</PostBuildEvent>
   </PropertyGroup>

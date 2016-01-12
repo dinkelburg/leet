@@ -17,7 +17,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site
                 Naam = product.Naam,
                 LeverancierNaam = product.LeverancierNaam,
                 Prijs = product.Prijs,
-                AfbeeldingPad = Util.AfbeeldingPrefix + product.AfbeeldingURL,
+                AfbeeldingPad = Utility.AfbeeldingPrefix + product.AfbeeldingURL,
             });
         }
     }
