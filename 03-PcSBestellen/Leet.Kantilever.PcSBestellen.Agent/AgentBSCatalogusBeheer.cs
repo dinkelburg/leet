@@ -43,7 +43,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
                 }
                 else
                 {
-                    throw new Exception(result.Foutmelding.Melding);
+                    throw new KeyNotFoundException(result.Foutmelding.Melding);
                 }
             }
             return products;            
