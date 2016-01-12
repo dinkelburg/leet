@@ -13,7 +13,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         private IAgentPcSWinkelen _winkelAgent;
 
         /// <summary>
-        /// The default controller.
+        /// The default constructor.
         /// </summary>
         public WinkelmandController()
         {

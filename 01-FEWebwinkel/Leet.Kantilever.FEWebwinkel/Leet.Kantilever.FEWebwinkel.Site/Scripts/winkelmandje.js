@@ -2,15 +2,15 @@
     $('.mandBtn').click(function (eOpts) {
         $button = $(this);
         // Split 'prod-' from 'prod-123'
-        var productId = +this.id.split('-')[1];
+        var productId = +$button.attr("data-productid");
 
         // Execute Ajax request to put product in cart
         $.ajax({
-            url: "Winkelmand/VoegProductToe",
+            url: BASEURL+"Winkelmand/VoegProductToe",
             method: "GET",
             data: {
-                ProductId: productId,
-                Aantal: 1
+                productID: productId,
+                aantal: 1
             },
             success: function () {
                 // Animate button

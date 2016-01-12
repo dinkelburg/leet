@@ -13,7 +13,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
         private IAgentBSCatalogusBeheer _agent;
 
         /// <summary>
-        /// The default controller.
+        /// The default constructor.
         /// </summary>
         public CatalogusController()
         {
