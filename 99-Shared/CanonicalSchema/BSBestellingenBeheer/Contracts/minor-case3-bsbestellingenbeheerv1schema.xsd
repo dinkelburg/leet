@@ -13,6 +13,7 @@
       </xs:element>
       <xs:element name="Besteldatum" type="xs:dateTime" />
       <xs:element name="KlantID" type="xs:long" />
+      <xs:element name="Ingepakt" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bestelling" nillable="true" type="tns:Bestelling" />
