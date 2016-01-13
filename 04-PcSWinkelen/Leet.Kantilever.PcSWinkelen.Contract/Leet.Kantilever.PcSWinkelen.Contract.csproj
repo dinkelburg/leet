@@ -80,6 +80,12 @@
       <Link>leet.snk</Link>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Agent\Leet.Kantilever.PcSWinkelen.Agent.csproj">
+      <Project>{1b0689b8-cf5f-4fc5-bb32-e0409a974825}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.Agent</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

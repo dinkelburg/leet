@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Leet.Kantilever.BSBestellingenbeheer.DAL")]
+[assembly: AssemblyTitle("Leet.Kantilever.BSBestellingenbeheer.DAL.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Leet.Kantilever.BSBestellingenbeheer.DAL")]
+[assembly: AssemblyProduct("Leet.Kantilever.BSBestellingenbeheer.DAL.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8afa1219-8863-4adc-b644-ada03110a96f")]
+[assembly: Guid("fc7b674f-f9f3-4b0d-9a33-dd80166934af")]
 
 // Version information for an assembly consists of the following four values:
 //

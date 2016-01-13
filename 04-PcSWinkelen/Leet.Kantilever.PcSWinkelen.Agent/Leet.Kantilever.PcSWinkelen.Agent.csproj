@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="FunctionalErrorGeneratedTypes.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,7 +77,14 @@
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Kantilever.BsCatalogusbeheer.Categorie.V1" ^
 /n:"urn:schemas-www-kantilever-nl:common:fouten:v1,Kantilever.BsCatalogusbeheer.Fouten.V1" ^
 /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1,Kantilever.BsCatalogusbeheer.Leverancier.V1" ^
-"$(SolutionDir)\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
+"$(SolutionDir)\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/dconly ^
+/out:FunctionalErrorGeneratedTypes.cs ^
+/n:"urn:minor-case3-leet:v1:functionalerror,Minor.case3.Leet.V1.FunctionalError" ^
+"$(SolutionDir)\..\99-shared\functionalerror.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
 {
+    /// <summary>
+    /// A product that is shown in the catalogus.
+    /// </summary>
     public class ProductVM
     {
         public long? ID { get; set; }
