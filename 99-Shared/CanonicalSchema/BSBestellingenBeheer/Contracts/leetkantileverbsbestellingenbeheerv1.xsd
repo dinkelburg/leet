@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:leet:kantilever:bsbestellingenbeheer:v1" elementFormDefault="qualified" targetNamespace="urn:leet:kantilever:bsbestellingenbeheer:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:minor-case3-bsbestellingenbeheer:v1:messages" />
+  <xs:element name="FindBestelling">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="m" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q1:GetBestellingByIDRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindBestellingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindBestellingResult" nillable="true" xmlns:q2="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q2:GetBestellingByIDResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAllBestelling">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAllBestellingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindAllBestellingResult" nillable="true" xmlns:q3="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q3:GetAllBestellingenResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVolgendeOpenBestelling">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVolgendeOpenBestellingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVolgendeOpenBestellingResult" nillable="true" xmlns:q4="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q4:GetVolgendeOpenBestellingResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
