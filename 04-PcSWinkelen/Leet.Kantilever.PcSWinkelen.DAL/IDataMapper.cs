@@ -13,5 +13,6 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         T FindWinkelmandByClientId(string id);
         void AddProductToWinkelmand(Product product, string clientID);
         IEnumerable<T> FindAll();
+        void RemoveWinkelmandByClientID(string clientID);
     }
 }

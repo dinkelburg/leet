@@ -1,4 +1,4 @@
-﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
+﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,13 +8,23 @@ using System.Data.Entity;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 {
-    class BestellingDataMapper :IBestellingMapper<Bestelling>
+    public class BestellingDataMapper : IBestellingMapper<Bestelling>
     {
         public void AddBestelling(Bestelling bestelling)
         {
-            using (var context = new BestellingContext)
+            using (var context = new BestellingContext())
             {
                 context.Bestellingen.Add(bestelling);
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(Bestelling bestelling)
+        {
+            using (var context = new BestellingContext())
+            {
+                var existing = context.Bestellingen.Find(bestelling.ID);
+                context.Entry(existing).CurrentValues.SetValues(bestelling);
                 context.SaveChanges();
             }
         }
@@ -37,5 +47,16 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             }
         }
 
+        public Bestelling FindVolgendeOpenBestelling()
+        {
+            using (var context = new BestellingContext())
+            {
+                var t = context.Bestellingen.ToList();
+                var t1 = context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
+                                                                  .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
+                return context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
+                                                                  .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
+            }
+        }
     }
 }

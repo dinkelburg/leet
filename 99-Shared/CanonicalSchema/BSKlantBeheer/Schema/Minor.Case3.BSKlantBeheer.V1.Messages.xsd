@@ -13,13 +13,16 @@
 
   <xsd:element name="GetAllKlantenRequestMessage"/>
 
-  <xsd:element name="GetAllBestellingenResponseMessage" type="tns:GetAllBestellingenResponseMessage"/>
+  <!--<xsd:element name="GetAllBestellingenResponseMessage" type="tns:GetAllBestellingenResponseMessage"/>
 
   <xsd:element name="GetBestellingByIDRequestMessage" type="tns:GetBestellingByIDRequestMessage" />
 
-  <xsd:element name="GetBestellingByIDResponseMessage" type="tns:GetBestellingByIDResponseMessage" />
+  <xsd:element name="GetBestellingByIDResponseMessage" type="tns:GetBestellingByIDResponseMessage" />-->
 
-  <xsd:complexType name="GetAllBestellingenResponseMessage">
+  <xsd:element name="InsertKlantGegevensMessage" type="tns:InsertKlantGegevensMessage" />
+
+	
+  <!--<xsd:complexType name="GetAllBestellingenResponseMessage">
     <xsd:sequence>
       <xsd:element name="KlantCollection" type="klant:KlantenCollection" />
     </xsd:sequence>
@@ -35,5 +38,12 @@
     <xsd:sequence>
       <xsd:element name="Bestelling" type="bestelling:Bestelling" />
     </xsd:sequence>
+  </xsd:complexType>-->
+
+    <xsd:complexType name="InsertKlantGegevensMessage">
+    <xsd:sequence>
+      <xsd:element name="Bestelling" type="klant:Klant" />
+    </xsd:sequence>
   </xsd:complexType>
-</xsd:schema>
+  
+  </xsd:schema>

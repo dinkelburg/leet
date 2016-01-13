@@ -25,5 +25,11 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             var bestellingen = Mapper.MapBestellingToVMList(_agent.FindAllBestellingen());
             return View(bestellingen);
         }
+
+        public ActionResult VolgendeBestelling()
+        {
+            var bestelling = Mapper.MapBestellingToVMList(_agent.FindVolgendeOpenBestelling());
+            return View(bestelling.Bestellingsregels);
+        }
     }
 }

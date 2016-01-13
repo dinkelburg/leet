@@ -88,5 +88,23 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
             Assert.AreEqual("Er is geen winkelmandje beschikbaar met het clientID Client01", errorlist.First().Message);
         }
 
+
+        [TestMethod]
+        public void RemoveWinkelmandTest()
+        {
+            // Arrange
+            var mapperMock = new Mock<IDataMapper<Winkelmand>>(MockBehavior.Strict);
+            mapperMock.Setup(mapper => mapper.RemoveWinkelmandByClientID(It.IsAny<string>()));
+
+            var agentMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
+            agentMock.Setup(agent => agent.FindProductById(It.IsAny<int>())).Returns(DummyData.GetProduct());
+            WinkelenServiceHandler handler = new WinkelenServiceHandler(mapperMock.Object, agentMock.Object);
+
+            // Act
+            handler.RemoveWinkelmand(DummyData.GetVraagWinkelmandRequestMessage());
+
+            // Assert
+            mapperMock.Verify(mapper => mapper.RemoveWinkelmandByClientID(It.IsAny<string>()));
+        }
     }
 }

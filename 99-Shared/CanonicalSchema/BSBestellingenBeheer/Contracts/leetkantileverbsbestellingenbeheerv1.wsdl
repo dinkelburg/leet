@@ -20,6 +20,18 @@
   <wsdl:message name="IBestellingenbeheerService_FindAllBestelling_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindAllBestellingResponse" />
   </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_GetVolgendeOpenBestelling_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolgendeOpenBestelling" />
+  </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_GetVolgendeOpenBestelling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVolgendeOpenBestellingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_CreateBestelling_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBestelling" />
+  </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_CreateBestelling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBestellingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBestellingenbeheerService">
     <wsdl:operation name="FindBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/FindBestelling" message="tns:IBestellingenbeheerService_FindBestelling_InputMessage" />
@@ -28,6 +40,14 @@
     <wsdl:operation name="FindAllBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/FindAllBestelling" message="tns:IBestellingenbeheerService_FindAllBestelling_InputMessage" />
       <wsdl:output wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/FindAllBestellingResponse" message="tns:IBestellingenbeheerService_FindAllBestelling_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVolgendeOpenBestelling">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/GetVolgendeOpenBestelling" message="tns:IBestellingenbeheerService_GetVolgendeOpenBestelling_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/GetVolgendeOpenBestellingResponse" message="tns:IBestellingenbeheerService_GetVolgendeOpenBestelling_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBestelling">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestelling" message="tns:IBestellingenbeheerService_CreateBestelling_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestellingResponse" message="tns:IBestellingenbeheerService_CreateBestelling_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IBestellingenbeheerService" type="tns:IBestellingenbeheerService">
@@ -43,6 +63,24 @@
     </wsdl:operation>
     <wsdl:operation name="FindAllBestelling">
       <soap:operation soapAction="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/FindAllBestelling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVolgendeOpenBestelling">
+      <soap:operation soapAction="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/GetVolgendeOpenBestelling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBestelling">
+      <soap:operation soapAction="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestelling" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

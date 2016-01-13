@@ -31,4 +31,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="GetAllBestellingenResponseMessage" nillable="true" type="tns:GetAllBestellingenResponseMessage" />
+  <xs:complexType name="GetVolgendeOpenBestellingResponseMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q3="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q3:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetVolgendeOpenBestellingResponseMessage" nillable="true" type="tns:GetVolgendeOpenBestellingResponseMessage" />
+  <xs:complexType name="CreateBestellingRequestMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q4="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q4:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateBestellingRequestMessage" nillable="true" type="tns:CreateBestellingRequestMessage" />
 </xs:schema>

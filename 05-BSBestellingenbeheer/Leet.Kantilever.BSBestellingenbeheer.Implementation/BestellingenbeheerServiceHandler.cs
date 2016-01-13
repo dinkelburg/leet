@@ -2,16 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
+using Leet.Kantilever.BSBestellingenbeheer.DAL;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.converters;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
+        public void CreateBestelling(CreateBestellingRequestMessage requestMesssage)
+        {
+            var mapper = new BestellingDataMapper();
+            mapper.AddBestelling(DTOToEntity.BestellingToEntity(requestMesssage.Bestelling));
+        }
+
         public GetAllBestellingenResponseMessage FindAllBestelling()
         {
             var bestellingen = new BestellingCollection();
@@ -40,6 +46,21 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
             return new GetBestellingByIDResponseMessage
             {
                 Bestelling = bestelling,
+            };
+        }
+
+        /// <summary>
+        /// Get the next Bestelling which isn't packed yet
+        /// </summary>
+        /// <returns>The first Bestelling that is ready to be picked</returns>
+        public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
+        {
+            BestellingDataMapper mapper = new BestellingDataMapper();
+            var volgendeBestelling =
+                    mapper.FindVolgendeOpenBestelling();
+            return new GetVolgendeOpenBestellingResponseMessage
+            {
+                Bestelling = EntityToDTO.BestellingToDto(volgendeBestelling)
             };
         }
     }

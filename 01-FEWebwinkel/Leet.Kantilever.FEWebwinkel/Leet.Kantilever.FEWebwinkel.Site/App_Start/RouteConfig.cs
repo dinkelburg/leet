@@ -13,6 +13,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("ThankYou", "Bestelling_geplaatst",
+                new { controller = "Bestellen", action = "ThankYouPage" }
+            );
 
             routes.MapRoute(
                 name: "Default",

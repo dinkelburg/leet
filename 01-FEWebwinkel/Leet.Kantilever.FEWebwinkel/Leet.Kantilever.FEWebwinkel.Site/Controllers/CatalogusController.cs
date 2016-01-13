@@ -32,7 +32,6 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
             _winkelAgent = winkelAgent;
         }
 
-        // GET: Catalogus
         /// <summary>
         /// Shows a specific page of the catalogus.
         /// </summary>

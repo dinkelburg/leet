@@ -62,7 +62,7 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
 
                 return reqMessage.Winkelmand;
             }
-            catch (FaultException<FunctionalErrorList> ex)
+            catch (FaultException ex)
             {
                 return new Winkelmand();
             }

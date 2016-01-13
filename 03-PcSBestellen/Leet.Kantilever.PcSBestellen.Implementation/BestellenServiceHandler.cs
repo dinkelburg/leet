@@ -12,10 +12,14 @@ using Leet.Kantilever.PcSBestellen.Contract;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class BestellenServiceHandler : IBestellenService
     {
         private IBSBestellingenbeheerAgent _agentBestellingen;
         private IAgentBSCatalogusBeheer _agentCatalogus;
+        private IAgentPcSWinkelen _agentWinkelen;
 
 
         public BestellenServiceHandler()
@@ -24,12 +28,37 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentCatalogus = new AgentBSCatalogusBeheer();
         }
 
-        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
+        /// <summary>
+        /// Constructor for dependenct injection
+        /// </summary>
+        /// <param name="agentBestellen"></param>
+        /// <param name="agentCatalogus"></param>
+        /// <param name="agentWinkelen"></param>
+        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus, IAgentPcSWinkelen agentWinkelen)
         {
             _agentBestellingen = agentBestellen;
             _agentCatalogus = agentCatalogus;
+            _agentWinkelen = agentWinkelen;
         }
 
+        public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
+        {
+            var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
+            var mapper = new BestellingMapper();
+            var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
+
+            bestelling.Besteldatum = DateTime.Now;
+            bestelling.Klant = requestMessage.Klant;
+
+            //TODO: Save customer information
+
+            _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
+        }
+
+        /// <summary>
+        /// Retrieve all bestellingen from the BSBestellingenbeheer service and add product information from the BSCatalogusbeheer
+        /// </summary>
+        /// <returns></returns>
         public GetAllBestellingenResponseMessage FindAllBestellingen()
         {
             //Retrieve all Bestellingen
@@ -56,6 +85,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             return new GetAllBestellingenResponseMessage() { BestellingCollection = bestellingCollection };
         }
 
+        /// <summary>
+        /// Find a specific bestelling by id
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
         public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
         {
             //Retrieve all Bestellingen
@@ -78,12 +112,27 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             };
         }
 
+        /// <summary>
+        /// Find the next Bestelling to be packaged
+        /// </summary>
+        /// <returns>Bestelling</returns>
         public GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling()
         {
-            //Quick and dirty fix
+            BestellingMapper mapper = new BestellingMapper();
+            var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
+            var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
+
+            var producten = _agentCatalogus.GetProductsById(
+                bsBestelling.Bestellingsregels.Select(r => (int)r.ProductID)
+                .Distinct()
+                .ToArray()
+            );
+
+            mapper.AddProductsToBestelling(pcsBestelling, producten);
+
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = FindAllBestellingen().BestellingCollection.First(),
+                Bestelling = pcsBestelling
             };
         }
 

@@ -9,19 +9,64 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
 {
     public class BestellingMapper
     {
+        /// <summary>
+        /// Convert From BSBestellingenbeheer bestelling to PcSBestellen bestelling 
+        /// </summary>
+        /// <param name="bestelling"></param>
+        /// <returns></returns>
         public PcSBestellen.V1.Schema.Bestelling ConvertToPcsBestelling(BSBestellingenbeheer.V1.Schema.Bestelling bestelling)
         {
             V1.Schema.BestellingsregelCollection regels = new PcSBestellen.V1.Schema.BestellingsregelCollection();
-            // Copy regels
-            bestelling.Bestellingsregels.ForEach(r => regels.Add(ConvertToPcSBestellingregel(r)));
+            // Copy regels if Bestellingsregels isn't null
+            bestelling.Bestellingsregels?.ForEach(r => regels.Add(ConvertToPcSBestellingregel(r)));
             // Create and return PcSBestellen Bestelling
             return new PcSBestellen.V1.Schema.Bestelling
             {
                 Besteldatum = bestelling.Besteldatum,
                 BestellingsregelCollection = regels,
+                Bestelnummer = bestelling.Bestelnummer,
+                ID = bestelling.ID,
             };
         }
 
+        public BSBestellingenbeheer.V1.Schema.Bestelling ConvertToBSBestelling(PcSBestellen.V1.Schema.Bestelling bestelling)
+        {
+            //Map regels
+            var regels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection();
+            regels.AddRange(bestelling.BestellingsregelCollection.Select(r => ConvertToBSBestellingregel(r)));
+
+            //Map bestelling
+            return new BSBestellingenbeheer.V1.Schema.Bestelling
+            {
+                Besteldatum = bestelling.Besteldatum,
+                Bestelnummer = bestelling.Bestelnummer,
+                KlantID = bestelling.Klant.ID,
+                Bestellingsregels = regels,
+                ID = 0,
+            };
+        }
+
+
+        /// <summary>
+        /// Convert PcSBestelling bestellingsregel to BSBestelling bestellingsregel
+        /// </summary>
+        /// <param name="regel"></param>
+        /// <returns></returns>
+        public BSBestellingenbeheer.V1.Schema.Bestellingsregel ConvertToBSBestellingregel(PcSBestellen.V1.Schema.Bestellingsregel regel)
+        {
+            return new BSBestellingenbeheer.V1.Schema.Bestellingsregel
+            {
+                Aantal = regel.Aantal,
+                Prijs = regel.Product.Prijs ?? 0,
+                ProductID = regel.Product.Id ?? 0
+            };
+        }
+
+        /// <summary>
+        /// Convert a BSBestellingbeheer bestellingsregel to a PcSBestellen bestellingsregel
+        /// </summary>
+        /// <param name="regel"></param>
+        /// <returns></returns>
         public PcSBestellen.V1.Schema.Bestellingsregel ConvertToPcSBestellingregel(BSBestellingenbeheer.V1.Schema.Bestellingsregel regel)
         {
             return new V1.Schema.Bestellingsregel
@@ -35,14 +80,22 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             };
         }
 
+        /// <summary>
+        /// Add product information to a PcSBestellen bestelling
+        /// </summary>
+        /// <param name="bestelling"></param>
+        /// <param name="producten"></param>
         public void AddProductsToBestelling(PcSBestellen.V1.Schema.Bestelling bestelling, IEnumerable<Product> producten)
         {
+            //Loop through all Bestellingsregels and update product information
             bestelling.BestellingsregelCollection.ForEach(r =>
             {
                 try
                 {
+                    // See if the product can be found 
                     var product = producten.Single(p => p.Id == r.Product.Id);
 
+                    // Add Categories
                     var cats = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
                     cats.AddRange(
                         product.CategorieLijst.Select(c => 
@@ -64,12 +117,49 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                         LeverbaarTot = product.LeverbaarTot,
                         LeverbaarVanaf = product.LeverbaarVanaf,
                         Naam = product.Naam,
-                        Prijs = product.Prijs,
+                        Prijs = r.Product.Prijs,
                     };
-                } catch { }
+                } catch(InvalidOperationException) { /*Product not found, skip*/ }
             });
         }
 
+        /// <summary>
+        /// Convert a PcSWinkelen winkelmand to a PcSBestellen bestelling
+        /// </summary>
+        /// <param name="mand"></param>
+        /// <returns></returns>
+        public PcSBestellen.V1.Schema.Bestelling ConvertWinkelmandToBestelling(PcSWinkelen.V1.Schema.Winkelmand mand)
+        {
+            var bestelling = new PcSBestellen.V1.Schema.Bestelling { BestellingsregelCollection = new V1.Schema.BestellingsregelCollection() };
+
+            foreach (var regel in mand)
+            {
+                // Map Categorieen
+                var categorieen = regel.Product.CategorieLijst.Select(c => new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.Categorie { Id = c.Id, Naam = c.Naam });
+                var catCollection = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
+                catCollection.AddRange(categorieen);
+                
+                //Map regels
+                bestelling.BestellingsregelCollection.Add(new V1.Schema.Bestellingsregel {
+                    Aantal = regel.Aantal,
+                    Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
+                    {
+                        AfbeeldingURL = regel.Product.AfbeeldingURL,
+                        Beschrijving = regel.Product.Beschrijving,
+                        CategorieLijst = catCollection,
+                        Id = regel.Product.Id,
+                        LeverancierNaam = regel.Product.LeverancierNaam,
+                        LeveranciersProductId = regel.Product.LeveranciersProductId,
+                        LeverbaarTot = regel.Product.LeverbaarTot,
+                        LeverbaarVanaf = regel.Product.LeverbaarVanaf,
+                        Naam = regel.Product.Naam,
+                        Prijs = regel.Product.Prijs,
+                    }
+                });
+            }
+
+            return bestelling;
+        }
 
     }
 }
