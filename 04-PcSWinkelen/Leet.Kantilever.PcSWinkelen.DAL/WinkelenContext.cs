@@ -11,7 +11,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
 {
     public class WinkelenContext : DbContext
     {
-        public WinkelenContext() : base("Data Source=.\SQLEXPRESS;Initial Catalog=Leet_Test_PcSWinkelenDatabase;Integrated Security=true") { }
+        public WinkelenContext() : base(@"Data Source=.\SQLEXPRESS;Initial Catalog=Leet_Test_PcSWinkelenDatabase;Integrated Security=true") { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Winkelmand> Winkelmanden { get; set; }
 

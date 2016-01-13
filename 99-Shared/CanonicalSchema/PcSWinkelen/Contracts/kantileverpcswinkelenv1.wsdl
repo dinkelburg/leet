@@ -3,6 +3,7 @@
   <wsdl:types>
     <xsd:schema targetNamespace="urn:kantilever:pcswinkelen:v1/Imports">
       <xsd:import namespace="urn:kantilever:pcswinkelen:v1" />
+      <xsd:import namespace="urn:minor-case3-leet:v1:functionalerror" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="urn:minor-case3-pcswinkelen:v1:messages" />
       <xsd:import namespace="urn:minor-case3-pcswinkelen:v1:schema" />
@@ -16,20 +17,28 @@
   <wsdl:message name="IWinkelenService_VoegProductToe_OutputMessage">
     <wsdl:part name="parameters" element="tns:VoegProductToeResponse" />
   </wsdl:message>
+  <wsdl:message name="IWinkelenService_VoegProductToe_FunctionalErrorListFault_FaultMessage">
+    <wsdl:part name="detail" xmlns:q1="urn:minor-case3-leet:v1:functionalerror" element="q1:FunctionalErrorList" />
+  </wsdl:message>
   <wsdl:message name="IWinkelenService_GetWinkelmandje_InputMessage">
     <wsdl:part name="parameters" element="tns:GetWinkelmandje" />
   </wsdl:message>
   <wsdl:message name="IWinkelenService_GetWinkelmandje_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetWinkelmandjeResponse" />
   </wsdl:message>
+  <wsdl:message name="IWinkelenService_GetWinkelmandje_FunctionalErrorListFault_FaultMessage">
+    <wsdl:part name="detail" xmlns:q2="urn:minor-case3-leet:v1:functionalerror" element="q2:FunctionalErrorList" />
+  </wsdl:message>
   <wsdl:portType name="IWinkelenService">
     <wsdl:operation name="VoegProductToe">
       <wsdl:input wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToe" message="tns:IWinkelenService_VoegProductToe_InputMessage" />
       <wsdl:output wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToeResponse" message="tns:IWinkelenService_VoegProductToe_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/VoegProductToeFunctionalErrorListFault" name="FunctionalErrorListFault" message="tns:IWinkelenService_VoegProductToe_FunctionalErrorListFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetWinkelmandje">
       <wsdl:input wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandje" message="tns:IWinkelenService_GetWinkelmandje_InputMessage" />
       <wsdl:output wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandjeResponse" message="tns:IWinkelenService_GetWinkelmandje_OutputMessage" />
+      <wsdl:fault wsaw:Action="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandjeFunctionalErrorListFault" name="FunctionalErrorListFault" message="tns:IWinkelenService_GetWinkelmandje_FunctionalErrorListFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IWinkelenService" type="tns:IWinkelenService">
@@ -42,6 +51,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FunctionalErrorListFault">
+        <soap:fault name="FunctionalErrorListFault" use="literal" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetWinkelmandje">
       <soap:operation soapAction="urn:kantilever:pcswinkelen:v1/IWinkelenService/GetWinkelmandje" style="document" />
@@ -51,6 +63,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="FunctionalErrorListFault">
+        <soap:fault name="FunctionalErrorListFault" use="literal" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
 </wsdl:definitions>
