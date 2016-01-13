@@ -120,7 +120,15 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             BestellingMapper mapper = new BestellingMapper();
             var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
             var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
-            
+
+            var producten = _agentCatalogus.GetProductsById(
+                bsBestelling.Bestellingsregels.Select(r => (int)r.ProductID)
+                .Distinct()
+                .ToArray()
+            );
+
+            mapper.AddProductsToBestelling(pcsBestelling, producten);
+
             return new GetVolgendeOpenBestellingResponseMessage
             {
                 Bestelling = pcsBestelling
