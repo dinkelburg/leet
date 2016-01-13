@@ -1,13 +1,8 @@
-﻿using Minor.ServiceBus.Agent.Implementation;
-using minorcase3leet.v1.functionalerror;
+﻿using Minor.case3.Leet.V1.FunctionalError;
+using Minor.ServiceBus.Agent.Implementation;
 using minorcase3pcswinkelen.v1.messages;
 using minorcase3pcswinkelen.v1.schema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent
 {
