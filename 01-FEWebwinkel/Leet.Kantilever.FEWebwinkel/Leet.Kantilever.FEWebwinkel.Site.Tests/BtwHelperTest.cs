@@ -21,20 +21,14 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests
         }
 
         [TestMethod]
-        public void TestConfigSection()
+        public void TestBtwConfigSection()
         {
-            BtwConfigSection btwTarief =
-                ConfigurationManager.GetSection("btw/tarieven") as BtwConfigSection;
+            var btwTarief = ConfigurationManager.GetSection("btw/tarieven") as BtwConfigSection;
             var section = ConfigurationManager.GetSection("btw/tarieven");
 
             var tarieven = (section as BtwConfigSection).Tarieven;
-
-            foreach (TariefElement tarief in btwTarief.Tarieven)
-            {
-                var asdf = tarief.Mode;
-            }
-
-            Assert.AreEqual(0, 1);
+            
+            Assert.AreEqual(2, tarieven.Count);
         }
     }
 }

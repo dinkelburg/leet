@@ -26,8 +26,9 @@
                     <div class="col-md-12 no-padding">
                         <div class="col-md-6 no-padding">
                             <p>Voorraad</p>
-                            <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
-                            
+                            <p>&euro;@Html.DisplayFor(modelItem => item.PrijsInclusiefBtw)</p>
+                            <p><small>Exclusief BTW: &euro;@Html.DisplayFor(modelItem => item.Prijs)</small></p>
+
                         </div>
                         <div class="col-md-6 no-padding">
                             <button id="prod-@item.ID" class="btn btn-kanti mandBtn"><span class="fa fa-shopping-cart"></span></button>

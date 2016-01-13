@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 
 }
-    @Styles.Render("~/Content/Winkelmand")
+@Styles.Render("~/Content/Winkelmand")
 
 
 <div>
@@ -17,6 +17,8 @@
             <tr>
                 <td colspan="3" class="text-right">@Html.DisplayNameFor(model => model.Totaalprijs)</td>
                 <td>&euro; @Html.DisplayFor(model => model.Totaalprijs)</td>
+                <td colspan="3" class="text-right">@Html.DisplayNameFor(model => model.TotaalprijsInclusiefBtw)</td>
+                <td>&euro; @Html.DisplayFor(model => model.TotaalprijsInclusiefBtw)</td>
             </tr>
         </tfoot>
     </table>

@@ -6,6 +6,11 @@ using System.Web;
 
 namespace Leet.Kantilever.FEWebwinkel.Site
 {
+    /// <summary>
+    /// A representation of the btw element in the web.config file.
+    /// Is used to calculate the btw rate of products. Can contain 
+    /// multiple btw rates. 
+    /// </summary>
     public class BtwConfigSection : ConfigurationSection
     {
         [ConfigurationProperty("", IsRequired = true, IsDefaultCollection = true)]

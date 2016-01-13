@@ -9,6 +9,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
     {
         public List<WinkelmandRijVM> Producten { get; set; }
         public decimal? Totaalprijs { get { return Producten.Sum(rij => rij.Totaalprijs); } }
+        public decimal? TotaalprijsInclusiefBtw { get { return BtwHelper.CalculateBtw(Totaalprijs); } }
     }
 
     public class WinkelmandRijVM
