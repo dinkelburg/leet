@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using minorcase3pcswinkelen.v1.schema;
+using Minor.Case3.BsKlantbeheer.V1.Schema;
+using Leet.Kantilever.FEWebwinkel.Site.ViewModels;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
 {
@@ -70,7 +72,27 @@ namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
                 };
         }
 
-        
+        /// <summary>
+        /// Dummy data for KlantVM
+        /// </summary>
+        /// <returns>Dummy KlantVM</returns>
+        public static KlantVM GetKlantVM()
+        {
+            return new KlantVM
+            {
+                ID = 111,
+                Voornaam = "Kees",
+                Achternaam = "Kantilever",
+                Adresregel1 = "Kantileverstraat 11",
+                Email = "kees@kantilever.nl",
+                Gebruikersnaam = "KeesKantilever",
+                Postcode = "3928HH",
+                Telefoonnummer = "0612345678",
+                Woonplaats = "Utrecht",
+            };
+        }
+
+
         /// <summary>
         /// Dummy data for a Winkelmand
         /// </summary>

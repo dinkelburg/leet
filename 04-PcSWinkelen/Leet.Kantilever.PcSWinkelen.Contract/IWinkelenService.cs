@@ -20,5 +20,8 @@ namespace Leet.Kantilever.PcSWinkelen.Contract
         [FaultContract(typeof(FunctionalErrorList))]
         WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
 
+        [OperationContract]
+        [FaultContract(typeof(FunctionalErrorList))]
+        void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
     }
 }

@@ -154,6 +154,50 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             Assert.IsNull(winkelmand);
         }
 
+
+        [TestMethod]
+        public void RemoveWinkelmandByClientIDTest()
+        {
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+
+                // Act
+                mapper.RemoveWinkelmandByClientID("Client01");
+
+                // Assert
+                var products = mapper.FindAll();
+                Assert.AreEqual(0, products.Count());
+            }
+        }
+
+        [TestMethod]
+        public void RemoveWinkelmandByClientIDThatDoesNotExistTest()
+        {
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                bool exceptionThrown = false;
+                string exceptionMessage = string.Empty;
+
+                try
+                {
+                    // Act
+                    mapper.RemoveWinkelmandByClientID("Client11");
+                }
+                catch(ArgumentException ex)
+                {
+                    exceptionThrown = true;
+                    exceptionMessage = ex.Message;
+                }
+                // Assert
+                Assert.IsTrue(exceptionThrown);
+                Assert.AreEqual("Geen winkelmand gevonden met het ClientID: Client11", exceptionMessage);
+            }
+        }
+
         private static void AssertWinkelmand(Winkelmand winkelmand, Winkelmand expectedWinkelmand)
         {
             Assert.AreEqual(expectedWinkelmand.ClientID, winkelmand.ClientID);

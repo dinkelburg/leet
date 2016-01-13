@@ -19,6 +19,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         {
             modelBuilder.Configurations.Add(new ProductMapping());
             modelBuilder.Configurations.Add(new WinkelmandMapping());
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -70,6 +70,10 @@
       <Project>{aeaa93c7-a64a-4e84-b4da-9dc851fd7adf}</Project>
       <Name>Leet.Kantilever.FEWebwinkel.Agent</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.FEWebwinkel.Site\Leet.Kantilever.FEWebwinkel.Site.csproj">
+      <Project>{37f05f76-e0a1-492b-88d2-a5739320c1d7}</Project>
+      <Name>Leet.Kantilever.FEWebwinkel.Site</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

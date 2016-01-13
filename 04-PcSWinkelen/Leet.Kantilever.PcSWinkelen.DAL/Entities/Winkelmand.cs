@@ -10,6 +10,6 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Entities
     {
         public long ID { get; set; }
         public string ClientID { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
