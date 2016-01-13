@@ -6,11 +6,18 @@ using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
 using Leet.Kantilever.BSBestellingenbeheer.DAL;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.converters;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
+        public void CreateBestelling(CreateBestellingRequestMessage requestMesssage)
+        {
+            var mapper = new BestellingDataMapper();
+            mapper.AddBestelling(DTOToEntity.BestellingToEntity(requestMesssage.Bestelling));
+        }
+
         public GetAllBestellingenResponseMessage FindAllBestelling()
         {
             var bestellingen = new BestellingCollection();

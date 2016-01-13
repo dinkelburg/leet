@@ -26,5 +26,11 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// </summary>
         /// <returns></returns>
         Bestelling GetVolgendeBestelling();
+
+        /// <summary>
+        /// Create a new bestelling
+        /// </summary>
+        /// <param name="bestelling"></param>
+        void CreateBestelling(Bestelling bestelling);
     }
 }
