@@ -5,14 +5,25 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Leet.Kantilever.BSKlantbeheer.V1.Messages;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
     public class KlantbeheerServiceHandler : IKlantbeheerService
     {
-        public string GetData(int value)
+        public GetAllKlantenResponseMessage GetAllKlanten()
         {
-            return string.Format("You entered: {0}", value);
+            throw new NotImplementedException();
+        }
+
+        public GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegistreerKlant(InsertKlantGegevensRequestMessage msg)
+        {
+            throw new NotImplementedException();
         }
     }
 }
