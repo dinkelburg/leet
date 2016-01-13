@@ -39,4 +39,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateBestelling">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="requestMesssage" nillable="true" xmlns:q5="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q5:CreateBestellingRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateBestellingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

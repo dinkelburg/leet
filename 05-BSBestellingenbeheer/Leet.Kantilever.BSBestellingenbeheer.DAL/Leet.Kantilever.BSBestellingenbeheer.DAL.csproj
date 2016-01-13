@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BestellingContext.cs" />
+    <Compile Include="converters\DTOToEntity.cs" />
     <Compile Include="entities\Bestelling.cs" />
     <Compile Include="entities\BestellingsRegel.cs" />
     <Compile Include="converters\EntityToDTO.cs" />

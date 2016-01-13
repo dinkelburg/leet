@@ -55,7 +55,8 @@ namespace Leet.Kantilever.PcSBestellen.Agent
 
         public void CreateBestelling(Bestelling bestelling)
         {
-            throw new NotImplementedException();
+            var agent = _factory.CreateAgent();
+            agent.CreateBestelling(new CreateBestellingRequestMessage { Bestelling = bestelling });
         }
     }
 }
