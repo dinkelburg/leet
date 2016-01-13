@@ -16,6 +16,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
     {
         private IBSBestellingenbeheerAgent _agentBestellingen;
         private IAgentBSCatalogusBeheer _agentCatalogus;
+        private IAgentPcSWinkelen _agentWinkelen;
 
 
         public BestellenServiceHandler()
@@ -24,15 +25,30 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentCatalogus = new AgentBSCatalogusBeheer();
         }
 
-        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
+        /// <summary>
+        /// Constructor for dependenct injection
+        /// </summary>
+        /// <param name="agentBestellen"></param>
+        /// <param name="agentCatalogus"></param>
+        /// <param name="agentWinkelen"></param>
+        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus, IAgentPcSWinkelen agentWinkelen)
         {
             _agentBestellingen = agentBestellen;
             _agentCatalogus = agentCatalogus;
+            _agentWinkelen = agentWinkelen;
         }
 
         public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
         {
-            throw new NotImplementedException();
+            var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
+            var mapper = new BestellingMapper();
+            var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
+            bestelling.Besteldatum = DateTime.Now;
+            bestelling.Klant = requestMessage.Klant;
+
+            //TODO: Save customer information
+
+            _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
         }
 
         public GetAllBestellingenResponseMessage FindAllBestellingen()
@@ -89,6 +105,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             return new GetVolgendeOpenBestellingResponseMessage
             {
                 Bestelling = FindAllBestellingen().BestellingCollection.First(),
+                
             };
         }
 

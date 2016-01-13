@@ -7,5 +7,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
     {
         IEnumerable<Bestelling> GetAllBestellingen();
         Bestelling GetBestellingByID(long id);
+
+        void CreateBestelling(Bestelling bestelling);
     }
 }

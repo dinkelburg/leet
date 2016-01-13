@@ -51,11 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="AgentPcSWinkelen.cs" />
     <Compile Include="BSBestellingenbeheerAgent.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
+    <Compile Include="IAgentPcSWinkelen.cs" />
     <Compile Include="IBSBestellingenbeheerAgent.cs" />
+    <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -83,7 +86,18 @@ svcutil ^
   /n:"urn:minor-case3-bsbestellingenbeheer:v1:messages,Leet.Kantilever.BSBestellingenbeheer.V1.Messages" ^
   /n:"urn:minor-case3-bsbestellingenbeheer:v1:schema,Leet.Kantilever.BSBestellingenbeheer.V1.Schema" ^
   "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Contracts\leetkantileverbsbestellingenbeheerv1.wsdl" ^
-  "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Contracts\*.xsd"</PreBuildEvent>
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Contracts\*.xsd"
+
+svcutil ^
+  /out:$(ProjectDir)PcSWinkelenGeneratedTypes.cs ^
+  /n:"urn:kantilever:pcswinkelen:v1/Imports,Leet.Kantilever.PcSWinkelen.V1.Imports" ^
+ /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1,Leet.Kantilever.BSCatalogusbeheer.V1.Product" ^
+ /n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Leet.Kantilever.BSCatalogusbeheer.V1.Categorie" ^
+  /n:"urn:leet:kantilever:pcswinkelen:v1,Leet.Kantilever.PcSWinkelen.V1" ^
+  /n:"urn:minor-case3-pcswinkelen:v1:messages,Leet.Kantilever.PcSWinkelen.V1.Messages" ^
+  /n:"urn:minor-case3-pcswinkelen:v1:schema,Leet.Kantilever.PcSWinkelen.V1.Schema" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\kantileverpcswinkelenv1.wsdl" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
