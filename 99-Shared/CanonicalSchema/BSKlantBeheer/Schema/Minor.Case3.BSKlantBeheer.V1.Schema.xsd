@@ -10,6 +10,7 @@
   <xsd:complexType name="Klant">
     <xsd:sequence>
       <xsd:element name="ID" type="xsd:int" />
+      <xsd:element name="Klantnummer" type="xsd:string"/>
       <xsd:element name="Gebruikersnaam" type="xsd:string"/>
       <xsd:element name="Voornaam" type="xsd:string" />
       <xsd:element name="Tussenvoegsel" type="xsd:string" nillable="true" />
