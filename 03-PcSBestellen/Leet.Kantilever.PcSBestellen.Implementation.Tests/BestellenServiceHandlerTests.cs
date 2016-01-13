@@ -17,7 +17,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void FindAllBestellingenCallsAgents()
         {
             // Arrange
-            var BSBestellenMock = new Mock<IAgentBSBestellingenbeheer>(MockBehavior.Strict);
+            var BSBestellenMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
             var regels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection();
             regels.Add(new BSBestellingenbeheer.V1.Schema.Bestellingsregel { Aantal = 1, Prijs = 105, ProductID = 1 });
             BSBestellenMock.Setup(m => m.GetAllBestellingen())
@@ -70,7 +70,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void FindAllBestellingenReturnsAllBestellingen()
         {
             // Arrange
-            var BSBestellenMock = new Mock<IAgentBSBestellingenbeheer>(MockBehavior.Strict);
+            var BSBestellenMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
             var regels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection();
             regels.Add(new BSBestellingenbeheer.V1.Schema.Bestellingsregel { Aantal = 1, Prijs = 105, ProductID = 1 });
             BSBestellenMock.Setup(m => m.GetAllBestellingen())

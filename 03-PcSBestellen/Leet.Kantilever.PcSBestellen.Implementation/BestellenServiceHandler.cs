@@ -10,7 +10,6 @@ using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
 using Leet.Kantilever.PcSBestellen.Contract;
 
-
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
     /// <summary>
@@ -18,17 +17,17 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
     /// </summary>
     public class BestellenServiceHandler : IBestellenService
     {
-        private IAgentBSBestellingenbeheer _agentBestellingen;
+        private IBSBestellingenbeheerAgent _agentBestellingen;
         private IAgentBSCatalogusBeheer _agentCatalogus;
 
 
         public BestellenServiceHandler()
         {
-            _agentBestellingen = new AgentBSBestellingenbeheer();
+            _agentBestellingen = new BSBestellingenbeheerAgent();
             _agentCatalogus = new AgentBSCatalogusBeheer();
         }
 
-        public BestellenServiceHandler(IAgentBSBestellingenbeheer agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
+        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
         {
             _agentBestellingen = agentBestellen;
             _agentCatalogus = agentCatalogus;
