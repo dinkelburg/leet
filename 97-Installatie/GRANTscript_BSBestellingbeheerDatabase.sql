@@ -28,7 +28,14 @@ GO
 USE [master]
 GO
 
-USE [leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
+if db_id('Leet_BSBestellingbeheerDatabase') is not null
+	DROP DATABASE Leet_BSBestellingbeheerDatabase
+GO
+
+CREATE DATABASE [Leet_BSBestellingbeheerDatabase]
+GO
+
+USE [Leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\DefaultAppPool]
 GO
