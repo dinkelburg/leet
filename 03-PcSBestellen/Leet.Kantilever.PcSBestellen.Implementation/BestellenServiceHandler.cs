@@ -12,6 +12,9 @@ using Leet.Kantilever.PcSBestellen.Contract;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class BestellenServiceHandler : IBestellenService
     {
         private IBSBestellingenbeheerAgent _agentBestellingen;
@@ -51,6 +54,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
         }
 
+        /// <summary>
+        /// Retrieve all bestellingen from the BSBestellingenbeheer service and add product information from the BSCatalogusbeheer
+        /// </summary>
+        /// <returns></returns>
         public GetAllBestellingenResponseMessage FindAllBestellingen()
         {
             //Retrieve all Bestellingen
@@ -77,6 +84,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             return new GetAllBestellingenResponseMessage() { BestellingCollection = bestellingCollection };
         }
 
+        /// <summary>
+        /// Find a specific bestelling by id
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
         public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
         {
             //Retrieve all Bestellingen
@@ -99,13 +111,19 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             };
         }
 
+        /// <summary>
+        /// Find the next Bestelling to be packaged
+        /// </summary>
+        /// <returns>Bestelling</returns>
         public GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling()
         {
-            //Quick and dirty fix
+            BestellingMapper mapper = new BestellingMapper();
+            var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
+            var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
+            
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = FindAllBestellingen().BestellingCollection.First(),
-                
+                Bestelling = pcsBestelling
             };
         }
 

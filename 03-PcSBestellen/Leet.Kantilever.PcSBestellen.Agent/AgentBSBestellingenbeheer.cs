@@ -10,15 +10,25 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.PcSBestellen.Agent
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class BSBestellingenbeheerAgent : IBSBestellingenbeheerAgent
     {
         private ServiceFactory<IBestellingenbeheerService> _factory;
 
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
         public BSBestellingenbeheerAgent()
         {
             _factory = new ServiceFactory<IBestellingenbeheerService>("BSBestellingenbeheer");
         }
 
+        /// <summary>
+        /// Constructor that accepts a different service factory.
+        /// </summary>
+        /// <param name="factory"></param>
         public BSBestellingenbeheerAgent(ServiceFactory<IBestellingenbeheerService> factory)
         {
             _factory = factory;
@@ -37,10 +47,10 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             return agent.FindAllBestelling().BestellingCollection;
         }
 
-        public void CreateBestelling(Bestelling bestelling)
+        public Bestelling GetVolgendeBestelling()
         {
             var agent = _factory.CreateAgent();
-            
+            return agent.GetVolgendeOpenBestelling().Bestelling;
         }
     }
 }

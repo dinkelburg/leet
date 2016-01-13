@@ -1,4 +1,4 @@
-﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
+﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

@@ -10,20 +10,22 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
     public class BestellingMapper
     {
         /// <summary>
-        /// Convert a BSBestelling bestelling to a PcSBestellen bestelling
+        /// Convert From BSBestellingenbeheer bestelling to PcSBestellen bestelling 
         /// </summary>
         /// <param name="bestelling"></param>
         /// <returns></returns>
         public PcSBestellen.V1.Schema.Bestelling ConvertToPcsBestelling(BSBestellingenbeheer.V1.Schema.Bestelling bestelling)
         {
             V1.Schema.BestellingsregelCollection regels = new PcSBestellen.V1.Schema.BestellingsregelCollection();
-            // Copy regels
-            bestelling.Bestellingsregels.ForEach(r => regels.Add(ConvertToPcSBestellingregel(r)));
+            // Copy regels if Bestellingsregels isn't null
+            bestelling.Bestellingsregels?.ForEach(r => regels.Add(ConvertToPcSBestellingregel(r)));
             // Create and return PcSBestellen Bestelling
             return new PcSBestellen.V1.Schema.Bestelling
             {
                 Besteldatum = bestelling.Besteldatum,
                 BestellingsregelCollection = regels,
+                Bestelnummer = bestelling.Bestelnummer,
+                ID = bestelling.ID,
             };
         }
 
@@ -85,12 +87,15 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// <param name="producten"></param>
         public void AddProductsToBestelling(PcSBestellen.V1.Schema.Bestelling bestelling, IEnumerable<Product> producten)
         {
+            //Loop through all Bestellingsregels and update product information
             bestelling.BestellingsregelCollection.ForEach(r =>
             {
                 try
                 {
+                    // See if the product can be found 
                     var product = producten.Single(p => p.Id == r.Product.Id);
 
+                    // Add Categories
                     var cats = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
                     cats.AddRange(
                         product.CategorieLijst.Select(c => 
@@ -112,9 +117,9 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                         LeverbaarTot = product.LeverbaarTot,
                         LeverbaarVanaf = product.LeverbaarVanaf,
                         Naam = product.Naam,
-                        Prijs = product.Prijs,
+                        Prijs = r.Product.Prijs,
                     };
-                } catch { }
+                } catch(InvalidOperationException) { /*Product not found, skip*/ }
             });
         }
 

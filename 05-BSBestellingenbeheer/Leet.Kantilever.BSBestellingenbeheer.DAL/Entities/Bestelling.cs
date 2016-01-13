@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Leet.Kantilever.BSBestellingenbeheer.DAL.entities
+namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
 {
     public class Bestelling
     {
