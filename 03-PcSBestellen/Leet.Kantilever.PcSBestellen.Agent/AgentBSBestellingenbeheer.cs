@@ -52,5 +52,10 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             var agent = _factory.CreateAgent();
             return agent.GetVolgendeOpenBestelling().Bestelling;
         }
+
+        public void CreateBestelling(Bestelling bestelling)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

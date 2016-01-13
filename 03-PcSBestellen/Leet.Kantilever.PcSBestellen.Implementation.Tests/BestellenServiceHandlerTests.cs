@@ -56,7 +56,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 }
                 #endregion
             );
-            var handler = new BestellenServiceHandler(BSBestellenMock.Object, BSCatalogusMock.Object);
+            var handler = new BestellenServiceHandler(BSBestellenMock.Object, BSCatalogusMock.Object, null);
 
             //Act
             handler.FindAllBestellingen();
@@ -109,7 +109,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 }
                 #endregion
             );
-            var handler = new BestellenServiceHandler(BSBestellenMock.Object, BSCatalogusMock.Object);
+            var handler = new BestellenServiceHandler(BSBestellenMock.Object, BSCatalogusMock.Object, null);
 
             //Act
             var result = handler.FindAllBestellingen();

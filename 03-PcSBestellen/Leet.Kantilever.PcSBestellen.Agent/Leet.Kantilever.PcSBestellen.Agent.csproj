@@ -58,14 +58,12 @@
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
     <Compile Include="AgentPcSWinkelen.cs" />
-    <Compile Include="BSBestellingenbeheerAgent.cs" />
     <Compile Include="AgentBSBestellingenbeheer.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="IAgentBSBestellingenbeheer.cs" />
     <Compile Include="IAgentPcSWinkelen.cs" />
-    <Compile Include="IBSBestellingenbeheerAgent.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
