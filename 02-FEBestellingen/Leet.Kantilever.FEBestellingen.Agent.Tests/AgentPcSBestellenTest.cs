@@ -12,7 +12,7 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
     {
 
         [TestMethod]
-        public void FindAllBestellingen_GeeftEenProductTest()
+        public void FindAllBestellingen_Geeft1ProductTerugTest()
         {
             // Arrange
             var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
