@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:leet:kantilever:pcsbestellen:v1" elementFormDefault="qualified" targetNamespace="urn:leet:kantilever:pcsbestellen:v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:minor-case3-pcsbestellen:v1:messages" />
+  <xs:element name="FindVolgendeOpenBestelling">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindVolgendeOpenBestellingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindVolgendeOpenBestellingResult" nillable="true" xmlns:q1="urn:minor-case3-pcsbestellen:v1:messages" type="q1:GetVolgendeOpenBestellingResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAllBestellingen">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAllBestellingenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindAllBestellingenResult" nillable="true" xmlns:q2="urn:minor-case3-pcsbestellen:v1:messages" type="q2:GetAllBestellingenResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindBestellingByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="requestMessage" nillable="true" xmlns:q3="urn:minor-case3-pcsbestellen:v1:messages" type="q3:GetBestellingByIDRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindBestellingByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindBestellingByIDResult" nillable="true" xmlns:q4="urn:minor-case3-pcsbestellen:v1:messages" type="q4:GetBestellingByIDResponseMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

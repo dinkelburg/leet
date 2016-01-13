@@ -42,5 +42,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
                 Bestelling = bestelling,
             };
         }
+
+        public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
