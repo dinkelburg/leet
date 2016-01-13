@@ -19,7 +19,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
     {
         public string Naam { get; set; }
         public decimal? Prijs { get; set; }
+        public decimal? PrijsInclusiefBtw { get { return BtwHelper.CalculateBtw(Prijs); } }
         public int Aantal { get; set; }
         public decimal? Totaalprijs { get { return Prijs * Aantal; } }
+        public decimal? TotaalprijsInclusiefBtw { get { return BtwHelper.CalculateBtw(Totaalprijs); } }
     }
 }
