@@ -29,7 +29,7 @@ USE [master]
 GO
 
 if db_id('Leet_BSBestellingbeheerDatabase') is not null
-	DROP DATABASE Leet_BSBestellingbeheerDatabase
+	DROP DATABASE [Leet_BSBestellingbeheerDatabase]
 GO
 
 CREATE DATABASE [Leet_BSBestellingbeheerDatabase]
