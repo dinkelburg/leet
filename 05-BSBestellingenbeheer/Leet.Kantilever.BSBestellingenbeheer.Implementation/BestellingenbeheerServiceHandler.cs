@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
@@ -52,11 +49,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
         {
             BestellingDataMapper mapper = new BestellingDataMapper();
-            var bestelling =
-                    mapper.FindAll().OrderBy(x => x.Besteldatum).FirstOrDefault(x => x.Ingepakt == false);
+            var volgendeBestelling =
+                    mapper.FindVolgendeOpenBestelling();
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = EntityToDTO.BestellingToDto(bestelling)
+                Bestelling = EntityToDTO.BestellingToDto(volgendeBestelling)
             };
         }
     }

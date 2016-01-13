@@ -46,5 +46,17 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
                     .SingleOrDefault(bestelling => bestelling.ID == bestellingID);
             }
         }
+
+        public Bestelling FindVolgendeOpenBestelling()
+        {
+            using (var context = new BestellingContext())
+            {
+                var t = context.Bestellingen.ToList();
+                var t1 = context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
+                                                                  .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
+                return context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
+                                                                  .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
+            }
+        }
     }
 }

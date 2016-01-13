@@ -12,5 +12,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             T FindBestellingByID(int id);
             void AddBestelling(Bestelling bestelling);
             IEnumerable<T> FindAll();
+             T FindVolgendeOpenBestelling();
+
     }
 }
