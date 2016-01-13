@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
 {
+    /// <summary>
+    /// The object used to show the customer the contents of his winkelmand.
+    /// </summary>
     public class WinkelmandVM
     {
         public List<WinkelmandRijVM> Producten { get; set; }
@@ -15,6 +18,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site.ViewModels
         public decimal? TotaalprijsInclusiefBtw { get { return BtwHelper.CalculateBtw(Totaalprijs); } }
     }
 
+    /// <summary>
+    /// An individual row of the customer's winkelmand.
+    /// </summary>
     public class WinkelmandRijVM
     {
         public string Naam { get; set; }

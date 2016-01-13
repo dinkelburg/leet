@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Leet.Kantilever.PcSBestellen.Agent.AgentBSCatalogusBeheer">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>AgentBSCatalogusBeheer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgUpdateCatalogusRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAIAACA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgUpdateCatalogusResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAgAMDAIAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindProductByIdRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAgAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindProductByIdResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAwAEDAIAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindProductsRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAAEAAAQAAwAIAgQgCAAAAAQAEIAAAEAAAIUAoAEEQ=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindProductsResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAwAAAAQEAAAAAAACAAAgAEDAIAEAIAAAQ=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindLeveranciersRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAEAAAAAAIAAAQ=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindLeveranciersResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAQAAAAgAEDAIAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindCategorieenRequest" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Messages.V1.MsgFindCategorieenResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAgAEDAIAAAIBAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.ProductUpdate.V1.ProductUpdateCollection" Collapsed="true">
+    <Position X="6.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.ProductUpdate.V1.ProductUpdate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAAAAAAAAAAAEAAAQAEAAAAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.ProductUpdate.V1.ProductUpdateResultaatCollection" Collapsed="true">
+    <Position X="10" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.ProductUpdate.V1.ProductUpdateResultaat" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACMAAAwAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Product.V1.Product" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACDACABAAAEAIAAACAAhAAQAAEIIAgEAAAhAAMCAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Product.V1.ProductRef" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAAAAAAAAAAAAAAAAAgEAAAgAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Product.V1.ProductCollection" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Categorie.V1.CategorieCollection" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Categorie.V1.Categorie" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAAAABAAAAAAAAAAEAAAgAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Fouten.V1.FoutMelding" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAgAAAAAAAAAAAACEAAAAAAAAAAEAAAAAAKBABA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Leverancier.V1.LeverancierCollection" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.Leverancier.V1.Leverancier" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAIAAAAAABAAAAAAAAAAEAAAgAAIAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kantilever.BsCatalogusbeheer.V1.CatalogusBeheerClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAACAAQEAAAJDAQAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Kantilever.BsCatalogusbeheer.V1.ICatalogusBeheer" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAACAAQEAAAJDAQAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Kantilever.BsCatalogusbeheer.V1.ICatalogusBeheerChannel" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Kantilever.BsCatalogusbeheer.Messages.V1.Sorteerveld" Collapsed="true">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Kantilever.BsCatalogusbeheer.Messages.V1.Sorteerrichting" Collapsed="true">
+    <Position X="8.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Kantilever.BsCatalogusbeheer.ProductUpdate.V1.UpdateActie" Collapsed="true">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Kantilever.BsCatalogusbeheer.Fouten.V1.FoutErnst" Collapsed="true">
+    <Position X="6.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAIAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>generatedTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

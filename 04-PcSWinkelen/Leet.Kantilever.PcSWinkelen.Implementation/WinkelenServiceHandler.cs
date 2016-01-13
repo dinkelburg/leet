@@ -8,6 +8,9 @@ using BsCatalogus = Kantilever.BsCatalogusbeheer.Product.V1;
 using Schema = Leet.Kantilever.PcSWinkelen.V1.Schema;
 using AutoMapper;
 using System.Collections.Generic;
+using Minor.case3.Leet.V1.FunctionalError;
+using System.Linq;
+using System.ServiceModel;
 
 namespace Leet.Kantilever.PcSWinkelen.Implementation
 {
@@ -45,10 +48,19 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         public WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage)
         {
             var winkelmand = _productMapper.FindWinkelmandByClientId(vraagWinkelmandReqMessage.ClientID);
-
-            if(winkelmand == null)
+            var errorList = new FunctionalErrorList();
+            
+            if (winkelmand == null)
             {
-                throw new KeyNotFoundException("Er is geen winkelmandje beschikbaar met het clientID " + vraagWinkelmandReqMessage.ClientID);
+                errorList.Add(new FunctionalErrorDetail
+                {
+                    Message = "Er is geen winkelmandje beschikbaar met het clientID " + vraagWinkelmandReqMessage.ClientID,
+                });
+            }
+
+            if(errorList.Any())
+            {
+                throw new FaultException<FunctionalErrorList>(errorList);
             }
 
             return MapWinkelmand(winkelmand);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using minorcase3pcswinkelen.v1.schema;
 
 namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
 {
@@ -67,6 +68,30 @@ namespace Leet.Kantilever.FEWebwinkel.Agent.Tests
                         Prijs = 9.50M,
                     },
                 };
+        }
+
+        
+        /// <summary>
+        /// Dummy data for a Winkelmand
+        /// </summary>
+        /// <returns>Dummy Winkelmand</returns>
+        public static Winkelmand GetWinkelmand()
+        {
+            var winkelmand = new Winkelmand();
+            winkelmand.Add(new WinkelmandRegel
+            {
+                Aantal = 10,
+                Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
+                {
+                    Id = 5,
+                    Naam = "Mountain Bike Socks, M",
+                    LeverancierNaam = "Bikkel",
+                    AfbeeldingURL = "no_image_available_small.gif",
+                    Prijs = 9.50M,
+                },
+            });
+
+            return winkelmand;
         }
     }
 }

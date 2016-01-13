@@ -5,15 +5,42 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
+using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
-        public string GetData(int value)
+        public GetAllBestellingenResponseMessage FindAllBestelling()
         {
-            return string.Format("You entered: {0}", value);
+            var bestellingen = new BestellingCollection();
+
+            return new GetAllBestellingenResponseMessage { BestellingCollection = bestellingen};
+        }
+
+        public GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m)
+        {
+            var regels = new BestellingsregelCollection();
+            regels.AddRange(new List<Bestellingsregel> {
+                new Bestellingsregel { ProductID = 1, Aantal = 5, Prijs = 15.00M },
+                new Bestellingsregel { ProductID = 5, Aantal = 3, Prijs = 102.00M },
+                new Bestellingsregel { ProductID = 8, Aantal = 15, Prijs = 33.20M },
+                new Bestellingsregel { ProductID = 4, Aantal = 1, Prijs = 19.99M },
+            });
+
+            var bestelling = new Bestelling
+            {
+                Besteldatum = DateTime.Now,
+                Bestellingsregels = regels,
+                ID = m.BestellingsID,
+                KlantID = 61015
+            };
+
+            return new GetBestellingByIDResponseMessage
+            {
+                Bestelling = bestelling,
+            };
         }
     }
 }
