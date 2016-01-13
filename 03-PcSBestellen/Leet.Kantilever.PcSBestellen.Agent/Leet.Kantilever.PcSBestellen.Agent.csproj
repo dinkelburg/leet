@@ -29,6 +29,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\99-Shared\leet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Minor.ServiceBus.Agent.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=73e451069382071b, processorArchitecture=MSIL">
       <HintPath>..\packages\Minor.Caespi.ServiceBus.Agent.1.0.0.3\lib\net452\Minor.ServiceBus.Agent.Implementation.dll</HintPath>
@@ -51,16 +57,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
-    <Compile Include="BSBestellingenbeheerAgent.cs" />
+    <Compile Include="AgentBSBestellingenbeheer.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
-    <Compile Include="IBSBestellingenbeheerAgent.cs" />
+    <Compile Include="IAgentBSBestellingenbeheer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\99-Shared\leet.snk">
+      <Link>leet.snk</Link>
+    </None>
     <None Include="Agent.cd" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\..\99-Shared\KantileverDictionary.xml">
+      <Link>KantileverDictionary.xml</Link>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

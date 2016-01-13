@@ -10,5 +10,7 @@ namespace Leet.Kantilever.FEBestellingen.Agent
     public interface IAgentPcSBestellen
     {
         BestellingCollection FindAllBestellingen();
+
+        Bestelling FindVolgendeOpenBestelling();
     }
 }
