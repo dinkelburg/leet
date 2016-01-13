@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
-using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 {

@@ -7,6 +7,8 @@ using System.ServiceModel;
 using System.Text;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
+using Leet.Kantilever.BSBestellingenbeheer.DAL;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
@@ -40,6 +42,21 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
             return new GetBestellingByIDResponseMessage
             {
                 Bestelling = bestelling,
+            };
+        }
+
+        /// <summary>
+        /// Get the next Bestelling which isn't packed yet
+        /// </summary>
+        /// <returns>The first Bestelling that is ready to be picked</returns>
+        public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
+        {
+            BestellingDataMapper mapper = new BestellingDataMapper();
+            var bestelling =
+                    mapper.FindAll().OrderBy(x => x.Besteldatum).FirstOrDefault(x => x.Ingepakt == false);
+            return new GetVolgendeOpenBestellingResponseMessage
+            {
+                Bestelling = EntityToDTO.BestellingToDto(bestelling)
             };
         }
     }

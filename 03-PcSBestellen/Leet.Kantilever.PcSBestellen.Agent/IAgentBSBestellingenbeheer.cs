@@ -20,5 +20,11 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// <param name="id">The ID of the bestelling to return.</param>
         /// <returns></returns>
         Bestelling GetBestellingByID(long id);
+
+        /// <summary>
+        /// Returns the next bestelling to be handled.
+        /// </summary>
+        /// <returns></returns>
+        Bestelling GetVolgendeBestelling();
     }
 }

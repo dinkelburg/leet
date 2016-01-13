@@ -10,6 +10,7 @@ using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
 using Leet.Kantilever.PcSBestellen.Contract;
 
+
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
     /// <summary>
@@ -17,22 +18,26 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
     /// </summary>
     public class BestellenServiceHandler : IBestellenService
     {
-        private IBSBestellingenbeheerAgent _agentBestellingen;
+        private IAgentBSBestellingenbeheer _agentBestellingen;
         private IAgentBSCatalogusBeheer _agentCatalogus;
 
 
         public BestellenServiceHandler()
         {
-            _agentBestellingen = new BSBestellingenbeheerAgent();
+            _agentBestellingen = new AgentBSBestellingenbeheer();
             _agentCatalogus = new AgentBSCatalogusBeheer();
         }
 
-        public BestellenServiceHandler(IBSBestellingenbeheerAgent agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
+        public BestellenServiceHandler(IAgentBSBestellingenbeheer agentBestellen, IAgentBSCatalogusBeheer agentCatalogus)
         {
             _agentBestellingen = agentBestellen;
             _agentCatalogus = agentCatalogus;
         }
 
+        /// <summary>
+        /// Retrieve all bestellingen from the BSBestellingenbeheer service and add product information from the BSCatalogusbeheer
+        /// </summary>
+        /// <returns></returns>
         public GetAllBestellingenResponseMessage FindAllBestellingen()
         {
             //Retrieve all Bestellingen
@@ -59,6 +64,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             return new GetAllBestellingenResponseMessage() { BestellingCollection = bestellingCollection };
         }
 
+        /// <summary>
+        /// Find a specific bestelling by id
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        /// <returns></returns>
         public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
         {
             //Retrieve all Bestellingen
@@ -81,12 +91,19 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             };
         }
 
+        /// <summary>
+        /// Find the next Bestelling to be packaged
+        /// </summary>
+        /// <returns>Bestelling</returns>
         public GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling()
         {
-            //Quick and dirty fix
+            BestellingMapper mapper = new BestellingMapper();
+            var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
+            var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
+            
             return new GetVolgendeOpenBestellingResponseMessage
             {
-                Bestelling = FindAllBestellingen().BestellingCollection.First(),
+                Bestelling = pcsBestelling
             };
         }
 

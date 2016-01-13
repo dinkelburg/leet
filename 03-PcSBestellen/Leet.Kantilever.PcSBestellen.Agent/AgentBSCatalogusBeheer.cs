@@ -10,25 +10,30 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.PcSBestellen.Agent
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class AgentBSCatalogusBeheer : IAgentBSCatalogusBeheer
     {
         private ServiceFactory<ICatalogusBeheer> _factory;
 
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
         public AgentBSCatalogusBeheer()
         {
             _factory = new ServiceFactory<ICatalogusBeheer>("BSCatalogusBeheer");
         }
 
+        /// <summary>
+        /// A constructor that accepts a different service factory.
+        /// </summary>
+        /// <param name="factory"></param>
         public AgentBSCatalogusBeheer(ServiceFactory<ICatalogusBeheer> factory)
         {
             _factory = factory;
         }
 
-        /// <summary>
-        /// Get a collection of Products with the ID's that belong to them
-        /// </summary>
-        /// <param name="ids">ID's of the corresponding products</param>
-        /// <returns></returns>
         public IEnumerable<Product> GetProductsById(int[] ids)
         {
             List<Product> products = new List<Product>();

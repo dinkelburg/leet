@@ -46,5 +46,11 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             var agent = _factory.CreateAgent();
             return agent.FindAllBestelling().BestellingCollection;
         }
+
+        public Bestelling GetVolgendeBestelling()
+        {
+            var agent = _factory.CreateAgent();
+            return agent.GetVolgendeOpenBestelling().Bestelling;
+        }
     }
 }
