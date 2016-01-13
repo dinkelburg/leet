@@ -46,7 +46,7 @@
   <serviceLocation>
     <name>PcSBestellen</name>
     <profile>Acceptatie</profile>
-    <metadataAddress>http://minorbldsrv/leet/PcSBestellen/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/leet/PcSBestellen/service.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>PcSBestellen</name>
