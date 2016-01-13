@@ -1,4 +1,4 @@
-﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.entities;
+﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
 using System;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests

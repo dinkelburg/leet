@@ -52,11 +52,20 @@
     <Compile Include="BestellingContext.cs" />
     <Compile Include="entities\Bestelling.cs" />
     <Compile Include="entities\BestellingsRegel.cs" />
+    <Compile Include="converters\EntityToDTO.cs" />
+    <Compile Include="mappers\BestellingDataMapper.cs" />
+    <Compile Include="mappers\IDataMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.BSBestellingenbeheer.Contract\Leet.Kantilever.BSBestellingenbeheer.Contract.csproj">
+      <Project>{2adbeb4d-91b4-4226-b879-12e44e1ec5f1}</Project>
+      <Name>Leet.Kantilever.BSBestellingenbeheer.Contract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
