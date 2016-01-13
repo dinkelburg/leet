@@ -9,6 +9,7 @@ using Leet.Kantilever.PcSBestellen.Agent;
 using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
 using Leet.Kantilever.PcSBestellen.Contract;
+using minorcase3bsklantbeheer.v1.schema;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
@@ -74,7 +75,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
                 .Distinct()
                 .ToArray()
             );
-
+            
             var b = mapper.ConvertToPcsBestelling(bestelling);
             mapper.AddProductsToBestelling(b, producten);
             return new GetBestellingByIDResponseMessage

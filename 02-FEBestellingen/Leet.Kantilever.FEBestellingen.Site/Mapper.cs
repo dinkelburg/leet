@@ -26,7 +26,21 @@ namespace Leet.Kantilever.FEBestellingen.Site
                 Leverancierscode = regel.Product.LeveranciersProductId,
                 Aantal = regel.Aantal,
             }).ToList();
-                
+
+        }
+
+        public static FactuurVM BestellingToFactuurVM(Bestelling bestelling)
+        {
+            return new FactuurVM
+            {
+                Bestelling = new BestellingVM
+                {
+                    Besteldatum = bestelling.Besteldatum,
+                    Bestellingsregels = MapBestellingsregelToVMList(bestelling.BestellingsregelCollection),
+                    Bestelnummer = bestelling.Bestelnummer
+                },
+                Klant = bestelling.Klant
+            };
         }
 
     }

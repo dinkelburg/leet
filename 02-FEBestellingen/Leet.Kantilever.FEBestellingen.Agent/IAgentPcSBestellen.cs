@@ -10,5 +10,6 @@ namespace Leet.Kantilever.FEBestellingen.Agent
     public interface IAgentPcSBestellen
     {
         BestellingCollection FindAllBestellingen();
+        Bestelling FindBestellingByID(int bestellingID);
     }
 }
