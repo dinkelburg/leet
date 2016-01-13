@@ -18,6 +18,16 @@ namespace Leet.Kantilever.FEBestellingen.Site
             });
         }
 
+        public static BestellingVM MapBestellingToVMList(Bestelling bestelling)
+        {
+            return new BestellingVM
+            {
+                Bestelnummer = bestelling.Bestelnummer,
+                Bestellingsregels = MapBestellingsregelToVMList(bestelling.BestellingsregelCollection),
+                Besteldatum = bestelling.Besteldatum,
+            };
+        }
+
         private static List<BestellingsRegelVM> MapBestellingsregelToVMList(BestellingsregelCollection bestellingsregels)
         {
             return bestellingsregels.Select(regel => new BestellingsRegelVM
