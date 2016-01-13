@@ -66,7 +66,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
                 AutoMapper.Mapper.CreateMap<KlantVM, Klant>();
                 var klant = AutoMapper.Mapper.Map<Klant>(klantVM);
-
+                klant.Klantnummer = clientID;
                 _bestellenAgent.KlantGegevensInvoeren(klant);
 
                 return RedirectToRoute("ThankYou");
