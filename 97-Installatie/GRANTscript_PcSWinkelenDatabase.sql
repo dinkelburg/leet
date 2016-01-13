@@ -25,9 +25,10 @@ BEGIN
 END
 GO
 
-USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
+USE [master]
 GO
-CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
+
+USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\DefaultAppPool]
 GO
