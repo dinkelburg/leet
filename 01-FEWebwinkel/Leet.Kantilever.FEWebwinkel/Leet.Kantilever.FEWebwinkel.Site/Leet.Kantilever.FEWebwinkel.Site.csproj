@@ -175,6 +175,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BtwConfigSection.cs" />
     <Compile Include="BtwHelper.cs" />
+    <Compile Include="Controllers\BestellenController.cs" />
     <Compile Include="Controllers\CatalogusController.cs" />
     <Compile Include="Controllers\WinkelmandController.cs" />
     <Compile Include="Global.asax.cs">
