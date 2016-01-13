@@ -67,6 +67,7 @@
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="IAgentPcSBestellen.cs" />
     <Compile Include="IAgentPcSWinkelen.cs" />
+    <Compile Include="PcSBestellenGeneratedTypes.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -130,7 +131,14 @@ svcutil.exe ^
 /dconly ^
 /out:BsKlantbeheerGeneratedTypes.cs ^
 /n:"urn:minor-case3-bsklantbeheer:v1:schema,Minor.Case3.BsKlantbeheer.V1.Schema" ^
-"$(SolutionDir)..\..\99-shared\CanonicalSchema\BSKlantBeheer\Schema\Minor.Case3.BSKlantBeheer.V1.Schema.xsd"</PreBuildEvent>
+"$(SolutionDir)..\..\99-shared\CanonicalSchema\BSKlantBeheer\Schema\Minor.Case3.BSKlantBeheer.V1.Schema.xsd"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/out:PcSBestellenGeneratedTypes.cs ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1,schemas.www.kantilever.nl.pcsbestellen.product.v1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,schemas.www.kantilever.nl.pcsbestellen.categorie.v1" ^
+"$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.wsdl" "$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
