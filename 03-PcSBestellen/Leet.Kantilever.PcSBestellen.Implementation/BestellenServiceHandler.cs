@@ -30,6 +30,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentCatalogus = agentCatalogus;
         }
 
+        public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
+        {
+            throw new NotImplementedException();
+        }
+
         public GetAllBestellingenResponseMessage FindAllBestellingen()
         {
             //Retrieve all Bestellingen

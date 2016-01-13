@@ -20,5 +20,8 @@ namespace Leet.Kantilever.PcSBestellen.Contract
 
         [OperationContract]
         GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage);
+
+        [OperationContract]
+        void CreateBestelling(CreateBestellingRequestMessage requestMessage);
     }
 }
