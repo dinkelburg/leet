@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Leet.Kantilever.BSBestellingenbeheer.DAL.entities
+namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
 {
-    public class Bestelling
+    class Bestelling
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
         public long Bestelnummer { get; set; }
-        public virtual ICollection<BestellingsRegel> Bestellingsregels { get; set; }
-        public DateTime Besteldatum { get; set; }
+        public virtual Bestellingsregel Bestellingsregel { get; set; }
         public long KlantID { get; set; }
+        public DateTime Datum { get; set; }
         public bool Ingepakt { get; set; }
-
+        public byte[] TimeStamp { get; set; }
     }
 }

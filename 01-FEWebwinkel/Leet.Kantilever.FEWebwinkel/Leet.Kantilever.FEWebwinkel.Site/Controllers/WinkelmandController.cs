@@ -41,11 +41,11 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
 
 
-        public ActionResult VoegProductToe(int productID, int aantal)
+        public ActionResult VoegProductToe(int artikelId, int aantal)
         {
             string clientIdString = CheckClientID(Request, Response);
 
-            _winkelAgent.VoegProductToeAanWinkelmand(productID, aantal, clientIdString);
+            _winkelAgent.VoegProductToeAanWinkelmand(artikelId, aantal, clientIdString);
 
             return new HttpStatusCodeResult(204);
         }

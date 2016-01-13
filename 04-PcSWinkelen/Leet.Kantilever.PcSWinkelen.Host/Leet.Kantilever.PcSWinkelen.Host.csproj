@@ -43,20 +43,6 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <PublishDatabaseSettings>
-      <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
-          <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql" Enabled="False">
-            <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
-          </Object>
-          <Object Type="DbFullSql" Enabled="False">
-            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
-            <Source Path="obj\Release\AutoScripts\WinkelenContext-Deployment_SchemaOnly.sql" Transacted="True" />
-          </Object>
-        </ObjectGroup>
-      </Objects>
-    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -105,8 +91,7 @@
       <Link>leet.snk</Link>
     </Content>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie.pubxml" />
-    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release.pubxml" />
+    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -148,13 +133,13 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
+        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql" Enabled="False">
+          <Object Type="DbFullSql" Enabled="True">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaAndData.sql" Transacted="True" />
           </Object>
-          <Object Type="DbFullSql" Enabled="False">
+          <Object Type="DbFullSql">
             <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
           </Object>
         </ObjectGroup>

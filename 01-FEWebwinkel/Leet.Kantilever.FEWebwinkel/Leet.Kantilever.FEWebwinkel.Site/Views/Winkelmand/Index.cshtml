@@ -4,8 +4,9 @@
     ViewBag.Title = "Index";
 
 }
-    @Styles.Render("~/Content/Winkelmand")
-
+@section stylesheets {
+    @Styles.Render("~/Content/Winkelmand.css")
+}
 
 <div>
     <h4>Winkelmandje</h4>

@@ -44,10 +44,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -58,33 +54,13 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BestellingMapperTests.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BestellenServiceHandlerTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Agent\Leet.Kantilever.PcSBestellen.Agent.csproj">
-      <Project>{775d7897-1ec4-4be7-84bc-ba81129934a4}</Project>
-      <Name>Leet.Kantilever.PcSBestellen.Agent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Contract\Leet.Kantilever.PcSBestellen.Contract.csproj">
-      <Project>{1b895677-0730-45a5-9386-47de79459571}</Project>
-      <Name>Leet.Kantilever.PcSBestellen.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Implementation\Leet.Kantilever.PcSBestellen.Implementation.csproj">
-      <Project>{270cd123-444c-48e1-b886-315edc8d483d}</Project>
-      <Name>Leet.Kantilever.PcSBestellen.Implementation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.PcSBestellen.Agent
 {
-    public class AgentBSBestellingenbeheer : IAgentBSBestellingenbeheer
+    public class BSBestellingenbeheerAgent : IBSBestellingenbeheerAgent
     {
         private ServiceFactory<IBestellingenbeheerService> _factory;
 
-        public AgentBSBestellingenbeheer()
+        public BSBestellingenbeheerAgent()
         {
             _factory = new ServiceFactory<IBestellingenbeheerService>("BSBestellingenbeheer");
         }
 
-        public AgentBSBestellingenbeheer(ServiceFactory<IBestellingenbeheerService> factory)
+        public BSBestellingenbeheerAgent(ServiceFactory<IBestellingenbeheerService> factory)
         {
             _factory = factory;
         }

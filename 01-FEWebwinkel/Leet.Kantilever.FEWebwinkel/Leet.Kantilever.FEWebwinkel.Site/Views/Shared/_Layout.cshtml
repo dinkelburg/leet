@@ -22,8 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @*<span class="navbar-brand">Kantilever</span>*@
-                @Html.ActionLink("Kantilever", "Index", "Catalogus", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Kantilever", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,7 +30,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="winkelmand">
-                        <a id="winkelmand" href="@Url.Action("Index", "Winkelmand")"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
+                        <a id="winkelmand"><span class="fa fa-shopping-cart"></span> Winkelmand (<span id="winkelmand-counter">0</span>)<span id="winkelmand-target"></span></a>
                     </li>
                 </ul>
             </div>

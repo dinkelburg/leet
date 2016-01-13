@@ -1,10 +1,8 @@
-﻿namespace Leet.Kantilever.BSBestellingenbeheer.DAL.entities
+﻿namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
 {
-    public class BestellingsRegel
+    public class Bestellingsregel
     {
-        public long ID { get; set; }
-        public long ProductID { get; set; }
-        public int Aantal { get; set; }
-        public decimal Prijs { get; set; }
+        public int ProductID { get; set; }
+        public 
     }
 }

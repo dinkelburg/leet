@@ -14,10 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.Host", "Leet.Kantilever.BSBestellingenbeheer.Host\Leet.Kantilever.BSBestellingenbeheer.Host.csproj", "{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.DAL", "Leet.Kantilever.BSBestellingenbeheer.DAL\Leet.Kantilever.BSBestellingenbeheer.DAL.csproj", "{8AFA1219-8863-4ADC-B644-ADA03110A96F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSBestellingenbeheer.DAL.Tests", "Leet.Kantilever.BSBestellingenbeheer.DAL.Tests\Leet.Kantilever.BSBestellingenbeheer.DAL.Tests.csproj", "{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Acceptatie|Any CPU = Acceptatie|Any CPU
@@ -49,18 +45,6 @@ Global
 		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5C53743-93C0-44D0-B7BF-3EF758B1EE59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AFA1219-8863-4ADC-B644-ADA03110A96F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC7B674F-F9F3-4B0D-9A33-DD80166934AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
