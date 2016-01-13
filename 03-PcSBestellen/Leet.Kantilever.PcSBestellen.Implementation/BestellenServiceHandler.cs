@@ -45,9 +45,16 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         {
             var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
             var mapper = new BestellingMapper();
-            var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
-            bestelling.Besteldatum = DateTime.Now;
-            bestelling.Klant = requestMessage.Klant;
+            try
+            {
+                var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
+                bestelling.Besteldatum = DateTime.Now;
+                bestelling.Klant = requestMessage.Klant;
+            }
+            catch(Exception e)
+            {
+                throw new ArgumentNullException(e.Message, e);
+            }
 
             //TODO: Save customer information
 
