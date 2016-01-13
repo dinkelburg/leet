@@ -12,6 +12,9 @@ using Leet.Kantilever.PcSBestellen.Contract;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class BestellenServiceHandler : IBestellenService
     {
         private IBSBestellingenbeheerAgent _agentBestellingen;
