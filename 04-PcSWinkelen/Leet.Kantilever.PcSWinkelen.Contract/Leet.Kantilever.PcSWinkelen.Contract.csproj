@@ -79,7 +79,6 @@
     <None Include="..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
     </None>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Agent\Leet.Kantilever.PcSWinkelen.Agent.csproj">

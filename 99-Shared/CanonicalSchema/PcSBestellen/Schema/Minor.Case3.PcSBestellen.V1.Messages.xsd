@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema id="Minor"
+    targetNamespace="urn:minor-case3-pcsbestellen:v1:messages"
+    xmlns:tns="urn:minor-case3-pcsbestellen:v1:messages"
+    xmlns:schema="urn:minor-case3-pcsbestellen:v1:schema"
+	xmlns:klant="urn:minor-case3-bsklantbeheer:v1:schema ../../BSKlantBeheer/Schema/Minor.Case3.BSKlantBeheer.V1.Schema.xsd"
+    elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+  <xsd:import namespace="urn:minor-case3-pcsbestellen:v1:schema"
+              schemaLocation="Minor.Case3.PcSBestellen.V1.Schema.xsd" />
+			  
+  
+			  
+  <xsd:element name="getVolgendeOpenBestellingRequestMessage" />
+  <xsd:element name="GetVolgendeOpenBestellingResponseMessage" type="tns:GetVolgendeOpenBestellingResponseMessage"/>
+  
+  <xsd:element name="GetAllBestellingenRequestMessage"/>
+  <xsd:element name="GetAllBestellingenResponseMessage" type="tns:GetAllBestellingenResponseMessage"/>
+
+  <xsd:element name="GetBestellingByIDRequestMessage" type="tns:GetBestellingByIDRequestMessage"/>
+  <xsd:element name="GetBestellingByIDResponseMessage" type="tns:GetBestellingByIDResponseMessage"/>
+  
+  
+  <xsd:element name="CreateBestellingRequestMessage" type="tns:CreateBestellingRequestMessage"/>
+
+  <xsd:complexType name="GetBestellingByIDRequestMessage">
+    <xsd:sequence>
+      <xsd:element name="BestellingsID" type="xsd:long" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetBestellingByIDResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="Bestelling" type="schema:Bestelling" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="GetVolgendeOpenBestellingResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="Bestelling" type="schema:Bestelling" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetAllBestellingenResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="BestellingCollection" type="schema:BestellingCollection" />
+    </xsd:sequence>
+  </xsd:complexType>
+ <!--
+  <xsd:complexType name="CreateBestellingRequestMessage">
+	<xsd:sequence>
+	  <xsd:element name="Klant" type="klant:Klant" />
+	</xsd:sequence>
+  </xsd:complexType>
+  -->
+</xsd:schema>

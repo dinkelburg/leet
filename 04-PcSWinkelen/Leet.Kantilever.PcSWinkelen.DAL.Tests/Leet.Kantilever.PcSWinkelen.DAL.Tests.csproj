@@ -63,6 +63,12 @@
     <Compile Include="WinkelenDBInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL\Leet.Kantilever.PcSWinkelen.DAL.csproj">
+      <Project>{9201b319-c53c-4ed0-ae55-51f5f50f657b}</Project>
+      <Name>Leet.Kantilever.PcSWinkelen.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -72,12 +78,6 @@
     <CodeAnalysisDictionary Include="..\..\99-Shared\KantileverDictionary.xml">
       <Link>KantileverDictionary.xml</Link>
     </CodeAnalysisDictionary>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL\Leet.Kantilever.PcSWinkelen.DAL.csproj">
-      <Project>{9201b319-c53c-4ed0-ae55-51f5f50f657b}</Project>
-      <Name>Leet.Kantilever.PcSWinkelen.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

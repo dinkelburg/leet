@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8AFA1219-8863-4ADC-B644-ADA03110A96F}</ProjectGuid>
+    <ProjectGuid>{928C3CA0-400B-46C8-AAC2-D2B733FD17AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Leet.Kantilever.BSBestellingenbeheer.DAL</RootNamespace>
