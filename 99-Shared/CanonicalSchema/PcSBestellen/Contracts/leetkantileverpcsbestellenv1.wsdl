@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:leet:kantilever:pcsbestellen:v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="urn:leet:kantilever:pcsbestellen:v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="urn:leet:kantilever:pcsbestellen:v1" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" targetNamespace="urn:leet:kantilever:pcsbestellen:v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="urn:leet:kantilever:pcsbestellen:v1/Imports">
       <xsd:import namespace="urn:leet:kantilever:pcsbestellen:v1" />
@@ -29,6 +29,12 @@
   <wsdl:message name="IBestellenService_FindBestellingByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindBestellingByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IBestellenService_CreateBestelling_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBestelling" />
+  </wsdl:message>
+  <wsdl:message name="IBestellenService_CreateBestelling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBestellingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBestellenService">
     <wsdl:operation name="FindVolgendeOpenBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindVolgendeOpenBestelling" message="tns:IBestellenService_FindVolgendeOpenBestelling_InputMessage" />
@@ -41,6 +47,10 @@
     <wsdl:operation name="FindBestellingByID">
       <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByID" message="tns:IBestellenService_FindBestellingByID_InputMessage" />
       <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByIDResponse" message="tns:IBestellenService_FindBestellingByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBestelling">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestelling" message="tns:IBestellenService_CreateBestelling_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestellingResponse" message="tns:IBestellenService_CreateBestelling_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IBestellenService" type="tns:IBestellenService">
@@ -65,6 +75,15 @@
     </wsdl:operation>
     <wsdl:operation name="FindBestellingByID">
       <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBestelling">
+      <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestelling" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
