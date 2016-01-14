@@ -1,8 +1,5 @@
 ﻿using minorcase3bsklantbeheer.v1.schema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using minorcase3pcsbestellen.v1.schema;
 
 namespace Leet.Kantilever.FEBestellingen.Site.ViewModels
 {

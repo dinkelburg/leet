@@ -62,9 +62,20 @@ namespace Leet.Kantilever.FEBestellingen.Agent
                     Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
                     {
                         Naam = "HL Road Frame - Black, 58",
-                        LeveranciersProductId = "FR-R92R-58"
+                        LeverancierNaam = "Batavus",
+                        Prijs = 1234m
                     },
                     Aantal = 3,
+                },
+                new Bestellingsregel
+                {
+                    Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
+                    {
+                        Naam = "X1 RaceFiets",
+                        LeverancierNaam = "Sparta",
+                        Prijs = 324m
+                    },
+                    Aantal = 2,
                 }
             },
                         Klant = new Klant

@@ -35,6 +35,8 @@ namespace Leet.Kantilever.FEBestellingen.Site
                 ProductNaam = regel.Product.Naam,
                 Leverancierscode = regel.Product.LeveranciersProductId,
                 Aantal = regel.Aantal,
+                LeveranciersNaam = regel.Product.LeverancierNaam,
+                Prijs = regel.Product.Prijs
             }).ToList();
 
         }
