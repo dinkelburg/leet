@@ -6,6 +6,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using Leet.Kantilever.BSKlantbeheer.V1.Messages;
+using Leet.Kantilever.BSKlantbeheer.DAL.Mappers;
+using Leet.Kantilever.BSKlantbeheer.V1.Schema;
+using System.Data;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
@@ -13,17 +16,44 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
     {
         public GetAllKlantenResponseMessage GetAllKlanten()
         {
-            throw new NotImplementedException();
+            var mapper = new KlantDataMapper();
+            KlantenCollection result = new KlantenCollection();
+            try
+            {
+                result.AddRange(mapper.GetAllKlanten());
+                return new GetAllKlantenResponseMessage { Klanten = result };
+            }
+            catch (DataException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
 
         public GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage msg)
         {
-            throw new NotImplementedException();
+            var mapper = new KlantDataMapper();
+            try
+            {
+                Klant klant = mapper.FindKlant(msg.Klantnummer);
+                return new GetKlantByKlantnummerResponseMessage { Klant = klant };
+            }
+            catch (DataException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
 
         public void RegistreerKlant(InsertKlantGegevensRequestMessage msg)
         {
-            throw new NotImplementedException();
+            var mapper = new KlantDataMapper();
+            try
+            {
+                mapper.InsertKlant(msg.Klant);
+            }
+            catch(DataException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
     }
 }

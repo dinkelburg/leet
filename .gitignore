@@ -216,3 +216,7 @@ ModelManifest.xml
 /05-BSBestellingenbeheer/Leet.Kantilever.BSBestellingenbeheer.zip
 /BackUp.zip
 /archive.zip
+
+# Voorkomen dat contracts worden toegevoegd
+Contracts/
+!99-Shared/CanonicalSchema/BSCatalogusBeheer/Contracts

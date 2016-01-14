@@ -10,17 +10,83 @@
   <xsd:complexType name="Klant">
     <xsd:sequence>
       <xsd:element name="ID" type="xsd:int" />
-      <xsd:element name="Klantnummer" type="xsd:string"/>
-      <xsd:element name="Gebruikersnaam" type="xsd:string"/>
-      <xsd:element name="Voornaam" type="xsd:string" />
-      <xsd:element name="Tussenvoegsel" type="xsd:string" nillable="true" />
-      <xsd:element name="Achternaam" type="xsd:string" />
-      <xsd:element name="Adresregel1" type="xsd:string" />
-      <xsd:element name="Adresregel2" type="xsd:string" nillable="true" />
-      <xsd:element name="Postcode" type="tns:Postcode" />
-      <xsd:element name="Woonplaats" type="xsd:string" />
-      <xsd:element name="Telefoonnummer" type="xsd:string" />
-      <xsd:element name="Email" type="xsd:string" nillable="true" />
+      <xsd:element name="Klantnummer">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Gebruikersnaam">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Voornaam">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Tussenvoegsel" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Achternaam">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Adresregel1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Adresregel2" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Postcode">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Woonplaats">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Telefoonnummer">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Email" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
 
