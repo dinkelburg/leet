@@ -28,8 +28,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 
         public ActionResult ToonFactuur(int bestellingID)
         {
-            var bestelling = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID(bestellingID));
-            return View(bestelling);
+            var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID(bestellingID));
+            return View(factuur);
         }
     }
 }
