@@ -28,12 +28,12 @@ GO
 USE [master]
 GO
 
-if db_id('Leet_BSBestellingbeheerDatabase') is not null
+/*if db_id('Leet_BSBestellingbeheerDatabase') is not null
 	DROP DATABASE [Leet_BSBestellingbeheerDatabase]
 GO
 
 CREATE DATABASE [Leet_BSBestellingbeheerDatabase]
-GO
+GO*/
 
 USE [Leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
 GO
