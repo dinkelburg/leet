@@ -96,3 +96,11 @@ textarea {
 #KlantAdres {
     float: left;
 }
+
+#factuurTable tbody tr:last-child td {
+    border-top: none;
+}
+
+#factuurTable td:last-child {
+    text-align: right;
+}

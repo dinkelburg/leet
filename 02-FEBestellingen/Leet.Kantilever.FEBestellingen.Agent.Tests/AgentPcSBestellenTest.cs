@@ -47,6 +47,7 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
             var bestelling = agent.FindBestellingByID(1);
 
             //assert
+            serviceMock.Verify(m => m.FindBestellingByID(It.IsAny<GetBestellingByIDRequestMessage>()));
             Assert.IsNotNull(bestelling.Klant);
             Assert.IsNotNull(bestelling);
         }
