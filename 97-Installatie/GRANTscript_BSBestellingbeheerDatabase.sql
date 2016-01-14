@@ -15,6 +15,8 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
+USE [master]
+GO
 IF NOT EXISTS 
     (SELECT name  
      FROM master.sys.server_principals
