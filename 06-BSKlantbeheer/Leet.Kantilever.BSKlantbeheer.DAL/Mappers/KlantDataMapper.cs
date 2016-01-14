@@ -7,6 +7,8 @@ using Leet.Kantilever.BSKlantbeheer.V1.Schema;
 using Leet.Kantilever.BSKlantbeheer.DAL.Converters;
 using System.Data.Entity.Infrastructure;
 using System.Data;
+using System.Data.Entity.Validation;
+using Leet.Kantilever.BSKlantbeheer.DAL.Exceptions;
 
 namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
 {
@@ -32,9 +34,9 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
                     db.Klanten.Add(DTOToEntity.ConvertKlant(klant));
                     db.SaveChanges();
                 }
-                catch(DbUpdateException ex)
+                catch(DbEntityValidationException)
                 {
-                    throw new DataException(ex.Message);
+                    throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
                 }
             }
         }

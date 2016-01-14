@@ -9,6 +9,7 @@ using Leet.Kantilever.BSKlantbeheer.V1.Messages;
 using Leet.Kantilever.BSKlantbeheer.DAL.Mappers;
 using Leet.Kantilever.BSKlantbeheer.V1.Schema;
 using System.Data;
+using Leet.Kantilever.BSKlantbeheer.DAL.Exceptions;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
@@ -37,9 +38,14 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
                 Klant klant = mapper.FindKlant(msg.Klantnummer);
                 return new GetKlantByKlantnummerResponseMessage { Klant = klant };
             }
-            catch (DataException ex)
+            catch (InvalidOperationException)
             {
-                throw new FaultException(ex.Message);
+                // Klantnummer was niet bekend
+                throw new FaultException($"Dit klantnummer({msg.Klantnummer}) was niet bekend.");
+            }
+            catch (ArgumentNullException)
+            {
+                throw new FaultException("Klantnummer was niet opgegeven.");
             }
         }
 
@@ -50,7 +56,7 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
             {
                 mapper.InsertKlant(msg.Klant);
             }
-            catch(DataException ex)
+            catch(FunctionalException ex)
             {
                 throw new FaultException(ex.Message);
             }

@@ -58,6 +58,8 @@
     <Compile Include="Converters\DTOToEntity.cs" />
     <Compile Include="Converters\EntityToDTO.cs" />
     <Compile Include="Entities\Klant.cs" />
+    <Compile Include="Exceptions\FunctionalException.cs" />
+    <Compile Include="Exceptions\TechnicalException.cs" />
     <Compile Include="KlantenContext.cs" />
     <Compile Include="Mappings\KlantMapping.cs" />
     <Compile Include="Mappers\KlantDataMapper.cs" />

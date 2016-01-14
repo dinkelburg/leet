@@ -23,7 +23,7 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
 
             using (var context = new KlantenContext())
             {
-                context.Database.Initialize(false);
+                context.Database.Initialize(true);
             }
 
         }
@@ -54,14 +54,13 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
                 // Arrange
                 IKlantbeheerService service = new KlantbeheerServiceHandler();
                 InsertKlantGegevensRequestMessage msg = new V1.Messages.InsertKlantGegevensRequestMessage { Klant = klant };
-                int count = service.GetAllKlanten().Klanten.Count;
 
                 // Act
                 service.RegistreerKlant(msg);
-                int newCount = service.GetAllKlanten().Klanten.Count;
+                int count = service.GetAllKlanten().Klanten.Count;
 
                 // Assert
-                Assert.AreEqual(count + 1, newCount);
+                Assert.AreEqual(3, count);
             }
         }
 
@@ -83,13 +82,13 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
                     // Assert
                     Assert.Fail();
                 }
-                catch (FaultException ex)
+                catch (FaultException)
                 {
                     // Moet hier langs gaan
                 }
-                catch
+                catch (Exception ex)
                 {
-                    Assert.Fail();
+                    Assert.Fail(ex.Message);
                 }
             }
         }
