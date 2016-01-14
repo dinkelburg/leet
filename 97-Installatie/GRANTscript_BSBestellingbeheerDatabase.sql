@@ -15,8 +15,6 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
-USE [master]
-GO
 IF NOT EXISTS 
     (SELECT name  
      FROM master.sys.server_principals
@@ -30,7 +28,7 @@ GO
 USE [master]
 GO
 
-USE [Leet_BSBestellingbeheerDatabase]
+USE [Leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\DefaultAppPool]
 GO
