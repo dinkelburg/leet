@@ -27,6 +27,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         {
             _agentBestellingen = new BSBestellingenbeheerAgent();
             _agentCatalogus = new AgentBSCatalogusBeheer();
+            _agentWinkelen = new AgentPcSWinkelen();
         }
 
         /// <summary>
@@ -42,6 +43,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentWinkelen = agentWinkelen;
         }
 
+        /// <summary>
+        /// Create a bestelling for a klant using his current winkelmand
+        /// </summary>
+        /// <param name="requestMessage"></param>
         public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
         {
             var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
