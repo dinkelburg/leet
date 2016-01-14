@@ -181,8 +181,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             // Act
             try
             {
-                var mappedBestellingsRegels = EntityToDTO.BestellingsregelTo(null);
+                var mappedBestellingsRegels = EntityToDTO.BestellingsregelToDto(null);
             }
+
+            catch (Exception e) { };
 
             // Assert
 
