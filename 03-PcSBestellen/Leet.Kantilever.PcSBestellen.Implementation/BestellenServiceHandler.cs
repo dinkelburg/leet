@@ -26,6 +26,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         {
             _agentBestellingen = new BSBestellingenbeheerAgent();
             _agentCatalogus = new AgentBSCatalogusBeheer();
+            _agentWinkelen = new AgentPcSWinkelen();
         }
 
         /// <summary>

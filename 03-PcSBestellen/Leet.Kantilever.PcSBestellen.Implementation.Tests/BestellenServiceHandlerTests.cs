@@ -132,5 +132,59 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             Assert.AreEqual("DBF15432", result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeveranciersProductId);
             Assert.AreEqual(new DateTime(2010, 4, 6), result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeverbaarVanaf);
         }
+
+        [TestMethod]
+        public void CreateBestelling_CallsAgentTest()
+        {
+            // Arrange
+            var agentWinkelenMock = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
+            
+            var winkelmand = new PcSWinkelen.V1.Schema.Winkelmand();
+            winkelmand.Add(new PcSWinkelen.V1.Schema.WinkelmandRegel
+            {
+                #region data
+                Aantal = 1, Product = new BSCatalogusbeheer.V1.Product.Product
+                {
+                    AfbeeldingURL = "product.jpg",
+                    Beschrijving = "Blauwe fiets",
+                    Id = 1,
+                    CategorieLijst = new BSCatalogusbeheer.V1.Categorie.CategorieCollection(),
+                    LeverancierNaam = "De boer fietsen",
+                    LeveranciersProductId = "DBF15432",
+                    LeverbaarVanaf = new DateTime(2010, 4, 6),
+                    Naam = "Batavus sport blauw",
+                    Prijs = 945,
+                }
+                #endregion
+            });
+            agentWinkelenMock.Setup(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"))
+                .Returns(winkelmand);
+
+            var handler = new BestellenServiceHandler(null, null, agentWinkelenMock.Object);
+            var message = new CreateBestellingRequestMessage
+            {
+                #region Data
+                Klant = new minorcase3bsklantbeheer.v1.schema.Klant
+                {
+                    Achternaam = "Vries",
+                    Adresregel1 = "Boze Wilg 33",
+                    Email = "jdv@worldonline.net",
+                    Gebruikersnaam = "jdv",
+                    ID = 12464,
+                    Klantnummer = "1552fc72-2d19-44e5-ad06-efe175cb51fd",
+                    Postcode = "8421CC",
+                    Telefoonnummer = "0564875123",
+                    Tussenvoegsel = "de",
+                    Voornaam = "Jan",
+                    Woonplaats = "Den Dolder",
+                }
+                #endregion
+            };
+
+            // Act
+            handler.CreateBestelling(message);
+
+            agentWinkelenMock.Verify(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
+        }
     }
 }
