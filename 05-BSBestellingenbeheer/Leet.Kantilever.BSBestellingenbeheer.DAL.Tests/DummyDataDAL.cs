@@ -15,7 +15,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Bestellingsregels = GetBestellingsRegels(),
                 Bestelnummer = 2,
                 Ingepakt = true,
-                KlantID = 1,
+                Klantnummer = "Client01",
             };
         }
 
@@ -52,7 +52,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Bestellingsregels = GetBestellingsRegels(),
                 Bestelnummer = 2,
                 Ingepakt = true,
-                KlantID = 1,
+                Klantnummer = "Client01",
                 },
                 new Bestelling
                 {
@@ -61,7 +61,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Bestellingsregels = GetBestellingsRegels(),
                 Bestelnummer = 2,
                 Ingepakt = false,
-                KlantID = 1,
+                Klantnummer = "Client01",
                 },
                     new Bestelling
                 {
@@ -70,7 +70,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Bestellingsregels = GetBestellingsRegels(),
                 Bestelnummer = 3,
                 Ingepakt = false,
-                KlantID = 1,
+                Klantnummer = "Client01",
                 },
                 };
             }

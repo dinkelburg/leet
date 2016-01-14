@@ -35,7 +35,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 Besteldatum = new DateTime(2015,10,01),
                 Bestelnummer = 2045,
                 ID = 32115,
-                KlantID = 3487,
+                Klantnummer = "Client01",
                 Bestellingsregels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection(),
             };
             

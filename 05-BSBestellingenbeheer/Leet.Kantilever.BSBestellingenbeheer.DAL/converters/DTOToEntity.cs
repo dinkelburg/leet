@@ -16,7 +16,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.converters
                 Bestellingsregels = bestelling.Bestellingsregels.Select(r => BestellingsregelToEntity(r)).ToArray(),
                 Bestelnummer = bestelling.Bestelnummer,
                 Ingepakt = false,
-                KlantID = bestelling.KlantID
+                Klantnummer = bestelling.Klantnummer
             };
         }
 

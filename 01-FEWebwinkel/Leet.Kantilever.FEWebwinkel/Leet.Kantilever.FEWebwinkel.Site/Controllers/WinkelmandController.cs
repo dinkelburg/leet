@@ -40,13 +40,14 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
 
             var winkelmand = _winkelAgent.GetWinkelmand(clientIdString);
 
+            var winkelmandVM = CreateWinkelmandVM(winkelmand);
+            ViewBag.CountProduct = winkelmandVM.Producten.Sum(p => p.Aantal);
+
             if (winkelmand.Count == 0)
             {
                 return View("LegeWinkelmand");
             }
 
-            var winkelmandVM = CreateWinkelmandVM(winkelmand);
-            ViewBag.CountProduct = winkelmandVM.Producten.Sum(p => p.Aantal);
             return View(winkelmandVM);
         }
 

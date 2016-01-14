@@ -51,7 +51,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             var bestellingsregel = bestelling.Bestellingsregels.Where(regel => regel.ID == 2).First();
             Assert.AreEqual(2, bestelling.ID);
             Assert.IsTrue(bestelling.Ingepakt);
-            Assert.AreEqual(1, bestelling.KlantID);
+            Assert.AreEqual("Client01", bestelling.Klantnummer);
             Assert.AreEqual(2, bestellingsregel.ID);
             Assert.AreEqual(3, bestellingsregel.Aantal);
             Assert.AreEqual(5, bestellingsregel.ProductID);

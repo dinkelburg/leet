@@ -29,7 +29,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                         Besteldatum = new DateTime(2015,1,3),
                         Bestelnummer = 3264,
                         ID = 124,
-                        KlantID = 124,
+                        Klantnummer = "Client01",
                         Bestellingsregels = regels
                     }
                     #endregion
@@ -82,7 +82,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                         Besteldatum = new DateTime(2015,1,3),
                         Bestelnummer = 3264,
                         ID = 124,
-                        KlantID = 124,
+                        Klantnummer = "Client01",
                         Bestellingsregels = regels
                     }
                     #endregion
@@ -225,7 +225,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                     Bestelnummer = 24343,
                     ID = 15434,
                     Ingepakt = false,
-                    KlantID = 46574676
+                    Klantnummer = "Client01",
                 });
             var handler = new BestellenServiceHandler(agentBestellingMock.Object, agentCatalogusMock.Object, null);
 
