@@ -29,4 +29,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemoveWinkelmand">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="vraagWinkelmandReqMessage" nillable="true" xmlns:q5="urn:minor-case3-pcswinkelen:v1:messages" type="q5:VraagWinkelmandRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveWinkelmandResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

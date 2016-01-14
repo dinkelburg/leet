@@ -58,6 +58,9 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             //TODO: Save customer information
 
             _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
+
+            //Remove winkelmand
+            _agentWinkelen.RemoveWinkelmand(bestelling.Klant.Klantnummer);
         }
 
         /// <summary>

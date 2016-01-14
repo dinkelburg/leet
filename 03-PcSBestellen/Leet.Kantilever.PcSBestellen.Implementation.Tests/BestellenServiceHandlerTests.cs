@@ -138,6 +138,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         {
             // Arrange
             var agentWinkelenMock = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
+            var agentBestellenMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
             
             var winkelmand = new PcSWinkelen.V1.Schema.Winkelmand();
             winkelmand.Add(new PcSWinkelen.V1.Schema.WinkelmandRegel
@@ -160,7 +161,9 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             agentWinkelenMock.Setup(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"))
                 .Returns(winkelmand);
 
-            var handler = new BestellenServiceHandler(null, null, agentWinkelenMock.Object);
+            agentBestellenMock.Setup(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
+            
+            var handler = new BestellenServiceHandler(agentBestellenMock.Object, null, agentWinkelenMock.Object);
             var message = new CreateBestellingRequestMessage
             {
                 #region Data
@@ -184,6 +187,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             // Act
             handler.CreateBestelling(message);
 
+            // Assert
             agentWinkelenMock.Verify(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
         }
     }

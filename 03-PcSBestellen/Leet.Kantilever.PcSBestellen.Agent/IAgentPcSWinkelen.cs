@@ -19,6 +19,6 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// Delete winkelmand for a klant
         /// </summary>
         /// <param name="klantnummer">The klantnummer of the klant</param>
-        void DeleteWinkelmand(string klantnummer);
+        void RemoveWinkelmand(string klantnummer);
     }
 }
