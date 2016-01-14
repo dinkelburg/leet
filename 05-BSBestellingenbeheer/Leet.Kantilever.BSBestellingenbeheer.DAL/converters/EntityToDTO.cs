@@ -10,6 +10,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
     {
         public static V1.Schema.Bestelling BestellingToDto(Entities.Bestelling bestelling)
         {
+            if(bestelling == null)
+            {
+                throw new ArgumentNullException("bestelling");
+            }
+
             return new V1.Schema.Bestelling
             {
                 ID = bestelling.ID,
