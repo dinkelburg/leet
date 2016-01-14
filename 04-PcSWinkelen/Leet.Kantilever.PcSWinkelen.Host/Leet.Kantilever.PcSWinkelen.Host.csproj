@@ -106,6 +106,7 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie.pubxml" />
+    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie2.pubxml" />
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -151,11 +152,11 @@
         <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" />
           <Object Type="DbFullSql" Enabled="True">
-            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Test_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaOnly.sql" Transacted="True" />
           </Object>
-          <Object Type="DbFullSql" Enabled="True">
-            <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
+          <Object Type="DbFullSql" xmlns="">
+            <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase - Copy.sql" Transacted="False" />
           </Object>
         </ObjectGroup>
       </Objects>
