@@ -19,5 +19,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Contract
 
         [OperationContract]
         GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling();
+
+
+        [OperationContract]
+        void CreateBestelling(CreateBestellingRequestMessage requestMesssage);
     }
 }

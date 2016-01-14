@@ -26,6 +26,12 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View(bestellingen);
         }
 
+        public ActionResult VolgendeBestelling()
+        {
+            var bestelling = Mapper.MapBestellingToVMList(_agent.FindVolgendeOpenBestelling());
+            return View(bestelling.Bestellingsregels);
+        }
+
         public ActionResult ToonFactuur(int bestellingID)
         {
             var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID(bestellingID));

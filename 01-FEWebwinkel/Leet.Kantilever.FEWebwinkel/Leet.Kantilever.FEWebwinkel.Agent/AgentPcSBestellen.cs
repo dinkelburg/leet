@@ -10,16 +10,22 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
 {
     public class AgentPcSBestellen : IAgentPcSBestellen
     {
-        //private ServiceFactory<IPcSBestellen> _factory;
+        private ServiceFactory<IBestellenService> _factory;
 
         public AgentPcSBestellen()
         {
-            //_factory = new ServiceFactory<IPcSBestellen>("PcSBestellen");
+            _factory = new ServiceFactory<IBestellenService>("PcSBestellen");
         }
 
         public void KlantGegevensInvoeren(Klant klant)
         {
+            AutoMapper.Mapper.CreateMap<Klant, minorcase3bsklantbeheer.v1.schema.Klant>();
+            var proxy = _factory.CreateAgent();
+            proxy.CreateBestelling(new minorcase3pcsbestellen.v1.messages.CreateBestellingRequestMessage
+            {
+                Klant = AutoMapper.Mapper.Map<minorcase3bsklantbeheer.v1.schema.Klant>(klant),
+            });
+        }
 
-        } 
     }
 }

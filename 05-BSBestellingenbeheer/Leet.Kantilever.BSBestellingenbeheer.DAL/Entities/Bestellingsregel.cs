@@ -1,4 +1,4 @@
-﻿namespace Leet.Kantilever.BSBestellingenbeheer.DAL.entities
+﻿namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
 {
     public class BestellingsRegel
     {

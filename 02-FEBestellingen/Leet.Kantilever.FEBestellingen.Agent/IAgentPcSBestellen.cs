@@ -11,5 +11,7 @@ namespace Leet.Kantilever.FEBestellingen.Agent
     {
         BestellingCollection FindAllBestellingen();
         Bestelling FindBestellingByID(int bestellingID);
+
+        Bestelling FindVolgendeOpenBestelling();
     }
 }
