@@ -5,7 +5,6 @@ using Leet.Kantilever.PcSWinkelen.DAL.Entities;
 using Leet.Kantilever.PcSWinkelen.DAL;
 using Leet.Kantilever.PcSWinkelen.Agent;
 using Leet.Kantilever.PcSWinkelen.Agent.Tests;
-using Leet.Kantilever.PcSWinkelen.DAL.Tests;
 using System.Linq;
 using System.Collections.Generic;
 using System.ServiceModel;

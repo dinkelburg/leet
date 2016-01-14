@@ -40,7 +40,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             {
                 Besteldatum = bestelling.Besteldatum,
                 Bestelnummer = bestelling.Bestelnummer,
-                KlantID = bestelling.Klant.ID,
+                Klantnummer = bestelling.Klant.Klantnummer,
                 Bestellingsregels = regels,
                 ID = 0,
             };

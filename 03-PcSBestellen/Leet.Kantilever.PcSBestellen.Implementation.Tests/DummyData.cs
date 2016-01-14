@@ -78,7 +78,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                     Bestelnummer = 24343,
                     ID = 15434,
                     Ingepakt = false,
-                    KlantID = 46574676
+                    Klantnummer = "42dffe6f-2b0b-43d5-9e84-8433168def99"
                     #endregion
                 };
         }
