@@ -33,14 +33,32 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
 
         }
 
+        [TestMethod]
+        public void GetBestellingByID()
+        {
+            //arrange
+            var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
+            serviceMock.Setup(service => service.FindBestellingByID(It.IsAny<GetBestellingByIDRequestMessage>())).Returns(DummyData.GetBestellingByIDResponseMessage());
+            var factoryMock = new Mock<ServiceFactory<IBestellenService>>(MockBehavior.Strict);
+            factoryMock.Setup(factory => factory.CreateAgent()).Returns(serviceMock.Object);
+            var agent = new AgentPcSBestellen(factoryMock.Object);
+
+            //act
+            var bestelling = agent.FindBestellingByID(1);
+
+            //assert
+            Assert.IsNotNull(bestelling.Klant);
+            Assert.IsNotNull(bestelling);
+        }
+
         private void AssertBestellingCollection(BestellingCollection actualBestellingCollection, BestellingCollection expectedBestellingCollection)
         {
-            for(int i = 0; i < actualBestellingCollection.Count; i++)
+            for (int i = 0; i < actualBestellingCollection.Count; i++)
             {
                 Assert.AreEqual(expectedBestellingCollection[i].ID, actualBestellingCollection[i].ID);
                 Assert.AreEqual(expectedBestellingCollection[i].Besteldatum, actualBestellingCollection[i].Besteldatum);
                 Assert.AreEqual(expectedBestellingCollection[i].Bestelnummer, actualBestellingCollection[i].Bestelnummer);
-                for(int j = 0; j < expectedBestellingCollection[i].BestellingsregelCollection.Count; j++)
+                for (int j = 0; j < expectedBestellingCollection[i].BestellingsregelCollection.Count; j++)
                 {
                     Assert.AreEqual(expectedBestellingCollection[i].BestellingsregelCollection[j].Product.Naam, actualBestellingCollection[i].BestellingsregelCollection[j].Product.Naam);
                     Assert.AreEqual(expectedBestellingCollection[i].BestellingsregelCollection[j].Product.LeveranciersProductId, actualBestellingCollection[i].BestellingsregelCollection[j].Product.LeveranciersProductId);
