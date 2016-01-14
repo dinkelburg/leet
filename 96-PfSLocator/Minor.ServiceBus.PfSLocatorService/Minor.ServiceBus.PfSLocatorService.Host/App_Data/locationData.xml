@@ -36,5 +36,41 @@
     <metadataAddress>http://minorbldsrv/Leet/release/PcSWinkelen/PcSWinkelenService.svc/mex</metadataAddress>
   </serviceLocation>
 
+  <!-- PcSBestellen -->
+  <serviceLocation>
+    <name>PcSBestellen</name>
+    <profile>Development</profile>
+    <metadataAddress>http://minorbldsrv/leet/PcSBestellen/Service.svc/mex</metadataAddress>
+    <!--<metadataAddress>http://localhost:44348/PcSWinkelenService.svc/mex</metadataAddress>.-->
+  </serviceLocation>
+  <serviceLocation>
+    <name>PcSBestellen</name>
+    <profile>Acceptatie</profile>
+    <metadataAddress>http://minorbldsrv/leet/PcSBestellen/service.svc/mex</metadataAddress>
+  </serviceLocation>
+  <serviceLocation>
+    <name>PcSBestellen</name>
+    <profile>Release</profile>
+    <metadataAddress>http://minorbldsrv/release/PcSBestellen/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+
+  <!-- BSBestellingenbeheer -->
+  <serviceLocation>
+    <name>BSBestellingenbeheer</name>
+    <profile>Development</profile>
+    <metadataAddress>http://minorbldsrv/leet/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
+    <!--<metadataAddress>http://localhost:44348/BSBestellingenbeheerService.svc/mex</metadataAddress>.-->
+  </serviceLocation>
+  <serviceLocation>
+    <name>BSBestellingenbeheer</name>
+    <profile>Acceptatie</profile>
+    <metadataAddress>http://minorbldsrv/leet/BSBestellingen/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+  <serviceLocation>
+    <name>BSBestellingenbeheer</name>
+    <profile>Release</profile>
+    <metadataAddress>http://minorbldsrv/release/PcSBestellen/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+
 
 </locationData>
