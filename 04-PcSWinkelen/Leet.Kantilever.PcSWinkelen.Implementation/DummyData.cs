@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
+namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
 {
     /// <summary>
     /// This class provides dummy data for test purposes
