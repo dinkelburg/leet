@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSKlantbeheer.Contract", "Leet.Kantilever.BSKlantbeheer.Contract\Leet.Kantilever.BSKlantbeheer.Contract.csproj", "{F0B58535-28AB-4E35-8423-4B8C383A4C59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSKlantbeheer.Implementation", "Leet.Kantilever.BSKlantbeheer.Implementation\Leet.Kantilever.BSKlantbeheer.Implementation.csproj", "{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSKlantbeheer.Host", "Leet.Kantilever.BSKlantbeheer.Host\Leet.Kantilever.BSKlantbeheer.Host.csproj", "{98A230BC-335F-4F6E-8302-2863B1A6132B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leet.Kantilever.BSKlantbeheer.Implementation.Tests", "Leet.Kantilever.BSKlantbeheer.Implementation.Tests\Leet.Kantilever.BSKlantbeheer.Implementation.Tests.csproj", "{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Acceptatie|Any CPU = Acceptatie|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0B58535-28AB-4E35-8423-4B8C383A4C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5DD920E-7BAA-486D-ACB0-DB5D47B63DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Acceptatie|Any CPU.ActiveCfg = Acceptatie|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Acceptatie|Any CPU.Build.0 = Acceptatie|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A230BC-335F-4F6E-8302-2863B1A6132B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Acceptatie|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Acceptatie|Any CPU.Build.0 = Release|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

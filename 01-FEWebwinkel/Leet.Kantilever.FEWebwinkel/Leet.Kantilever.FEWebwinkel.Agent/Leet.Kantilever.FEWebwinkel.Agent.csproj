@@ -44,6 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Minor.ServiceBus.Agent.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=73e451069382071b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Minor.Caespi.ServiceBus.Agent.1.0.0.3\lib\net452\Minor.ServiceBus.Agent.Implementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -53,20 +57,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService1.cs" />
+    <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="GeneratedTypes.cs" />
+    <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDictionary Include="..\..\..\99-Shared\leet.snk">
+    <Content Include="..\..\..\99-Shared\leet.snk">
       <Link>leet.snk</Link>
-    </CodeAnalysisDictionary>
+    </Content>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\99-Shared\KantileverDictionary.xml">
+    <CodeAnalysisDictionary Include="..\..\..\99-Shared\KantileverDictionary.xml">
       <Link>KantileverDictionary.xml</Link>
-    </Content>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -84,6 +90,20 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/out:GeneratedTypes.cs ^
+/n:"urn:kantilever:bscatalogusbeheer:v1/Imports,Kantilever.BsCatalogusbeheer.V1.Imports" ^
+/n:"urn:kantilever:bscatalogusbeheer:v1,Kantilever.BsCatalogusbeheer.V1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:messages:v1,Kantilever.BsCatalogusbeheer.Messages.V1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:productupdate:v1,Kantilever.BsCatalogusbeheer.ProductUpdate.V1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1,Kantilever.BsCatalogusbeheer.Product.V1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,Kantilever.BsCatalogusbeheer.Categorie.V1" ^
+/n:"urn:schemas-www-kantilever-nl:common:fouten:v1,Kantilever.BsCatalogusbeheer.Fouten.V1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:leverancier:v1,Kantilever.BsCatalogusbeheer.Leverancier.V1" ^
+"$(SolutionDir)\..\..\99-shared\CanonicalSchema\BSCatalogusBeheer\Contracts\ICatalogusBeheer.V1.wsdl"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
