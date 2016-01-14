@@ -40,7 +40,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             {
                 Besteldatum = bestelling.Besteldatum,
                 Bestelnummer = bestelling.Bestelnummer,
-                KlantID = bestelling.Klant.ID,
+                Klantnummer = bestelling.Klant.Klantnummer,
                 Bestellingsregels = regels,
                 ID = 0,
             };
@@ -135,9 +135,14 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             foreach (var regel in mand)
             {
                 // Map Categorieen
-                var categorieen = regel.Product.CategorieLijst.Select(c => new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.Categorie { Id = c.Id, Naam = c.Naam });
-                var catCollection = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
-                catCollection.AddRange(categorieen);
+                schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection catCollection = null;
+                if (regel.Product.CategorieLijst != null)
+                {
+                    var categorieen = regel.Product.CategorieLijst.Select(c => new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.Categorie { Id = c.Id, Naam = c.Naam });
+                    catCollection = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
+                    catCollection.AddRange(categorieen);
+                }
+                
                 
                 //Map regels
                 bestelling.BestellingsregelCollection.Add(new V1.Schema.Bestellingsregel {
@@ -146,7 +151,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                     {
                         AfbeeldingURL = regel.Product.AfbeeldingURL,
                         Beschrijving = regel.Product.Beschrijving,
-                        CategorieLijst = catCollection,
+                        CategorieLijst = catCollection ?? new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection(),
                         Id = regel.Product.Id,
                         LeverancierNaam = regel.Product.LeverancierNaam,
                         LeveranciersProductId = regel.Product.LeveranciersProductId,

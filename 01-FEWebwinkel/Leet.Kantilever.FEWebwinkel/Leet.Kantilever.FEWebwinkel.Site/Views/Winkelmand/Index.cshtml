@@ -5,7 +5,7 @@
 
 }
 
-@Styles.Render("~/Content/Winkelmand.css")
+@Styles.Render("~/Content/Winkelmand")
 
 
 <div>
@@ -16,8 +16,14 @@
         @Html.Partial("Winkelmandoverzicht", Model.Producten)
         <tfoot>
             <tr>
-                <td colspan="3" class="text-right">@Html.DisplayNameFor(model => model.Totaalprijs)</td>
-                <td>&euro; @Html.DisplayFor(model => model.Totaalprijs)</td>
+                <td colspan="3" class="text-right">
+                    <p>@Html.DisplayNameFor(model => model.Totaalprijs)</p>
+                    <p>@Html.DisplayNameFor(model => model.TotaalprijsInclusiefBtw)</p>
+                </td>
+                <td>
+                    <p>&euro; @Html.DisplayFor(model => model.Totaalprijs)</p>
+                    <p>&euro; @Html.DisplayFor(model => model.TotaalprijsInclusiefBtw)</p>
+                </td>
             </tr>
         </tfoot>
     </table>

@@ -40,7 +40,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
                 Besteldatum = DateTime.Now,
                 Bestellingsregels = regels,
                 ID = m.BestellingsID,
-                KlantID = 61015
+                Klantnummer = "Client01"
             };
 
             return new GetBestellingByIDResponseMessage

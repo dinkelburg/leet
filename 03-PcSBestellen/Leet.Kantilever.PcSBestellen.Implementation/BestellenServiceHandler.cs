@@ -9,6 +9,7 @@ using Leet.Kantilever.PcSBestellen.Agent;
 using Leet.Kantilever.PcSBestellen.V1.Schema;
 using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
 using Leet.Kantilever.PcSBestellen.Contract;
+using minorcase3bsklantbeheer.v1.schema;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
@@ -26,6 +27,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         {
             _agentBestellingen = new BSBestellingenbeheerAgent();
             _agentCatalogus = new AgentBSCatalogusBeheer();
+            _agentWinkelen = new AgentPcSWinkelen();
         }
 
         /// <summary>
@@ -41,17 +43,25 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentWinkelen = agentWinkelen;
         }
 
+        /// <summary>
+        /// Create a bestelling for a klant using his current winkelmand
+        /// </summary>
+        /// <param name="requestMessage"></param>
         public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
         {
             var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
             var mapper = new BestellingMapper();
             var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
+
             bestelling.Besteldatum = DateTime.Now;
             bestelling.Klant = requestMessage.Klant;
 
             //TODO: Save customer information
 
             _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
+
+            //Remove winkelmand
+            _agentWinkelen.RemoveWinkelmand(bestelling.Klant.Klantnummer);
         }
 
         /// <summary>
@@ -102,7 +112,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
                 .Distinct()
                 .ToArray()
             );
-
+            
             var b = mapper.ConvertToPcsBestelling(bestelling);
             mapper.AddProductsToBestelling(b, producten);
             return new GetBestellingByIDResponseMessage

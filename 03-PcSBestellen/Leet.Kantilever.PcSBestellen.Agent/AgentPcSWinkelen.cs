@@ -33,9 +33,10 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// Remove a winkelmand
         /// </summary>
         /// <param name="klantnummer">Unique identifier for the klant</param>
-        public void DeleteWinkelmand(string klantnummer)
+        public void RemoveWinkelmand(string klantnummer)
         {
-            throw new NotImplementedException();
+            var proxy = _factory.CreateAgent();
+            proxy.RemoveWinkelmand(new PcSWinkelen.V1.Messages.VraagWinkelmandRequestMessage { ClientID = klantnummer });
         }
 
         /// <summary>

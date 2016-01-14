@@ -34,7 +34,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             
             Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
-            Assert.IsNull(result.ViewBag.CountProduct);
+            Assert.IsNotNull(result.ViewBag.CountProduct);
         }
 
         [TestMethod]
@@ -52,7 +52,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             //assert
             Assert.IsNotNull(result);
             Assert.AreEqual(result.ViewName.ToString(), "LegeWinkelmand");
-            Assert.IsNull(result.ViewBag.CountProduct);
+            Assert.IsNotNull(result.ViewBag.CountProduct);
         }
 
         [TestMethod]

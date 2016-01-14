@@ -29,7 +29,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                         Besteldatum = new DateTime(2015,1,3),
                         Bestelnummer = 3264,
                         ID = 124,
-                        KlantID = 124,
+                        Klantnummer = "Client01",
                         Bestellingsregels = regels
                     }
                     #endregion
@@ -82,7 +82,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                         Besteldatum = new DateTime(2015,1,3),
                         Bestelnummer = 3264,
                         ID = 124,
-                        KlantID = 124,
+                        Klantnummer = "Client01",
                         Bestellingsregels = regels
                     }
                     #endregion
@@ -131,6 +131,109 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             Assert.AreEqual("De boer fietsen", result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeverancierNaam);
             Assert.AreEqual("DBF15432", result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeveranciersProductId);
             Assert.AreEqual(new DateTime(2010, 4, 6), result.BestellingCollection.First().BestellingsregelCollection.First().Product.LeverbaarVanaf);
+        }
+
+        [TestMethod]
+        public void CreateBestelling_CallsAgentsTest()
+        {
+            // Arrange
+            var agentWinkelenMock = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
+            var agentBestellenMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            
+            var winkelmand = new PcSWinkelen.V1.Schema.Winkelmand();
+            winkelmand.Add(new PcSWinkelen.V1.Schema.WinkelmandRegel
+            {
+                #region data
+                Aantal = 1, Product = new BSCatalogusbeheer.V1.Product.Product
+                {
+                    AfbeeldingURL = "product.jpg",
+                    Beschrijving = "Blauwe fiets",
+                    Id = 1,
+                    CategorieLijst = new BSCatalogusbeheer.V1.Categorie.CategorieCollection(),
+                    LeverancierNaam = "De boer fietsen",
+                    LeveranciersProductId = "DBF15432",
+                    LeverbaarVanaf = new DateTime(2010, 4, 6),
+                    Naam = "Batavus sport blauw",
+                    Prijs = 945,
+                }
+                #endregion
+            });
+            agentWinkelenMock.Setup(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"))
+                .Returns(winkelmand);
+            agentWinkelenMock.Setup(a => a.RemoveWinkelmand("1552fc72-2d19-44e5-ad06-efe175cb51fd"));
+
+            agentBestellenMock.Setup(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
+            
+            var handler = new BestellenServiceHandler(agentBestellenMock.Object, null, agentWinkelenMock.Object);
+            var message = new CreateBestellingRequestMessage
+            {
+                #region Data
+                Klant = new minorcase3bsklantbeheer.v1.schema.Klant
+                {
+                    Achternaam = "Vries",
+                    Adresregel1 = "Boze Wilg 33",
+                    Email = "jdv@worldonline.net",
+                    Gebruikersnaam = "jdv",
+                    ID = 12464,
+                    Klantnummer = "1552fc72-2d19-44e5-ad06-efe175cb51fd",
+                    Postcode = "8421CC",
+                    Telefoonnummer = "0564875123",
+                    Tussenvoegsel = "de",
+                    Voornaam = "Jan",
+                    Woonplaats = "Den Dolder",
+                }
+                #endregion
+            };
+
+            // Act
+            handler.CreateBestelling(message);
+
+            // Assert
+            agentWinkelenMock.Verify(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
+            agentBestellenMock.Verify(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()), Times.Once);
+            agentWinkelenMock.Verify(a => a.RemoveWinkelmand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
+        }
+
+        [TestMethod]
+        public void FindVolgendeOpenBestelling_CallsAgentTest()
+        {
+            var agentBestellingMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            var agentCatalogusMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
+
+            agentCatalogusMock.Setup(a => a.GetProductsById(It.IsAny<int[]>()))
+                .Returns(new List<KantileverAlias.Product.V1.Product> {
+                    #region Data
+                    new KantileverAlias.Product.V1.Product
+                    {
+                        AfbeeldingURL = "product.jpg",
+                        Beschrijving = "Blauwe fiets",
+                        Id = 1,
+                        CategorieLijst = new KantileverAlias.Categorie.V1.CategorieCollection(),
+                        LeverancierNaam = "De boer fietsen",
+                        LeveranciersProductId = "DBF15432",
+                        LeverbaarVanaf = new DateTime(2010, 4, 6),
+                        Naam = "Batavus sport blauw",
+                        Prijs = 945,
+                    }
+                    #endregion
+                });
+
+            agentBestellingMock.Setup(a => a.GetVolgendeBestelling())
+                .Returns(new BSBestellingenbeheer.V1.Schema.Bestelling {
+                    Besteldatum = new DateTime(2015,01,15),
+                    Bestellingsregels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection(),
+                    Bestelnummer = 24343,
+                    ID = 15434,
+                    Ingepakt = false,
+                    Klantnummer = "Client01",
+                });
+            var handler = new BestellenServiceHandler(agentBestellingMock.Object, agentCatalogusMock.Object, null);
+
+            // Act
+            handler.FindVolgendeOpenBestelling();
+
+            // Assert
+            agentBestellingMock.Verify(a => a.GetVolgendeBestelling(), Times.Once);
         }
     }
 }
