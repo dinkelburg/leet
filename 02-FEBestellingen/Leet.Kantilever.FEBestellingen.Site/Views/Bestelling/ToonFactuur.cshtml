@@ -1,0 +1,62 @@
+﻿@model Leet.Kantilever.FEBestellingen.Site.ViewModels.FactuurVM
+
+@{
+    ViewBag.Title = "ToonFactuur";
+}
+
+<h2>Factuurnummer @Model.Bestelling.Bestelnummer</h2>
+<br />
+<address id="KlantAdres">
+    <strong>@Model.Klant.Voornaam @Model.Klant.Achternaam</strong><br />
+    @Model.Klant.Adresregel1<br />
+    @if (@Model.Klant.Adresregel2 != null)
+    {
+        @Model.Klant.Adresregel2<br />
+    }
+    @Model.Klant.Postcode @Model.Klant.Woonplaats
+</address>
+
+<address id="KantileverAdres">
+    <strong>Kantilever</strong><br />
+    Laanstraat 321<br />
+    4321BA Rotterdam<br />
+</address>
+
+<table class="table" id="factuurTable">
+    <thead>
+        <tr>
+            <td>Naam</td>
+            <td>Prijs</td>
+            <td>Leverancier</td>
+            <td>Aantal</td>
+            <td>Totaalprijs</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rij in @Model.Bestelling.Bestellingsregels)
+        {
+            <tr>
+                <td>@rij.ProductNaam</td>
+                <td>@rij.PrijsInclusiefBtw</td>
+                <td>@rij.LeveranciersNaam</td>
+                <td>@rij.Aantal</td>
+                <td>@rij.Totaalprijs</td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td align="right">Totaalprijs exclusief BTW:</td>
+            <td>@Model.Bestelling.Totaalprijs</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td align="right">Totaalprijs inclusief BTW:</td>
+            <td>@Model.Bestelling.TotaalprijsInclusiefBtw</td>
+        </tr>
+    </tbody>
+</table>
+
