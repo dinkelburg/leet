@@ -72,5 +72,25 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             Assert.AreEqual(3, openBestelling.ID);
 
         }
+
+
+        [TestMethod]
+        public void AddNieuweBestellingReturntGrotereLijstTest()
+        {
+            // Arrange
+            IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+
+            // Act
+            var oudeBestellinglijst = bestellingMapper.FindAll();
+
+            bestellingMapper.AddBestelling(DummyDataDAL.GetBestelling());
+
+            var nieuweBestellinglijst = bestellingMapper.FindAll();
+
+            // Assert
+            Assert.AreEqual(4, oudeBestellinglijst.Count());
+            Assert.AreEqual(5, nieuweBestellinglijst.Count());
+
+        }
     }
 }

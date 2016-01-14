@@ -15,7 +15,7 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
-USE [Leet_BSBestellingbeheerDatabase]
+USE [Leet_PcSWinkelenDatabase]
 IF NOT EXISTS 
     (SELECT name  
      FROM master.sys.server_principals
@@ -28,7 +28,7 @@ GO
 
 USE [master]
 
-USE [Leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
+USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
 GO

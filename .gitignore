@@ -217,5 +217,6 @@ ModelManifest.xml
 /BackUp.zip
 /archive.zip
 
-# Voorkomen dat contracts woren toegevoegd
+# Voorkomen dat contracts worden toegevoegd
 Contracts/
+!99-Shared/CanonicalSchema/BSCatalogusBeheer/Contracts
