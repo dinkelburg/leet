@@ -7,15 +7,28 @@ namespace Leet.Kantilever.FEBestellingen.Site.ViewModels
 {
     public class BestellingVM
     {
+        public BestellingVM()
+        {
+            Bestellingsregels = new List<BestellingsregelVM>();
+        }
+
+        public BestellingVM(List<BestellingsregelVM> bestellingList)
+        {
+            Bestellingsregels = bestellingList;
+        }
+
         public long Bestelnummer { get; set; }
-        public List<BestellingsRegelVM> Bestellingsregels { get; set; }
+        public List<BestellingsregelVM> Bestellingsregels { get; private set; }
         public DateTime Besteldatum { get; set; }
-        //Totaalprijs is defined as a string. This way, it can be displayed correctly in the view
-        //with proper localized currency formatting. 
-        public string TotaalprijsInclusiefBtw {
+        /// <summary>
+        /// Totaalprijs is defined as a string. This way, it can be displayed correctly in the view
+        /// with proper localized currency formatting. 
+        /// </summary>
+        public string TotaalprijsInclusiefBtw
+        {
             get
             {
-                var totaalprijs = Bestellingsregels.Sum(b => b.Prijs * b.Aantal);
+                decimal totaalprijs = Bestellingsregels.Sum(b => b.Prijs * b.Aantal).Value;
                 var totaalInclusiefBtw = BtwHelper.CalculateBtw(totaalprijs);
                 return string.Format("{0:C}", totaalInclusiefBtw);
             }

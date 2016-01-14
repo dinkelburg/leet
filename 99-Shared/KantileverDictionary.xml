@@ -43,6 +43,17 @@
       <Word>Element</Word>
       <Word>Tarieven</Word>
       <Word>Inclusief</Word>
+      <Word>Besteldatum</Word>
+      <Word>Bestelling</Word>
+      <Word>Bestellings</Word>
+      <Word>Bestellingsregels</Word>
+      <Word>Bestelnummer</Word>
+      <Word>Bestellingsregel</Word>
+      <Word>Factuur</Word>
+      <Word>Klant</Word>
+      <Word>Leverancierscode</Word>
+      <Word>Toon</Word>
+      <Word>Volgende</Word>
 
     </Recognized>
   </Words>

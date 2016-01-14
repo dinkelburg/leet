@@ -182,7 +182,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\ViewOrder.cshtml" />
     <Content Include="Views\Bestelling\ToonFactuur.cshtml" />
     <Content Include="Views\Bestelling\NextOrder.cshtml" />
     <None Include="Web.Acceptatie.config">

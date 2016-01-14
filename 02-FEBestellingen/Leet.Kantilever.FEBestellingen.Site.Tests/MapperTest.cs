@@ -39,5 +39,37 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                 }
             }
         }
+
+        [TestMethod]
+        public void BestellingToFactuurVM_GeeftExceptionAlsBestellingNullIsTest()
+        {
+            //arrange
+            var message = string.Empty;
+
+            //act
+            try
+            {
+                var result = Mapper.BestellingToFactuurVM(null);
+                Assert.Fail("Er trad geen exception op.");
+            }
+            catch (ArgumentNullException)
+            {
+                //Succes        
+            }
+        }
+
+        [TestMethod]
+        public void BestellingToFactuurVM_GeeftCorrecteFactuurVMTest()
+        {
+            //arrange
+            Bestelling bestelling = DummyData.GetBestelling();
+
+            //act
+            var result = Mapper.BestellingToFactuurVM(bestelling);
+
+            //assert
+            Assert.AreEqual("Batavus", result.Bestelling.Bestellingsregels.First().LeveranciersNaam);
+            Assert.AreEqual("Testdummy", result.Klant.Voornaam);
+        }    
     }
 }
