@@ -134,7 +134,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         }
 
         [TestMethod]
-        public void CreateBestelling_CallsAgentTest()
+        public void CreateBestelling_CallsAgentsTest()
         {
             // Arrange
             var agentWinkelenMock = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
@@ -160,6 +160,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             });
             agentWinkelenMock.Setup(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"))
                 .Returns(winkelmand);
+            agentWinkelenMock.Setup(a => a.RemoveWinkelmand("1552fc72-2d19-44e5-ad06-efe175cb51fd"));
 
             agentBestellenMock.Setup(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
             
@@ -189,6 +190,50 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
 
             // Assert
             agentWinkelenMock.Verify(a => a.GetWinkelMand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
+            agentBestellenMock.Verify(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()), Times.Once);
+            agentWinkelenMock.Verify(a => a.RemoveWinkelmand("1552fc72-2d19-44e5-ad06-efe175cb51fd"), Times.Once);
+        }
+
+        [TestMethod]
+        public void FindVolgendeOpenBestelling_CallsAgentTest()
+        {
+            var agentBestellingMock = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            var agentCatalogusMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
+
+            agentCatalogusMock.Setup(a => a.GetProductsById(It.IsAny<int[]>()))
+                .Returns(new List<KantileverAlias.Product.V1.Product> {
+                    #region Data
+                    new KantileverAlias.Product.V1.Product
+                    {
+                        AfbeeldingURL = "product.jpg",
+                        Beschrijving = "Blauwe fiets",
+                        Id = 1,
+                        CategorieLijst = new KantileverAlias.Categorie.V1.CategorieCollection(),
+                        LeverancierNaam = "De boer fietsen",
+                        LeveranciersProductId = "DBF15432",
+                        LeverbaarVanaf = new DateTime(2010, 4, 6),
+                        Naam = "Batavus sport blauw",
+                        Prijs = 945,
+                    }
+                    #endregion
+                });
+
+            agentBestellingMock.Setup(a => a.GetVolgendeBestelling())
+                .Returns(new BSBestellingenbeheer.V1.Schema.Bestelling {
+                    Besteldatum = new DateTime(2015,01,15),
+                    Bestellingsregels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection(),
+                    Bestelnummer = 24343,
+                    ID = 15434,
+                    Ingepakt = false,
+                    KlantID = 46574676
+                });
+            var handler = new BestellenServiceHandler(agentBestellingMock.Object, agentCatalogusMock.Object, null);
+
+            // Act
+            handler.FindVolgendeOpenBestelling();
+
+            // Assert
+            agentBestellingMock.Verify(a => a.GetVolgendeBestelling(), Times.Once);
         }
     }
 }
