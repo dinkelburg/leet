@@ -77,5 +77,28 @@ namespace Leet.Kantilever.PcSBestellen.Agent.Tests
             Assert.IsNotNull(result);
             Assert.AreEqual(result, winkelmandReturnmessage.Winkelmand);
         }
+
+        [TestMethod]
+        public void RemoveWinkelmand_CallsAgentTest()
+        {
+            // Arrange
+            var factoryMock = new Mock<ServiceFactory<IWinkelenService>>(MockBehavior.Strict);
+            var proxyMock = new Mock<IWinkelenService>(MockBehavior.Strict);
+            
+
+            proxyMock.Setup(p => p.RemoveWinkelmand(It.IsAny<PcSWinkelen.V1.Messages.VraagWinkelmandRequestMessage>()));
+
+            factoryMock.Setup(f => f.CreateAgent())
+                .Returns(proxyMock.Object);
+
+            var agent = new AgentPcSWinkelen(factoryMock.Object);
+
+            // Act
+            agent.RemoveWinkelmand("Client01");
+
+            // Assert
+            factoryMock.Verify(f => f.CreateAgent(), Times.Once);
+            proxyMock.Verify(p => p.RemoveWinkelmand(It.IsAny<PcSWinkelen.V1.Messages.VraagWinkelmandRequestMessage>()), Times.Once);
+        }
     }
 }
