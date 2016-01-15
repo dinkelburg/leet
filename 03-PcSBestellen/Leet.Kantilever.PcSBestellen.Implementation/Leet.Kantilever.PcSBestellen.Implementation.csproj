@@ -62,11 +62,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\BestellingMapper.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BestellenServiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Agent\Leet.Kantilever.PcSBestellen.Agent.csproj">
+      <Project>{775d7897-1ec4-4be7-84bc-ba81129934a4}</Project>
+      <Name>Leet.Kantilever.PcSBestellen.Agent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Contract\Leet.Kantilever.PcSBestellen.Contract.csproj">
       <Project>{1b895677-0730-45a5-9386-47de79459571}</Project>
       <Name>Leet.Kantilever.PcSBestellen.Contract</Name>

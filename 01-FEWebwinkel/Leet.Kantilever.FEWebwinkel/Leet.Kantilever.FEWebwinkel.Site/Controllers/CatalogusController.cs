@@ -12,24 +12,42 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Controllers
     [KantileverAuthorize]
     public class CatalogusController : Controller
     {
-        private IAgentBSCatalogusBeheer _agent;
+        private IAgentBSCatalogusBeheer _bsCatalogusAgent;
+        private IAgentPcSWinkelen _winkelAgent;
 
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
         public CatalogusController()
         {
-            _agent = new AgentBSCatalogusBeheer();
+            _bsCatalogusAgent = new AgentBSCatalogusBeheer();
+            _winkelAgent = new AgentPcSWinkelen();
         }
 
-        public CatalogusController(IAgentBSCatalogusBeheer agent)
+        /// <summary>
+        /// A constructor that allows injecting a different IAgentBSCatalogusBeheer object.
+        /// </summary>
+        /// <param name="agent"></param>
+        public CatalogusController(IAgentBSCatalogusBeheer bsCatalogusAgent, IAgentPcSWinkelen winkelAgent)
         {
-            _agent = agent;
+            _bsCatalogusAgent = bsCatalogusAgent;
+            _winkelAgent = winkelAgent;
         }
 
-        // GET: Catalogus
+        /// <summary>
+        /// Shows a specific page of the catalogus.
+        /// </summary>
+        /// <param name="page">The page to show.</param>
+        /// <returns></returns>
         public ActionResult Index(int? page)
         {
-            WinkelmandController.CheckClientID(Request, Response);
+            string clientID = Utility.CheckClientID(Request, Response);
 
-            var products = Mapper.MapToProductVMList(_agent.FindProducts(page));
+            var products = Mapper.MapToProductVMList(_bsCatalogusAgent.FindProducts(page));
+
+            var winkelmand = _winkelAgent.GetWinkelmand(clientID);
+            ViewBag.CountProduct = winkelmand.Sum(p => p.Aantal);
+
             return View(products);
         }
     }

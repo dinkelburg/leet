@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -7,11 +8,20 @@ using System.Text;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Contract
 {
-    [ServiceContract]
+    [ServiceContract(Namespace = "urn:leet:kantilever:bsbestellingenbeheer:v1")]
     public interface IBestellingenbeheerService
     {
         [OperationContract]
-        string GetData(int value);
+        GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m);
 
+        [OperationContract]
+        GetAllBestellingenResponseMessage FindAllBestelling();
+
+        [OperationContract]
+        GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling();
+
+
+        [OperationContract]
+        void CreateBestelling(CreateBestellingRequestMessage requestMesssage);
     }
 }

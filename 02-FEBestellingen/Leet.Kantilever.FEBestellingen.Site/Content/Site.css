@@ -1,7 +1,73 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 0px;
     padding-bottom: 20px;
+    width: 70%;
+    margin: 0 auto;
+    font-family: Calibri;
 }
+
+.artikel > div > div {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-top: 15px;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.navbar-kanti {
+    background-color: #19274a;
+    border-color: #AAB1E4;
+}
+
+    .navbar-kanti .navbar-brand {
+        color: #ffffff;
+    }
+
+        .navbar-kanti .navbar-brand:hover,
+        .navbar-kanti .navbar-brand:focus {
+            color: #808080;
+            background-color: transparent;
+        }
+
+    .navbar-kanti .navbar-text {
+        color: #ffffff;
+    }
+
+    .navbar-kanti .navbar-nav > li > a {
+        color: #ffffff;
+    }
+
+        .navbar-kanti .navbar-nav > li > a:hover,
+        .navbar-kanti .navbar-nav > li > a:focus {
+            color: #808080;
+            background-color: transparent;
+        }
+
+    .navbar-kanti .navbar-nav > .active > a,
+    .navbar-kanti .navbar-nav > .active > a:hover,
+    .navbar-kanti .navbar-nav > .active > a:focus {
+        color: #ffffff;
+        background-color: #AAB1E4;
+    }
+
+    .navbar-kanti .navbar-nav > .disabled > a,
+    .navbar-kanti .navbar-nav > .disabled > a:hover,
+    .navbar-kanti .navbar-nav > .disabled > a:focus {
+        color: #808080;
+        background-color: transparent;
+    }
+
+    .navbar-kanti .navbar-toggle {
+        border-color: #808080;
+    }
+
+        .navbar-kanti .navbar-toggle:hover,
+        .navbar-kanti .navbar-toggle:focus {
+            background-color: #808080;
+        }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -21,4 +87,20 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#KantileverAdres {
+    float: right;
+}
+
+#KlantAdres {
+    float: left;
+}
+
+#factuurTable tbody tr:last-child td {
+    border-top: none;
+}
+
+#factuurTable td:last-child {
+    text-align: right;
 }

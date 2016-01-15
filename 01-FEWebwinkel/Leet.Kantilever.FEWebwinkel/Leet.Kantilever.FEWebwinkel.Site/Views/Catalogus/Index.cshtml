@@ -26,11 +26,10 @@
                     <div class="col-md-12 no-padding">
                         <div class="col-md-6 no-padding">
                             <p>Voorraad</p>
-                            <p>@Html.DisplayFor(modelItem => item.Prijs)</p>
-                            <p>@Html.DisplayFor(modelItem => item.ID)</p>
+                            <p>&euro;@Html.DisplayFor(modelItem => item.PrijsInclusiefBtw)</p>
                         </div>
                         <div class="col-md-6 no-padding">
-                            <button id="prod-@item.ID" class="btn btn-kanti mandBtn"><span class="fa fa-shopping-cart"></span></button>
+                            <button data-productid="@item.ID" class="btn btn-kanti mandBtn"><span class="fa fa-shopping-cart"></span></button>
                         </div>
                     </div>
                </div>

@@ -49,6 +49,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -78,10 +79,6 @@
     <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.Contract\Leet.Kantilever.PcSWinkelen.Contract.csproj">
       <Project>{d11f7225-8382-4e20-b6eb-a8ad20376625}</Project>
       <Name>Leet.Kantilever.PcSWinkelen.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL.Tests\Leet.Kantilever.PcSWinkelen.DAL.Tests.csproj">
-      <Project>{0d3d628e-73d9-4505-a959-7aedb48dc1dd}</Project>
-      <Name>Leet.Kantilever.PcSWinkelen.DAL.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Leet.Kantilever.PcSWinkelen.DAL\Leet.Kantilever.PcSWinkelen.DAL.csproj">
       <Project>{9201b319-c53c-4ed0-ae55-51f5f50f657b}</Project>

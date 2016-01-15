@@ -25,6 +25,9 @@ BEGIN
 END
 GO
 
+USE [master]
+GO
+
 USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]

@@ -22,6 +22,8 @@
       <Word>Producten</Word>
       <Word>Voeg</Word>
       <Word>winkel</Word>
+      <Word>Klant</Word>
+      <Word>Klanten</Word>
       <Word>Klantbeheer</Word>
       <Word>Bestellingenbeheer</Word>
       <Word>Winkelen</Word>
@@ -39,6 +41,10 @@
       <Word>Er</Word>
       <Word>geen</Word>
       <Word>Aan</Word>
+      <Word>Tarief</Word>
+      <Word>Element</Word>
+      <Word>Tarieven</Word>
+      <Word>Inclusief</Word>
 
     </Recognized>
   </Words>

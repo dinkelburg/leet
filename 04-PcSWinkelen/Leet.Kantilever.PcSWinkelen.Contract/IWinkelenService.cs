@@ -1,4 +1,5 @@
 ﻿using Leet.Kantilever.PcSWinkelen.V1.Messages;
+using Minor.case3.Leet.V1.FunctionalError;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,15 @@ namespace Leet.Kantilever.PcSWinkelen.Contract
     public interface IWinkelenService
     {
         [OperationContract]
+        [FaultContract(typeof(FunctionalErrorList))]
         WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
 
         [OperationContract]
+        [FaultContract(typeof(FunctionalErrorList))]
         WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
 
+        [OperationContract]
+        [FaultContract(typeof(FunctionalErrorList))]
+        void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
     }
 }

@@ -19,7 +19,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         {
             using (var context = new WinkelenContext())
             {
-
+                var pp = context.Products.Include(ppp=>ppp.Winkelmand).ToList();
                 var existingProduct = context.Products.SingleOrDefault(p => p.CatalogusProductID == product.CatalogusProductID && p.Winkelmand.ClientID == clientID);
                 if (existingProduct != null)
                 {
@@ -74,6 +74,25 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
                 return context.Winkelmanden
                     .Include(Winkelmand => Winkelmand.Products)
                     .SingleOrDefault(winkelmand => winkelmand.ClientID == clientID);
+            }
+        }
+
+        /// <summary>
+        /// Removes the Winkelmand with a specific clientID
+        /// </summary>
+        public void RemoveWinkelmandByClientID(string clientID)
+        {
+            using (var context = new WinkelenContext())
+            {
+                var winkelmandToDelete = context.Winkelmanden.Include(w => w.Products).SingleOrDefault(winkelmand => winkelmand.ClientID == clientID);
+                if(winkelmandToDelete == null)
+                {
+                    throw new ArgumentException("Geen winkelmand gevonden met het ClientID: " + clientID);
+                }
+                context.Products.RemoveRange(winkelmandToDelete.Products);
+
+                context.Winkelmanden.Remove(winkelmandToDelete);
+                context.SaveChanges();
             }
         }
     }

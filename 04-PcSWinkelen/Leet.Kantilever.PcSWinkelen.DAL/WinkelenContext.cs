@@ -11,7 +11,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
 {
     public class WinkelenContext : DbContext
     {
-        public WinkelenContext() : base("WinkelenContext") { }
+        public WinkelenContext() : base("name=WinkelenContext") { }
         public DbSet<Product> Products { get; set; }
         public DbSet<Winkelmand> Winkelmanden { get; set; }
 
@@ -19,6 +19,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         {
             modelBuilder.Configurations.Add(new ProductMapping());
             modelBuilder.Configurations.Add(new WinkelmandMapping());
+
             base.OnModelCreating(modelBuilder);
         }
     }

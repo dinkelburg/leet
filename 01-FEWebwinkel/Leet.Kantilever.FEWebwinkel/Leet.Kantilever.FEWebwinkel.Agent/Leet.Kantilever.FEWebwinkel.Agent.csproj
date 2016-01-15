@@ -43,6 +43,10 @@
     <AssemblyOriginatorKeyFile>..\..\..\99-Shared\leet.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Minor.ServiceBus.Agent.Implementation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=73e451069382071b, processorArchitecture=MSIL">
       <HintPath>..\packages\Minor.Caespi.ServiceBus.Agent.1.0.0.3\lib\net452\Minor.ServiceBus.Agent.Implementation.dll</HintPath>
@@ -58,13 +62,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="AgentPcSBestellen.cs" />
     <Compile Include="AgentBSKlantBeheer.cs" />
     <Compile Include="AgentPcSWinkelen.cs" />
+    <Compile Include="BsKlantbeheerGeneratedTypes.cs" />
+    <Compile Include="FunctionalErrorGeneratedTypes.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
+    <Compile Include="IAgentPcSBestellen.cs" />
     <Compile Include="IAgentBSKlantBeheer.cs" />
     <Compile Include="IAgentPcSWinkelen.cs" />
+    <Compile Include="PcSBestellenGeneratedTypes.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +123,29 @@
 svcutil.exe ^
   /d:"$(ProjectDir) " ^
   /out:PcSWinkelenGeneratedTypes.cs ^
-  "$(SolutionDir)\..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\kantileverpcswinkelenv1.wsdl" ^
-  "$(SolutionDir)\..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"</PreBuildEvent>
+  "$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\kantileverpcswinkelenv1.wsdl" ^
+  "$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/dconly ^
+/out:FunctionalErrorGeneratedTypes.cs ^
+/n:"urn:minor-case3-leet:v1:functionalerror,Minor.case3.Leet.V1.FunctionalError" ^
+"$(SolutionDir)..\..\99-shared\functionalerror.xsd"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/dconly ^
+/out:BsKlantbeheerGeneratedTypes.cs ^
+/n:"urn:minor-case3-bsklantbeheer:v1:schema,Minor.Case3.BsKlantbeheer.V1.Schema" ^
+"$(SolutionDir)..\..\99-shared\CanonicalSchema\BSKlantBeheer\Schema\Minor.Case3.BSKlantBeheer.V1.Schema.xsd"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/out:PcSBestellenGeneratedTypes.cs ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:product:v1,schemas.www.kantilever.nl.pcsbestellen.product.v1" ^
+/n:"urn:schemas-www-kantilever-nl:bscatalogusbeheer:categorie:v1,schemas.www.kantilever.nl.pcsbestellen.categorie.v1" ^
+"$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.wsdl" "$(SolutionDir)..\..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

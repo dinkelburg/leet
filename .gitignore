@@ -213,4 +213,10 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
-/99-Shared/CanonicalSchema/BSBestellingenBeheer/Schema/Minor.Case3.BSBestellingenBeheer.V1.Messages.xsd
+/05-BSBestellingenbeheer/Leet.Kantilever.BSBestellingenbeheer.zip
+/BackUp.zip
+/archive.zip
+
+# Voorkomen dat contracts worden toegevoegd
+Contracts/
+!99-Shared/CanonicalSchema/BSCatalogusBeheer/Contracts

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Leet.Kantilever.FEWebwinkel.Site.ViewModels.WinkelmandVM.WinkelmandRijVM>
+﻿@model IEnumerable<Leet.Kantilever.FEWebwinkel.Site.ViewModels.WinkelmandRijVM>
 <thead>
     <tr>
         <th>@Html.DisplayNameFor(p => p.Naam)</th>
         <th>@Html.DisplayNameFor(p => p.Prijs)</th>
         <th>@Html.DisplayNameFor(p => p.Aantal)</th>
-        <th>@Html.DisplayNameFor(p => p.TotaalPrijs)</th>
+        <th>@Html.DisplayNameFor(p => p.Totaalprijs)</th>
     </tr>
 </thead>
 <tbody>
@@ -16,13 +16,13 @@
                 @Html.DisplayFor(modelitem => product.Naam)
             </td>
             <td>
-                &euro; @Html.DisplayFor(modelitem => product.Prijs)
+                &euro; @Html.DisplayFor(modelitem => product.PrijsInclusiefBtw)
             </td>
             <td>
                 @Html.DisplayFor(modelitem => product.Aantal)
             </td>
             <td>
-                &euro; @Html.DisplayFor(modelitem => product.TotaalPrijs)
+                &euro; @Html.DisplayFor(modelitem => product.TotaalprijsInclusiefBtw)
             </td>
         </tr>
     }

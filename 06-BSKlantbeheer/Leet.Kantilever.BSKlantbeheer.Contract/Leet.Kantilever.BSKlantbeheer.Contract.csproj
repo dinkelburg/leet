@@ -55,6 +55,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IKlantbeheerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +86,19 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>svcutil ^
+ /dconly ^
+ /out:"$(ProjectDir)GeneratedTypes.cs" ^
+  /n:"urn:minor-case3-bsklantbeheer:v1:schema,Leet.Kantilever.BSKlantbeheer.V1.Schema" ^
+  /n:"urn:minor-case3-bsklantbeheer:v1:messages,Leet.Kantilever.BSKlantbeheer.V1.Messages" ^
+ "$(SolutionDir)..\99-Shared\CanonicalSchema\BSKlantBeheer\Schema\*.xsd"</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>svcutil ^
+/d:"$(SolutionDir)..\99-Shared\CanonicalSchema\BSKlantbeheer\Contracts" ^
+Leet.Kantilever.BSKlantbeheer.Contract.dll</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

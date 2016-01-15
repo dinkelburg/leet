@@ -15,7 +15,7 @@ namespace Leet.Kantilever.PcSWinkelen.Agent
         private ServiceFactory<ICatalogusBeheer> _factory;
 
         /// <summary>
-        /// Constructor to instantiate AgentBSCatalogusBeheer with a SerciceFactory
+        /// Constructor to instantiate AgentBSCatalogusBeheer with a ServiceFactory
         /// </summary>
         public AgentBSCatalogusBeheer()
         {
@@ -23,7 +23,7 @@ namespace Leet.Kantilever.PcSWinkelen.Agent
         }
 
         /// <summary>
-        /// Constructor to instantiate AgentBSCatalogusBeheer and to inject a SerciceFactory mock
+        /// Constructor to instantiate AgentBSCatalogusBeheer and to inject a ServiceFactory mock
         /// </summary>
         /// <param name="factory">ServiceFactory mock</param>
         public AgentBSCatalogusBeheer(ServiceFactory<ICatalogusBeheer> factory)
