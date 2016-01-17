@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Leet.Kantilever.FEBestellingen.Site.ViewModels.BestellingsRegelVM>
 
 @{
-    ViewBag.Title = "NextOrder";
+    ViewBag.Title = "Volgende bestelling";
 }
 
 <h2>Bestelling inpakken</h2>
@@ -12,6 +12,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Leverancierscode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LeveranciersNaam)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Aantal)
@@ -27,6 +30,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Leverancierscode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeveranciersNaam)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Aantal)
