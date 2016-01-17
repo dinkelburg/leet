@@ -12,6 +12,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
     {
         public void AddBestelling(Bestelling bestelling)
         {
+            if (bestelling == null)
+            {
+                throw new ArgumentNullException(paramName:"bestelling");
+            }
+
             using (var context = new BestellingContext())
             {
                 context.Bestellingen.Add(bestelling);
