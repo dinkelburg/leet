@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Leet.Kantilever.BSKlantbeheer.V1.Schema;
 using Leet.Kantilever.BSKlantbeheer.DAL.Converters;
 using System.Data.Entity.Infrastructure;
@@ -38,6 +36,10 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
                 {
                     throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
                 }
+                catch(DbUpdateException)
+                {
+                    throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
+                }
             }
         }
 
@@ -45,8 +47,15 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
         {
             using (var db = new KlantenContext())
             {
-                var entity = db.Klanten.Single(x => x.Klantnummer == klantnummer);
-                return EntityToDTO.ConvertKlant(entity);
+                try
+                {
+                    var entity = db.Klanten.Single(x => x.Klantnummer == klantnummer);
+                    return EntityToDTO.ConvertKlant(entity);
+                }
+                catch (InvalidOperationException)
+                {
+                    throw new FunctionalException($"Er kon geen klant worden gevonden met klantnummer '{klantnummer}'");
+                }                
             }
         }
     }
