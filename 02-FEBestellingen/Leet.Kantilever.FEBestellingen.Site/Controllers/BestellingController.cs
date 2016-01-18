@@ -29,7 +29,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             var bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
             bestelling.Ingepakt = true;
             _agent.UpdateBestelling(bestelling);
-            return RedirectToAction("ToonFactuur", bestelnummer);
+            return RedirectToAction("ToonFactuur", new { bestelnummer = bestelnummer } );
         }
 
         // GET: Bestelling
