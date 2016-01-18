@@ -19,7 +19,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             };
         }
 
-        private static List<BestellingsRegel> GetBestellingsRegels()
+        public static List<BestellingsRegel> GetBestellingsRegels()
         {
             return new List<BestellingsRegel>
                 {
@@ -74,5 +74,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 },
                 };
             }
-        }
+
+ 
+    }
     }

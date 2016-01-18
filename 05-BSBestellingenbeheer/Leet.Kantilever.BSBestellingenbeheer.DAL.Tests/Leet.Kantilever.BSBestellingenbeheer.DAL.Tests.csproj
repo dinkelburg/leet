@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Leet.Kantilever.BSBestellingenbeheer.Contract\Leet.Kantilever.BSBestellingenbeheer.Contract.csproj">
+      <Project>{2ADBEB4D-91B4-4226-B879-12E44E1EC5F1}</Project>
+      <Name>Leet.Kantilever.BSBestellingenbeheer.Contract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Leet.Kantilever.BSBestellingenbeheer.DAL\Leet.Kantilever.BSBestellingenbeheer.DAL.csproj">
       <Project>{8afa1219-8863-4adc-b644-ada03110a96f}</Project>
       <Name>Leet.Kantilever.BSBestellingenbeheer.DAL</Name>
