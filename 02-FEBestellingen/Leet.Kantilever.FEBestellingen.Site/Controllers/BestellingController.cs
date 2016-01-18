@@ -19,6 +19,12 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             _agent = agent;
         }
 
+        public ActionResult FinishOrder(long bestelnummer)
+        {
+            
+            return RedirectToAction("ToonFactuur", bestelnummer);
+        }
+
         // GET: Bestelling
         public ActionResult Index()
         {
@@ -26,15 +32,25 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View(bestellingen);
         }
 
+        /// <summary>
+        /// Get next bestelling to be packaged
+        /// </summary>
+        /// <returns></returns>
         public ActionResult VolgendeBestelling()
         {
             var bestelling = Mapper.MapBestellingToVMList(_agent.FindVolgendeOpenBestelling());
-            return View(bestelling.Bestellingsregels);
+            return View(bestelling);
         }
 
-        public ActionResult ToonFactuur(int bestellingID)
+
+        /// <summary>
+        /// Show factuur information for a specific bestelling
+        /// </summary>
+        /// <param name="bestellingID"></param>
+        /// <returns></returns>
+        public ActionResult ToonFactuur(long bestellingID)
         {
-            var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID(bestellingID));
+            var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID((int)bestellingID));
             return View(factuur);
         }
     }

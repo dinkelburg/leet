@@ -7,17 +7,44 @@ using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
 using Leet.Kantilever.BSBestellingenbeheer.DAL;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.converters;
+using System.ServiceModel;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
+        /// <summary>
+        /// Create new bestelling
+        /// </summary>
+        /// <param name="requestMesssage"></param>
         public void CreateBestelling(CreateBestellingRequestMessage requestMesssage)
         {
             var mapper = new BestellingDataMapper();
             mapper.AddBestelling(DTOToEntity.BestellingToEntity(requestMesssage.Bestelling));
         }
 
+        /// <summary>
+        /// Update bestelling information
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        public void UpdateBestelling(UpdateBestellingRequestMessage requestMessage)
+        {
+            var entity = DTOToEntity.BestellingToEntity(requestMessage.Bestelling);
+            var mapper = new BestellingDataMapper();
+            try
+            {
+                entity.ID = mapper.Find(b => b.Bestelnummer == entity.Bestelnummer).Single().ID;
+            } catch
+            {
+                throw new FaultException("Cannot update non existing entity");
+            }
+            mapper.Update(entity);
+        }
+
+        /// <summary>
+        /// Find all bestellingen
+        /// </summary>
+        /// <returns></returns>
         public GetAllBestellingenResponseMessage FindAllBestelling()
         {
             var bestellingen = new BestellingCollection();
@@ -25,27 +52,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
             return new GetAllBestellingenResponseMessage { BestellingCollection = bestellingen};
         }
 
-        public GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m)
+        /// <summary>
+        /// Find bestelling using bestelnummer
+        /// </summary>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        public GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage m)
         {
-            var regels = new BestellingsregelCollection();
-            regels.AddRange(new List<Bestellingsregel> {
-                new Bestellingsregel { ProductID = 1, Aantal = 5, Prijs = 15.00M },
-                new Bestellingsregel { ProductID = 5, Aantal = 3, Prijs = 102.00M },
-                new Bestellingsregel { ProductID = 8, Aantal = 15, Prijs = 33.20M },
-                new Bestellingsregel { ProductID = 4, Aantal = 1, Prijs = 19.99M },
-            });
 
-            var bestelling = new Bestelling
-            {
-                Besteldatum = DateTime.Now,
-                Bestellingsregels = regels,
-                ID = m.BestellingsID,
-                Klantnummer = "Client01"
-            };
+            var mapper = new BestellingDataMapper();
+            var bestelling = mapper.Find(b => b.Bestelnummer == m.Bestelnummer).Single();
 
-            return new GetBestellingByIDResponseMessage
+            return new GetBestellingByBestelnummerResponseMessage
             {
-                Bestelling = bestelling,
+                Bestelling = EntityToDTO.BestellingToDto(bestelling)
             };
         }
 

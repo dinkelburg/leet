@@ -18,6 +18,15 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
                 context.SaveChanges();
             }
         }
+        
+        public IEnumerable<Bestelling> Find(Func<Bestelling,bool> predicate)
+        {
+            using (var context = new BestellingContext())
+            {
+                return context.Bestellingen.Include(b => b.Bestellingsregels)
+                                            .Where(predicate);
+            }
+        }
 
         public void Update(Bestelling bestelling)
         {
