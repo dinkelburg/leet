@@ -135,12 +135,12 @@
       <Objects>
         <ObjectGroup Name="BestellingContext-Deployment" Order="1">
           <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_BSBestellingbeheerDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql">
-            <Source Path="..\..\97-Installatie\GRANTscript_BSBestellingbeheerDatabase.sql" Transacted="False" />
-          </Object>
           <Object Type="DbFullSql" Enabled="True">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Test_BSBestellingbeheerDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\BestellingContext-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+          <Object Type="DbFullSql">
+            <Source Path="..\..\97-Installatie\GRANTscript_BSBestellingbeheerDatabase.sql" Transacted="False" />
           </Object>
         </ObjectGroup>
       </Objects>
