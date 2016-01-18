@@ -111,7 +111,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
-       
+
 
         }
 
@@ -153,7 +153,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -205,10 +205,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             }
             catch (ArgumentNullException e)
             {
-                
+
                 Assert.AreEqual("regels", e.ParamName);
             }
- 
+
 
             //Assert
 

@@ -14,14 +14,14 @@ namespace Leet.Kantilever.PcSWinkelen.Contract
     {
         [OperationContract]
         [FaultContract(typeof(FunctionalErrorList))]
-        WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage);
+        WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandRequestMessage);
 
         [OperationContract]
         [FaultContract(typeof(FunctionalErrorList))]
-        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
+        WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandRequestMessage);
 
         [OperationContract]
         [FaultContract(typeof(FunctionalErrorList))]
-        void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage);
+        void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandRequestMessage);
     }
 }

@@ -15,9 +15,9 @@ namespace Leet.Kantilever.BSKlantbeheer.Contract
         GetAllKlantenResponseMessage GetAllKlanten();
 
         [OperationContract]
-        GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage msg);
+        GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage requestMessage);
 
         [OperationContract]
-        void RegistreerKlant(InsertKlantGegevensRequestMessage msg);
+        void RegistreerKlant(InsertKlantGegevensRequestMessage requestMessage);
     }
 }
