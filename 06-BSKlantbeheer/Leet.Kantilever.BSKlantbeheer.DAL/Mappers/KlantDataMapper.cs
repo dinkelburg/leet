@@ -12,6 +12,10 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
 {
     public class KlantDataMapper
     {
+        /// <summary>
+        /// Returns all Klanten in de database as a list of DTO's.
+        /// </summary>
+        /// <returns></returns>
         public ICollection<Klant> GetAllKlanten()
         {
             using (var db = new KlantenContext())
@@ -23,6 +27,10 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
             }
         }
 
+        /// <summary>
+        /// Inserts a klant into the database.
+        /// </summary>
+        /// <param name="klant">The klant to insert.</param>
         public void InsertKlant(Klant klant)
         {
             using (var db = new KlantenContext())
@@ -43,6 +51,11 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
             }
         }
 
+        /// <summary>
+        /// Returns a klant based on his klantnummer.
+        /// </summary>
+        /// <param name="klantnummer"></param>
+        /// <returns></returns>
         public Klant FindKlant(string klantnummer)
         {
             using (var db = new KlantenContext())

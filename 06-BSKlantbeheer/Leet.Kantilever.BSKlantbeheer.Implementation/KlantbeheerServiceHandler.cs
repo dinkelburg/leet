@@ -13,6 +13,9 @@ using Leet.Kantilever.BSKlantbeheer.DAL.Exceptions;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
+    /// <summary>
+    /// See the interface for details.
+    /// </summary>
     public class KlantbeheerServiceHandler : IKlantbeheerService
     {
         public GetAllKlantenResponseMessage GetAllKlanten()

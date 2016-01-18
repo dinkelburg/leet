@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 {
+    /// <summary>
+    /// This class is responsible for converting all entities used
+    /// by the database to DTO's as used in request and response messages.
+    /// </summary>
     public static class EntityToDTO
     {
         public static V1.Schema.Bestelling BestellingToDto(Entities.Bestelling bestelling)

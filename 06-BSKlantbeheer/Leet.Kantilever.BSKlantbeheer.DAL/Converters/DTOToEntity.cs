@@ -8,6 +8,11 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Converters
 {
     public static class DTOToEntity
     {
+        /// <summary>
+        /// Transforms a klant DTO to an entity used by the database.
+        /// </summary>
+        /// <param name="klant">The klant DTO to transform.</param>
+        /// <returns></returns>
         public static Entities.Klant ConvertKlant(V1.Schema.Klant klant)
         {
             return new Entities.Klant

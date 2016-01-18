@@ -10,6 +10,7 @@ using minorcase3bsklantbeheer.v1.schema;
 
 namespace Leet.Kantilever.FEBestellingen.Agent
 {
+    //See the interface for details.
     public class AgentPcSBestellen : IAgentPcSBestellen
     {
         private ServiceFactory<IBestellenService> _factory;

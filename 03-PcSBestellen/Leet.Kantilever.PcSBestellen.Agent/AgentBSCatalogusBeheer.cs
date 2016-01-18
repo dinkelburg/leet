@@ -33,7 +33,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         {
             _factory = factory;
         }
-
+        
         public IEnumerable<Product> GetProductsById(int[] ids)
         {
             List<Product> products = new List<Product>();
