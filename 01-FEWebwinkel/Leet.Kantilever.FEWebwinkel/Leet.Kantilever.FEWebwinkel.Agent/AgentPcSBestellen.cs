@@ -17,7 +17,7 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             _factory = new ServiceFactory<IBestellenService>("PcSBestellen");
         }
 
-        public void KlantGegevensInvoeren(Klant klant)
+        public void CreateBestelling(Klant klant)
         {
             AutoMapper.Mapper.CreateMap<Klant, minorcase3bsklantbeheer.v1.schema.Klant>();
             var proxy = _factory.CreateAgent();

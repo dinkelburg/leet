@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="urn:minor-case3-pcsbestellen:v1:messages" elementFormDefault="qualified" targetNamespace="urn:minor-case3-pcsbestellen:v1:messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="urn:minor-case3-pcsbestellen:v1:schema" />
+  <xs:import namespace="urn:minor-case3-bsklantbeheer:v1:schema" />
+  <xs:complexType name="GetVolgendeOpenBestellingResponseMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q1="urn:minor-case3-pcsbestellen:v1:schema" type="q1:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetVolgendeOpenBestellingResponseMessage" nillable="true" type="tns:GetVolgendeOpenBestellingResponseMessage" />
+  <xs:complexType name="GetAllBestellingenResponseMessage">
+    <xs:sequence>
+      <xs:element name="BestellingCollection" nillable="true" xmlns:q2="urn:minor-case3-pcsbestellen:v1:schema" type="q2:BestellingCollection">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetAllBestellingenResponseMessage" nillable="true" type="tns:GetAllBestellingenResponseMessage" />
+  <xs:complexType name="GetBestellingByIDRequestMessage">
+    <xs:sequence>
+      <xs:element name="BestellingsID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetBestellingByIDRequestMessage" nillable="true" type="tns:GetBestellingByIDRequestMessage" />
+  <xs:complexType name="GetBestellingByIDResponseMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q3="urn:minor-case3-pcsbestellen:v1:schema" type="q3:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetBestellingByIDResponseMessage" nillable="true" type="tns:GetBestellingByIDResponseMessage" />
+  <xs:complexType name="CreateBestellingRequestMessage">
+    <xs:sequence>
+      <xs:element name="Klant" nillable="true" xmlns:q4="urn:minor-case3-bsklantbeheer:v1:schema" type="q4:Klant">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateBestellingRequestMessage" nillable="true" type="tns:CreateBestellingRequestMessage" />
+</xs:schema>

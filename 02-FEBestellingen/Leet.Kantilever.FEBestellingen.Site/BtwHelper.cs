@@ -14,16 +14,9 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         /// </summary>
         /// <param name="originalPrice">The price without btw.</param>
         /// <returns></returns>
-        public static decimal? CalculateBtw(decimal? originalPrice)
+        public static decimal CalculateBtw(decimal originalPrice)
         {
-            if (originalPrice.HasValue)
-            {
-                return originalPrice / 100 * (100 + GetCurrentBtw());
-            }
-            else
-            {
-                return null;
-            }
+            return originalPrice / 100 * (100 + GetCurrentBtw());
         }
         /// <summary>
         /// Returns the currently selected btw rate for products.

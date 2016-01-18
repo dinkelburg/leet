@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="AgentPcSBestellen.cs" />
     <Compile Include="GeneratedTypes.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAgentPcSBestellen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

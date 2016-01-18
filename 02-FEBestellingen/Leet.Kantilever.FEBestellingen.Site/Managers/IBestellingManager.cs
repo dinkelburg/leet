@@ -6,6 +6,6 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
     public interface IOrderManager
     {
-        IEnumerable<BestellingsRegelVM> GetOrderRegelsForOrder(int id);
+        IEnumerable<BestellingsregelVM> GetOrderRegelsForOrder(int id);
     }
 }

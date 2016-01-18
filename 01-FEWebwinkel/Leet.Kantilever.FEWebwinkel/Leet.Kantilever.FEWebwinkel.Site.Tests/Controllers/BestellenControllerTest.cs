@@ -40,7 +40,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
             var agentPcSWinkelenMock = new Mock<IAgentPcSWinkelen>(MockBehavior.Strict);
             var agentPcSBestellenMock = new Mock<IAgentPcSBestellen>(MockBehavior.Strict);
             agentPcSWinkelenMock.Setup(agent => agent.GetWinkelmand(It.IsAny<string>())).Returns(DummyData.GetWinkelmand());
-            agentPcSBestellenMock.Setup(agent => agent.KlantGegevensInvoeren(It.IsAny<Klant>()));
+            agentPcSBestellenMock.Setup(agent => agent.CreateBestelling(It.IsAny<Klant>()));
             BestellenController controller = new BestellenController(agentPcSWinkelenMock.Object, agentPcSBestellenMock.Object);
             controller.ControllerContext = Helper.CreateContext(controller);
 
@@ -49,7 +49,7 @@ namespace Leet.Kantilever.FEWebwinkel.Site.Tests.Controllers
 
             // Assert
             agentPcSWinkelenMock.Verify(agent => agent.GetWinkelmand(It.IsAny<string>()));
-            agentPcSBestellenMock.Verify(agent => agent.KlantGegevensInvoeren(It.IsAny<Klant>()));
+            agentPcSBestellenMock.Verify(agent => agent.CreateBestelling(It.IsAny<Klant>()));
 
             Assert.IsNotNull(result);
             Assert.AreEqual("ThankYou", result.RouteName);

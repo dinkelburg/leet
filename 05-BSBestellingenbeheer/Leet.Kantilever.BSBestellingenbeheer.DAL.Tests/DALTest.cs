@@ -24,7 +24,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
         [TestMethod]
-        public void TestGetBestellingen()
+        public void GetBestellingen_CorrecteBestellingenWordenGereturnd_Test()
         {
 
             // Arrange
@@ -39,7 +39,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void TestFindBestellingByID()
+        public void FindBestellingByID_CorrecteBestellingWordtGereturnd()
         {
             // Arrange
             IBestellingMapper<Bestelling> mapper = new BestellingDataMapper();
@@ -61,7 +61,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void TestFindVolgendeOpenBestelling()
+        public void FindVolgendeOpenBestelling_CorrecteVolgendeBestellingWordtGereturnd_Test()
         {
             // Arrange
             IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
@@ -76,7 +76,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void AddNieuweBestellingReturntGrotereLijstTest()
+        public void AddNieuweBestellingReturntGrotereLijst_Test()
         {
             // Arrange
             IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
@@ -91,6 +91,27 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             // Assert
             Assert.AreEqual(4, oudeBestellinglijst.Count());
             Assert.AreEqual(5, nieuweBestellinglijst.Count());
+
+        }
+
+        [TestMethod]
+        public void AddNieuweBestelling_ArgumentNullExceptionWordtGegooid_Test()
+        {
+            //Arrange
+            IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+
+            //Act
+            try
+            {
+                bestellingMapper.AddBestelling(null);
+            }
+
+            //Assert
+            catch (ArgumentNullException e)
+            {
+                Assert.AreEqual("bestelling", e.ParamName);
+            }
+       
 
         }
 
@@ -128,11 +149,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 var mappedBestelling = EntityToDTO.BestellingToDto(null);
             }
-            catch(ArgumentNullException e)
+            catch (ArgumentNullException e)
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Assert.Fail();
             }
@@ -154,27 +175,48 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void BestellingsregelToDTOMapCorrectData()
+        public void BestellingsregelToDTOMapCorrectData_Test()
         {
             // Arrange
             var bestellingsregels = DummyDataDAL.GetBestellingsRegels();
 
             // Act
-            var mappedBestellingsRegels = EntityToDTO.BestellingsregelsToCollection(bestellingsregels);
+            var mappedBestellingsregels = EntityToDTO.BestellingsregelsToCollection(bestellingsregels);
 
             // Assert
-            for(int i = 0; i < mappedBestellingsRegels.Count(); i++)
+            for (int i = 0; i < mappedBestellingsregels.Count; i++)
             {
-                Assert.AreEqual(bestellingsregels[i].ProductID, mappedBestellingsRegels[i].ProductID);
-                Assert.AreEqual(bestellingsregels[i].Aantal, mappedBestellingsRegels[i].Aantal);
-                Assert.AreEqual(bestellingsregels[i].Prijs, mappedBestellingsRegels[i].Prijs);
+                Assert.AreEqual(bestellingsregels[i].ProductID, mappedBestellingsregels[i].ProductID);
+                Assert.AreEqual(bestellingsregels[i].Aantal, mappedBestellingsregels[i].Aantal);
+                Assert.AreEqual(bestellingsregels[i].Prijs, mappedBestellingsregels[i].Prijs);
 
             }
         }
 
+        [TestMethod]
+        public void BestellingsregelToCollection_ArgumentNullExceptionWordtGegooid_Test()
+        {
+            //Arrange
+
+            //Act
+            try
+            {
+                var mappedBestellingsregel = EntityToDTO.BestellingsregelsToCollection(null);
+            }
+            catch (ArgumentNullException e)
+            {
+                
+                Assert.AreEqual("regels", e.ParamName);
+            }
+ 
+
+            //Assert
+
+        }
+
 
         [TestMethod]
-        public void BestellingsToDTO_ArgumentNullExceptionWordtGegooid()
+        public void BestellingsToDTO_ArgumentNullExceptionWordtGegooid_Test()
         {
             // Arrange
 
@@ -184,12 +226,28 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 var mappedBestellingsRegels = EntityToDTO.BestellingsregelToDto(null);
             }
 
-            catch (Exception e) { };
-
-            // Assert
-
+            //Assert
+            catch (ArgumentNullException e)
+            {
+                Assert.AreEqual("regel", e.ParamName);
+            }
         }
 
+        [TestMethod]
+        public void BestellingsregelToDTO_CorrecteDataWordtGemapped_Test()
+        {
+            //Arrange
+            var bestellingsregel = DummyDataDAL.GetBestellingsRegels()[0];
+
+            //Act
+            var mappedBestellingsregel = EntityToDTO.BestellingsregelToDto(bestellingsregel);
+
+            //Assert
+            Assert.AreEqual(bestellingsregel.ProductID, mappedBestellingsregel.ProductID);
+            Assert.AreEqual(bestellingsregel.Aantal, mappedBestellingsregel.Aantal);
+            Assert.AreEqual(bestellingsregel.Prijs, mappedBestellingsregel.Prijs);
+
+        }
 
     }
 }

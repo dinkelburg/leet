@@ -18,7 +18,6 @@ namespace Leet.Kantilever.FEWebwinkel.Site
         public TariefCollection Tarieven
         {
             get { return (TariefCollection)this[""]; }
-            set { this[""] = value; }
         }
     }
 

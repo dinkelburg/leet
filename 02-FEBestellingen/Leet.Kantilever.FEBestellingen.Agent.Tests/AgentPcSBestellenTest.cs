@@ -68,5 +68,22 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
                 }
             }
         }
+
+        [TestMethod]
+        public void FindVolgendeOpenBestelling_RoeptFindVolgendeOpenBestellingVanProxyAanTest()
+        {
+            //arrange
+            var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
+            serviceMock.Setup(service => service.FindVolgendeOpenBestelling()).Returns(new GetVolgendeOpenBestellingResponseMessage());
+            var factoryMock = new Mock<ServiceFactory<IBestellenService>>(MockBehavior.Strict);
+            factoryMock.Setup(factory => factory.CreateAgent()).Returns(serviceMock.Object);
+            var agent = new AgentPcSBestellen(factoryMock.Object);
+
+            //act
+            agent.FindVolgendeOpenBestelling();
+
+            //assert
+            serviceMock.Verify(a => a.FindVolgendeOpenBestelling(), Times.Once());
+        }
     }
 }
