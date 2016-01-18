@@ -33,7 +33,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
             var mapper = new BestellingDataMapper();
             try
             {
-                entity.ID = mapper.Find(b => b.Bestelnummer == entity.Bestelnummer).Single().ID;
+                entity.ID = mapper.Find(b => b.Bestelnummer == entity.Bestelnummer).SingleOrDefault().ID;
             } catch
             {
                 throw new FaultException("Cannot update non existing entity");
