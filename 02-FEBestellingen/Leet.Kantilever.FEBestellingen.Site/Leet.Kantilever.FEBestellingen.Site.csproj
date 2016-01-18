@@ -186,7 +186,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Bestelling\ToonFactuur.cshtml" />
     <Content Include="Views\Bestelling\VolgendeBestelling.cshtml" />
-    <Content Include="Views\Bestelling\NextOrder.cshtml" />
     <Content Include="Views\Bestelling\_bestellingsregels.cshtml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
