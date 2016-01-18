@@ -4,6 +4,6 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
 {
     public interface IAgentPcSBestellen
     {
-        void KlantGegevensInvoeren(Klant klant);
+        void CreateBestelling(Klant klant);
     }
 }

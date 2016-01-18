@@ -31,7 +31,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         }
 
         /// <summary>
-        /// Constructor for dependenct injection
+        /// Constructor for dependency injection
         /// </summary>
         /// <param name="agentBestellen"></param>
         /// <param name="agentCatalogus"></param>
@@ -68,7 +68,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             bestelling.Besteldatum = DateTime.Now;
             bestelling.Klant = requestMessage.Klant;
 
-            //TODO: Save customer information
+            //TODO: Save customer information in a future sprint.
 
             _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
             
