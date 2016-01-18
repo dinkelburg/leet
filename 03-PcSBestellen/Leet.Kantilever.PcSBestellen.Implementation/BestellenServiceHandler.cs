@@ -121,6 +121,17 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             );
             
             var b = BestellingMapper.ConvertToPcsBestelling(bestelling);
+            b.Klant = new Klant
+            {
+                Voornaam = "Marco",
+                Achternaam = "Pil",
+                Adresregel1 = "Straatlaan 33",
+                Postcode = "1234AB",
+                Woonplaats = "Plaatsnaam",
+                Telefoonnummer = "1234567890",
+                Klantnummer = "1234567890",
+                Gebruikersnaam = "Wololol",
+            };
             BestellingMapper.AddProductsToBestelling(b, producten);
             return new GetBestellingByIDResponseMessage
             {
