@@ -1,4 +1,5 @@
 ﻿using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
+using Leet.Kantilever.BSBestellingenbeheer.DAL.mapping;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -14,7 +15,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 
         public DbSet<Bestelling> Bestellingen { get; set; }
 
-
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new BestellingMapping());
+            modelBuilder.Configurations.Add(new BestellingsRegelMapping());
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
