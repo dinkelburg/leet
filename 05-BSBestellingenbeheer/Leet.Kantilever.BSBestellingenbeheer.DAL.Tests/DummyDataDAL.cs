@@ -15,7 +15,6 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 ID = 1,
                 Besteldatum = DateTime.Now,
                 Bestellingsregels = GetBestellingsRegels(),
-                Bestelnummer = 2,
                 Ingepakt = true,
                 Klantnummer = "Client01",
             };

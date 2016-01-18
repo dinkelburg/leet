@@ -75,24 +75,24 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
 
-        [TestMethod]
-        public void AddNieuweBestellingReturntGrotereLijst_Test()
-        {
-            // Arrange
-            IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+        //[TestMethod]
+        //public void AddNieuweBestellingReturntGrotereLijst_Test()
+        //{
+        //    // Arrange
+        //    IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-            // Act
-            var oudeBestellinglijst = bestellingMapper.FindAll();
+        //    // Act
+        //    var oudeBestellinglijst = bestellingMapper.FindAll();
 
-            bestellingMapper.AddBestelling(DummyDataDAL.GetBestelling());
+        //    bestellingMapper.AddBestelling(DummyDataDAL.GetBestelling());
 
-            var nieuweBestellinglijst = bestellingMapper.FindAll();
+        //    var nieuweBestellinglijst = bestellingMapper.FindAll();
 
-            // Assert
-            Assert.AreEqual(4, oudeBestellinglijst.Count());
-            Assert.AreEqual(5, nieuweBestellinglijst.Count());
+        //    // Assert
+        //    Assert.AreEqual(4, oudeBestellinglijst.Count());
+        //    Assert.AreEqual(5, nieuweBestellinglijst.Count());
 
-        }
+        //}
 
         [TestMethod]
         public void AddNieuweBestelling_ArgumentNullExceptionWordtGegooid_Test()
