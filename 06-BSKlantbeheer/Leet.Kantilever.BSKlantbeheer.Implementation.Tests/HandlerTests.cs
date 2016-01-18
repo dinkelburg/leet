@@ -107,5 +107,21 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
             Assert.IsNull(klant.Tussenvoegsel);
             Assert.AreEqual("Doe", klant.Achternaam);
         }
+
+
+        [TestMethod, ExpectedException(typeof(FaultException))]
+        public void RegistreerKlant_VoegIncompleteKlantToe()
+        {
+            // Arrange
+            IKlantbeheerService service = new KlantbeheerServiceHandler();
+            var klant = new Klant { Voornaam = "Bert", Achternaam = "van Dijk", Woonplaats = "Rotterdam" };
+            var msg = new InsertKlantGegevensRequestMessage { Klant = klant };
+
+            // Act
+            service.RegistreerKlant(msg);
+
+            // Assert
+            // Assert gebeurt boven.
+        }
     }
 }
