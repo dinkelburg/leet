@@ -95,6 +95,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="MapperTest.cs" />
     <Compile Include="BtwHelperTest.cs" />
+    <Compile Include="ViewModels\ProductVMTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
