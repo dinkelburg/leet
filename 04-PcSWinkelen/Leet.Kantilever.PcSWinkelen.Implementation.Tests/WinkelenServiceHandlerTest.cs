@@ -21,9 +21,9 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
         public void VoegProductToeTest()
         {
             // Arrange
-            var mapperMock = new Mock<IDataMapper<Winkelmand>>(MockBehavior.Strict);
+            var mapperMock = new Mock<IDatamapper<Winkelmand>>(MockBehavior.Strict);
             mapperMock.Setup(mapper => mapper.AddProductToWinkelmand(It.IsAny<Product>(), It.IsAny<string>()));
-            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>())).Returns(DummyDataDAL.GetWinkelmand());
+            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>())).Returns(DummyDataDAL.Winkelmand);
 
             var agentMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);
             agentMock.Setup(agent => agent.FindProductById(It.IsAny<int>())).Returns(DummyData.GetProduct());
@@ -34,7 +34,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
 
             // Assert
             mapperMock.Verify(mapper => mapper.AddProductToWinkelmand(It.IsAny<Product>(), It.IsAny<string>()));
-            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>()));
+            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>()));
             agentMock.Verify(agent => agent.FindProductById(It.IsAny<int>()));
 
             Assert.AreEqual(2, respMessage.Winkelmand.Count);
@@ -45,8 +45,8 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
         public void GetWinkelmandjeTest()
         {
             // Arrange
-            var mapperMock = new Mock<IDataMapper<Winkelmand>>(MockBehavior.Strict);
-            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>())).Returns(DummyDataDAL.GetWinkelmand());
+            var mapperMock = new Mock<IDatamapper<Winkelmand>>(MockBehavior.Strict);
+            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>())).Returns(DummyDataDAL.Winkelmand);
 
             WinkelenServiceHandler handler = new WinkelenServiceHandler(mapperMock.Object, null);
 
@@ -54,7 +54,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
             var respMessage = handler.GetWinkelmandje(DummyData.GetVraagWinkelmandRequestMessage());
 
             // Assert
-            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>()));
+            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>()));
 
             Assert.AreEqual(2, respMessage.Winkelmand.Count);
         }
@@ -63,8 +63,8 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
         public void GetWinkelmandjeWithClientIDThatNotExistsTest()
         {
             // Arrange
-            var mapperMock = new Mock<IDataMapper<Winkelmand>>(MockBehavior.Strict);
-            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>())).Returns(default(Winkelmand));
+            var mapperMock = new Mock<IDatamapper<Winkelmand>>(MockBehavior.Strict);
+            mapperMock.Setup(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>())).Returns(default(Winkelmand));
             bool exceptionThrown = false;
             FunctionalErrorList errorlist = new FunctionalErrorList();
 
@@ -80,7 +80,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
                 exceptionThrown = true;
             }
             // Assert
-            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientId(It.IsAny<string>()));
+            mapperMock.Verify(mapper => mapper.FindWinkelmandByClientID(It.IsAny<string>()));
 
             Assert.IsTrue(exceptionThrown);
             Assert.AreEqual(1, errorlist.Count);
@@ -92,7 +92,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
         public void RemoveWinkelmandTest()
         {
             // Arrange
-            var mapperMock = new Mock<IDataMapper<Winkelmand>>(MockBehavior.Strict);
+            var mapperMock = new Mock<IDatamapper<Winkelmand>>(MockBehavior.Strict);
             mapperMock.Setup(mapper => mapper.RemoveWinkelmandByClientID(It.IsAny<string>()));
 
             var agentMock = new Mock<IAgentBSCatalogusBeheer>(MockBehavior.Strict);

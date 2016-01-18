@@ -16,30 +16,35 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
         /// Dummy data for Product 
         /// </summary>
         /// <returns>Dummy Product</returns>
-        public static Product GetProduct()
+        public static Product Product
         {
-            return new Product
+            get
             {
-                AfbeeldingURL = "img1.jpg",
-                Beschrijving = "beschrijving product",
-                LeverancierNaam = "Trek",
-                LeveranciersProductId = "Z21OP",
-                LeverbaarTot = new DateTime(2019, 5, 1),
-                LeverbaarVanaf = new DateTime(2014, 2, 9),
-                Naam = "Product Naam Z21OP",
-                Prijs = 12.16M,
-                Aantal = 1,
-                CatalogusProductID = 1,
-            };
+                return new Product
+                {
+                    AfbeeldingURL = "img1.jpg",
+                    Beschrijving = "beschrijving product",
+                    LeverancierNaam = "Trek",
+                    LeveranciersProductId = "Z21OP",
+                    LeverbaarTot = new DateTime(2019, 5, 1),
+                    LeverbaarVanaf = new DateTime(2014, 2, 9),
+                    Naam = "Product Naam Z21OP",
+                    Prijs = 12.16M,
+                    Aantal = 1,
+                    CatalogusProductID = 1,
+                };
+            }
         }
 
         /// <summary>
         /// Dummy data for a list of Products 
         /// </summary>
         /// <returns>Dummy list of Products</returns>
-        public static ICollection<Product> GetProducts()
+        public static ICollection<Product> Products
         {
-            return new List<Product>()
+            get
+            {
+                return new List<Product>()
             {
                 new Product
                 {
@@ -68,19 +73,23 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation.Tests
                     CatalogusProductID = 3,
                 },
             };
+            }
         }
 
         /// <summary>
         /// Dummy data for a Winkelmand
         /// </summary>
         /// <returns>Dummy Winkelmand</returns>
-        public static Winkelmand GetWinkelmand()
+        public static Winkelmand Winkelmand
         {
-            return new Winkelmand
+            get
             {
-                ClientID = "Client01",
-                Products = GetProducts(),
-            };
+                return new Winkelmand
+                {
+                    ClientID = "Client01",
+                    Products = Products,
+                };
+            }
         }
     }
 }
