@@ -34,29 +34,56 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             _factory = factory;
         }
 
-        public Bestelling GetBestellingByID(long id)
+        /// <summary>
+        /// Get bestelling by it's id from BSBestellingenbeheer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Bestelling GetBestellingByBestelnummer(long nummer)
         {
             var agent = _factory.CreateAgent();
-            var msg = new GetBestellingByIDRequestMessage() { BestellingsID = id };
-            return agent.FindBestelling(msg).Bestelling;
+            
+            return agent.FindBestelling(new GetBestellingByBestelnummerRequestMessage { Bestelnummer = nummer }).Bestelling;
         }
 
+        /// <summary>
+        /// Get all Bestellingen from BSBestellingenbeheer
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Bestelling> GetAllBestellingen()
         {
             var agent = _factory.CreateAgent();
             return agent.FindAllBestelling().BestellingCollection;
         }
 
+        /// <summary>
+        /// Get next Bestelling to be packaged from BSBestellingenbeheer
+        /// </summary>
+        /// <returns></returns>
         public Bestelling GetVolgendeBestelling()
         {
             var agent = _factory.CreateAgent();
             return agent.GetVolgendeOpenBestelling().Bestelling;
         }
 
+        /// <summary>
+        /// Create new Bestelling on BSBestellingenbeheer
+        /// </summary>
+        /// <param name="bestelling"></param>
         public void CreateBestelling(Bestelling bestelling)
         {
             var agent = _factory.CreateAgent();
             agent.CreateBestelling(new CreateBestellingRequestMessage { Bestelling = bestelling });
+        }
+
+        /// <summary>
+        /// Update bestelling on BSBestellingenbeheer
+        /// </summary>
+        /// <param name="bestelling"></param>
+        public void UpdateBestelling(Bestelling bestelling)
+        {
+            var agent = _factory.CreateAgent();
+            agent.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = bestelling });
         }
     }
 }

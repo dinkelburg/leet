@@ -43,6 +43,18 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             _agentWinkelen = agentWinkelen;
         }
 
+
+        /// <summary>
+        /// Update bestelling information
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        public void UpdateBestelling(UpdateBestellingRequestMessage requestMessage)
+        {
+            var mapper = new BestellingMapper();
+            var bestelling = mapper.ConvertToBSBestelling(requestMessage.Bestelling);
+            _agentBestellingen.UpdateBestelling(bestelling);
+        }
+
         /// <summary>
         /// Create a bestelling for a klant using his current winkelmand
         /// </summary>
@@ -59,7 +71,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             //TODO: Save customer information in a future sprint.
 
             _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
-
+            
             //Remove winkelmand
             _agentWinkelen.RemoveWinkelmand(bestelling.Klant.Klantnummer);
         }
@@ -99,10 +111,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         /// </summary>
         /// <param name="requestMessage"></param>
         /// <returns></returns>
-        public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
+        public GetBestellingByIDResponseMessage FindBestellingByBestelnummer(GetBestellingByIDRequestMessage requestMessage)
         {
             //Retrieve all Bestellingen
-            var bestelling = _agentBestellingen.GetBestellingByID(requestMessage.BestellingsID);
+            var bestelling = _agentBestellingen.GetBestellingByBestelnummer(requestMessage.BestellingsID);
 
             //Convert & get data
             var mapper = new BestellingMapper();

@@ -34,9 +34,20 @@ namespace Leet.Kantilever.PcSBestellen.Contract
         /// <param name="requestMessage">The ID of the bestelling to find.</param>
         /// <returns></returns>
         [OperationContract]
-        GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage);
+        GetBestellingByIDResponseMessage FindBestellingByBestelnummer(GetBestellingByIDRequestMessage requestMessage);
 
+        /// <summary>
+        /// Create new bestelling
+        /// </summary>
+        /// <param name="requestMessage"></param>
         [OperationContract]
         void CreateBestelling(CreateBestellingRequestMessage requestMessage);
+
+        /// <summary>
+        /// Update bestelling information
+        /// </summary>
+        /// <param name="requestMessage"></param>
+        [OperationContract]
+        void UpdateBestelling(UpdateBestellingRequestMessage requestMessage);
     }
 }

@@ -38,15 +38,21 @@ namespace Leet.Kantilever.FEBestellingen.Agent
             return bestelling.Bestelling;
         }
 
-        public Bestelling FindBestellingByID(int bestellingID)
+        public Bestelling FindBestellingByBestelnummer(long bestelnummer)
         {
             var proxy = _factory.CreateAgent();
             var requestMessage = new GetBestellingByIDRequestMessage
             {
-                BestellingsID = bestellingID
+                BestellingsID = bestelnummer
             };
-            var responseMessage = proxy.FindBestellingByID(requestMessage);
+            var responseMessage = proxy.FindBestellingByBestelnummer(requestMessage);
             return responseMessage.Bestelling;
+        }
+
+        public void UpdateBestelling(Bestelling bestelling)
+        {
+            var proxy = _factory.CreateAgent();
+            proxy.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = bestelling });
         }
     }
 }

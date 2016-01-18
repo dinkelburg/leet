@@ -148,17 +148,38 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 //Setup
             agentBestellingMock.Setup(a => a.GetVolgendeBestelling())
                 .Returns(DummyData.BSBestellingbeheerBestelling);
-            agentBestellingMock.Setup(a => a.GetBestellingByID(DummyData.BSBestellingbeheerBestelling.ID))
+            agentBestellingMock.Setup(a => a.GetBestellingByBestelnummer(DummyData.BSBestellingbeheerBestelling.ID))
                 .Returns(DummyData.BSBestellingbeheerBestelling);
 
             var handler = new BestellenServiceHandler(agentBestellingMock.Object, agentCatalogusMock.Object, null);
 
             // Act
-            handler.FindBestellingByID(new GetBestellingByIDRequestMessage { BestellingsID = DummyData.BSBestellingbeheerBestelling.ID });
+            handler.FindBestellingByBestelnummer(new GetBestellingByIDRequestMessage { BestellingsID = DummyData.BSBestellingbeheerBestelling.ID });
 
             // Assert
-            agentBestellingMock.Verify(a => a.GetBestellingByID(DummyData.BSBestellingbeheerBestelling.ID), Times.Once);
+            agentBestellingMock.Verify(a => a.GetBestellingByBestelnummer(DummyData.BSBestellingbeheerBestelling.ID), Times.Once);
             agentCatalogusMock.Verify(a => a.GetProductsById(It.IsAny<int[]>()));
+
+        }
+
+        [TestMethod]
+        public void UpdateBestelling_CallsAgentBestellingen()
+        {
+            // Arrange
+            var mockAgent = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            var handler = new BestellenServiceHandler(mockAgent.Object,null,null);
+
+            var bestelling = DummyData.BSBestellingbeheerBestelling;
+
+            mockAgent.Setup(a => a.UpdateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
+
+
+
+            // Act
+            handler.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = DummyData.PcSBestellenBestelling });
+
+            // Assert
+            mockAgent.Verify(a => a.UpdateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()), Times.Once);
 
         }
     }

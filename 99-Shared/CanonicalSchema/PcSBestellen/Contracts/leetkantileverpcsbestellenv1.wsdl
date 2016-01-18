@@ -23,17 +23,23 @@
   <wsdl:message name="IBestellenService_FindAllBestellingen_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindAllBestellingenResponse" />
   </wsdl:message>
-  <wsdl:message name="IBestellenService_FindBestellingByID_InputMessage">
-    <wsdl:part name="parameters" element="tns:FindBestellingByID" />
+  <wsdl:message name="IBestellenService_FindBestellingByBestelnummer_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindBestellingByBestelnummer" />
   </wsdl:message>
-  <wsdl:message name="IBestellenService_FindBestellingByID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:FindBestellingByIDResponse" />
+  <wsdl:message name="IBestellenService_FindBestellingByBestelnummer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindBestellingByBestelnummerResponse" />
   </wsdl:message>
   <wsdl:message name="IBestellenService_CreateBestelling_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateBestelling" />
   </wsdl:message>
   <wsdl:message name="IBestellenService_CreateBestelling_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateBestellingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBestellenService_UpdateBestelling_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBestelling" />
+  </wsdl:message>
+  <wsdl:message name="IBestellenService_UpdateBestelling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBestellingResponse" />
   </wsdl:message>
   <wsdl:portType name="IBestellenService">
     <wsdl:operation name="FindVolgendeOpenBestelling">
@@ -44,13 +50,17 @@
       <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindAllBestellingen" message="tns:IBestellenService_FindAllBestellingen_InputMessage" />
       <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindAllBestellingenResponse" message="tns:IBestellenService_FindAllBestellingen_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="FindBestellingByID">
-      <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByID" message="tns:IBestellenService_FindBestellingByID_InputMessage" />
-      <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByIDResponse" message="tns:IBestellenService_FindBestellingByID_OutputMessage" />
+    <wsdl:operation name="FindBestellingByBestelnummer">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByBestelnummer" message="tns:IBestellenService_FindBestellingByBestelnummer_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByBestelnummerResponse" message="tns:IBestellenService_FindBestellingByBestelnummer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestelling" message="tns:IBestellenService_CreateBestelling_InputMessage" />
       <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestellingResponse" message="tns:IBestellenService_CreateBestelling_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBestelling">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/UpdateBestelling" message="tns:IBestellenService_UpdateBestelling_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/UpdateBestellingResponse" message="tns:IBestellenService_UpdateBestelling_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IBestellenService" type="tns:IBestellenService">
@@ -73,8 +83,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="FindBestellingByID">
-      <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByID" style="document" />
+    <wsdl:operation name="FindBestellingByBestelnummer">
+      <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/FindBestellingByBestelnummer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -84,6 +94,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateBestelling">
       <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/CreateBestelling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBestelling">
+      <soap:operation soapAction="urn:leet:kantilever:pcsbestellen:v1/IBestellenService/UpdateBestelling" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

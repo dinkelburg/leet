@@ -81,7 +81,34 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                     Klantnummer = "42dffe6f-2b0b-43d5-9e84-8433168def99"
                     #endregion
                 };
+            }
         }
+
+        /// <summary>
+        /// Get BSBestellingbeheerBestelling as a PcSBestellen bestelling
+        /// </summary>
+        public static V1.Schema.Bestelling PcSBestellenBestelling
+        {
+            get
+            {
+                var mapper = new Mappers.BestellingMapper();
+                var bestelling = mapper.ConvertToPcsBestelling(BSBestellingbeheerBestelling);
+                bestelling.Klant = new minorcase3bsklantbeheer.v1.schema.Klant
+                {
+                    Achternaam = "Vries",
+                    Adresregel1 = "Softwarelaan 1",
+                    Email = "jan@devries.nl",
+                    Gebruikersnaam = "jdv",
+                    ID = 21,
+                    Klantnummer = "42dffe6f-2b0b-43d5-9e84-8433168def99",
+                    Postcode = "2449AA",
+                    Telefoonnummer = "0234568459",
+                    Tussenvoegsel = "de",
+                    Voornaam = "Jan",
+                    Woonplaats = "Hattem"
+                };
+                return bestelling;
+            }
         }
 
 

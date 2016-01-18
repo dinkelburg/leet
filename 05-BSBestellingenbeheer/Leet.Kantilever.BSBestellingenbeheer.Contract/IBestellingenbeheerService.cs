@@ -12,16 +12,18 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Contract
     public interface IBestellingenbeheerService
     {
         [OperationContract]
-        GetBestellingByIDResponseMessage FindBestelling(GetBestellingByIDRequestMessage m);
+        GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage m);
 
         [OperationContract]
         GetAllBestellingenResponseMessage FindAllBestelling();
 
         [OperationContract]
         GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling();
-
-
+        
         [OperationContract]
         void CreateBestelling(CreateBestellingRequestMessage requestMesssage);
+
+        [OperationContract]
+        void UpdateBestelling(UpdateBestellingRequestMessage requestMessage);
     }
 }

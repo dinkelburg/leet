@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Leet.Kantilever.FEBestellingen.Site.ViewModels.BestellingsregelVM>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Leverancierscode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aantal)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leverancierscode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aantal)
+            </td>
+        </tr>
+    }
+</table>

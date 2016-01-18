@@ -19,7 +19,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// </summary>
         /// <param name="id">The ID of the bestelling to return.</param>
         /// <returns></returns>
-        Bestelling GetBestellingByID(long id);
+        Bestelling GetBestellingByBestelnummer(long id);
 
         /// <summary>
         /// Returns the next bestelling to be handled.
@@ -32,5 +32,7 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         /// </summary>
         /// <param name="bestelling"></param>
         void CreateBestelling(Bestelling bestelling);
+
+        void UpdateBestelling(Bestelling bestelling);
     }
 }

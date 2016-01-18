@@ -4,14 +4,14 @@
   <xs:element name="FindBestelling">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="m" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q1:GetBestellingByIDRequestMessage" />
+        <xs:element minOccurs="0" name="m" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q1:GetBestellingByBestelnummerRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FindBestellingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="FindBestellingResult" nillable="true" xmlns:q2="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q2:GetBestellingByIDResponseMessage" />
+        <xs:element minOccurs="0" name="FindBestellingResult" nillable="true" xmlns:q2="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q2:GetBestellingByBestelnummerResponseMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -47,6 +47,18 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateBestellingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBestelling">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="requestMessage" nillable="true" xmlns:q6="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q6:UpdateBestellingRequestMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBestellingResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
