@@ -57,12 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentBSCatalogusBeheer.cs" />
+    <Compile Include="AgentBSKlantbeheer.cs" />
     <Compile Include="AgentPcSWinkelen.cs" />
     <Compile Include="AgentBSBestellingenbeheer.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
+    <Compile Include="BSKlantbeheerGeneratedTypes.cs" />
     <Compile Include="generatedTypes.cs" />
     <Compile Include="IAgentBSCatalogusBeheer.cs" />
     <Compile Include="IAgentBSBestellingenbeheer.cs" />
+    <Compile Include="IAgentBSKlantbeheer.cs" />
     <Compile Include="IAgentPcSWinkelen.cs" />
     <Compile Include="PcSWinkelenGeneratedTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,7 +114,16 @@ svcutil ^
   /n:"urn:minor-case3-pcswinkelen:v1:messages,Leet.Kantilever.PcSWinkelen.V1.Messages" ^
   /n:"urn:minor-case3-pcswinkelen:v1:schema,Leet.Kantilever.PcSWinkelen.V1.Schema" ^
   "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\kantileverpcswinkelenv1.wsdl" ^
-  "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"</PreBuildEvent>
+  "$(SolutionDir)..\99-shared\CanonicalSchema\PcSWinkelen\Contracts\*.xsd"
+
+svcutil ^
+  /out:$(ProjectDir)BSKlantbeheerGeneratedTypes.cs ^
+  /n:"urn:leet:kantilever:bsklantbeheer:v1/Imports,Leet.Kantilever.BSKlantbeheer.V1.Imports" ^
+  /n:"urn:leet:kantilever:bsklantbeheer:v1,Leet.Kantilever.BSKlantbeheer.V1" ^
+  /n:"urn:minor-case3-bsklantbeheer:v1:messages,Leet.Kantilever.BSKlantbeheer.V1.Messages" ^
+  /n:"urn:minor-case3-bsklantbeheer:v1:schema,Leet.Kantilever.BSKlantbeheer.V1.Schema" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSKlantbeheer\Contracts\leetkantileverbsklantbeheerv1.wsdl" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSKlantbeheer\Contracts\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

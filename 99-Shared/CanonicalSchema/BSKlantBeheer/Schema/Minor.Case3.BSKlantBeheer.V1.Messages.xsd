@@ -21,20 +21,7 @@
 
   <xsd:element name="InsertKlantGegevensRequestMessage" type="tns:InsertKlantGegevensRequestMessage" />
 
-	
-  <!--<xsd:complexType name="GetAllBestellingenResponseMessage">
-    <xsd:sequence>
-      <xsd:element name="KlantCollection" type="klant:KlantenCollection" />
-    </xsd:sequence>
-  </xsd:complexType>
-
-  <xsd:complexType name="GetBestellingByIDResponseMessage">
-    <xsd:sequence>
-      <xsd:element name="Bestelling" type="bestelling:Bestelling" />
-    </xsd:sequence>
-  </xsd:complexType>-->
-
-  <xsd:complexType name="GetAllKlantenResponseMessage">
+	<xsd:complexType name="GetAllKlantenResponseMessage">
     <xsd:sequence>
       <xsd:element name="Klanten" type="klant:KlantenCollection" />
     </xsd:sequence>
