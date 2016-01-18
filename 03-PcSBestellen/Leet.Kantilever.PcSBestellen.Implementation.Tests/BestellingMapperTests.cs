@@ -152,10 +152,9 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             Assert.AreEqual(BSProduct.LeverbaarTot, PcSproduct.LeverbaarTot);
             Assert.AreEqual(BSProduct.LeverbaarVanaf, PcSproduct.LeverbaarVanaf);
             Assert.AreEqual(BSProduct.Naam, PcSproduct.Naam);
-            Assert.AreEqual(null, PcSproduct.Prijs); //Mapper should not take price from BSCatalogus but from BSBestellen, in this case the value is null null
+            Assert.AreEqual(null, PcSproduct.Prijs); //Mapper should not take price from BSCatalogus but from BSBestellen, in this case the value is null
             Assert.AreEqual(BSProduct.CategorieLijst.First().Id, PcSproduct.CategorieLijst.First().Id);
             Assert.AreEqual(BSProduct.CategorieLijst.First().Naam, PcSproduct.CategorieLijst.First().Naam);
-
         }
 
         [TestMethod]
@@ -202,7 +201,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             mapper.AddProductsToBestelling(PcSBestelling, products);
 
             // Assert
-            //No Error thrown
+            //The test succeeds if no error is thrown, no assert is needed.
         }
     }
 }

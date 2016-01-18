@@ -52,6 +52,8 @@ namespace Leet.Kantilever.PcSBestellen.Agent.Tests
             try
             {
                 var product = agent.GetProductsById(new int[] { 1 });
+
+                //Test fails if this line is reached.
                 Assert.Fail();
             }
             // Assert
