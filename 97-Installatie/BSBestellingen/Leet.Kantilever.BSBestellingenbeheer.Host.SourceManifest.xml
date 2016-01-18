@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
-  <DbFullSql path="C:\tfs\PimV\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\AutoScripts\BestellingContext-Deployment_SchemaAndData.sql" Transacted="True" />
-  <DbFullSql path="C:\tfs\PimV\Leet\97-Installatie\GRANTscript_BSBestellingbeheerDatabase.sql" Transacted="False" />
-  <IisApp path="C:\tfs\PimV\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" />
-  <setAcl path="C:\tfs\PimV\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\tfs\PimV\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <DbFullSql path="C:\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\AutoScripts\BestellingContext-Deployment_SchemaAndData.sql" Transacted="True" />
+  <DbFullSql path="C:\Leet\97-Installatie\GRANTscript_BSBestellingbeheerDatabase.sql" Transacted="False" />
+  <IisApp path="C:\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" />
+  <setAcl path="C:\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Leet\05-BSBestellingenbeheer\Leet.Kantilever.BSBestellingenbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
 </sitemanifest>

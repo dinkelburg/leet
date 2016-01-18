@@ -28,6 +28,13 @@ GO
 USE [master]
 GO
 
+IF EXISTS(select * from sys.databases where name='Leet_PcSWinkelenDatabase')
+DROP DATABASE [Leet_PcSWinkelenDatabase]
+GO
+
+CREATE DATABASE [Leet_PcSWinkelenDatabase]
+GO
+
 USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
