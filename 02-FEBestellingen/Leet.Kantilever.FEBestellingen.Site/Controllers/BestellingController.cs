@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
-    [Authorize(Users = @"Minor\Dennis")]
+    [Authorize(Roles = @"Magazijnmedewerkers")]
     public class BestellingController : Controller
     {
         private IAgentPcSBestellen _agent;
@@ -23,7 +23,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             _agent = agent;
         }
 
-        [Authorize(Users = @"Minor\Dennis")]
+        [Authorize(Roles = @"Magazijnmedewerkers")]
         // GET: Bestelling
         public ActionResult Index()
         {
@@ -48,7 +48,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View(bestellingen);
         }
 
-        [Authorize(Users = @"Minor\Dennis")]
+        [Authorize(Roles = @"Magazijnmedewerkers")]
         public ActionResult VolgendeBestelling()
         {
             //var bestelling = Mapper.MapBestellingToVMList(_agent.FindVolgendeOpenBestelling());
@@ -70,7 +70,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View(bestelling.Bestellingsregels);
         }
 
-        [Authorize(Users = @"Minor\Dennis")]
+        [Authorize(Roles = @"Magazijnmedewerkers")]
         public ActionResult ToonFactuur(int bestellingID)
         {
             //var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByID(bestellingID));
