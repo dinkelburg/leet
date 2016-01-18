@@ -24,7 +24,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
         [TestMethod]
-        public void TestGetBestellingen()
+        public void GetBestellingen_CorrecteBestellingenWordenGereturnd_Test()
         {
 
             // Arrange
@@ -39,7 +39,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void TestFindBestellingByID()
+        public void FindBestellingByID_CorrecteBestellingWordtGereturnd()
         {
             // Arrange
             IBestellingMapper<Bestelling> mapper = new BestellingDataMapper();
@@ -61,7 +61,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void TestFindVolgendeOpenBestelling()
+        public void FindVolgendeOpenBestelling_CorrecteVolgendeBestellingWordtGereturnd_Test()
         {
             // Arrange
             IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
@@ -76,7 +76,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void AddNieuweBestellingReturntGrotereLijstTest()
+        public void AddNieuweBestellingReturntGrotereLijst_Test()
         {
             // Arrange
             IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
@@ -175,7 +175,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void BestellingsregelToDTOMapCorrectData()
+        public void BestellingsregelToDTOMapCorrectData_Test()
         {
             // Arrange
             var bestellingsregels = DummyDataDAL.GetBestellingsRegels();
@@ -194,7 +194,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
         [TestMethod]
-        public void BestellingsregelToCollection_ArgumentNullExceptionWordtGegooid()
+        public void BestellingsregelToCollection_ArgumentNullExceptionWordtGegooid_Test()
         {
             //Arrange
 
@@ -216,7 +216,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
         [TestMethod]
-        public void BestellingsToDTO_ArgumentNullExceptionWordtGegooid()
+        public void BestellingsToDTO_ArgumentNullExceptionWordtGegooid_Test()
         {
             // Arrange
 
@@ -234,7 +234,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         }
 
         [TestMethod]
-        public void BestellingsregelToDTO_CorrecteDataWordtGemapped()
+        public void BestellingsregelToDTO_CorrecteDataWordtGemapped_Test()
         {
             //Arrange
             var bestellingsregel = DummyDataDAL.GetBestellingsRegels()[0];
