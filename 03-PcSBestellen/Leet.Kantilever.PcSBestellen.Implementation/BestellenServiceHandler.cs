@@ -127,6 +127,47 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         /// <returns>Bestelling</returns>
         public GetVolgendeOpenBestellingResponseMessage FindVolgendeOpenBestelling()
         {
+            BestellingsregelCollection c = new BestellingsregelCollection();
+            c.Add(new Bestellingsregel
+            {
+                Aantal =10,
+                Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
+                {
+                    AfbeeldingURL = "/images/product.jpg",
+                    Beschrijving = "Blauwe fiets",
+                    Id = 154,
+                    LeverancierNaam = "De Boer Fietsen",
+                    LeveranciersProductId = "DBF10254632",
+                    LeverbaarTot = null,
+                    LeverbaarVanaf = new DateTime(2003, 2, 14),
+                    Naam = "Fiets F1024",
+                    Prijs = 299.99M,
+                    CategorieLijst = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection()
+                }
+            });
+            //return new GetVolgendeOpenBestellingResponseMessage
+            //{
+            //    Bestelling = new Bestelling
+            //    {
+            //        Besteldatum = DateTime.Now,
+            //        Bestelnummer = 1,
+            //        ID = 1,
+            //        BestellingsregelCollection = c,
+            //        Klant = new Klant
+            //        {
+            //            Voornaam = "Testdummy",
+            //            Achternaam = "McNep",
+            //            Adresregel1 = "Straatlaan 33",
+            //            Postcode = "1234AB",
+            //            Woonplaats = "Plaatsnaam",
+            //            Telefoonnummer = "1234567890",
+            //            Klantnummer = "1234567890",
+            //            Gebruikersnaam = "Wololol",
+            //            ID = 1,
+            //        }
+
+            //    }
+            //};
             BestellingMapper mapper = new BestellingMapper();
             var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
             var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
@@ -138,6 +179,19 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             );
 
             mapper.AddProductsToBestelling(pcsBestelling, producten);
+
+            pcsBestelling.Klant = new Klant
+            {
+                Voornaam = "Testdummy",
+                Achternaam = "McNep",
+                Adresregel1 = "Straatlaan 33",
+                Postcode = "1234AB",
+                Woonplaats = "Plaatsnaam",
+                Telefoonnummer = "1234567890",
+                Klantnummer = "1234567890",
+                Gebruikersnaam = "Wololol",
+                ID = 1,
+            };
 
             return new GetVolgendeOpenBestellingResponseMessage
             {

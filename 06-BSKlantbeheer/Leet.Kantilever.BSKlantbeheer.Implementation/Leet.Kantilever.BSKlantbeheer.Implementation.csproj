@@ -64,6 +64,10 @@
       <Project>{f0b58535-28ab-4e35-8423-4b8c383a4c59}</Project>
       <Name>Leet.Kantilever.BSKlantbeheer.Contract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.DAL\Leet.Kantilever.BSKlantbeheer.DAL.csproj">
+      <Project>{8cce462b-9185-4d1f-8fd0-ead689029e5d}</Project>
+      <Name>Leet.Kantilever.BSKlantbeheer.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\99-Shared\KantileverDictionary.xml">

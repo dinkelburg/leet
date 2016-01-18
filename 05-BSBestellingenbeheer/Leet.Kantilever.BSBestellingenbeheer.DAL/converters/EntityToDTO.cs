@@ -10,6 +10,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
     {
         public static V1.Schema.Bestelling BestellingToDto(Entities.Bestelling bestelling)
         {
+            if(bestelling == null)
+            {
+                throw new ArgumentNullException("bestelling");
+            }
+
             return new V1.Schema.Bestelling
             {
                 ID = bestelling.ID,
@@ -23,6 +28,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 
         public static V1.Schema.Bestellingsregel BestellingsregelToDto(Entities.BestellingsRegel regel)
         {
+            if (regel == null)
+            {
+                throw new ArgumentNullException(paramName:"regel");
+            }
             return new V1.Schema.Bestellingsregel
             {
                 Aantal = regel.Aantal,
@@ -33,6 +42,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 
         public static V1.Schema.BestellingsregelCollection BestellingsregelsToCollection(ICollection<Entities.BestellingsRegel> regels)
         {
+            if (regels == null)
+            {
+                throw new ArgumentNullException(paramName:"regels");
+            }
+
             var collection = new V1.Schema.BestellingsregelCollection();
             collection.AddRange(regels.Select(BestellingsregelToDto));
             return collection;
