@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAE3A6B5-14CC-4AD9-8A46-0EE858AD8BBB}</ProjectGuid>
+    <ProjectGuid>{0B03106D-A5D4-48C2-8BAF-AB6CBB57FD8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Leet.Kantilever.BSKlantbeheer.Implementation.Tests</RootNamespace>
-    <AssemblyName>Leet.Kantilever.BSKlantbeheer.Implementation.Tests</AssemblyName>
+    <RootNamespace>Leet.Kantilever.BSKlantbeheer.DAL.Tests</RootNamespace>
+    <AssemblyName>Leet.Kantilever.BSKlantbeheer.DAL.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -34,19 +34,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>leet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -56,34 +51,15 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
-          <Private>False</Private>
-        </Reference>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="KlantDBInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HandlerTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.Contract\Leet.Kantilever.BSKlantbeheer.Contract.csproj">
-      <Project>{f0b58535-28ab-4e35-8423-4b8c383a4c59}</Project>
-      <Name>Leet.Kantilever.BSKlantbeheer.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.DAL\Leet.Kantilever.BSKlantbeheer.DAL.csproj">
-      <Project>{8cce462b-9185-4d1f-8fd0-ead689029e5d}</Project>
-      <Name>Leet.Kantilever.BSKlantbeheer.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Leet.Kantilever.BSKlantbeheer.Implementation\Leet.Kantilever.BSKlantbeheer.Implementation.csproj">
-      <Project>{a5dd920e-7baa-486d-acb0-db5d47b63df7}</Project>
-      <Name>Leet.Kantilever.BSKlantbeheer.Implementation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="leet.snk" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

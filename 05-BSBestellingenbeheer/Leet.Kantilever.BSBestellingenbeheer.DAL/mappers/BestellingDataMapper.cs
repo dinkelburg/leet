@@ -12,6 +12,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
     {
         public void AddBestelling(Bestelling bestelling)
         {
+            if (bestelling == null)
+            {
+                throw new ArgumentNullException(paramName:"bestelling");
+            }
+
             using (var context = new BestellingContext())
             {
                 context.Bestellingen.Add(bestelling);
@@ -60,10 +65,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var t = context.Bestellingen.ToList();
-                var t1 = context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
-                                                                  .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
-                return context.Bestellingen.OrderBy(bestelling => bestelling.Besteldatum)
+                return context.Bestellingen.Include(b =>b.Bestellingsregels).OrderBy(bestelling => bestelling.Besteldatum)
                                                                   .FirstOrDefault(bestelling => bestelling.Ingepakt == false);
             }
         }

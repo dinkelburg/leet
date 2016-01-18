@@ -5,14 +5,61 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using Leet.Kantilever.BSKlantbeheer.V1.Messages;
+using Leet.Kantilever.BSKlantbeheer.DAL.Mappers;
+using Leet.Kantilever.BSKlantbeheer.V1.Schema;
+using System.Data;
+using Leet.Kantilever.BSKlantbeheer.DAL.Exceptions;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
     public class KlantbeheerServiceHandler : IKlantbeheerService
     {
-        public string GetData(int value)
+        public GetAllKlantenResponseMessage GetAllKlanten()
         {
-            return string.Format("You entered: {0}", value);
+            var mapper = new KlantDataMapper();
+            KlantenCollection result = new KlantenCollection();
+            try
+            {
+                result.AddRange(mapper.GetAllKlanten());
+                return new GetAllKlantenResponseMessage { Klanten = result };
+            }
+            catch (DataException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+        }
+
+        public GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage msg)
+        {
+            var mapper = new KlantDataMapper();
+            try
+            {
+                Klant klant = mapper.FindKlant(msg.Klantnummer);
+                return new GetKlantByKlantnummerResponseMessage { Klant = klant };
+            }
+            catch (InvalidOperationException)
+            {
+                // Klantnummer was niet bekend
+                throw new FaultException($"Dit klantnummer({msg.Klantnummer}) was niet bekend.");
+            }
+            catch (ArgumentNullException)
+            {
+                throw new FaultException("Klantnummer was niet opgegeven.");
+            }
+        }
+
+        public void RegistreerKlant(InsertKlantGegevensRequestMessage msg)
+        {
+            var mapper = new KlantDataMapper();
+            try
+            {
+                mapper.InsertKlant(msg.Klant);
+            }
+            catch(FunctionalException ex)
+            {
+                throw new FaultException(ex.Message);
+            }
         }
     }
 }
