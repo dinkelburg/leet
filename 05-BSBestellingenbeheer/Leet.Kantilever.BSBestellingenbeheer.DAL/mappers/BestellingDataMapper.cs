@@ -29,7 +29,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             using (var context = new BestellingContext())
             {
                 return context.Bestellingen.Include(b => b.Bestellingsregels)
-                                            .Where(predicate);
+                                            .Where(predicate).ToList();
             }
         }
 
@@ -37,8 +37,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var existing = context.Bestellingen.Find(bestelling.ID);
+                var existing = context.Bestellingen.Single(b => bestelling.Bestelnummer == b.Bestelnummer);
                 context.Entry(existing).CurrentValues.SetValues(bestelling);
+                context.Entry(existing).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

@@ -52,6 +52,17 @@ namespace Leet.Kantilever.FEBestellingen.Agent
         public void UpdateBestelling(Bestelling bestelling)
         {
             var proxy = _factory.CreateAgent();
+            bestelling.Klant = new Klant
+            {
+                Voornaam = "Testdummy",
+                Achternaam = "McNep",
+                Adresregel1 = "Straatlaan 33",
+                Postcode = "1234AB",
+                Woonplaats = "Plaatsnaam",
+                Telefoonnummer = "1234567890",
+                Klantnummer = "1234567890",
+                Gebruikersnaam = "Wololol",
+            };
             proxy.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = bestelling });
         }
     }
