@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,8 +92,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         {
             get
             {
-                var mapper = new Mappers.BestellingMapper();
-                var bestelling = mapper.ConvertToPcsBestelling(BSBestellingbeheerBestelling);
+                var bestelling = BestellingMapper.ConvertToPcsBestelling(BSBestellingbeheerBestelling);
                 bestelling.Klant = new minorcase3bsklantbeheer.v1.schema.Klant
                 {
                     Achternaam = "Vries",

@@ -17,6 +17,7 @@
       <Word>aantal</Word>
       <Word>artikel</Word>
       <Word>Winkelmand</Word>
+      <Word>Winkelmanden</Word>
       <Word>Rij</Word>
       <Word>Totaalprijs</Word>
       <Word>Producten</Word>
@@ -66,6 +67,10 @@
       <Word>Voornaam</Word>
       <Word>Woonplaats</Word>
       <Word>bs</Word>
+      <Word>bestelnummer</Word>
+      <Word>vraag</Word>
+      <Word>Message</Word>
+      <Word>Registreer</Word>
 
     </Recognized>
   </Words>

@@ -50,8 +50,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         /// <param name="requestMessage"></param>
         public void UpdateBestelling(UpdateBestellingRequestMessage requestMessage)
         {
-            var mapper = new BestellingMapper();
-            var bestelling = mapper.ConvertToBSBestelling(requestMessage.Bestelling);
+            var bestelling = BestellingMapper.ConvertToBSBestelling(requestMessage.Bestelling);
             _agentBestellingen.UpdateBestelling(bestelling);
         }
 
@@ -62,15 +61,14 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         public void CreateBestelling(CreateBestellingRequestMessage requestMessage)
         {
             var winkelmand = _agentWinkelen.GetWinkelMand(requestMessage.Klant.Klantnummer);
-            var mapper = new BestellingMapper();
-            var bestelling = mapper.ConvertWinkelmandToBestelling(winkelmand);
+            var bestelling = BestellingMapper.ConvertWinkelmandToBestelling(winkelmand);
 
             bestelling.Besteldatum = DateTime.Now;
             bestelling.Klant = requestMessage.Klant;
 
             //TODO: Save customer information in a future sprint.
 
-            _agentBestellingen.CreateBestelling(mapper.ConvertToBSBestelling(bestelling));
+            _agentBestellingen.CreateBestelling(BestellingMapper.ConvertToBSBestelling(bestelling));
             
             //Remove winkelmand
             _agentWinkelen.RemoveWinkelmand(bestelling.Klant.Klantnummer);
@@ -86,12 +84,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             var bestellingen = _agentBestellingen.GetAllBestellingen();
 
             //Convert & get data
-            var mapper = new BestellingMapper();
             var bestellingCollection = new BestellingCollection();
             var productIds = new List<int>();
             foreach (var bestelling in bestellingen)
             {
-                bestellingCollection.Add(mapper.ConvertToPcsBestelling(bestelling));
+                bestellingCollection.Add(BestellingMapper.ConvertToPcsBestelling(bestelling));
                 productIds.AddRange(bestelling.Bestellingsregels.Select(r => (int)r.ProductID));
             }
 
@@ -99,7 +96,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
 
             foreach (var bestelling in bestellingCollection)
             {
-                mapper.AddProductsToBestelling(bestelling, producten);
+                BestellingMapper.AddProductsToBestelling(bestelling, producten);
             }
 
             //Return data
@@ -117,15 +114,13 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
             var bestelling = _agentBestellingen.GetBestellingByBestelnummer(requestMessage.BestellingsID);
 
             //Convert & get data
-            var mapper = new BestellingMapper();
-
             var producten = _agentCatalogus.GetProductsById(
                 bestelling.Bestellingsregels.Select(r => (int)r.ProductID)
                 .Distinct()
                 .ToArray()
             );
             
-            var b = mapper.ConvertToPcsBestelling(bestelling);
+            var b = BestellingMapper.ConvertToPcsBestelling(bestelling);
             b.Klant = new Klant
             {
                 Voornaam = "Marco",
@@ -137,7 +132,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
                 Klantnummer = "1234567890",
                 Gebruikersnaam = "Wololol",
             };
-            mapper.AddProductsToBestelling(b, producten);
+            BestellingMapper.AddProductsToBestelling(b, producten);
             return new GetBestellingByIDResponseMessage
             {
                 Bestelling = b
@@ -191,9 +186,8 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
 
             //    }
             //};
-            BestellingMapper mapper = new BestellingMapper();
             var bsBestelling = _agentBestellingen.GetVolgendeBestelling();
-            var pcsBestelling = mapper.ConvertToPcsBestelling(bsBestelling);
+            var pcsBestelling = BestellingMapper.ConvertToPcsBestelling(bsBestelling);
 
             var producten = _agentCatalogus.GetProductsById(
                 bsBestelling.Bestellingsregels.Select(r => (int)r.ProductID)
@@ -201,7 +195,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
                 .ToArray()
             );
 
-            mapper.AddProductsToBestelling(pcsBestelling, producten);
+            BestellingMapper.AddProductsToBestelling(pcsBestelling, producten);
 
             pcsBestelling.Klant = new Klant
             {
