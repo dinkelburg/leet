@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="urn:minor-case3-bsbestellingenbeheer:v1:messages" elementFormDefault="qualified" targetNamespace="urn:minor-case3-bsbestellingenbeheer:v1:messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="urn:minor-case3-bsbestellingenbeheer:v1:schema" />
-  <xs:complexType name="GetBestellingByIDRequestMessage">
+  <xs:complexType name="GetBestellingByBestelnummerRequestMessage">
     <xs:sequence>
-      <xs:element name="BestellingsID" type="xs:long" />
+      <xs:element name="Bestelnummer" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="GetBestellingByIDRequestMessage" nillable="true" type="tns:GetBestellingByIDRequestMessage" />
-  <xs:complexType name="GetBestellingByIDResponseMessage">
+  <xs:element name="GetBestellingByBestelnummerRequestMessage" nillable="true" type="tns:GetBestellingByBestelnummerRequestMessage" />
+  <xs:complexType name="GetBestellingByBestelnummerResponseMessage">
     <xs:sequence>
       <xs:element name="Bestelling" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q1:Bestelling">
         <xs:annotation>
@@ -18,7 +18,7 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="GetBestellingByIDResponseMessage" nillable="true" type="tns:GetBestellingByIDResponseMessage" />
+  <xs:element name="GetBestellingByBestelnummerResponseMessage" nillable="true" type="tns:GetBestellingByBestelnummerResponseMessage" />
   <xs:complexType name="GetAllBestellingenResponseMessage">
     <xs:sequence>
       <xs:element name="BestellingCollection" nillable="true" xmlns:q2="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q2:BestellingCollection">
@@ -55,4 +55,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateBestellingRequestMessage" nillable="true" type="tns:CreateBestellingRequestMessage" />
+  <xs:complexType name="UpdateBestellingRequestMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q5="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q5:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateBestellingRequestMessage" nillable="true" type="tns:UpdateBestellingRequestMessage" />
 </xs:schema>

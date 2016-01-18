@@ -26,6 +26,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                 BestellingsregelCollection = regels,
                 Bestelnummer = bestelling.Bestelnummer,
                 ID = bestelling.ID,
+                Ingepakt = bestelling.Ingepakt,
             };
         }
 
@@ -43,6 +44,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                 Klantnummer = bestelling.Klant.Klantnummer,
                 Bestellingsregels = regels,
                 ID = 0,
+                Ingepakt = bestelling.Ingepakt,
             };
         }
 
@@ -126,13 +128,16 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// <summary>
         /// Convert a PcSWinkelen winkelmand to a PcSBestellen bestelling
         /// </summary>
-        /// <param name="mand"></param>
+        /// <param name="winkelmand"></param>
         /// <returns></returns>
-        public PcSBestellen.V1.Schema.Bestelling ConvertWinkelmandToBestelling(PcSWinkelen.V1.Schema.Winkelmand mand)
+        public PcSBestellen.V1.Schema.Bestelling ConvertWinkelmandToBestelling(PcSWinkelen.V1.Schema.Winkelmand winkelmand)
         {
-            var bestelling = new PcSBestellen.V1.Schema.Bestelling { BestellingsregelCollection = new V1.Schema.BestellingsregelCollection() };
+            var bestelling = new PcSBestellen.V1.Schema.Bestelling {
+                BestellingsregelCollection = new V1.Schema.BestellingsregelCollection(),
+                Ingepakt = false,
+            };
 
-            foreach (var regel in mand)
+            foreach (var regel in winkelmand)
             {
                 // Map Categorieen
                 schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection catCollection = null;

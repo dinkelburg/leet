@@ -111,7 +111,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         /// </summary>
         /// <param name="requestMessage"></param>
         /// <returns></returns>
-        public GetBestellingByIDResponseMessage FindBestellingByID(GetBestellingByIDRequestMessage requestMessage)
+        public GetBestellingByIDResponseMessage FindBestellingByBestelnummer(GetBestellingByIDRequestMessage requestMessage)
         {
             //Retrieve all Bestellingen
             var bestelling = _agentBestellingen.GetBestellingByBestelnummer(requestMessage.BestellingsID);

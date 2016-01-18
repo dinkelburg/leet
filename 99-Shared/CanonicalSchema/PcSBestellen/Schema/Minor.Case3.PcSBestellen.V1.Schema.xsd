@@ -21,6 +21,7 @@
       <xsd:element name="Bestelnummer" type="xsd:long"/>
       <xsd:element name="BestellingsregelCollection" type="tns:BestellingsregelCollection" />
       <xsd:element name="Besteldatum" type="xsd:dateTime" />
+      <xsd:element name="Ingepakt" type="xsd:boolean" />
       <xsd:element name="Klant" type="klant:Klant" />
     </xsd:sequence>
   </xsd:complexType>

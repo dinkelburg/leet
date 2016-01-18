@@ -32,6 +32,12 @@
   <wsdl:message name="IBestellingenbeheerService_CreateBestelling_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateBestellingResponse" />
   </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_UpdateBestelling_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBestelling" />
+  </wsdl:message>
+  <wsdl:message name="IBestellingenbeheerService_UpdateBestelling_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBestellingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBestellingenbeheerService">
     <wsdl:operation name="FindBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/FindBestelling" message="tns:IBestellingenbeheerService_FindBestelling_InputMessage" />
@@ -48,6 +54,10 @@
     <wsdl:operation name="CreateBestelling">
       <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestelling" message="tns:IBestellingenbeheerService_CreateBestelling_InputMessage" />
       <wsdl:output wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestellingResponse" message="tns:IBestellingenbeheerService_CreateBestelling_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBestelling">
+      <wsdl:input wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/UpdateBestelling" message="tns:IBestellingenbeheerService_UpdateBestelling_InputMessage" />
+      <wsdl:output wsaw:Action="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/UpdateBestellingResponse" message="tns:IBestellingenbeheerService_UpdateBestelling_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DefaultBinding_IBestellingenbeheerService" type="tns:IBestellingenbeheerService">
@@ -81,6 +91,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateBestelling">
       <soap:operation soapAction="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/CreateBestelling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBestelling">
+      <soap:operation soapAction="urn:leet:kantilever:bsbestellingenbeheer:v1/IBestellingenbeheerService/UpdateBestelling" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

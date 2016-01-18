@@ -14,6 +14,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="Besteldatum" type="xs:dateTime" />
+      <xs:element name="Ingepakt" type="xs:boolean" />
       <xs:element name="Klant" nillable="true" xmlns:q1="urn:minor-case3-bsklantbeheer:v1:schema" type="q1:Klant">
         <xs:annotation>
           <xs:appinfo>

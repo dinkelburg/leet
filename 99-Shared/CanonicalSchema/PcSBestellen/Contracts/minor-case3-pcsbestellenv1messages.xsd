@@ -56,4 +56,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateBestellingRequestMessage" nillable="true" type="tns:CreateBestellingRequestMessage" />
+  <xs:complexType name="UpdateBestellingRequestMessage">
+    <xs:sequence>
+      <xs:element name="Bestelling" nillable="true" xmlns:q5="urn:minor-case3-pcsbestellen:v1:schema" type="q5:Bestelling">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateBestellingRequestMessage" nillable="true" type="tns:UpdateBestellingRequestMessage" />
 </xs:schema>

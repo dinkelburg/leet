@@ -154,7 +154,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             var handler = new BestellenServiceHandler(agentBestellingMock.Object, agentCatalogusMock.Object, null);
 
             // Act
-            handler.FindBestellingByID(new GetBestellingByIDRequestMessage { BestellingsID = DummyData.BSBestellingbeheerBestelling.ID });
+            handler.FindBestellingByBestelnummer(new GetBestellingByIDRequestMessage { BestellingsID = DummyData.BSBestellingbeheerBestelling.ID });
 
             // Assert
             agentBestellingMock.Verify(a => a.GetBestellingByBestelnummer(DummyData.BSBestellingbeheerBestelling.ID), Times.Once);
@@ -163,8 +163,23 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void UpdateBestelling_CallsAgentBestellingen()
         {
+            // Arrange
+            var mockAgent = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            var handler = new BestellenServiceHandler(mockAgent.Object,null,null);
+
+            var bestelling = DummyData.BSBestellingbeheerBestelling;
+
+            mockAgent.Setup(a => a.UpdateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
+
+
+
+            // Act
+            handler.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = DummyData.PcSBestellenBestelling });
+
+            // Assert
+            mockAgent.Verify(a => a.UpdateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()), Times.Once);
 
         }
     }

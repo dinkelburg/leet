@@ -38,16 +38,16 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
         {
             //arrange
             var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
-            serviceMock.Setup(service => service.FindBestellingByID(It.IsAny<GetBestellingByIDRequestMessage>())).Returns(DummyData.GetBestellingByIDResponseMessage());
+            serviceMock.Setup(service => service.FindBestellingByBestelnummer(It.IsAny<GetBestellingByIDRequestMessage>())).Returns(DummyData.GetBestellingByIDResponseMessage());
             var factoryMock = new Mock<ServiceFactory<IBestellenService>>(MockBehavior.Strict);
             factoryMock.Setup(factory => factory.CreateAgent()).Returns(serviceMock.Object);
             var agent = new AgentPcSBestellen(factoryMock.Object);
 
             //act
-            var bestelling = agent.FindBestellingByID(1);
+            var bestelling = agent.FindBestellingByBestelnummer(1);
 
             //assert
-            serviceMock.Verify(m => m.FindBestellingByID(It.IsAny<GetBestellingByIDRequestMessage>()));
+            serviceMock.Verify(m => m.FindBestellingByBestelnummer(It.IsAny<GetBestellingByIDRequestMessage>()));
             Assert.IsNotNull(bestelling.Klant);
             Assert.IsNotNull(bestelling);
         }
