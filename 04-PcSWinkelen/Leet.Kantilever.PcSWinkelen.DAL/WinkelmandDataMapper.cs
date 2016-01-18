@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Leet.Kantilever.PcSWinkelen.DAL
 {
-    public class WinkelmandDataMapper : IDataMapper<Winkelmand>
+    public class WinkelmandDatamapper : IDatamapper<Winkelmand>
     {
         /// <summary>
         /// Insert a product into the database and add the product to the winkelmand.
@@ -19,7 +19,6 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         {
             using (var context = new WinkelenContext())
             {
-                var pp = context.Products.Include(ppp=>ppp.Winkelmand).ToList();
                 var existingProduct = context.Products.SingleOrDefault(p => p.CatalogusProductID == product.CatalogusProductID && p.Winkelmand.ClientID == clientID);
                 if (existingProduct != null)
                 {
@@ -67,7 +66,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL
         /// </summary>
         /// <param name="clientID">ClientID to search Winkelmand</param>
         /// <returns>Winkelmand that matches the clientID</returns>
-        public Winkelmand FindWinkelmandByClientId(string clientID)
+        public Winkelmand FindWinkelmandByClientID(string clientID)
         {
             using (var context = new WinkelenContext())
             {

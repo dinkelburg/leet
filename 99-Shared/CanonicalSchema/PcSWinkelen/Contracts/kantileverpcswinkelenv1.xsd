@@ -4,7 +4,7 @@
   <xs:element name="VoegProductToe">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="toevoegenWinkelmandReqMessage" nillable="true" xmlns:q1="urn:minor-case3-pcswinkelen:v1:messages" type="q1:ToevoegenWinkelmandRequestMessage" />
+        <xs:element minOccurs="0" name="toevoegenWinkelmandRequestMessage" nillable="true" xmlns:q1="urn:minor-case3-pcswinkelen:v1:messages" type="q1:ToevoegenWinkelmandRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -18,7 +18,7 @@
   <xs:element name="GetWinkelmandje">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="vraagWinkelmandReqMessage" nillable="true" xmlns:q3="urn:minor-case3-pcswinkelen:v1:messages" type="q3:VraagWinkelmandRequestMessage" />
+        <xs:element minOccurs="0" name="vraagWinkelmandRequestMessage" nillable="true" xmlns:q3="urn:minor-case3-pcswinkelen:v1:messages" type="q3:VraagWinkelmandRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -32,7 +32,7 @@
   <xs:element name="RemoveWinkelmand">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="vraagWinkelmandReqMessage" nillable="true" xmlns:q5="urn:minor-case3-pcswinkelen:v1:messages" type="q5:VraagWinkelmandRequestMessage" />
+        <xs:element minOccurs="0" name="vraagWinkelmandRequestMessage" nillable="true" xmlns:q5="urn:minor-case3-pcswinkelen:v1:messages" type="q5:VraagWinkelmandRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

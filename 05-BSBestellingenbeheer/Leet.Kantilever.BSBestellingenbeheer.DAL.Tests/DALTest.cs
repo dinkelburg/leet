@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.Entities;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
 using System;
+using System.Transactions;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 {
@@ -94,6 +95,31 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
         //}
 
+
+        [TestMethod]
+        public void Update_BestellingKrijgtStatusIngepakt_Test()
+        {
+            // Arrange
+            var mapper = new BestellingDataMapper();
+            var oudeBestelling = mapper.FindVolgendeOpenBestelling();
+
+
+            // Act
+
+                oudeBestelling.Ingepakt = true;
+                mapper.Update(oudeBestelling);
+
+
+                var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
+
+            oudeBestelling = mapper.FindVolgendeOpenBestelling();
+
+                // Assert
+                Assert.IsTrue(nieuweBestelling.Ingepakt);
+
+
+        }
+
         [TestMethod]
         public void AddNieuweBestelling_ArgumentNullExceptionWordtGegooid_Test()
         {
@@ -111,7 +137,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
-       
+
 
         }
 
@@ -153,7 +179,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Assert.Fail();
             }
@@ -205,10 +231,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             }
             catch (ArgumentNullException e)
             {
-                
+
                 Assert.AreEqual("regels", e.ParamName);
             }
- 
+
 
             //Assert
 

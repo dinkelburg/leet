@@ -31,13 +31,6 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         {
             var entity = DTOToEntity.BestellingToEntity(requestMessage.Bestelling);
             var mapper = new BestellingDataMapper();
-            try
-            {
-                entity.ID = mapper.Find(b => b.Bestelnummer == entity.Bestelnummer).SingleOrDefault().ID;
-            } catch
-            {
-                throw new FaultException("Cannot update non existing entity");
-            }
             mapper.Update(entity);
         }
 
@@ -55,13 +48,13 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         /// <summary>
         /// Find bestelling using bestelnummer
         /// </summary>
-        /// <param name="m"></param>
+        /// <param name="requestMessage"></param>
         /// <returns></returns>
-        public GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage m)
+        public GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage requestMessage)
         {
 
             var mapper = new BestellingDataMapper();
-            var bestelling = mapper.Find(b => b.Bestelnummer == m.Bestelnummer).Single();
+            var bestelling = mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).Single();
 
             return new GetBestellingByBestelnummerResponseMessage
             {
