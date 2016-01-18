@@ -37,8 +37,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var existing = context.Bestellingen.Where(b => bestelling.Bestelnummer == b.Bestelnummer).Single();
+                var existing = context.Bestellingen.Single(b => bestelling.Bestelnummer == b.Bestelnummer);
                 context.Entry(existing).CurrentValues.SetValues(bestelling);
+                context.Entry(existing).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
