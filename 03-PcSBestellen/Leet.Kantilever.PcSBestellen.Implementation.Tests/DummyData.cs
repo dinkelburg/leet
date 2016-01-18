@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KantileverAlias = Kantilever.BsCatalogusbeheer;
+using Leet.Kantilever.BSKlantbeheer.V1.Schema;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
 {
@@ -179,5 +180,25 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             }
         }
 
+        public static Klant BsKlant
+        {
+            get
+            {
+                return new Klant
+                {
+                    Achternaam = "Vries",
+                    Adresregel1 = "Boze Wilg 33",
+                    Email = "jdv@worldonline.net",
+                    Gebruikersnaam = "jdv",
+                    ID = 12464,
+                    Klantnummer = "1552fc72-2d19-44e5-ad06-efe175cb51fd",
+                    Postcode = "8421CC",
+                    Telefoonnummer = "0564875123",
+                    Tussenvoegsel = "de",
+                    Voornaam = "Jan",
+                    Woonplaats = "Den Dolder",
+                };
+            }
+        }
     }
 }

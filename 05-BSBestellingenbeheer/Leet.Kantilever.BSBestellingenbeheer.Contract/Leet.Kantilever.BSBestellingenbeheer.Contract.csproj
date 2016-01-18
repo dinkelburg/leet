@@ -55,6 +55,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunctionalErrorGeneratedTypes.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IBestellingenbeheerService.cs" />
@@ -92,7 +93,14 @@
  /out:"$(ProjectDir)GeneratedTypes.cs" ^
   /n:"urn:minor-case3-bsbestellingenbeheer:v1:schema,Leet.Kantilever.BSBestellingenbeheer.V1.Schema" ^
   /n:"urn:minor-case3-bsbestellingenbeheer:v1:messages,Leet.Kantilever.BSBestellingenbeheer.V1.Messages" ^
- "$(SolutionDir)..\99-Shared\CanonicalSchema\BSBestellingenBeheer\Schema\*.xsd"</PreBuildEvent>
+ "$(SolutionDir)..\99-Shared\CanonicalSchema\BSBestellingenBeheer\Schema\*.xsd"
+
+svcutil.exe ^
+/d:"$(ProjectDir) " ^
+/dconly ^
+/out:FunctionalErrorGeneratedTypes.cs ^
+/n:"urn:minor-case3-leet:v1:functionalerror,Minor.case3.Leet.V1.FunctionalError" ^
+"$(SolutionDir)\..\99-shared\functionalerror.xsd"</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>svcutil ^
