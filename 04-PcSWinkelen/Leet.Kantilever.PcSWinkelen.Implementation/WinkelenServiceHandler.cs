@@ -16,7 +16,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
 {
     public class WinkelenServiceHandler : IWinkelenService
     {
-        private IDataMapper<Winkelmand> _winkelmandMapper;
+        private IDatamapper<Winkelmand> _winkelmandMapper;
         private IAgentBSCatalogusBeheer _agentBSCatalogusBeheer;
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// </summary>
         public WinkelenServiceHandler()
         {
-            _winkelmandMapper = new WinkelmandDataMapper();
+            _winkelmandMapper = new WinkelmandDatamapper();
             _agentBSCatalogusBeheer = new AgentBSCatalogusBeheer();
         }
 
@@ -33,7 +33,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// </summary>
         /// <param name="productMapper">IDataMapper<Winkelmand> mock</param>
         /// <param name="agentBSCatalogusBeheer">IAgentBSCatalogusBeheer mock</param>
-        public WinkelenServiceHandler(IDataMapper<Winkelmand> productMapper, IAgentBSCatalogusBeheer agentBSCatalogusBeheer)
+        public WinkelenServiceHandler(IDatamapper<Winkelmand> productMapper, IAgentBSCatalogusBeheer agentBSCatalogusBeheer)
         {
             _winkelmandMapper = productMapper;
             _agentBSCatalogusBeheer = agentBSCatalogusBeheer;
@@ -43,18 +43,18 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// Implements the contract of GetWinkelmandje
         /// It gets the Winkelmand based on the ClientID in the VraagWinkelmandRequestMessage
         /// </summary>
-        /// <param name="vraagWinkelmandReqMessage">Message with the ClientID</param>
+        /// <param name="vraagWinkelmandRequestMessage">Message with the ClientID</param>
         /// <returns>WinkelmandResponseMessage with the Winkelmand that matches the ClientID</returns>
-        public WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage)
+        public WinkelmandResponseMessage GetWinkelmandje(VraagWinkelmandRequestMessage vraagWinkelmandRequestMessage)
         {
-            var winkelmand = _winkelmandMapper.FindWinkelmandByClientId(vraagWinkelmandReqMessage.ClientID);
+            var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(vraagWinkelmandRequestMessage.ClientID);
             var errorList = new FunctionalErrorList();
             
             if (winkelmand == null)
             {
                 errorList.Add(new FunctionalErrorDetail
                 {
-                    Message = "Er is geen winkelmandje beschikbaar met het clientID " + vraagWinkelmandReqMessage.ClientID,
+                    Message = "Er is geen winkelmandje beschikbaar met het clientID " + vraagWinkelmandRequestMessage.ClientID,
                 });
             }
 
@@ -98,20 +98,20 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// It gets the product that matches the ProductID from the BSCatalogusBeheer service and add it to the winkelmand.
         /// And returns the entire Winkelmand
         /// </summary>
-        /// <param name="toevoegenWinkelmandReqMessage">Message with ClientID, ProductID and Amount</param>
+        /// <param name="toevoegenWinkelmandRequestMessage">Message with ClientID, ProductID and Amount</param>
         /// <returns>The entire Winkelmand</returns>
-        public WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandReqMessage)
+        public WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandRequestMessage)
         {
-            var agentProduct = _agentBSCatalogusBeheer.FindProductById(toevoegenWinkelmandReqMessage.BestelProduct.ProductID);
+            var agentProduct = _agentBSCatalogusBeheer.FindProductById(toevoegenWinkelmandRequestMessage.BestelProduct.ProductID);
             Mapper.CreateMap<BsCatalogus.Product, Product>()
             .ForMember(dest => dest.CatalogusProductID, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Id, opt => opt.Ignore());
 
             var product = Mapper.Map<Product>(agentProduct);
-            product.Aantal = toevoegenWinkelmandReqMessage.BestelProduct.Aantal;
-            _winkelmandMapper.AddProductToWinkelmand(product, toevoegenWinkelmandReqMessage.BestelProduct.ClientID);
+            product.Aantal = toevoegenWinkelmandRequestMessage.BestelProduct.Aantal;
+            _winkelmandMapper.AddProductToWinkelmand(product, toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
 
-            var winkelmand = _winkelmandMapper.FindWinkelmandByClientId(toevoegenWinkelmandReqMessage.BestelProduct.ClientID);
+            var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
             return MapWinkelmand(winkelmand);
         }
 
@@ -120,9 +120,9 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// It removes the Winkelmand based on the ClientID in the VraagWinkelmandRequestMessage
         /// </summary>
         /// <param name="vraagWinkelmandReqMessage"></param>
-        public void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandReqMessage)
+        public void RemoveWinkelmand(VraagWinkelmandRequestMessage vraagWinkelmandRequestMessage)
         {
-            _winkelmandMapper.RemoveWinkelmandByClientID(vraagWinkelmandReqMessage.ClientID);
+            _winkelmandMapper.RemoveWinkelmandByClientID(vraagWinkelmandRequestMessage.ClientID);
         }
     }
 }

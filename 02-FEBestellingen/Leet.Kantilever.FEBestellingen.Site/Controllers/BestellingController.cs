@@ -1,5 +1,7 @@
 ﻿using Leet.Kantilever.FEBestellingen.Agent;
+using Leet.Kantilever.FEBestellingen.Site.ViewModels;
 using minorcase3pcsbestellen.v1.schema;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -29,14 +31,15 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             var bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
             bestelling.Ingepakt = true;
             _agent.UpdateBestelling(bestelling);
-            return RedirectToAction("ToonFactuur", bestelnummer);
+            return RedirectToAction("ToonFactuur", new { bestelnummer = bestelnummer } );
         }
 
         // GET: Bestelling
         public ActionResult Index()
         {
-            var bestellingen = Mapper.MapBestellingToVMList(_agent.FindAllBestellingen());
-            return View(bestellingen);
+            BestellingCollection bestellingen = _agent.FindAllBestellingen();
+            IEnumerable<BestellingVM> bestellingVM = Mapper.MapBestellingToVMList(bestellingen);
+            return View(bestellingVM);
         }
 
         /// <summary>
@@ -45,8 +48,9 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         /// <returns></returns>
         public ActionResult VolgendeBestelling()
         {
-            var bestelling = Mapper.MapBestellingToVMList(_agent.FindVolgendeOpenBestelling());
-            return View(bestelling);
+            Bestelling bestelling = _agent.FindVolgendeOpenBestelling();
+            BestellingVM bestellingVM = Mapper.MapBestellingToVMList(bestelling);
+            return View(bestellingVM);
         }
 
 
@@ -57,7 +61,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         /// <returns></returns>
         public ActionResult ToonFactuur(long bestelnummer)
         {
-            var factuur = Mapper.BestellingToFactuurVM(_agent.FindBestellingByBestelnummer(bestelnummer));
+            Bestelling bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
+            var factuur = Mapper.BestellingToFactuurVM(bestelling);
             return View(factuur);
         }
     }

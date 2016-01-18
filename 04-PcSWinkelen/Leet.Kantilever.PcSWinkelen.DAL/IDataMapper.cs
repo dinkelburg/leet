@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.PcSWinkelen.DAL
 {
-    public interface IDataMapper<T>
+    public interface IDatamapper<T>
     {
-        T FindWinkelmandByClientId(string id);
+        T FindWinkelmandByClientID(string id);
         void AddProductToWinkelmand(Product product, string clientID);
         IEnumerable<T> FindAll();
         void RemoveWinkelmandByClientID(string clientID);

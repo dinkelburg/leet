@@ -4,7 +4,7 @@
   <xs:element name="FindBestelling">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="m" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q1:GetBestellingByBestelnummerRequestMessage" />
+        <xs:element minOccurs="0" name="requestMessage" nillable="true" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:messages" type="q1:GetBestellingByBestelnummerRequestMessage" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
