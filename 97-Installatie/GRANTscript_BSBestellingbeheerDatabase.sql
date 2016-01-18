@@ -28,6 +28,13 @@ GO
 
 USE [master]
 
+IF EXISTS(select * from sys.databases where name='Leet_BSBestellingbeheerDatabase')
+DROP DATABASE [Leet_BSBestellingbeheerDatabase]
+GO
+
+CREATE DATABASE [Leet_BSBestellingbeheerDatabase]
+GO
+
 USE [Leet_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
