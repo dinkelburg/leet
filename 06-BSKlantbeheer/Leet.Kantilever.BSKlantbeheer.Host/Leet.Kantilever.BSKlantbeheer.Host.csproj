@@ -43,6 +43,20 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="KlantenContext-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <Source Path="..\..\97-Installatie\GRANTscript_Release_BSKlantbeheerDatabase.sql" Transacted="False" />
+          </Object>
+          <Object Type="DbFullSql" Enabled="False">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_BSKlantbeheerDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\KlantenContext-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -93,6 +107,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish.pubxml" />
     <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish_Acceptatie.pubxml" />
+    <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish_Release2.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

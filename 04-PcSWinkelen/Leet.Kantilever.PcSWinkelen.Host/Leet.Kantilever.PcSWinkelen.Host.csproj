@@ -45,10 +45,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabaseSettings>
       <Objects>
-        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="False">
-          <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Release_PcSWinkelenDatabase%3bIntegrated Security=True" />
-          <Object Type="DbFullSql" Enabled="False">
-            <Source Path="..\..\97-Installatie\GRANTscript_PcSWinkelenDatabase.sql" Transacted="False" />
+        <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
+          <Destination Path="" />
+          <Object Type="DbFullSql" xmlns="">
+            <Source Path="..\..\97-Installatie\GRANTscript_Release_PcSWinkelenDatabase.sql" Transacted="False" />
           </Object>
           <Object Type="DbFullSql" Enabled="False">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_PcSWinkelenDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
@@ -108,6 +108,7 @@
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie.pubxml" />
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie2.pubxml" />
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release.pubxml" />
+    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release2.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

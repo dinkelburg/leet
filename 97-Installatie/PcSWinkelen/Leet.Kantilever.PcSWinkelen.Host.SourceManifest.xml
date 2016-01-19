@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<sitemanifest>
-  <DbFullSql path="C:\TFS\RoelR\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\AutoScripts\WinkelenContext-Deployment_SchemaOnly.sql" Transacted="True" />
-  <DbFullSql path="C:\TFS\RoelR\Leet\97-Installatie\GRANTscript_PcSWinkelenDatabase - Copy.sql" Transacted="False" />
-  <IisApp path="C:\TFS\RoelR\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" />
-  <setAcl path="C:\TFS\RoelR\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" setAclResourceType="Directory" />
-  <setAcl path="C:\TFS\RoelR\Leet\04-PcSWinkelen\Leet.Kantilever.PcSWinkelen.Host\obj\Acceptatie\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
-</sitemanifest>
