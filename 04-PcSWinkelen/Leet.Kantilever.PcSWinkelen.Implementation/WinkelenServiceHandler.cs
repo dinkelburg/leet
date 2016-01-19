@@ -19,7 +19,6 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
     {
         private IDatamapper<Winkelmand> _winkelmandMapper;
         private IAgentBSCatalogusBeheer _agentBSCatalogusBeheer;
-        //private static readonly ILog logger = LogManager.GetLogger(typeof(WinkelenServiceHandler));
 
         /// <summary>
         /// Constructor to instantiate WinkelenServiceHandler with a WinkelmandDataMapper and AgentBSCatalogusBeheer
