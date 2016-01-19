@@ -8,7 +8,7 @@ using Leet.Kantilever.BSBestellingenbeheer.V1.Messages;
 namespace Leet.Kantilever.PcSBestellen.Agent.Tests
 {
     [TestClass]
-    public class AgentBSBestellingenbeheerTests
+    public class AgentBSBestellingenbeheerTest
     {
         [TestMethod]
         public void GetBestellingByBestelnummer_CallsAgent()
