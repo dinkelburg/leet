@@ -35,9 +35,9 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
             {
                 BestelProduct = new BestelProduct
                 {
-                    ProductID = 1,
-                    Aantal = 1,
-                    ClientID = "Client",
+                    ProductID = productID,
+                    Aantal = aantal,
+                    ClientID = clientID,
                 },
             };
 
