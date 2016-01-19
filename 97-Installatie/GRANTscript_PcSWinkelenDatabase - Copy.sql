@@ -28,6 +28,14 @@ GO
 
 USE [master]
 
+IF EXISTS(select * from sys.databases where name='Leet_PcSWinkelenDatabase')
+alter database [Leet_PcSWinkelenDatabase] set single_user with rollback immediate
+DROP DATABASE [Leet_PcSWinkelenDatabase]
+GO
+
+CREATE DATABASE [Leet_PcSWinkelenDatabase] 
+GO
+
 USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
