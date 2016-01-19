@@ -4,8 +4,7 @@
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
-    <!--<metadataAddress>http://localhost:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>-->
+    <metadataAddress>http://localhost:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
@@ -22,8 +21,7 @@
   <serviceLocation>
     <name>PcSWinkelen</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv/Leet/PcSWinkelen/PcSWinkelenService.svc/mex</metadataAddress>
-    <!--<metadataAddress>http://localhost:44348/PcSWinkelenService.svc/mex</metadataAddress>.-->
+    <metadataAddress>http://localhost:44348/PcSWinkelenService.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>PcSWinkelen</name>
@@ -40,8 +38,7 @@
   <serviceLocation>
     <name>PcSBestellen</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv/leet/PcSBestellen/Service.svc/mex</metadataAddress>
-    <!--<metadataAddress>http://localhost:44348/PcSWinkelenService.svc/mex</metadataAddress>.-->
+    <metadataAddress>http://localhost:44161/Service.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>PcSBestellen</name>
@@ -58,8 +55,7 @@
   <serviceLocation>
     <name>BSBestellingenbeheer</name>
     <profile>Development</profile>
-    <metadataAddress>http://minorbldsrv/leet/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
-    <!--<metadataAddress>http://localhost:44348/BSBestellingenbeheerService.svc/mex</metadataAddress>.-->
+    <metadataAddress>http://localhost:44513/Service.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>BSBestellingenbeheer</name>
@@ -69,7 +65,24 @@
   <serviceLocation>
     <name>BSBestellingenbeheer</name>
     <profile>Release</profile>
-    <metadataAddress>http://minorbldsrv/release/PcSBestellen/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/release/BSBestellingen/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+  
+    <!-- BSklantbeheer -->
+  <serviceLocation>
+    <name>BSklantbeheer</name>
+    <profile>Development</profile>
+    <metadataAddress>http://localhost:44660/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+  <serviceLocation>
+    <name>BSklantbeheer</name>
+    <profile>Acceptatie</profile>
+    <metadataAddress>http://minorbldsrv/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
+  </serviceLocation>
+  <serviceLocation>
+    <name>BSklantbeheer</name>
+    <profile>Release</profile>
+    <metadataAddress>http://minorbldsrv/release/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
   </serviceLocation>
 
 

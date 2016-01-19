@@ -14,10 +14,10 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
     {
         public ICollection<Klant> GetAllKlanten()
         {
-            using (var db = new KlantenContext())
+            using (var context = new KlantenContext())
             {
                 List<Klant> result = new List<Klant>();
-                var klanten = db.Klanten.ToList().Select(EntityToDTO.ConvertKlant) ;
+                var klanten = context.Klanten.ToList().Select(EntityToDTO.ConvertKlant) ;
                 result.AddRange(klanten);
                 return result;
             }
@@ -25,14 +25,18 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
 
         public void InsertKlant(Klant klant)
         {
-            using (var db = new KlantenContext())
+            using (var context = new KlantenContext())
             {
                 try
                 {
-                    db.Klanten.Add(DTOToEntity.ConvertKlant(klant));
-                    db.SaveChanges();
+                    var existingKlant = context.Klanten.SingleOrDefault(k => k.Klantnummer == klant.Klantnummer);
+                    if(existingKlant == null)
+                    {
+                        context.Klanten.Add(DTOToEntity.ConvertKlant(klant));
+                        context.SaveChanges();
+                    }
                 }
-                catch(DbEntityValidationException)
+                catch(DbEntityValidationException e)
                 {
                     throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
                 }
@@ -45,11 +49,11 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
 
         public Klant FindKlant(string klantnummer)
         {
-            using (var db = new KlantenContext())
+            using (var context = new KlantenContext())
             {
                 try
                 {
-                    var entity = db.Klanten.Single(x => x.Klantnummer == klantnummer);
+                    var entity = context.Klanten.Single(x => x.Klantnummer == klantnummer);
                     return EntityToDTO.ConvertKlant(entity);
                 }
                 catch (InvalidOperationException)

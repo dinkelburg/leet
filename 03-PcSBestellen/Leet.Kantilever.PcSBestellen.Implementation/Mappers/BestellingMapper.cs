@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Leet.Kantilever.BSKlantbeheer.V1.Schema;
+using minorcase3bsklantbeheer.v1.schema;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
 {
@@ -124,6 +126,25 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                 }
                 catch (InvalidOperationException) { /*Product not found, skip*/ }
             });
+        }
+
+        internal static minorcase3bsklantbeheer.v1.schema.Klant ConvertToBSKlant(BSKlantbeheer.V1.Schema.Klant klant)
+        {
+            return new minorcase3bsklantbeheer.v1.schema.Klant
+            {
+                ID = klant.ID,
+                Voornaam = klant.Voornaam,
+                Tussenvoegsel = klant.Tussenvoegsel,
+                Achternaam = klant.Achternaam,
+                Adresregel1 = klant.Adresregel1,
+                Adresregel2 = klant.Adresregel2,
+                Email = klant.Email,
+                Gebruikersnaam = klant.Gebruikersnaam,
+                Klantnummer = klant.Klantnummer,
+                Postcode = klant.Postcode,
+                Telefoonnummer = klant.Telefoonnummer,
+                Woonplaats = klant.Woonplaats,
+            };
         }
 
         /// <summary>

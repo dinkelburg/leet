@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Leet.Kantilever.PcSBestellen.Agent.Tests
 {
     [TestClass]
-    public class AgentPcSWinkelenTests
+    public class AgentPcSWinkelenTest
     {
         [TestMethod]
         public void GetWinkelmand_AgentCalledTest()

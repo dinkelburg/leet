@@ -3,6 +3,7 @@ using Leet.Kantilever.FEBestellingen.Site.ViewModels;
 using minorcase3pcsbestellen.v1.schema;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
@@ -48,8 +49,17 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         /// <returns></returns>
         public ActionResult VolgendeBestelling()
         {
-            Bestelling bestelling = _agent.FindVolgendeOpenBestelling();
-            BestellingVM bestellingVM = Mapper.MapBestellingToVMList(bestelling);
+            BestellingVM bestellingVM = null;
+            try
+            {
+                Bestelling bestelling = _agent.FindVolgendeOpenBestelling();
+                bestellingVM = Mapper.MapBestellingToVMList(bestelling);
+            }
+            catch (FaultException ex)
+            {
+
+            }
+
             return View(bestellingVM);
         }
 

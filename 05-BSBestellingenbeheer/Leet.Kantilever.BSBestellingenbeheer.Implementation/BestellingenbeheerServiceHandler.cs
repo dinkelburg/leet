@@ -8,6 +8,7 @@ using Leet.Kantilever.BSBestellingenbeheer.DAL.mappers;
 using Leet.Kantilever.BSBestellingenbeheer.DAL;
 using Leet.Kantilever.BSBestellingenbeheer.DAL.converters;
 using System.ServiceModel;
+using Minor.case3.Leet.V1.FunctionalError;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
@@ -68,13 +69,26 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         /// <returns>The first Bestelling that is ready to be picked</returns>
         public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
         {
+            var errorList = new FunctionalErrorList();
             BestellingDataMapper mapper = new BestellingDataMapper();
-            var volgendeBestelling =
-                    mapper.FindVolgendeOpenBestelling();
-            return new GetVolgendeOpenBestellingResponseMessage
+
+            try
             {
-                Bestelling = EntityToDTO.BestellingToDto(volgendeBestelling)
-            };
+                var volgendeBestelling = mapper.FindVolgendeOpenBestelling();
+                return new GetVolgendeOpenBestellingResponseMessage
+                {
+                    Bestelling = EntityToDTO.BestellingToDto(volgendeBestelling)
+                };
+            }
+            catch (ArgumentException ex)
+            {
+                errorList.Add(new FunctionalErrorDetail
+                {
+                    Message = ex.Message,
+                });
+
+                throw new FaultException<FunctionalErrorList>(errorList);
+            }
         }
     }
 }

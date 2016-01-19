@@ -21,10 +21,10 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             AutoMapper.Mapper.CreateMap<Klant, minorcase3bsklantbeheer.v1.schema.Klant>();
             var proxy = _factory.CreateAgent();
-            var k = AutoMapper.Mapper.Map<minorcase3bsklantbeheer.v1.schema.Klant>(klant);
+
             proxy.CreateBestelling(new minorcase3pcsbestellen.v1.messages.CreateBestellingRequestMessage
             {
-                Klant = k,
+                Klant = AutoMapper.Mapper.Map<minorcase3bsklantbeheer.v1.schema.Klant>(klant),
             });
         }
 

@@ -45,7 +45,6 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL
                 .IsRequired()
                 .HasMaxLength(100);
             this.Property(x => x.Email)
-                .IsRequired()
                 .HasMaxLength(100);
         }
     }
