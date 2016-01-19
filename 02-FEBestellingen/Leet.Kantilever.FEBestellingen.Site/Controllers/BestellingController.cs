@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
 {
+    [Authorize(Roles = @"Magazijnmedewerkers")]
     public class BestellingController : Controller
     {
         private IAgentPcSBestellen _agent;
