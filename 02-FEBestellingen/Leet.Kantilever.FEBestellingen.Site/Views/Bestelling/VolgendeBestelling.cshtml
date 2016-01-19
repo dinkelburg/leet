@@ -5,9 +5,17 @@
 }
 
 <h2>Bestelling inpakken</h2>
+@if(Model != null)
+{
+    @Html.Partial("_bestellingsregels", Model.Bestellingsregels)
 
-@Html.Partial("_bestellingsregels", Model.Bestellingsregels)
+    <div class="text-center">
+        @Html.ActionLink("Bestelling is ingepakt", "FinishOrder", "Bestelling", new { bestelnummer = Model.Bestelnummer }, new { @class = "btn btn-primary center-block" })
+    </div>
+}
+else
+{
+    <h3>Er zijn geen bestellingen meer die kunnen worden ingepakt.</h3>
+}
 
-<div class="text-center">
-    @Html.ActionLink("Bestelling is ingepakt", "FinishOrder", "Bestelling",new { bestelnummer = Model.Bestelnummer }, new { @class = "btn btn-primary center-block" })
-</div>
+

@@ -4,21 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Leet.Kantilever.BSKlantbeheer.V1.Schema;
+using minorcase3bsklantbeheer.v1.schema;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
 {
-    public class BestellingMapper
+    public static class BestellingMapper
     {
         /// <summary>
         /// Convert From BSBestellingenbeheer bestelling to PcSBestellen bestelling 
         /// </summary>
         /// <param name="bestelling"></param>
         /// <returns></returns>
-        public PcSBestellen.V1.Schema.Bestelling ConvertToPcsBestelling(BSBestellingenbeheer.V1.Schema.Bestelling bestelling)
+        public static PcSBestellen.V1.Schema.Bestelling ConvertToPcsBestelling(BSBestellingenbeheer.V1.Schema.Bestelling bestelling)
         {
             V1.Schema.BestellingsregelCollection regels = new PcSBestellen.V1.Schema.BestellingsregelCollection();
             // Copy regels if Bestellingsregels isn't null
-            bestelling.Bestellingsregels?.ForEach(r => regels.Add(ConvertToPcSBestellingregel(r)));
+            bestelling.Bestellingsregels?.ForEach(r => regels.Add(ConvertToPcSBestellingsregel(r)));
             // Create and return PcSBestellen Bestelling
             return new PcSBestellen.V1.Schema.Bestelling
             {
@@ -30,11 +32,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             };
         }
 
-        public BSBestellingenbeheer.V1.Schema.Bestelling ConvertToBSBestelling(PcSBestellen.V1.Schema.Bestelling bestelling)
+        public static BSBestellingenbeheer.V1.Schema.Bestelling ConvertToBSBestelling(PcSBestellen.V1.Schema.Bestelling bestelling)
         {
             //Map regels
             var regels = new BSBestellingenbeheer.V1.Schema.BestellingsregelCollection();
-            regels.AddRange(bestelling.BestellingsregelCollection.Select(r => ConvertToBSBestellingregel(r)));
+            regels.AddRange(bestelling.BestellingsregelCollection.Select(r => ConvertToBSBestellingsregel(r)));
 
             //Map bestelling
             return new BSBestellingenbeheer.V1.Schema.Bestelling
@@ -54,7 +56,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// </summary>
         /// <param name="regel"></param>
         /// <returns></returns>
-        public BSBestellingenbeheer.V1.Schema.Bestellingsregel ConvertToBSBestellingregel(PcSBestellen.V1.Schema.Bestellingsregel regel)
+        public static BSBestellingenbeheer.V1.Schema.Bestellingsregel ConvertToBSBestellingsregel(PcSBestellen.V1.Schema.Bestellingsregel regel)
         {
             return new BSBestellingenbeheer.V1.Schema.Bestellingsregel
             {
@@ -69,7 +71,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// </summary>
         /// <param name="regel"></param>
         /// <returns></returns>
-        public PcSBestellen.V1.Schema.Bestellingsregel ConvertToPcSBestellingregel(BSBestellingenbeheer.V1.Schema.Bestellingsregel regel)
+        public static PcSBestellen.V1.Schema.Bestellingsregel ConvertToPcSBestellingsregel(BSBestellingenbeheer.V1.Schema.Bestellingsregel regel)
         {
             return new V1.Schema.Bestellingsregel
             {
@@ -87,7 +89,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// </summary>
         /// <param name="bestelling"></param>
         /// <param name="producten"></param>
-        public void AddProductsToBestelling(PcSBestellen.V1.Schema.Bestelling bestelling, IEnumerable<Product> producten)
+        public static void AddProductsToBestelling(PcSBestellen.V1.Schema.Bestelling bestelling, IEnumerable<Product> producten)
         {
             //Loop through all Bestellingsregels and update product information
             bestelling.BestellingsregelCollection.ForEach(r =>
@@ -100,7 +102,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                     // Add Categories
                     var cats = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
                     cats.AddRange(
-                        product.CategorieLijst.Select(c => 
+                        product.CategorieLijst.Select(c =>
                         new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.Categorie
                         {
                             Id = c.Id,
@@ -121,8 +123,28 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                         Naam = product.Naam,
                         Prijs = r.Product.Prijs,
                     };
-                } catch(InvalidOperationException) { /*Product not found, skip*/ }
+                }
+                catch (InvalidOperationException) { /*Product not found, skip*/ }
             });
+        }
+
+        internal static minorcase3bsklantbeheer.v1.schema.Klant ConvertToBSKlant(BSKlantbeheer.V1.Schema.Klant klant)
+        {
+            return new minorcase3bsklantbeheer.v1.schema.Klant
+            {
+                ID = klant.ID,
+                Voornaam = klant.Voornaam,
+                Tussenvoegsel = klant.Tussenvoegsel,
+                Achternaam = klant.Achternaam,
+                Adresregel1 = klant.Adresregel1,
+                Adresregel2 = klant.Adresregel2,
+                Email = klant.Email,
+                Gebruikersnaam = klant.Gebruikersnaam,
+                Klantnummer = klant.Klantnummer,
+                Postcode = klant.Postcode,
+                Telefoonnummer = klant.Telefoonnummer,
+                Woonplaats = klant.Woonplaats,
+            };
         }
 
         /// <summary>
@@ -130,9 +152,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
         /// </summary>
         /// <param name="winkelmand"></param>
         /// <returns></returns>
-        public PcSBestellen.V1.Schema.Bestelling ConvertWinkelmandToBestelling(PcSWinkelen.V1.Schema.Winkelmand winkelmand)
+        public static PcSBestellen.V1.Schema.Bestelling ConvertWinkelmandToBestelling(PcSWinkelen.V1.Schema.Winkelmand winkelmand)
         {
-            var bestelling = new PcSBestellen.V1.Schema.Bestelling {
+            var bestelling = new PcSBestellen.V1.Schema.Bestelling
+            {
                 BestellingsregelCollection = new V1.Schema.BestellingsregelCollection(),
                 Ingepakt = false,
             };
@@ -147,10 +170,11 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                     catCollection = new schemaswwwkantilevernl.bscatalogusbeheer.categorie.v1.CategorieCollection();
                     catCollection.AddRange(categorieen);
                 }
-                
-                
+
+
                 //Map regels
-                bestelling.BestellingsregelCollection.Add(new V1.Schema.Bestellingsregel {
+                bestelling.BestellingsregelCollection.Add(new V1.Schema.Bestellingsregel
+                {
                     Aantal = regel.Aantal,
                     Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
                     {

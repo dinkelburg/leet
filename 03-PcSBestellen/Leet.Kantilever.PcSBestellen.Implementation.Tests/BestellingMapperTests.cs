@@ -14,11 +14,10 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void BSBestellingToPcSBestellingReturnsCorrectType()
         {
             // Arrange
-            var mapper = new BestellingMapper();
             var BSBestelling = new BSBestellingenbeheer.V1.Schema.Bestelling();
 
             // Act
-            var PcSBestelling = mapper.ConvertToPcsBestelling(BSBestelling);
+            var PcSBestelling = BestellingMapper.ConvertToPcsBestelling(BSBestelling);
 
             // Assert
             Assert.IsInstanceOfType(PcSBestelling, typeof(PcSBestellen.V1.Schema.Bestelling));
@@ -29,7 +28,6 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void BSBestellingToPcSBestellingReturnsCorrectValues()
         {
             // Arrange
-            var mapper = new BestellingMapper();
             var BSBestelling = new BSBestellingenbeheer.V1.Schema.Bestelling
             {
                 Besteldatum = new DateTime(2015,10,01),
@@ -46,7 +44,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             });
 
             // Act
-            var PcSBestelling = mapper.ConvertToPcsBestelling(BSBestelling);
+            var PcSBestelling = BestellingMapper.ConvertToPcsBestelling(BSBestelling);
 
             // Assert
             Assert.IsNotNull(PcSBestelling.BestellingsregelCollection);
@@ -66,10 +64,9 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                Aantal = 3,
                Prijs = 15.5M,
             };
-            var mapper = new BestellingMapper();
 
             // Act
-            var PcSRegel = mapper.ConvertToPcSBestellingregel(BSregel);
+            var PcSRegel = BestellingMapper.ConvertToPcSBestellingsregel(BSregel);
 
             // Assert
             Assert.IsNotNull(PcSRegel);
@@ -83,7 +80,6 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void AddProductsToBestellingAddsProductInformation()
         {
             // Arrange
-            var mapper = new BestellingMapper();
             var PcSBestelling = new PcSBestellen.V1.Schema.Bestelling
             {
                 #region Data
@@ -138,7 +134,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
 
 
             //Act
-            mapper.AddProductsToBestelling(PcSBestelling, products);
+            BestellingMapper.AddProductsToBestelling(PcSBestelling, products);
 
             var PcSproduct = PcSBestelling.BestellingsregelCollection.First().Product;
             var BSProduct = products.First();
@@ -161,7 +157,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         public void AddProductsToBestellingDoesNotThrowErrorWhenProductNotFound()
         {
             // Arrange
-            var mapper = new BestellingMapper();
+          //  var mapper = new BestellingMapper();
             var PcSBestelling = new PcSBestellen.V1.Schema.Bestelling
             {
                 #region Data
@@ -198,7 +194,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
 
 
             // Act
-            mapper.AddProductsToBestelling(PcSBestelling, products);
+            BestellingMapper.AddProductsToBestelling(PcSBestelling, products);
 
             // Assert
             //The test succeeds if no error is thrown, no assert is needed.

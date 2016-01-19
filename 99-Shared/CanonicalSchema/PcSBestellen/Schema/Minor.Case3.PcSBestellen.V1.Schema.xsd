@@ -22,7 +22,7 @@
       <xsd:element name="BestellingsregelCollection" type="tns:BestellingsregelCollection" />
       <xsd:element name="Besteldatum" type="xsd:dateTime" />
       <xsd:element name="Ingepakt" type="xsd:boolean" />
-      <xsd:element name="Klant" type="klant:Klant" />
+      <xsd:element name="Klant" type="klant:Klant" minOccurs="0" maxOccurs="1" />
     </xsd:sequence>
   </xsd:complexType>
 

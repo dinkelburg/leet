@@ -60,11 +60,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AgentBSCatalogusBeheerTests.cs" />
+    <Compile Include="AgentBSCatalogusBeheerTest.cs" />
     <Compile Include="DummyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AgentPcSWinkelenTests.cs" />
-    <Compile Include="AgentBSBestellingenbeheerTests.cs" />
+    <Compile Include="AgentPcSWinkelenTest.cs" />
+    <Compile Include="AgentBSBestellingenbeheerTest.cs" />
+    <Compile Include="AgentBSKlantbeheerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leet.Kantilever.PcSBestellen.Agent\Leet.Kantilever.PcSBestellen.Agent.csproj">

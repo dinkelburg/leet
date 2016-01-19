@@ -75,7 +75,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                     Product = new Product
                     {
                         Naam = "HL Road Frame - Black, 58",
-                        LeveranciersProductId = "FR-R92R-58"
+                        LeveranciersProductId = "FR-R92R-58",
+                        LeverancierNaam = "Batavus"
                     },
                     Aantal = 3,
                 }

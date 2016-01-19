@@ -29,7 +29,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
                 var product = DummyDataDAL.GetProduct();
 
                 // Act
@@ -50,7 +50,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
                 var product = DummyDataDAL.GetProduct();
 
                 // Act
@@ -71,7 +71,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
                 var product = DummyDataDAL.GetProduct();
 
                 // Act
@@ -95,7 +95,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
                 var product = DummyDataDAL.GetProduct();
 
                 // Act
@@ -118,7 +118,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
         public void FindWinkelmandByClientId()
         {
             // Arrange
-            WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+            WinkelmandDatamapper mapper = new WinkelmandDatamapper();
 
             // Act
             var winkelmanden = mapper.FindAll();
@@ -133,10 +133,10 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
         public void FindWinkelmandByClientIdTest()
         {
             // Arrange
-            WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+            WinkelmandDatamapper mapper = new WinkelmandDatamapper();
 
             // Act
-            var winkelmand = mapper.FindWinkelmandByClientId("Client01");
+            var winkelmand = mapper.FindWinkelmandByClientID("Client01");
 
             // Assert
             AssertWinkelmand(winkelmand, DummyDataDAL.GetWinkelmand());
@@ -146,10 +146,10 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
         public void FindWinkelmandByClientIdThatNotExistsTest()
         {
             // Arrange
-            WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+            WinkelmandDatamapper mapper = new WinkelmandDatamapper();
 
             // Act
-            var winkelmand = mapper.FindWinkelmandByClientId("Client15");
+            var winkelmand = mapper.FindWinkelmandByClientID("Client15");
 
             // Assert
             Assert.IsNull(winkelmand);
@@ -162,7 +162,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
 
                 // Act
                 mapper.RemoveWinkelmandByClientID("Client01");
@@ -179,7 +179,7 @@ namespace Leet.Kantilever.PcSWinkelen.DAL.Tests
             using (var scope = new TransactionScope())
             {
                 // Arrange
-                WinkelmandDataMapper mapper = new WinkelmandDataMapper();
+                WinkelmandDatamapper mapper = new WinkelmandDatamapper();
                 bool exceptionThrown = false;
                 string exceptionMessage = string.Empty;
 

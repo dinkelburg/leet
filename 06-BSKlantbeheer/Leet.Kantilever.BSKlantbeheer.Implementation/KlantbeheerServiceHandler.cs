@@ -30,18 +30,18 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
             }
         }
 
-        public GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage msg)
+        public GetKlantByKlantnummerResponseMessage GetKlant(GetKlantByKlantnummerRequestMessage requestMessage)
         {
             var mapper = new KlantDataMapper();
             try
             {
-                Klant klant = mapper.FindKlant(msg.Klantnummer);
+                Klant klant = mapper.FindKlant(requestMessage.Klantnummer);
                 return new GetKlantByKlantnummerResponseMessage { Klant = klant };
             }
             catch (InvalidOperationException)
             {
                 // Klantnummer was niet bekend
-                throw new FaultException($"Dit klantnummer({msg.Klantnummer}) was niet bekend.");
+                throw new FaultException($"Dit klantnummer({requestMessage.Klantnummer}) was niet bekend.");
             }
             catch (ArgumentNullException)
             {
@@ -49,12 +49,12 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
             }
         }
 
-        public void RegistreerKlant(InsertKlantGegevensRequestMessage msg)
+        public void RegistreerKlant(InsertKlantGegevensRequestMessage requestMessage)
         {
             var mapper = new KlantDataMapper();
             try
             {
-                mapper.InsertKlant(msg.Klant);
+                mapper.InsertKlant(requestMessage.Klant);
             }
             catch(FunctionalException ex)
             {
