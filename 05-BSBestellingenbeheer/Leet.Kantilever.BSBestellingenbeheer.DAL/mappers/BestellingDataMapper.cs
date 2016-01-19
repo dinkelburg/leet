@@ -14,7 +14,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             if (bestelling == null)
             {
-                throw new ArgumentNullException(paramName:"bestelling");
+                throw new ArgumentNullException(paramName: "bestelling");
             }
 
             using (var context = new BestellingContext())
@@ -24,8 +24,8 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
                 context.SaveChanges();
             }
         }
-        
-        public IEnumerable<Bestelling> Find(Func<Bestelling,bool> predicate)
+
+        public IEnumerable<Bestelling> Find(Func<Bestelling, bool> predicate)
         {
             using (var context = new BestellingContext())
             {
@@ -68,9 +68,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var bestelling = context.Bestellingen.Include(b =>b.Bestellingsregels).OrderBy(b => b.Besteldatum)
-                                                                  .FirstOrDefault(b => b.Ingepakt == false);
-                if(bestelling == null)
+                var bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
+                    .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
+                if (bestelling == null)
                 {
                     throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
                 }

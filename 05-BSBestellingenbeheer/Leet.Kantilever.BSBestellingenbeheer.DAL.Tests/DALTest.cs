@@ -52,7 +52,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             // Assert
             var bestellingsregel = bestelling.Bestellingsregels.Where(regel => regel.ID == 2).First();
             Assert.AreEqual(2, bestelling.ID);
-            Assert.IsTrue(bestelling.Ingepakt);
+            Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, bestelling.Status);
             Assert.AreEqual("Client01", bestelling.Klantnummer);
             Assert.AreEqual(2, bestellingsregel.ID);
             Assert.AreEqual(3, bestellingsregel.Aantal);
@@ -71,7 +71,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             var openBestelling = bestellingMapper.FindVolgendeOpenBestelling();
 
             // Assert
-            Assert.AreEqual(3, openBestelling.ID);
+            Assert.AreEqual(4, openBestelling.ID);
 
         }
 
@@ -105,19 +105,14 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
 
             // Act
-
-                oudeBestelling.Ingepakt = true;
-                mapper.Update(oudeBestelling);
-
-
-                var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
-
-            oudeBestelling = mapper.FindVolgendeOpenBestelling();
-
-                // Assert
-                Assert.IsTrue(nieuweBestelling.Ingepakt);
+            oudeBestelling.Status = Bestelling.BestellingStatus.Ingepakt;
+            mapper.Update(oudeBestelling);
 
 
+            var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
+
+            // Assert
+            Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, nieuweBestelling.Status);
         }
 
         [TestMethod]
@@ -160,7 +155,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Assert.AreEqual(bestelling.Bestellingsregels.ElementAt(i).Prijs, mappedBestelling.Bestellingsregels.ElementAt(i).Prijs);
                 Assert.AreEqual(bestelling.Bestellingsregels.ElementAt(i).ProductID, mappedBestelling.Bestellingsregels.ElementAt(i).ProductID);
             }
-            Assert.AreEqual(bestelling.Ingepakt, mappedBestelling.Ingepakt);
+            Assert.AreEqual((int)bestelling.Status, (int)mappedBestelling.Status);
             Assert.AreEqual(bestelling.Klantnummer, mappedBestelling.Klantnummer);
         }
 

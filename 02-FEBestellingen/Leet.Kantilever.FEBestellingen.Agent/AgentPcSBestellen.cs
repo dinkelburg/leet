@@ -52,7 +52,6 @@ namespace Leet.Kantilever.FEBestellingen.Agent
         public void UpdateBestelling(Bestelling bestelling)
         {
             var proxy = _factory.CreateAgent();
-            bestelling.Ingepakt = true;
             proxy.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = bestelling });
         }
     }

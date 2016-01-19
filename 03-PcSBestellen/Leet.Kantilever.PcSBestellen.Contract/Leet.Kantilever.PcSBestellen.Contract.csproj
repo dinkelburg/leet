@@ -101,6 +101,7 @@
   /n:"urn:minor-case3-pcsbestellen:v1:messages,Leet.Kantilever.PcSBestellen.V1.Messages" ^
  "$(SolutionDir)..\99-Shared\CanonicalSchema\PcSBestellen\Schema\*.xsd" ^
  "$(SolutionDir)..\99-Shared\CanonicalSchema\BSKlantBeheer\Schema\Minor.Case3.BSKlantBeheer.V1.Schema.xsd" ^
+ "$(SolutionDir)..\99-Shared\CanonicalSchema\BSBestellingenBeheer\Schema\Minor.Case3.BSBestellingenBeheer.V1.Schema.xsd" ^
  "$(SolutionDir)..\99-Shared\CanonicalSchema\BSCatalogusBeheer\Schema\Product.xsd" ^
  "$(SolutionDir)..\99-Shared\CanonicalSchema\BSCatalogusBeheer\Schema\Categorie.xsd"</PreBuildEvent>
   </PropertyGroup>

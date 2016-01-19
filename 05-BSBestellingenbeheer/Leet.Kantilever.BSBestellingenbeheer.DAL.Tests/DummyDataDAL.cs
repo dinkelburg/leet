@@ -15,7 +15,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 ID = 1,
                 Besteldatum = DateTime.Now,
                 Bestellingsregels = GetBestellingsRegels(),
-                Ingepakt = true,
+                Status = Bestelling.BestellingStatus.Nieuw,
                 Klantnummer = "Client01",
             };
         }
@@ -52,7 +52,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                     Besteldatum = new DateTime(2015, 12, 12),
                     Bestellingsregels = GetBestellingsRegels(),
                     Bestelnummer = 2,
-                    Ingepakt = true,
+                    Status = Bestelling.BestellingStatus.Ingepakt,
                     Klantnummer = "Client01",
                 },
                 new Bestelling
@@ -61,7 +61,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                     Besteldatum = new DateTime(2015, 01, 10),
                     Bestellingsregels = GetBestellingsRegels(),
                     Bestelnummer = 3,
-                    Ingepakt = false,
+                    Status = Bestelling.BestellingStatus.Nieuw,
                     Klantnummer = "Client01",
                 },
                 new Bestelling
@@ -70,20 +70,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                     Besteldatum = new DateTime(2015, 01, 11),
                     Bestellingsregels = GetBestellingsRegels(),
                     Bestelnummer = 4,
-                    Ingepakt = false,
+                    Status = Bestelling.BestellingStatus.Goedgekeurd,
                     Klantnummer = "Client01",
                 },
             };
         }
 
-        internal static V1.Schema.Bestelling GetDummyDataDTOBestlling()
+        internal static V1.Schema.Bestelling GetDummyDataDTOBestelling()
         {
             return new V1.Schema.Bestelling
             {
                 Besteldatum = new DateTime(2015, 12, 12),
                 Bestellingsregels = GetDummyDTOBestellinsregels(),
                 ID = 1,
-                Ingepakt = false,
+                Status = V1.Schema.BestellingStatus.Nieuw,
                 Bestelnummer = 123456,
                 Klantnummer = "ANCD",
             };

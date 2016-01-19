@@ -5,9 +5,9 @@
     elementFormDefault="qualified"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 >
-  
-  <xsd:element name="Bestelling" type="tns:Bestelling"/> 
-  
+
+  <xsd:element name="Bestelling" type="tns:Bestelling"/>
+
   <xsd:complexType name="Bestelling">
     <xsd:sequence>
       <xsd:element name="ID" type="xsd:long" />
@@ -15,9 +15,20 @@
       <xsd:element name="Bestellingsregels" type="tns:BestellingsregelCollection" />
       <xsd:element name="Besteldatum" type="xsd:dateTime" />
       <xsd:element name="Klantnummer" type="xsd:string" />
-      <xsd:element name="Ingepakt" type="xsd:boolean" />
+      <xsd:element name="Status" type="tns:BestellingStatus" />
     </xsd:sequence>
   </xsd:complexType>
+
+  <xsd:simpleType name="BestellingStatus">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Nieuw"/>
+      <xsd:enumeration value="Geweigerd"/>
+      <xsd:enumeration value="Goedgekeurd"/>
+      <xsd:enumeration value="Inpakken"/>
+      <xsd:enumeration value="Ingepakt"/>
+      <xsd:enumeration value="Betaald"/>
+    </xsd:restriction>
+  </xsd:simpleType>
 
   <xsd:complexType name="Bestellingsregel">
     <xsd:sequence>
@@ -32,7 +43,7 @@
       <xsd:element name ="Bestellingsregel" type="tns:Bestellingsregel" minOccurs="0" maxOccurs="unbounded"/>
     </xsd:sequence>
   </xsd:complexType>
-  
+
   <xsd:complexType name="BestellingCollection">
     <xsd:sequence>
       <xsd:element name ="Bestelling" type="tns:Bestelling" minOccurs="0" maxOccurs="unbounded"/>

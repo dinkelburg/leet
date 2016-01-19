@@ -79,7 +79,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                     Bestellingsregels = regels,
                     Bestelnummer = 24343,
                     ID = 15434,
-                    Ingepakt = false,
+                    Status = BSBestellingenbeheer.V1.Schema.BestellingStatus.Goedgekeurd,
                     Klantnummer = "42dffe6f-2b0b-43d5-9e84-8433168def99"
                     #endregion
                 };

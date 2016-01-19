@@ -21,7 +21,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
                 Besteldatum = bestelling.Besteldatum,
                 Bestellingsregels = BestellingsregelsToCollection(bestelling.Bestellingsregels),
                 Bestelnummer = bestelling.Bestelnummer,
-                Ingepakt = bestelling.Ingepakt,
+                Status = (V1.Schema.BestellingStatus)bestelling.Status,
                 Klantnummer = bestelling.Klantnummer
             };
         }

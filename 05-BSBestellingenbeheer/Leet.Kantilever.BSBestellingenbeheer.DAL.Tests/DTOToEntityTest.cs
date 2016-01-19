@@ -14,7 +14,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         public void BestellingToEntityWordtCorrectGemapped_Test()
         {
             //Arrange
-            var bestelling = DummyDataDAL.GetDummyDataDTOBestlling();
+            var bestelling = DummyDataDAL.GetDummyDataDTOBestelling();
 
             //Act
             var mappedBestelling = DTOToEntity.BestellingToEntity(bestelling);
@@ -24,7 +24,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             Assert.AreEqual(bestelling.Besteldatum, mappedBestelling.Besteldatum);
             Assert.AreEqual(bestelling.Bestelnummer, mappedBestelling.Bestelnummer);
             Assert.AreEqual(bestelling.ID, mappedBestelling.ID);
-            Assert.AreEqual(bestelling.Ingepakt, mappedBestelling.Ingepakt);
+            Assert.AreEqual((int)bestelling.Status, (int)mappedBestelling.Status);
 
             AssertBestellingsregels(bestelling, mappedBestelling);
         }
