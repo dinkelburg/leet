@@ -10,7 +10,7 @@ using Kantilever.BsCatalogusbeheer.Messages.V1;
 namespace Leet.Kantilever.PcSBestellen.Agent.Tests
 {
     [TestClass]
-    public class AgentBSCatalogusBeheerTests
+    public class AgentBSCatalogusBeheerTest
     {
         [TestMethod]
         public void TestGetProductsById()
