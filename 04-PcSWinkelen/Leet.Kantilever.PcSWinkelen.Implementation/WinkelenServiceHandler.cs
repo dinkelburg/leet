@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Minor.case3.Leet.V1.FunctionalError;
 using System.Linq;
 using System.ServiceModel;
+using log4net;
 
 namespace Leet.Kantilever.PcSWinkelen.Implementation
 {
@@ -18,6 +19,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
     {
         private IDatamapper<Winkelmand> _winkelmandMapper;
         private IAgentBSCatalogusBeheer _agentBSCatalogusBeheer;
+        //private static readonly ILog logger = LogManager.GetLogger(typeof(WinkelenServiceHandler));
 
         /// <summary>
         /// Constructor to instantiate WinkelenServiceHandler with a WinkelmandDataMapper and AgentBSCatalogusBeheer
@@ -49,7 +51,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         {
             var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(vraagWinkelmandRequestMessage.ClientID);
             var errorList = new FunctionalErrorList();
-            
+            //logger.Error("Test");
             if (winkelmand == null)
             {
                 errorList.Add(new FunctionalErrorDetail
@@ -102,17 +104,38 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// <returns>The entire Winkelmand</returns>
         public WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandRequestMessage)
         {
-            var agentProduct = _agentBSCatalogusBeheer.FindProductById(toevoegenWinkelmandRequestMessage.BestelProduct.ProductID);
-            Mapper.CreateMap<BsCatalogus.Product, Product>()
-            .ForMember(dest => dest.CatalogusProductID, opt => opt.MapFrom(src => src.Id))
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
 
-            var product = Mapper.Map<Product>(agentProduct);
-            product.Aantal = toevoegenWinkelmandRequestMessage.BestelProduct.Aantal;
-            _winkelmandMapper.AddProductToWinkelmand(product, toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
+            ToevoegenWinkelmandRequestMessage message = new ToevoegenWinkelmandRequestMessage
+            {
+                BestelProduct = new V1.Schema.BestelProduct
+                {
+                    Aantal = 1,
+                    ClientID = "ClientDummy",
+                    ProductID = 1,
+                }
+            };
 
-            var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
-            return MapWinkelmand(winkelmand);
+            try {
+                var agentProduct = _agentBSCatalogusBeheer.FindProductById(message.BestelProduct.ProductID);
+                Mapper.CreateMap<BsCatalogus.Product, Product>()
+                .ForMember(dest => dest.CatalogusProductID, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+                var product = Mapper.Map<Product>(agentProduct);
+                product.Aantal = message.BestelProduct.Aantal;
+                _winkelmandMapper.AddProductToWinkelmand(product, message.BestelProduct.ClientID);
+
+                var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(message.BestelProduct.ClientID);
+
+                return MapWinkelmand(winkelmand);
+
+            }
+            catch (Exception ex)
+            {
+                throw new FaultException(ex.Message);
+            }
+
+            return null;
         }
 
         /// <summary>
