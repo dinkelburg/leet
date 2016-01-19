@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <DbFullSql path="C:\Leet\97-Installatie\GRANTscript_Release_BSKlantbeheerDatabase.sql" Transacted="False" />
+  <IisApp path="C:\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>
