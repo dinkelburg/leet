@@ -92,6 +92,7 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish.pubxml" />
+    <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish_Acceptatie.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
