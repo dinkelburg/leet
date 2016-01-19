@@ -64,15 +64,17 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         [TestMethod]
         public void FindVolgendeOpenBestelling_CorrecteVolgendeBestellingWordtGereturnd_Test()
         {
-            // Arrange
-            IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-            // Act
-            var openBestelling = bestellingMapper.FindVolgendeOpenBestelling();
+                // Act
+                var openBestelling = bestellingMapper.FindVolgendeOpenBestelling();
 
-            // Assert
-            Assert.AreEqual(4, openBestelling.ID);
-
+                // Assert
+                Assert.AreEqual(4, openBestelling.ID);
+            }
         }
 
 
@@ -99,41 +101,45 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         [TestMethod]
         public void Update_BestellingKrijgtStatusIngepakt_Test()
         {
-            // Arrange
-            var mapper = new BestellingDataMapper();
-            var oudeBestelling = mapper.FindVolgendeOpenBestelling();
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                var mapper = new BestellingDataMapper();
+                var oudeBestelling = mapper.FindVolgendeOpenBestelling();
 
 
-            // Act
-            oudeBestelling.Status = Bestelling.BestellingStatus.Ingepakt;
-            mapper.Update(oudeBestelling);
+                // Act
+                oudeBestelling.Status = Bestelling.BestellingStatus.Ingepakt;
+                mapper.Update(oudeBestelling);
 
 
-            var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
+                var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
 
-            // Assert
-            Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, nieuweBestelling.Status);
+                // Assert
+                Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, nieuweBestelling.Status);
+            }
         }
 
         [TestMethod]
         public void AddNieuweBestelling_ArgumentNullExceptionWordtGegooid_Test()
         {
-            //Arrange
-            IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
-
-            //Act
-            try
+            using (var scope = new TransactionScope())
             {
-                bestellingMapper.AddBestelling(null);
+                //Arrange
+                IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+
+                //Act
+                try
+                {
+                    bestellingMapper.AddBestelling(null);
+                }
+
+                //Assert
+                catch (ArgumentNullException e)
+                {
+                    Assert.AreEqual("bestelling", e.ParamName);
+                }
             }
-
-            //Assert
-            catch (ArgumentNullException e)
-            {
-                Assert.AreEqual("bestelling", e.ParamName);
-            }
-
-
         }
 
 
@@ -182,19 +188,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             // Assert
         }
 
-
-        [TestMethod]
-        public void BestellingToDTO_BestellingToDTOMapExceptionWordtGegooid()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-
-        }
-
-
+        
         [TestMethod]
         public void BestellingsregelToDTOMapCorrectData_Test()
         {
@@ -226,7 +220,6 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             }
             catch (ArgumentNullException e)
             {
-
                 Assert.AreEqual("regels", e.ParamName);
             }
 
