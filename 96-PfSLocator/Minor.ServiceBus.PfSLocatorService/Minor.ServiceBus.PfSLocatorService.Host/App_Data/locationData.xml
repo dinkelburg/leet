@@ -48,7 +48,7 @@
   <serviceLocation>
     <name>PcSBestellen</name>
     <profile>Release</profile>
-    <metadataAddress>http://minorbldsrv/release/PcSBestellen/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/leet/release/PcSBestellen/Service.svc/mex</metadataAddress>
   </serviceLocation>
 
   <!-- BSBestellingenbeheer -->
@@ -65,7 +65,7 @@
   <serviceLocation>
     <name>BSBestellingenbeheer</name>
     <profile>Release</profile>
-    <metadataAddress>http://minorbldsrv/release/BSBestellingen/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/leet/release/BSBestellingen/Service.svc/mex</metadataAddress>
   </serviceLocation>
   
     <!-- BSklantbeheer -->
@@ -77,12 +77,12 @@
   <serviceLocation>
     <name>BSklantbeheer</name>
     <profile>Acceptatie</profile>
-    <metadataAddress>http://minorbldsrv/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/leet/BSklantbeheer/Service.svc/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>BSklantbeheer</name>
     <profile>Release</profile>
-    <metadataAddress>http://minorbldsrv/release/BSBestellingenbeheer/Service.svc/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv/release/BSklantbeheer/Service.svc/mex</metadataAddress>
   </serviceLocation>
 
 
