@@ -31,15 +31,17 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             var proxy = _factory.CreateAgent();
 
-            var reqMessage = proxy.VoegProductToe(new ToevoegenWinkelmandRequestMessage
+            var message = new ToevoegenWinkelmandRequestMessage
             {
                 BestelProduct = new BestelProduct
                 {
-                    ProductID = productID,
-                    Aantal = aantal,
-                    ClientID = clientID,
+                    ProductID = 1,
+                    Aantal = 1,
+                    ClientID = "Client",
                 },
-            });
+            };
+
+            var reqMessage = proxy.VoegProductToe(message);
 
             return reqMessage.Winkelmand;
         }
