@@ -31,7 +31,7 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
         {
             var proxy = _factory.CreateAgent();
 
-            var reqMessage = proxy.VoegProductToe(new ToevoegenWinkelmandRequestMessage
+            var message = new ToevoegenWinkelmandRequestMessage
             {
                 BestelProduct = new BestelProduct
                 {
@@ -39,7 +39,9 @@ namespace Leet.Kantilever.FEWebwinkel.Agent
                     Aantal = aantal,
                     ClientID = clientID,
                 },
-            });
+            };
+
+            var reqMessage = proxy.VoegProductToe(message);
 
             return reqMessage.Winkelmand;
         }

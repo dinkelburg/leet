@@ -18,8 +18,6 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mapping
 
             this.Property(x => x.Klantnummer)
                 .HasMaxLength(100);
-
-            this.Property(property => property.Bestelnummer).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
         }
     }
 }
