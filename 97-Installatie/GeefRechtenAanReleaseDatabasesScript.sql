@@ -15,7 +15,6 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
-
 USE [master]
 IF NOT EXISTS 
     (SELECT name  
@@ -27,18 +26,50 @@ BEGIN
 END
 GO
 
+USE [master]
 
+-- Drop Leet_Release_PcSWinkelenDatabase if exists --
+IF EXISTS(select * from sys.databases where name='Leet_Release_PcSWinkelenDatabase')
+BEGIN 
+	alter database [Leet_Release_PcSWinkelenDatabase] set single_user with rollback immediate
+	DROP DATABASE [Leet_Release_PcSWinkelenDatabase]
+END
+
+-- Drop Leet_Release_BSBestellingbeheerDatabase if exists --
 IF EXISTS(select * from sys.databases where name='Leet_Release_BSBestellingbeheerDatabase')
 BEGIN
 	alter database [Leet_Release_BSBestellingbeheerDatabase] set single_user with rollback immediate
 	DROP DATABASE [Leet_Release_BSBestellingbeheerDatabase]
 END
+
+-- Drop Leet_Release_BSBestellingbeheerDatabase if exists --
+IF EXISTS(select * from sys.databases where name='Leet_Release_BSKlantbeheerDatabase')
+BEGIN
+	alter database [Leet_Release_BSKlantbeheerDatabase] set single_user with rollback immediate
+	DROP DATABASE [Leet_Release_BSKlantbeheerDatabase]
+END
 GO
 
+CREATE DATABASE [Leet_Release_PcSWinkelenDatabase] 
 CREATE DATABASE [Leet_Release_BSBestellingbeheerDatabase] 
+CREATE DATABASE [Leet_Release_BSKlantbeheerDatabase] 
 GO
 
-USE [Leet_Release_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
+USE [Leet_Release_PcSWinkelenDatabase]
+GO
+CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\DefaultAppPool]
+GO
+
+USE [Leet_Release_BSBestellingbeheerDatabase]
+GO
+CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\DefaultAppPool]
+GO
+
+USE [Leet_Release_BSKlantbeheerDatabase]
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
 GO

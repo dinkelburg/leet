@@ -10,6 +10,7 @@ using Leet.Kantilever.BSKlantbeheer.DAL.Mappers;
 using Leet.Kantilever.BSKlantbeheer.V1.Schema;
 using System.Data;
 using Leet.Kantilever.BSKlantbeheer.DAL.Exceptions;
+using Minor.case3.Leet.V1.FunctionalError;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation
 {
@@ -58,7 +59,9 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation
             }
             catch(FunctionalException ex)
             {
-                throw new FaultException(ex.Message);
+                var errorList = new FunctionalErrorList();
+                errorList.Add(new FunctionalErrorDetail { Message = ex.Message });
+                throw new FaultException<FunctionalErrorList>(errorList);
             }
         }
     }
