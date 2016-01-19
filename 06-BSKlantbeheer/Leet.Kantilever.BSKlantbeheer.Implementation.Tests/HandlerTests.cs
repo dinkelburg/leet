@@ -8,6 +8,7 @@ using Leet.Kantilever.BSKlantbeheer.DAL;
 using System.Transactions;
 using Leet.Kantilever.BSKlantbeheer.V1.Messages;
 using System.ServiceModel;
+using Minor.case3.Leet.V1.FunctionalError;
 
 namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
 {
@@ -82,9 +83,12 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
                     // Assert
                     Assert.Fail();
                 }
-                catch (FaultException)
+                catch (FaultException<FunctionalErrorList> ex)
                 {
-                    // Moet hier langs gaan
+                    foreach (var item in ex.Detail)
+                    {
+                        Assert.AreEqual($"Er bestaat al een klant met gebruikersnaam jandevries123", item.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -109,7 +113,7 @@ namespace Leet.Kantilever.BSKlantbeheer.Implementation.Tests
         }
 
 
-        [TestMethod, ExpectedException(typeof(FaultException))]
+        [TestMethod, ExpectedException(typeof(FaultException<FunctionalErrorList>))]
         public void RegistreerKlant_VoegIncompleteKlantToe()
         {
             // Arrange
