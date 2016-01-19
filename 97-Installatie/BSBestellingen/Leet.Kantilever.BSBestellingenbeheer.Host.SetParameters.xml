@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <setParameter name="IIS Web Application Name" value="Default Web Site/Leet/BSBestellingenbeheer" />
-  <setParameter name="BestellingContext-Deployment-Deployment Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=Leet_BSBestellingbeheerDatabase;Integrated Security=True" />
-  <setParameter name="BestellingContext-Web.config Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=Leet_BSBestellingbeheerDatabase;Integrated Security=true" />
+  <setParameter name="BestellingContext-Deployment-Deployment Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=Leet_Test_BSBestellingbeheerDatabase;Integrated Security=True" />
+  <setParameter name="BestellingContext-Web.config Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=Leet_Release_BSBestellingbeheerDatabase;Integrated Security=true" />
 </parameters>
