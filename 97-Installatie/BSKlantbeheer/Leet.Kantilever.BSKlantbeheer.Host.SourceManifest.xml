@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\TFS\RoelR\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Acceptatie\Package\PackageTmp" />
+  <setAcl path="C:\TFS\RoelR\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\TFS\RoelR\Leet\06-BSKlantbeheer\Leet.Kantilever.BSKlantbeheer.Host\obj\Acceptatie\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>
