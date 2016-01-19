@@ -107,6 +107,7 @@
       <Link>leet.snk</Link>
     </Content>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\BSbestellingen_Publish.pubxml" />
     <None Include="Properties\PublishProfiles\BSBestellingen_Publish_Acceptatie.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
