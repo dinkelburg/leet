@@ -104,38 +104,18 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         /// <returns>The entire Winkelmand</returns>
         public WinkelmandResponseMessage VoegProductToe(ToevoegenWinkelmandRequestMessage toevoegenWinkelmandRequestMessage)
         {
+            var agentProduct = _agentBSCatalogusBeheer.FindProductById(toevoegenWinkelmandRequestMessage.BestelProduct.ProductID);
+            Mapper.CreateMap<BsCatalogus.Product, Product>()
+            .ForMember(dest => dest.CatalogusProductID, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
 
-            ToevoegenWinkelmandRequestMessage message = new ToevoegenWinkelmandRequestMessage
-            {
-                BestelProduct = new V1.Schema.BestelProduct
-                {
-                    Aantal = 1,
-                    ClientID = "ClientDummy",
-                    ProductID = 1,
-                }
-            };
+            var product = Mapper.Map<Product>(agentProduct);
+            product.Aantal = toevoegenWinkelmandRequestMessage.BestelProduct.Aantal;
+            _winkelmandMapper.AddProductToWinkelmand(product, toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
 
-            try {
-                var agentProduct = _agentBSCatalogusBeheer.FindProductById(message.BestelProduct.ProductID);
-                Mapper.CreateMap<BsCatalogus.Product, Product>()
-                .ForMember(dest => dest.CatalogusProductID, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Id, opt => opt.Ignore());
+            var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
 
-                var product = Mapper.Map<Product>(agentProduct);
-                product.Aantal = message.BestelProduct.Aantal;
-                _winkelmandMapper.AddProductToWinkelmand(product, message.BestelProduct.ClientID);
-
-                var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(message.BestelProduct.ClientID);
-
-                return MapWinkelmand(winkelmand);
-
-            }
-            catch (Exception ex)
-            {
-                throw new FaultException(ex.Message);
-            }
-
-            return null;
+            return MapWinkelmand(winkelmand);
         }
 
         /// <summary>

@@ -36,13 +36,13 @@ namespace Leet.Kantilever.BSKlantbeheer.DAL.Mappers
                         context.SaveChanges();
                     }
                 }
-                catch(DbEntityValidationException e)
+                catch(DbEntityValidationException)
                 {
-                    throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
+                    throw new FunctionalException("De gegevens konden niet worden opgeslagen. Is alles correct ingevuld?");
                 }
                 catch(DbUpdateException)
                 {
-                    throw new FunctionalException("De meegegeven gegevens waren niet geldig.");
+                    throw new FunctionalException($"Er bestaat al een klant met gebruikersnaam {klant.Gebruikersnaam}");
                 }
             }
         }
