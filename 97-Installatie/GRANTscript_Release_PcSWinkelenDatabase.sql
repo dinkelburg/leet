@@ -28,17 +28,18 @@ END
 GO
 
 
-IF EXISTS(select * from sys.databases where name='Leet_Release_BSBestellingbeheerDatabase')
+USE [master]
+IF EXISTS(select * from sys.databases where name='Leet_Release_PcSWinkelenDatabase')
 BEGIN
-	alter database [Leet_Release_BSBestellingbeheerDatabase] set single_user with rollback immediate
-	DROP DATABASE [Leet_Release_BSBestellingbeheerDatabase]
+	alter database [Leet_Release_PcSWinkelenDatabase] set single_user with rollback immediate
+	DROP DATABASE [Leet_Release_PcSWinkelenDatabase]
 END
 GO
 
-CREATE DATABASE [Leet_Release_BSBestellingbeheerDatabase] 
+CREATE DATABASE [Leet_PcSWinkelenDatabase] 
 GO
 
-USE [Leet_Release_BSBestellingbeheerDatabase]	-- RENAME this to the name of the database that you are installing
+USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
 GO

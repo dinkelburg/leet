@@ -12,9 +12,11 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mapping
     {
         public BestellingMapping()
         {
-            ToTable("Bestelling");
-            HasKey(x => x.ID);
-            Property(x => x.Klantnummer)
+            this.ToTable("Bestelling");
+
+            this.HasKey(x => x.ID);
+
+            this.Property(x => x.Klantnummer)
                 .HasMaxLength(100);
         }
     }
