@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Minor.case3.Leet.V1.FunctionalError;
 using System.Linq;
 using System.ServiceModel;
+using log4net;
 
 namespace Leet.Kantilever.PcSWinkelen.Implementation
 {
@@ -18,6 +19,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
     {
         private IDatamapper<Winkelmand> _winkelmandMapper;
         private IAgentBSCatalogusBeheer _agentBSCatalogusBeheer;
+        //private static readonly ILog logger = LogManager.GetLogger(typeof(WinkelenServiceHandler));
 
         /// <summary>
         /// Constructor to instantiate WinkelenServiceHandler with a WinkelmandDataMapper and AgentBSCatalogusBeheer
@@ -49,7 +51,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
         {
             var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(vraagWinkelmandRequestMessage.ClientID);
             var errorList = new FunctionalErrorList();
-            
+            //logger.Error("Test");
             if (winkelmand == null)
             {
                 errorList.Add(new FunctionalErrorDetail
@@ -112,6 +114,7 @@ namespace Leet.Kantilever.PcSWinkelen.Implementation
             _winkelmandMapper.AddProductToWinkelmand(product, toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
 
             var winkelmand = _winkelmandMapper.FindWinkelmandByClientID(toevoegenWinkelmandRequestMessage.BestelProduct.ClientID);
+
             return MapWinkelmand(winkelmand);
         }
 
