@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Minor.case3.Leet.V1.FunctionalError;
 using System.Linq;
 using System.ServiceModel;
+using log4net;
 
 namespace Leet.Kantilever.PcSWinkelen.Implementation
 {
