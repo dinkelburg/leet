@@ -46,7 +46,7 @@
     <PublishDatabaseSettings>
       <Objects>
         <ObjectGroup Name="KlantenContext-Deployment" Order="1">
-          <Destination Path="" />
+          <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Release_BSKlantbeheerDatabase%3bIntegrated Security=true" />
           <Object Type="DbFullSql">
             <Source Path="..\..\97-Installatie\GRANTscript_Release_BSKlantbeheerDatabase.sql" Transacted="False" />
           </Object>
@@ -105,7 +105,6 @@
       <Link>leet.snk</Link>
     </Content>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish.pubxml" />
     <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish_Acceptatie.pubxml" />
     <None Include="Properties\PublishProfiles\BSKlantbeheer_Publish_Release2.pubxml" />
     <None Include="Web.Acceptatie.config">
