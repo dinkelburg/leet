@@ -55,7 +55,21 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         {
 
             var mapper = new BestellingDataMapper();
-            var bestelling = mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).Single();
+            var bestelling = mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).SingleOrDefault();
+
+            var errorList = new FunctionalErrorList();
+            if (bestelling == null)
+            {
+                errorList.Add(new FunctionalErrorDetail
+                {
+                    Message = "Er is geen factuur gevonden met het bestelnummer " + requestMessage.Bestelnummer,
+                });
+            }
+
+            if(errorList.Any())
+            {
+                throw new FaultException<FunctionalErrorList>(errorList);
+            }
 
             return new GetBestellingByBestelnummerResponseMessage
             {

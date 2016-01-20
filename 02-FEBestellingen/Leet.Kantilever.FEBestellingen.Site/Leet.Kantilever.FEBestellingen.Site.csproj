@@ -128,6 +128,7 @@
     <Compile Include="BtwConfigSection.cs" />
     <Compile Include="BtwHelper.cs" />
     <Compile Include="Controllers\BestellingController.cs" />
+    <Compile Include="Controllers\BetalingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Mapper.cs" />
     <Compile Include="Managers\IBestellingManager.cs" />
@@ -182,9 +183,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Bestelling\ToonFactuur.cshtml" />
+    <Content Include="Views\Shared\ToonFactuur.cshtml" />
     <Content Include="Views\Bestelling\VolgendeBestelling.cshtml" />
     <Content Include="Views\Bestelling\_bestellingsregels.cshtml" />
+    <Content Include="Views\Betaling\ZoekOpBestelnummer.cshtml" />
+    <Content Include="Views\Betaling\Factuur.cshtml" />
+    <Content Include="Views\Bestelling\Factuur.cshtml" />
+    <Content Include="Views\Betaling\RegistreerBetaling.cshtml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

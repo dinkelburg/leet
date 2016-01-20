@@ -5,6 +5,7 @@ using Minor.ServiceBus.Agent.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,8 +43,15 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         public Bestelling GetBestellingByBestelnummer(long nummer)
         {
             var agent = _factory.CreateAgent();
-            
-            return agent.FindBestelling(new GetBestellingByBestelnummerRequestMessage { Bestelnummer = nummer }).Bestelling;
+            try
+            {
+                var bestellingResponseMessage = agent.FindBestelling(new GetBestellingByBestelnummerRequestMessage { Bestelnummer = nummer });
+                return bestellingResponseMessage.Bestelling;
+            }
+            catch (FaultException)
+            {
+                throw;
+            }
         }
 
         /// <summary>

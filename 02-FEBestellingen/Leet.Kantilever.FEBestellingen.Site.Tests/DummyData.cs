@@ -29,6 +29,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                 ID = 1,
                 Besteldatum = new System.DateTime(2015, 1, 8),
                 Bestelnummer = 1,
+                Status = minorcase3bsbestellingenbeheer.v1.schema.BestellingStatus.Nieuw,
                 BestellingsregelCollection = new BestellingsregelCollection
             {
                 new Bestellingsregel

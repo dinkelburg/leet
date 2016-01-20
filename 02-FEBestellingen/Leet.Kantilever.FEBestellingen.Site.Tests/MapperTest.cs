@@ -69,7 +69,9 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
 
             //assert
             Assert.AreEqual("Batavus", result.Bestelling.Bestellingsregels.First().LeveranciersNaam);
+            Assert.AreEqual(BestellingVM.BestellingStatusVM.Nieuw, result.Bestelling.Status);
             Assert.AreEqual("Testdummy", result.Klant.Voornaam);
+            
         }    
     }
 }
