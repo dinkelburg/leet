@@ -15,7 +15,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="Besteldatum" type="xs:dateTime" />
-      <xs:element name="Status" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q1:BestellingStatus" />
+      <xs:element name="Status" xmlns:q1="urn:minor-case3-bsbestellingenbeheer:v1:schema" type="q1:Bestellingsstatus" />
       <xs:element minOccurs="0" name="Klant" nillable="true" xmlns:q2="urn:minor-case3-bsklantbeheer:v1:schema" type="q2:Klant">
         <xs:annotation>
           <xs:appinfo>

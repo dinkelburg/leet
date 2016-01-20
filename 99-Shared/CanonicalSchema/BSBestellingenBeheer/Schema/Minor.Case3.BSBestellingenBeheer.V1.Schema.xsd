@@ -19,8 +19,8 @@
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:simpleType name="BestellingStatus">
-    <xsd:restriction base="xsd:string">     
+  <xsd:simpleType name="Bestellingsstatus">
+    <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Nieuw">
         <xsd:annotation>
           <xsd:appinfo>
