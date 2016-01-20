@@ -107,7 +107,7 @@
     </Content>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Acceptatie2.pubxml" />
-    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release2.pubxml" />
+    <None Include="Properties\PublishProfiles\PcSWinkelen_Publish_Release3.pubxml" />
     <None Include="Web.Acceptatie.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
