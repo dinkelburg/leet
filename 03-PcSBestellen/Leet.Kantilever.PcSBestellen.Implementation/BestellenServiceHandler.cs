@@ -11,6 +11,7 @@ using Leet.Kantilever.PcSBestellen.Implementation.Mappers;
 using Leet.Kantilever.PcSBestellen.Contract;
 using minorcase3bsklantbeheer.v1.schema;
 using AutoMapper;
+using System.Configuration;
 
 namespace Leet.Kantilever.PcSBestellen.Implementation
 {
@@ -69,6 +70,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
 
             bestelling.Besteldatum = DateTime.Now;
             bestelling.Klant = requestMessage.Klant;
+            bestelling.Status = BepaalStatusVoorBestelling(bestelling, requestMessage.Klant);
 
             Mapper.CreateMap<Klant, BSKlantbeheer.V1.Schema.Klant>();
             _agentKlant.RegistreerKlant(Mapper.Map<BSKlantbeheer.V1.Schema.Klant>(bestelling.Klant));
@@ -159,6 +161,29 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
                 Bestelling = pcsBestelling
             };
         }
+        
+        /// <summary>
+        /// Get the right Status for this bestelling
+        /// </summary>
+        /// <param name="bestelling">The new Bestelling that needs a check</param>
+        /// <param name="klant">The Klant that placed the Bestelling</param>
+        /// <returns></returns>
+        public minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus BepaalStatusVoorBestelling(V1.Schema.Bestelling bestelling, Klant klant)
+        {
+            decimal totaalPrijsBestelling = bestelling.BestellingsregelCollection.Sum
+                    (bestellingsregel => bestellingsregel.Product.Prijs.Value * bestellingsregel.Aantal);
+            decimal totaalOpenBestellingen = 0;   //Wacht op interface van Bas
+            int limiet;
+            int.TryParse(ConfigurationManager.AppSettings["limiet"], out limiet);
 
+            if (totaalPrijsBestelling + totaalOpenBestellingen > limiet)
+            {
+                return minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Nieuw;
+            }
+            else
+            {
+                return minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd;
+            }
+        }
     }
 }

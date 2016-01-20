@@ -185,5 +185,21 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
             mockAgent.Verify(a => a.UpdateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()), Times.Once);
 
         }
+
+
+        [TestMethod]
+        public void BepaalStatusVoorBestelling_BestellingUnderLimiet()
+        {
+            // Arrange
+            V1.Schema.Bestelling bestelling = DummyData.PcSBestellenBestelling;
+            var klant = DummyData.Klant;
+            var handler = new BestellenServiceHandler();
+
+            // Act
+            var result = handler.BepaalStatusVoorBestelling(bestelling, klant);
+
+            // Assert
+            Assert.AreEqual(minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd, result);
+        }
     }
 }
