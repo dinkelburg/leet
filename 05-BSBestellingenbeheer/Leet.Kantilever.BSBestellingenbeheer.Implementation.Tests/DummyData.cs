@@ -82,6 +82,33 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests
                     Status = Bestelling.BestellingStatus.Goedgekeurd,
                     Klantnummer = "Client02",
                 },
+                new Bestelling
+                {
+                    ID = 6,
+                    Besteldatum = new DateTime(2015, 01, 12),
+                    Bestellingsregels = GetBestellingsRegels(),
+                    Bestelnummer = 6,
+                    Status = Bestelling.BestellingStatus.Goedgekeurd,
+                    Klantnummer = "Client02",
+                },
+                new Bestelling
+                {
+                    ID = 7,
+                    Besteldatum = new DateTime(2015, 01, 12),
+                    Bestellingsregels = GetBestellingsRegels(),
+                    Bestelnummer = 7,
+                    Status = Bestelling.BestellingStatus.Goedgekeurd,
+                    Klantnummer = "Client02",
+                },
+                new Bestelling
+                {
+                    ID = 8,
+                    Besteldatum = new DateTime(2015, 01, 12),
+                    Bestellingsregels = GetBestellingsRegels(),
+                    Bestelnummer = 8,
+                    Status = Bestelling.BestellingStatus.Goedgekeurd,
+                    Klantnummer = "Client03",
+                },
             };
         }
 

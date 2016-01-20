@@ -49,8 +49,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
                 try
                 {
                     bestelling = _agentPcSBestellen.FindBestellingByBestelnummer(bestelnummer);
-                    BestellingStatus bestellingStatus = (BestellingStatus)bestelling.Status;
-                    if ((bestellingStatus & BestellingStatus.Geweigerd) > 0 || (bestellingStatus & BestellingStatus.Betaald) > 0)
+                    Bestellingsstatus bestellingStatus = (Bestellingsstatus)bestelling.Status;
+                    if ((bestellingStatus & Bestellingsstatus.Geweigerd) > 0 || (bestellingStatus & Bestellingsstatus.Betaald) > 0)
                     {
                         ModelState.AddModelError("bestelnummer", $"De factuur met het bestelnummer {bestelnummer} heeft niet de juiste status om goedgekeurd te kunnen worden.");
                         return View();
@@ -81,8 +81,8 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         {
             var bestelling = _agentPcSBestellen.FindBestellingByBestelnummer(bestelnummer);
 
-            BestellingStatus bestellingStatus = (BestellingStatus)bestelling.Status;
-            bestellingStatus = bestellingStatus | BestellingStatus.Betaald;
+            Bestellingsstatus bestellingStatus = (Bestellingsstatus)bestelling.Status;
+            bestellingStatus = bestellingStatus | Bestellingsstatus.Betaald;
 
             bestelling.Status = (int)bestellingStatus;
 
