@@ -152,7 +152,7 @@
           <Object Type="DbFullSql">
             <Source Path="..\..\97-Installatie\GRANTscript_BSBestellingbeheerDatabase.sql" Transacted="False" />
           </Object>
-          <Object Type="DbFullSql" Enabled="True">
+          <Object Type="DbFullSql" Enabled="False">
             <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Test_BSBestellingbeheerDatabase%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
             <Source Path="obj\Acceptatie\AutoScripts\BestellingContext-Deployment_SchemaOnly.sql" Transacted="True" />
           </Object>

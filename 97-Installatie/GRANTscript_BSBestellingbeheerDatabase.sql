@@ -15,7 +15,8 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
-USE [Leet_BSBestellingbeheerDatabase]
+
+USE [master]
 IF NOT EXISTS 
     (SELECT name  
      FROM master.sys.server_principals
@@ -26,11 +27,12 @@ BEGIN
 END
 GO
 
-USE [master]
 
 IF EXISTS(select * from sys.databases where name='Leet_BSBestellingbeheerDatabase')
-alter database [Leet_BSBestellingbeheerDatabase] set single_user with rollback immediate
-DROP DATABASE [Leet_BSBestellingbeheerDatabase]
+BEGIN
+	alter database [Leet_BSBestellingbeheerDatabase] set single_user with rollback immediate
+	DROP DATABASE [Leet_BSBestellingbeheerDatabase]
+END
 GO
 
 CREATE DATABASE [Leet_BSBestellingbeheerDatabase] 
