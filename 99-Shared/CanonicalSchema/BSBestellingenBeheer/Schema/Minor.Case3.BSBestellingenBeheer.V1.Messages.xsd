@@ -22,10 +22,26 @@
   <xsd:element name="GetVolgendeOpenBestellingRequestMessage"/>
 
   <xsd:element name="GetVolgendeOpenBestellingResponseMessage" type="tns:GetVolgendeOpenBestellingResponseMessage" />
-  
+
   <xsd:element name="CreateBestellingRequestMessage" type="tns:CreateBestellingRequestMessage" />
 
   <xsd:element name="UpdateBestellingRequestMessage" type="tns:UpdateBestellingRequestMessage" />
+
+  <xsd:element name="GetAllBestellingenByKlantRequestMessage" type="tns:GetAllBestellingenByKlantRequestMessage"/>
+
+  <xsd:element name="GetAllBestellingenByKlantResponseMessage" type="tns:GetAllBestellingenByKlantResponseMessage"/>
+
+  <xsd:complexType name="GetAllBestellingenByKlantRequestMessage">
+    <xsd:sequence>
+      <xsd:element name="KlantNummer" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="GetAllBestellingenByKlantResponseMessage">
+    <xsd:sequence>
+      <xsd:element name="BestellingCollection" type="bestelling:BestellingCollection" />
+    </xsd:sequence>
+  </xsd:complexType>
 
   <xsd:complexType name="GetAllBestellingenResponseMessage">
     <xsd:sequence>
@@ -38,7 +54,7 @@
       <xsd:element name="Bestelnummer" type="xsd:long" />
     </xsd:sequence>
   </xsd:complexType>
-  
+
   <xsd:complexType name="GetBestellingByBestelnummerResponseMessage">
     <xsd:sequence>
       <xsd:element name="Bestelling" type="bestelling:Bestelling" />

@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 {
-    public interface IBestellingMapper<T>
+    public interface IDatamapper<T>
     {
-            T FindBestellingByID(int id);
-            void AddBestelling(Bestelling bestelling);
-            IEnumerable<T> FindAll();
-             T FindVolgendeOpenBestelling();
-
+        T FindByID(int id);
+        void Insert(T bestelling);
+        IEnumerable<T> FindAll();
+        T FindNext();
+        IEnumerable<T> Find(Func<T, bool> predicate);
+        void Update(T bestelling);
     }
 }

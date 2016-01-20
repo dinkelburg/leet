@@ -10,7 +10,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
     {
         public static V1.Schema.Bestelling BestellingToDto(Entities.Bestelling bestelling)
         {
-            if(bestelling == null)
+            if (bestelling == null)
             {
                 throw new ArgumentNullException("bestelling");
             }
@@ -30,7 +30,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
         {
             if (regel == null)
             {
-                throw new ArgumentNullException(paramName:"regel");
+                throw new ArgumentNullException(paramName: "regel");
             }
             return new V1.Schema.Bestellingsregel
             {
@@ -44,12 +44,36 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
         {
             if (regels == null)
             {
-                throw new ArgumentNullException(paramName:"regels");
+                throw new ArgumentNullException(paramName: "regels");
             }
 
             var collection = new V1.Schema.BestellingsregelCollection();
             collection.AddRange(regels.Select(BestellingsregelToDto));
             return collection;
+        }
+
+        public static V1.Schema.BestellingCollection BestellingCollectionToDto(IEnumerable<Entities.Bestelling> bestellingen)
+        {
+            if (bestellingen == null)
+            {
+                throw new ArgumentNullException(paramName: "bestellingen");
+            }
+
+            var dtoCollection = new V1.Schema.BestellingCollection();
+
+            foreach (var b in bestellingen)
+            {
+                dtoCollection.Add(new V1.Schema.Bestelling
+                {
+                    Besteldatum = b.Besteldatum,
+                    Bestelnummer = b.Bestelnummer,
+                    ID = b.ID,
+                    Klantnummer = b.Klantnummer,
+                    Status = (V1.Schema.BestellingStatus)b.Status
+                });
+            }
+
+            return dtoCollection;
         }
     }
 }

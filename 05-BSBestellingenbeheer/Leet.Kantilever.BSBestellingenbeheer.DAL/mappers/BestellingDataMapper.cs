@@ -8,9 +8,9 @@ using System.Data.Entity;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 {
-    public class BestellingDataMapper : IBestellingMapper<Bestelling>
+    public class BestellingDataMapper : IDatamapper<Bestelling>
     {
-        public void AddBestelling(Bestelling bestelling)
+        public void Insert(Bestelling bestelling)
         {
             if (bestelling == null)
             {
@@ -29,8 +29,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                return context.Bestellingen.Include(b => b.Bestellingsregels)
+                var asdf = context.Bestellingen.Include(b => b.Bestellingsregels)
                                             .Where(predicate).ToList();
+                return asdf;
             }
         }
 
@@ -54,7 +55,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             }
         }
 
-        public Bestelling FindBestellingByID(int bestellingID)
+        public Bestelling FindByID(int bestellingID)
         {
             using (var context = new BestellingContext())
             {
@@ -64,7 +65,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             }
         }
 
-        public Bestelling FindVolgendeOpenBestelling()
+        public Bestelling FindNext()
         {
             using (var context = new BestellingContext())
             {

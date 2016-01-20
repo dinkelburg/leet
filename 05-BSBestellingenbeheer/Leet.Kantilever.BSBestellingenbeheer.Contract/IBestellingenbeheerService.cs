@@ -25,5 +25,8 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Contract
 
         [OperationContract]
         void UpdateBestelling(UpdateBestellingRequestMessage requestMessage);
+
+        [OperationContract]
+        GetAllBestellingenByKlantResponseMessage GetAllBestellingenByKlant(GetAllBestellingenByKlantRequestMessage requestMessage);
     }
 }

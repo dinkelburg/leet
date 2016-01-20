@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using Bestelling = Leet.Kantilever.BSBestellingenbeheer.DAL.Entities.Bestelling;
 
-namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
+namespace Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests
 {
-    internal static class DummyDataDAL
+    internal static class DummyData
     {
         internal static Bestelling GetBestelling()
         {

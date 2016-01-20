@@ -14,14 +14,24 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
 {
     public class BestellingenbeheerServiceHandler : IBestellingenbeheerService
     {
+        private IDatamapper<DAL.Entities.Bestelling> _mapper;
+
+        public BestellingenbeheerServiceHandler()
+        {
+            _mapper = new BestellingDataMapper();
+        }
+
+        public BestellingenbeheerServiceHandler(IDatamapper<DAL.Entities.Bestelling> mapper)
+        {
+            _mapper = mapper;
+        }
         /// <summary>
         /// Create new bestelling
         /// </summary>
         /// <param name="requestMesssage"></param>
         public void CreateBestelling(CreateBestellingRequestMessage requestMesssage)
         {
-            var mapper = new BestellingDataMapper();
-            mapper.AddBestelling(DTOToEntity.BestellingToEntity(requestMesssage.Bestelling));
+            _mapper.Insert(DTOToEntity.BestellingToEntity(requestMesssage.Bestelling));
         }
 
         /// <summary>
@@ -31,8 +41,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         public void UpdateBestelling(UpdateBestellingRequestMessage requestMessage)
         {
             var entity = DTOToEntity.BestellingToEntity(requestMessage.Bestelling);
-            var mapper = new BestellingDataMapper();
-            mapper.Update(entity);
+            _mapper.Update(entity);
         }
 
         /// <summary>
@@ -43,7 +52,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         {
             var bestellingen = new BestellingCollection();
 
-            return new GetAllBestellingenResponseMessage { BestellingCollection = bestellingen};
+            return new GetAllBestellingenResponseMessage
+            {
+                BestellingCollection = bestellingen
+            };
         }
 
         /// <summary>
@@ -53,9 +65,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         /// <returns></returns>
         public GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage requestMessage)
         {
-
-            var mapper = new BestellingDataMapper();
-            var bestelling = mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).Single();
+            var bestelling = _mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).Single();
 
             return new GetBestellingByBestelnummerResponseMessage
             {
@@ -70,15 +80,46 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         public GetVolgendeOpenBestellingResponseMessage GetVolgendeOpenBestelling()
         {
             var errorList = new FunctionalErrorList();
-            BestellingDataMapper mapper = new BestellingDataMapper();
-
             try
             {
-                var volgendeBestelling = mapper.FindVolgendeOpenBestelling();
+                var volgendeBestelling = _mapper.FindNext();
                 return new GetVolgendeOpenBestellingResponseMessage
                 {
                     Bestelling = EntityToDTO.BestellingToDto(volgendeBestelling)
                 };
+            }
+            catch (ArgumentException ex)
+            {
+                errorList.Add(new FunctionalErrorDetail
+                {
+                    Message = ex.Message,
+                });
+
+                throw new FaultException<FunctionalErrorList>(errorList);
+            }
+        }
+
+        /// <summary>
+        /// Based on a klant's klantnummer, returns all his bestellingen.
+        /// </summary>
+        /// <param name="requestMessage">The message containing the klantnummer.</param>
+        /// <returns></returns>
+        public GetAllBestellingenByKlantResponseMessage GetAllBestellingenByKlant(GetAllBestellingenByKlantRequestMessage requestMessage)
+        {
+            var errorList = new FunctionalErrorList();
+
+            try
+            {
+                var bestellingEntities = _mapper.Find(b => b.Klantnummer == requestMessage.KlantNummer);
+
+                var bestellingDtoCollection = EntityToDTO.BestellingCollectionToDto(bestellingEntities);
+
+                var response = new GetAllBestellingenByKlantResponseMessage
+                {
+                    BestellingCollection = bestellingDtoCollection
+                };
+
+                return response;
             }
             catch (ArgumentException ex)
             {

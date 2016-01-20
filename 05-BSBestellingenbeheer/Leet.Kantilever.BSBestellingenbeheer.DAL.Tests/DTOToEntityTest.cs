@@ -89,7 +89,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             //Assert
             catch (ArgumentNullException e)
             {
-                
+
                 Assert.AreEqual("bestellingsregel", e.ParamName);
             }
         }
