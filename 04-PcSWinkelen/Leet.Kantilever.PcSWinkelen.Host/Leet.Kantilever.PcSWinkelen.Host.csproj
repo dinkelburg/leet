@@ -47,7 +47,7 @@
     <PublishDatabaseSettings>
       <Objects>
         <ObjectGroup Name="WinkelenContext-Deployment" Order="1" Enabled="True">
-          <Destination Path="" />
+          <Destination Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=Leet_Release_PcSWinkelenDatabase%3bIntegrated Security=true" />
           <Object Type="DbFullSql" xmlns="">
             <Source Path="..\..\97-Installatie\GRANTscript_Release_PcSWinkelenDatabase.sql" Transacted="False" />
           </Object>
