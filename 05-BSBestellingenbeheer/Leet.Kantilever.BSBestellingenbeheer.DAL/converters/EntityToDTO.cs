@@ -69,7 +69,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
                     Bestelnummer = b.Bestelnummer,
                     ID = b.ID,
                     Klantnummer = b.Klantnummer,
-                    Status = (V1.Schema.Bestellingsstatus)b.Status
+                    Status = (int)b.Status
                 });
             }
 

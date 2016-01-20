@@ -65,9 +65,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         /// <returns></returns>
         public GetBestellingByBestelnummerResponseMessage FindBestelling(GetBestellingByBestelnummerRequestMessage requestMessage)
         {
-
-            var mapper = new BestellingDataMapper();
-            var bestelling = mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).SingleOrDefault();
+            var bestelling = _mapper.Find(b => b.Bestelnummer == requestMessage.Bestelnummer).SingleOrDefault();
 
             var errorList = new FunctionalErrorList();
             if (bestelling == null)
@@ -78,7 +76,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
                 });
             }
 
-            if(errorList.Any())
+            if (errorList.Any())
             {
                 throw new FaultException<FunctionalErrorList>(errorList);
             }
