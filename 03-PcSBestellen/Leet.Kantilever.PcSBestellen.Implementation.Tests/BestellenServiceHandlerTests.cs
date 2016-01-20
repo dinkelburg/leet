@@ -102,6 +102,8 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 .Returns(DummyData.PcSWinkelenWinkelmand);
             agentWinkelenMock.Setup(a => a.RemoveWinkelmand("1552fc72-2d19-44e5-ad06-efe175cb51fd"));
             agentBestellenMock.Setup(a => a.CreateBestelling(It.IsAny<BSBestellingenbeheer.V1.Schema.Bestelling>()));
+            agentBestellenMock.Setup(x => x.GetAllBestellingenByKlant(It.IsAny<string>()))
+                .Returns(new BSBestellingenbeheer.V1.Schema.BestellingCollection());
             agentKlantMock.Setup(a => a.RegistreerKlant(It.IsAny<Klant>()));
 
             var handler = new BestellenServiceHandler(agentBestellenMock.Object, null, agentWinkelenMock.Object, agentKlantMock.Object);
@@ -188,18 +190,41 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
 
 
         [TestMethod]
-        public void BepaalStatusVoorBestelling_BestellingUnderLimiet()
+        public void BepaalStatusVoorBestelling_BestellingOverLimiet()
         {
             // Arrange
             V1.Schema.Bestelling bestelling = DummyData.PcSBestellenBestelling;
             var klant = DummyData.Klant;
-            var handler = new BestellenServiceHandler();
+            var mockAgent = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            mockAgent.Setup(x => x.GetAllBestellingenByKlant(It.IsAny<string>()))
+                .Returns(new BSBestellingenbeheer.V1.Schema.BestellingCollection());
+            var handler = new BestellenServiceHandler(mockAgent.Object, null, null, null);
 
             // Act
-            var result = handler.BepaalStatusVoorBestelling(bestelling, klant);
+            int result = handler.BepaalStatusVoorBestelling(bestelling, klant);
 
             // Assert
-            Assert.AreEqual(minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd, result);
+            Assert.AreEqual((int)minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Nieuw, result);
         }
+
+        [TestMethod]
+        public void BepaalStatusVoorBestelling_BestellingOnderLimiet()
+        {
+            // Arrange
+            V1.Schema.Bestelling bestelling = DummyData.PcSBestellenBestellingGoedkoop;                
+            var klant = DummyData.Klant;
+            var mockAgent = new Mock<IBSBestellingenbeheerAgent>(MockBehavior.Strict);
+            mockAgent.Setup(x => x.GetAllBestellingenByKlant(It.IsAny<string>()))
+                .Returns(new BSBestellingenbeheer.V1.Schema.BestellingCollection());
+            var handler = new BestellenServiceHandler(mockAgent.Object, null, null, null);
+            
+            // Act
+            int result = handler.BepaalStatusVoorBestelling(bestelling, klant);
+
+            // Assert
+            Assert.AreEqual((int)minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd, result);
+        }
+
+
     }
 }

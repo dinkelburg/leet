@@ -168,21 +168,23 @@ namespace Leet.Kantilever.PcSBestellen.Implementation
         /// <param name="bestelling">The new Bestelling that needs a check</param>
         /// <param name="klant">The Klant that placed the Bestelling</param>
         /// <returns></returns>
-        public minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus BepaalStatusVoorBestelling(V1.Schema.Bestelling bestelling, Klant klant)
+        public int BepaalStatusVoorBestelling(Bestelling bestelling, Klant klant)
         {
             decimal totaalPrijsBestelling = bestelling.BestellingsregelCollection.Sum
                     (bestellingsregel => bestellingsregel.Product.Prijs.Value * bestellingsregel.Aantal);
-            decimal totaalOpenBestellingen = 0;   //Wacht op interface van Bas
+            var alleBestellingen = _agentBestellingen.GetAllBestellingenByKlant(klant.Klantnummer);
+            decimal totaalOpenBestellingen = alleBestellingen.Where(b => b.Status != 2).SelectMany(b => b.Bestellingsregels).Sum(bestellingsregel => bestellingsregel.Prijs * bestellingsregel.Aantal);
+
             int limiet;
             int.TryParse(ConfigurationManager.AppSettings["limiet"], out limiet);
 
             if (totaalPrijsBestelling + totaalOpenBestellingen > limiet)
             {
-                return minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Nieuw;
+                return (int)minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Nieuw;
             }
             else
             {
-                return minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd;
+                return (int)minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Goedgekeurd;
             }
         }
     }

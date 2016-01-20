@@ -34,5 +34,12 @@ namespace Leet.Kantilever.PcSBestellen.Agent
         void CreateBestelling(Bestelling bestelling);
 
         void UpdateBestelling(Bestelling bestelling);
+
+        /// <summary>
+        /// Get all Bestellingen that are placed by this Klant
+        /// </summary>
+        /// <param name="klantnummer"></param>
+        /// <returns>BestellingCollection containing all Bestellingen that belong to this Klant</returns>
+        BestellingCollection GetAllBestellingenByKlant(string klantnummer);
     }
 }

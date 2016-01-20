@@ -93,5 +93,16 @@ namespace Leet.Kantilever.PcSBestellen.Agent
             var agent = _factory.CreateAgent();
             agent.UpdateBestelling(new UpdateBestellingRequestMessage { Bestelling = bestelling });
         }
+
+        /// <summary>
+        /// Get all Bestellingen that are placed by this Klant
+        /// </summary>
+        /// <param name="klantnummer"></param>
+        /// <returns>BestellingCollection containing all Bestellingen that belong to this Klant</returns>
+        public BestellingCollection GetAllBestellingenByKlant(string klantnummer)
+        {
+            var msg = new GetAllBestellingenByKlantRequestMessage { KlantNummer = klantnummer };
+            return _factory.CreateAgent().GetAllBestellingenByKlant(msg).BestellingCollection;
+        }
     }
 }

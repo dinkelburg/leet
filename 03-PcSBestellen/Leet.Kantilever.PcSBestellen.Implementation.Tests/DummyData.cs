@@ -60,7 +60,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
         /// Ingepakt: false
         /// KlantID: 46574676
         /// Bestellingsregels {
-        ///     (Aantal: 3, Prijs: 15, ProductID: 1),
+        ///     (Aantal: 3, Prijs: 945, ProductID: 1),
         /// }
         /// </summary>
         public static BSBestellingenbeheer.V1.Schema.Bestelling BSBestellingbeheerBestelling {
@@ -111,6 +111,46 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Tests
                 return bestelling;
             }
         }
+
+        /// <summary>
+        /// Returns a bestelling with the following properties: 
+        /// Besteldatum: 20-01-2016
+        /// Bestelnummer: 523425
+        /// ID: 523425
+        /// Status: Nieuw (1)
+        /// KlantID: 12464
+        /// Bestellingsregels {
+        ///     (Aantal: 2, Prijs: 6.50, ProductID: 123),
+        /// }
+        public static V1.Schema.Bestelling PcSBestellenBestellingGoedkoop
+        {
+            get
+            {
+                return new V1.Schema.Bestelling
+                {
+                    Besteldatum = new DateTime(2016, 1, 20),
+                    Bestelnummer = 523425,
+                    ID = 523425,
+                    Klant = Klant,
+                    Status = 1,
+                    BestellingsregelCollection = new V1.Schema.BestellingsregelCollection
+                    {
+                        new V1.Schema.Bestellingsregel
+                        {
+                            Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
+                            {
+                                Id = 123,
+                                Beschrijving = "Voorbeeldproduct",
+                                Naam = "Fietsketting",
+                                Prijs = 6.50m
+                            },
+                            Aantal = 2
+                        }
+                    }
+                };
+            }
+        }
+
 
 
         /// <summary>
