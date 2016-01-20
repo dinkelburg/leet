@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 {
-    public class BestellingDataMapper : IBestellingMapper<Bestelling>
+    public class BestellingDataMapper : IDatamapper<Bestelling>
     {
-        public void AddBestelling(Bestelling bestelling)
+        public void Insert(Bestelling bestelling)
         {
             if (bestelling == null)
             {
@@ -54,7 +55,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             }
         }
 
-        public Bestelling FindBestellingByID(int bestellingID)
+        public Bestelling FindByID(int bestellingID)
         {
             using (var context = new BestellingContext())
             {
@@ -64,17 +65,32 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
             }
         }
 
-        public Bestelling FindVolgendeOpenBestelling()
+        public Bestelling FindNext()
         {
             using (var context = new BestellingContext())
             {
-                var bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
-                    .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
-                if (bestelling == null)
+                var concurrencyExceptionCaught = false;
+                Bestelling bestelling = null;
+                do
                 {
-                    throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
+                    try
+                    {
+                        concurrencyExceptionCaught = false;
+                        bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
+                           .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
+                        if (bestelling == null)
+                        {
+                            throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
+                        }
+                        bestelling.Status = Entities.Bestelling.BestellingStatus.Inpakken;
+                        context.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        concurrencyExceptionCaught = true;
+                    }
                 }
-
+                while (concurrencyExceptionCaught);
                 return bestelling;
             }
         }

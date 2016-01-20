@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using Bestelling = Leet.Kantilever.BSBestellingenbeheer.DAL.Entities.Bestelling;
 
-namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
+namespace Leet.Kantilever.BSBestellingenbeheer.Implementation.Tests
 {
-    internal static class DummyDataDAL
+    internal static class DummyData
     {
         internal static Bestelling GetBestelling()
         {
@@ -92,7 +92,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Besteldatum = new DateTime(2015, 12, 12),
                 Bestellingsregels = GetDummyDTOBestellinsregels(),
                 ID = 1,
-                Status = (int) Bestellingsstatus.Nieuw,
+                Status = (int) V1.Schema.Bestellingsstatus.Nieuw,
                 Bestelnummer = 123456,
                 Klantnummer = "ANCD",
             };

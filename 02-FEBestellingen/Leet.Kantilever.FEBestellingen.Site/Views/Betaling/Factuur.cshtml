@@ -1,0 +1,8 @@
+﻿@model Leet.Kantilever.FEBestellingen.Site.ViewModels.FactuurVM
+
+@{
+    ViewBag.Title = "Factuur";
+}
+
+@Html.Partial("ToonFactuur", Model)
+<a href="@Url.Action("RegistreerBetaling", new { bestelnummer = Model.Bestelling.Bestelnummer })" class="btn btn-primary">Betaling registreren</a>

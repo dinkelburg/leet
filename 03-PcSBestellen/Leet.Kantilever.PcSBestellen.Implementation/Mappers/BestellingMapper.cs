@@ -28,7 +28,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                 BestellingsregelCollection = regels,
                 Bestelnummer = bestelling.Bestelnummer,
                 ID = bestelling.ID,
-                Status = (minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus)bestelling.Status,
+                Status = bestelling.Status,
             };
         }
 
@@ -46,7 +46,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
                 Klantnummer = bestelling.Klant.Klantnummer,
                 Bestellingsregels = regels,
                 ID = 0,
-                Status = (BSBestellingenbeheer.V1.Schema.Bestellingsstatus)bestelling.Status,
+                Status = (int)bestelling.Status,
             };
         }
 
@@ -157,7 +157,7 @@ namespace Leet.Kantilever.PcSBestellen.Implementation.Mappers
             var bestelling = new PcSBestellen.V1.Schema.Bestelling
             {
                 BestellingsregelCollection = new V1.Schema.BestellingsregelCollection(),
-                Status = minorcase3bsbestellingenbeheer.v1.schema.Bestellingsstatus.Nieuw,
+                Status = 1,
             };
 
             foreach (var regel in winkelmand)

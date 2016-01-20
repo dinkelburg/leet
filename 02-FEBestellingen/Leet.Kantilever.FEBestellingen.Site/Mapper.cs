@@ -56,7 +56,8 @@ namespace Leet.Kantilever.FEBestellingen.Site
                 Bestelling = new BestellingVM(MapBestellingsregelToVMList(bestelling.BestellingsregelCollection))
                 {
                     Besteldatum = bestelling.Besteldatum,
-                    Bestelnummer = bestelling.Bestelnummer
+                    Bestelnummer = bestelling.Bestelnummer,
+                    Status = (BestellingVM.BestellingStatusVM)((int) bestelling.Status),               
                 },
                 Klant = bestelling.Klant
             };
