@@ -11,6 +11,5 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
         public DateTime Besteldatum { get; set; }
         public string Klantnummer { get; set; }
         public bool Ingepakt { get; set; }
-
     }
 }

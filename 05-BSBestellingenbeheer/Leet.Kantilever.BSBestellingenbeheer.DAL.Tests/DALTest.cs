@@ -35,7 +35,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             var bestellingen = bestellingMapper.FindAll();
 
             // Assert
-            Assert.AreEqual(4, bestellingen.Count());
+            Assert.AreEqual(3, bestellingen.Count());
         }
 
 
@@ -52,7 +52,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             // Assert
             var bestellingsregel = bestelling.Bestellingsregels.Where(regel => regel.ID == 2).First();
             Assert.AreEqual(2, bestelling.ID);
-            Assert.IsTrue(bestelling.Ingepakt);
+            Assert.IsFalse(bestelling.Ingepakt);
             Assert.AreEqual("Client01", bestelling.Klantnummer);
             Assert.AreEqual(2, bestellingsregel.ID);
             Assert.AreEqual(3, bestellingsregel.Aantal);
@@ -71,40 +71,45 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             var openBestelling = bestellingMapper.FindVolgendeOpenBestelling();
 
             // Assert
-            Assert.AreEqual(3, openBestelling.ID);
+            Assert.AreEqual(2, openBestelling.ID);
 
         }
 
 
-        //[TestMethod]
-        //public void AddNieuweBestellingReturntGrotereLijst_Test()
-        //{
-        //    // Arrange
-        //    IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
+        [TestMethod]
+        public void AddNieuweBestellingReturntGrotereLijst_Test()
+        {
 
-        //    // Act
-        //    var oudeBestellinglijst = bestellingMapper.FindAll();
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                IBestellingMapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-        //    bestellingMapper.AddBestelling(DummyDataDAL.GetBestelling());
+                // Act
+                var oudeBestellinglijst = bestellingMapper.FindAll();
 
-        //    var nieuweBestellinglijst = bestellingMapper.FindAll();
+                bestellingMapper.AddBestelling(DummyDataDAL.GetDummyBestellingen()[0]);
 
-        //    // Assert
-        //    Assert.AreEqual(4, oudeBestellinglijst.Count());
-        //    Assert.AreEqual(5, nieuweBestellinglijst.Count());
+                var nieuweBestellinglijst = bestellingMapper.FindAll();
 
-        //}
+                // Assert
+                Assert.AreEqual(3, oudeBestellinglijst.Count());
+                Assert.AreEqual(4, nieuweBestellinglijst.Count());
+            }
+        }
 
 
         [TestMethod]
         public void Update_BestellingKrijgtStatusIngepakt_Test()
         {
-            // Arrange
-            var mapper = new BestellingDataMapper();
-            var oudeBestelling = mapper.FindVolgendeOpenBestelling();
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                var mapper = new BestellingDataMapper();
+                var oudeBestelling = mapper.FindVolgendeOpenBestelling();
 
 
-            // Act
+                // Act
 
                 oudeBestelling.Ingepakt = true;
                 mapper.Update(oudeBestelling);
@@ -112,12 +117,12 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
                 var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
 
-            oudeBestelling = mapper.FindVolgendeOpenBestelling();
+                oudeBestelling = mapper.FindVolgendeOpenBestelling();
 
                 // Assert
                 Assert.IsTrue(nieuweBestelling.Ingepakt);
 
-
+            }
         }
 
         [TestMethod]
@@ -137,8 +142,29 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Assert.AreEqual("bestelling", e.ParamName);
             }
+        }
 
 
+        [TestMethod]
+        public void AddNieuweBestelling_NieuweBestellingHeeftJuisteBestelnummer_Test()
+        {
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                var mapper = new BestellingDataMapper();
+                var dummyBestelling = DummyDataDAL.GetDummyBestellingen()[0];
+
+                // Act
+                mapper.AddBestelling(dummyBestelling);
+
+                long idOfDummyBestelling = mapper.FindAll().OrderBy(b => b.ID).Last().ID;
+
+                var insertedBestelling = mapper.Find(bestelling => bestelling.ID == idOfDummyBestelling).Single();
+
+                // Assert
+                Assert.AreEqual(idOfDummyBestelling, insertedBestelling.Bestelnummer);
+
+            }
         }
 
 
@@ -146,7 +172,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         public void BestellingToDTO_CorrectGemapteDTO_Test()
         {
             // Arrange
-            var bestelling = DummyDataDAL.GetBestelling();
+            var bestelling = DummyDataDAL.GetDummyBestellingen()[0];
 
             // Act
             var mappedBestelling = EntityToDTO.BestellingToDto(bestelling);
