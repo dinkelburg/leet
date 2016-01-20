@@ -14,12 +14,12 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Entities
 
         public enum BestellingStatus
         {
-            Nieuw = 0,
-            Geweigerd = 1,
-            Goedgekeurd = 2,
-            Inpakken = 3,
-            Ingepakt = 4,
-            Betaald = 5
+            Nieuw = 1,
+            Betaald = 2,
+            Geweigerd = 4,
+            Goedgekeurd = 8,
+            Inpakken = 16,
+            Ingepakt = 32,
         }
     }
 

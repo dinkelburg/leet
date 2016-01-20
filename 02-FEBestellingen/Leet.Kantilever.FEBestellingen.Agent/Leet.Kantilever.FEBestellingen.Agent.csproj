@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentPcSBestellen.cs" />
+    <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IAgentPcSBestellen.cs" />
@@ -104,7 +105,13 @@
 /d:"$(ProjectDir) " ^
 /out:GeneratedTypes.cs ^
 /n:"urn:kantilever:pcsbestellen:v1,Kantilever.PcSBestellen.V1" ^
-"$(SolutionDir)..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.wsdl" "$(SolutionDir)..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.xsd"</PreBuildEvent>
+"$(SolutionDir)..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.wsdl" "$(SolutionDir)..\99-shared\CanonicalSchema\PcSBestellen\Contracts\*.xsd"
+
+svcutil ^
+ /dconly ^
+  /out:"$(ProjectDir)BSBestellingenbeheerGeneratedTypes.cs" ^
+  /n:"urn:minor-case3-bsbestellingenbeheer:v1:schema,Leet.Kantilever.BSBestellingenbeheer.V1.Schema" ^
+  "$(SolutionDir)..\99-shared\CanonicalSchema\BSBestellingenBeheer\Schema\*.xsd"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

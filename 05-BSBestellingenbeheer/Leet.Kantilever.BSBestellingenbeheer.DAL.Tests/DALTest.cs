@@ -29,15 +29,15 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
+            // Arrange
                 IDatamapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-                // Act
-                var bestellingen = bestellingMapper.FindAll();
+            // Act
+            var bestellingen = bestellingMapper.FindAll();
 
-                // Assert
+            // Assert
                 Assert.AreEqual(5, bestellingen.Count());
-            }
+        }
         }
 
 
@@ -46,23 +46,23 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
+            // Arrange
                 IDatamapper<Bestelling> mapper = new BestellingDataMapper();
 
-                // Act
+            // Act
                 var bestelling = mapper.FindByID(2);
 
 
-                // Assert
-                var bestellingsregel = bestelling.Bestellingsregels.Where(regel => regel.ID == 2).First();
-                Assert.AreEqual(2, bestelling.ID);
-                Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, bestelling.Status);
-                Assert.AreEqual("Client01", bestelling.Klantnummer);
-                Assert.AreEqual(2, bestellingsregel.ID);
-                Assert.AreEqual(3, bestellingsregel.Aantal);
-                Assert.AreEqual(5, bestellingsregel.ProductID);
-                Assert.AreEqual(5.5M, bestellingsregel.Prijs);
-            }
+            // Assert
+            var bestellingsregel = bestelling.Bestellingsregels.Where(regel => regel.ID == 2).First();
+            Assert.AreEqual(2, bestelling.ID);
+            Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, bestelling.Status);
+            Assert.AreEqual("Client01", bestelling.Klantnummer);
+            Assert.AreEqual(2, bestellingsregel.ID);
+            Assert.AreEqual(3, bestellingsregel.Aantal);
+            Assert.AreEqual(5, bestellingsregel.ProductID);
+            Assert.AreEqual(5.5M, bestellingsregel.Prijs);
+        }
         }
 
 
@@ -71,14 +71,14 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
+            // Arrange
                 IDatamapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-                // Act
+            // Act
                 var openBestelling = bestellingMapper.FindNext();
 
-                // Assert
-                Assert.AreEqual(4, openBestelling.ID);
+            // Assert
+            Assert.AreEqual(4, openBestelling.ID);
             }
 
         }
@@ -89,21 +89,21 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
-                var mapper = new BestellingDataMapper();
+            // Arrange
+            var mapper = new BestellingDataMapper();
                 var oudeBestelling = mapper.FindNext();
 
 
-                // Act
-                oudeBestelling.Status = Bestelling.BestellingStatus.Ingepakt;
-                mapper.Update(oudeBestelling);
+            // Act
+            oudeBestelling.Status = Bestelling.BestellingStatus.Ingepakt;
+            mapper.Update(oudeBestelling);
 
 
-                var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
+            var nieuweBestelling = mapper.Find(b => b.Bestelnummer == oudeBestelling.Bestelnummer).Single();
 
-                // Assert
-                Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, nieuweBestelling.Status);
-            }
+            // Assert
+            Assert.AreEqual(Bestelling.BestellingStatus.Ingepakt, nieuweBestelling.Status);
+        }
         }
 
         [TestMethod]
@@ -111,20 +111,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                //Arrange
+            //Arrange
                 IDatamapper<Bestelling> bestellingMapper = new BestellingDataMapper();
 
-                //Act
-                try
-                {
+            //Act
+            try
+            {
                     bestellingMapper.Insert(null);
-                }
+            }
 
-                //Assert
-                catch (ArgumentNullException e)
-                {
-                    Assert.AreEqual("bestelling", e.ParamName);
-                }
+            //Assert
+            catch (ArgumentNullException e)
+            {
+                Assert.AreEqual("bestelling", e.ParamName);
+            }
             }
         }
 
@@ -180,20 +180,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
-                var bestellingsregels = DummyDataDAL.GetBestellingsRegels();
+            // Arrange
+            var bestellingsregels = DummyDataDAL.GetBestellingsRegels();
 
-                // Act
-                var mappedBestellingsregels = EntityToDTO.BestellingsregelsToCollection(bestellingsregels);
+            // Act
+            var mappedBestellingsregels = EntityToDTO.BestellingsregelsToCollection(bestellingsregels);
 
-                // Assert
-                for (int i = 0; i < mappedBestellingsregels.Count; i++)
-                {
-                    Assert.AreEqual(bestellingsregels[i].ProductID, mappedBestellingsregels[i].ProductID);
-                    Assert.AreEqual(bestellingsregels[i].Aantal, mappedBestellingsregels[i].Aantal);
-                    Assert.AreEqual(bestellingsregels[i].Prijs, mappedBestellingsregels[i].Prijs);
-                }
+            // Assert
+            for (int i = 0; i < mappedBestellingsregels.Count; i++)
+            {
+                Assert.AreEqual(bestellingsregels[i].ProductID, mappedBestellingsregels[i].ProductID);
+                Assert.AreEqual(bestellingsregels[i].Aantal, mappedBestellingsregels[i].Aantal);
+                Assert.AreEqual(bestellingsregels[i].Prijs, mappedBestellingsregels[i].Prijs);
             }
+        }
         }
 
         [TestMethod]
@@ -201,21 +201,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                //Arrange
+            //Arrange
 
-                //Act
-                try
-                {
-                    var mappedBestellingsregel = EntityToDTO.BestellingsregelsToCollection(null);
-                }
-                catch (ArgumentNullException e)
-                {
+            //Act
+            try
+            {
+                var mappedBestellingsregel = EntityToDTO.BestellingsregelsToCollection(null);
+            }
+            catch (ArgumentNullException e)
+            {
+                Assert.AreEqual("regels", e.ParamName);
+            }
 
-                    Assert.AreEqual("regels", e.ParamName);
-                }
 
-
-                //Assert
+            //Assert
             }
         }
 
@@ -225,20 +224,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                // Arrange
+            // Arrange
 
-                // Act
-                try
-                {
-                    var mappedBestellingsRegels = EntityToDTO.BestellingsregelToDto(null);
-                }
-
-                //Assert
-                catch (ArgumentNullException e)
-                {
-                    Assert.AreEqual("regel", e.ParamName);
-                }
+            // Act
+            try
+            {
+                var mappedBestellingsRegels = EntityToDTO.BestellingsregelToDto(null);
             }
+
+            //Assert
+            catch (ArgumentNullException e)
+            {
+                Assert.AreEqual("regel", e.ParamName);
+            }
+        }
         }
 
         [TestMethod]
@@ -246,16 +245,16 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
         {
             using (var scope = new TransactionScope())
             {
-                //Arrange
-                var bestellingsregel = DummyDataDAL.GetBestellingsRegels()[0];
+            //Arrange
+            var bestellingsregel = DummyDataDAL.GetBestellingsRegels()[0];
 
-                //Act
-                var mappedBestellingsregel = EntityToDTO.BestellingsregelToDto(bestellingsregel);
+            //Act
+            var mappedBestellingsregel = EntityToDTO.BestellingsregelToDto(bestellingsregel);
 
-                //Assert
-                Assert.AreEqual(bestellingsregel.ProductID, mappedBestellingsregel.ProductID);
-                Assert.AreEqual(bestellingsregel.Aantal, mappedBestellingsregel.Aantal);
-                Assert.AreEqual(bestellingsregel.Prijs, mappedBestellingsregel.Prijs);
+            //Assert
+            Assert.AreEqual(bestellingsregel.ProductID, mappedBestellingsregel.ProductID);
+            Assert.AreEqual(bestellingsregel.Aantal, mappedBestellingsregel.Aantal);
+            Assert.AreEqual(bestellingsregel.Prijs, mappedBestellingsregel.Prijs);
             }
         }
 
@@ -272,7 +271,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 
                 //assert
                 Assert.AreEqual(5, result.First().ID);
-            }
+        }
         }
 
         [TestMethod]

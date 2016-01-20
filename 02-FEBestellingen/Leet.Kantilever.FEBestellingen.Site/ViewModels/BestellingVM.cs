@@ -20,6 +20,18 @@ namespace Leet.Kantilever.FEBestellingen.Site.ViewModels
         public long Bestelnummer { get; set; }
         public List<BestellingsregelVM> Bestellingsregels { get; private set; }
         public DateTime Besteldatum { get; set; }
+        public BestellingStatusVM Status { get; set; }
+
+        public enum BestellingStatusVM
+        {
+            Nieuw = 1,
+            Betaald = 2,
+            Geweigerd = 4,
+            Goedgekeurd = 8,
+            Inpakken = 16,
+            Ingepakt = 32,
+        }
+
         /// <summary>
         /// Totaalprijs is defined as a string. This way, it can be displayed correctly in the view
         /// with proper localized currency formatting. 

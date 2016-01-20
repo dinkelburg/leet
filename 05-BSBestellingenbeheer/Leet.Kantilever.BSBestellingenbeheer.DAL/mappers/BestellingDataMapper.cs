@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 {
@@ -68,13 +69,28 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
-                    .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
-                if (bestelling == null)
+                var concurrencyExceptionCaught = false;
+                Bestelling bestelling = null;
+                do
                 {
-                    throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
+                    try
+                    {
+                        concurrencyExceptionCaught = false;
+                        bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
+                           .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
+                        if (bestelling == null)
+                        {
+                            throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
+                        }
+                        bestelling.Status = Entities.Bestelling.BestellingStatus.Inpakken;
+                        context.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        concurrencyExceptionCaught = true;
+                    }
                 }
-
+                while (concurrencyExceptionCaught);
                 return bestelling;
             }
         }
