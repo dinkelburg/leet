@@ -8,17 +8,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
 {
     internal class DummyDataDAL
     {
-        internal static Bestelling GetBestelling()
-        {
-            return new Bestelling
-            {
-                ID = 1,
-                Besteldatum = DateTime.Now,
-                Bestellingsregels = GetBestellingsRegels(),
-                Ingepakt = true,
-                Klantnummer = "Client01",
-            };
-        }
+
 
         public static List<BestellingsRegel> GetBestellingsRegels()
         {
@@ -48,30 +38,27 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 new Bestelling
                 {
 
-                    ID = 2,
                     Besteldatum = new DateTime(2015, 12, 12),
                     Bestellingsregels = GetBestellingsRegels(),
-                    Bestelnummer = 2,
                     Ingepakt = true,
                     Klantnummer = "Client01",
+                    Bestelnummer = 1,
                 },
                 new Bestelling
                 {
-                    ID = 3,
                     Besteldatum = new DateTime(2015, 01, 10),
                     Bestellingsregels = GetBestellingsRegels(),
-                    Bestelnummer = 3,
                     Ingepakt = false,
                     Klantnummer = "Client01",
+                    Bestelnummer = 2,
                 },
                 new Bestelling
                 {
-                    ID = 4,
                     Besteldatum = new DateTime(2015, 01, 11),
                     Bestellingsregels = GetBestellingsRegels(),
-                    Bestelnummer = 4,
                     Ingepakt = false,
                     Klantnummer = "Client01",
+                    Bestelnummer = 3,
                 },
             };
         }
@@ -82,7 +69,6 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
             {
                 Besteldatum = new DateTime(2015, 12, 12),
                 Bestellingsregels = GetDummyDTOBestellinsregels(),
-                ID = 1,
                 Ingepakt = false,
                 Bestelnummer = 123456,
                 Klantnummer = "ANCD",
