@@ -1,1 +1,0 @@
-sqlcmd -S localhost\SQLEXPRESS -i GRANTscript_PcSWinkelenDatabase.sql

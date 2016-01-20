@@ -36,10 +36,10 @@ BEGIN
 END
 GO
 
-CREATE DATABASE [Leet_PcSWinkelenDatabase] 
+CREATE DATABASE [Leet_Release_PcSWinkelenDatabase] 
 GO
 
-USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
+USE [Leet_Release_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
 GO
 CREATE USER [IIS APPPOOL\DefaultAppPool] FOR LOGIN [IIS APPPOOL\DefaultAppPool]
 GO

@@ -15,6 +15,7 @@
 --	  gor to the Cutom scripts (on the bottom of the page)
 --	  Add this script AFTER [Auto script Schema (and data)]
 --
+USE [Leet_PcSWinkelenDatabase]
 IF NOT EXISTS 
     (SELECT name  
      FROM master.sys.server_principals
@@ -26,13 +27,13 @@ END
 GO
 
 USE [master]
-GO
 
 IF EXISTS(select * from sys.databases where name='Leet_PcSWinkelenDatabase')
+alter database [Leet_PcSWinkelenDatabase] set single_user with rollback immediate
 DROP DATABASE [Leet_PcSWinkelenDatabase]
 GO
 
-CREATE DATABASE [Leet_PcSWinkelenDatabase]
+CREATE DATABASE [Leet_PcSWinkelenDatabase] 
 GO
 
 USE [Leet_PcSWinkelenDatabase]	-- RENAME this to the name of the database that you are installing
