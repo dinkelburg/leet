@@ -19,8 +19,10 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
 
             using (var context = new BestellingContext())
             {
-                bestelling.Bestelnummer = new Random().Next(10000000);
                 context.Bestellingen.Add(bestelling);
+                context.SaveChanges();
+
+                bestelling.Bestelnummer = bestelling.ID;
                 context.SaveChanges();
             }
         }
