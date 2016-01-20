@@ -31,7 +31,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         public ActionResult FinishOrder(long bestelnummer)
         {
             var bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
-            bestelling.Status = (int)BestellingStatus.Ingepakt;
+            bestelling.Status = (int)Bestellingsstatus.Ingepakt;
             _agent.UpdateBestelling(bestelling);
             return RedirectToAction("ToonFactuur", new { bestelnummer = bestelnummer } );
         }

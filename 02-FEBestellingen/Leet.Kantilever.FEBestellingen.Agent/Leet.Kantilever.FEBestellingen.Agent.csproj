@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgentPcSBestellen.cs" />
+    <Compile Include="Bestelling.cs" />
     <Compile Include="BSBestellingenbeheerGeneratedTypes.cs" />
     <Compile Include="GeneratedTypes.cs" />
     <Compile Include="GlobalSuppressions.cs" />

@@ -32,7 +32,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                 ID = 1,
                 Besteldatum = new System.DateTime(2015, 1, 8),
                 Bestelnummer = 1,
-                Status = (int)BestellingStatus.Nieuw,
+                Status = (int)Bestellingsstatus.Nieuw,
                 BestellingsregelCollection = new PcSBestellen.BestellingsregelCollection
             {
                 new PcSBestellen.Bestellingsregel
