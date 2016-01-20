@@ -72,7 +72,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigSections\OrderLimietConfigSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

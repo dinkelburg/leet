@@ -15,11 +15,11 @@
       <xsd:element name="Bestellingsregels" type="tns:BestellingsregelCollection" />
       <xsd:element name="Besteldatum" type="xsd:dateTime" />
       <xsd:element name="Klantnummer" type="xsd:string" />
-      <xsd:element name="Status" type="tns:BestellingStatus" />
+      <xsd:element name="Status" type="tns:Bestellingsstatus" />
     </xsd:sequence>
   </xsd:complexType>
 
-  <xsd:simpleType name="BestellingStatus">
+  <xsd:simpleType name="Bestellingsstatus">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Nieuw"/>
       <xsd:enumeration value="Geweigerd"/>
