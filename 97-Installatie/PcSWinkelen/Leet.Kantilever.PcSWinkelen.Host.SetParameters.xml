@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/Leet/PcSWinkelen" />
+  <setParameter name="WinkelenContext-Deployment-Deployment Connection String" value="Data Source=.\SQLEXPRESS;Initial Catalog=Leet_PcSWinkelenDatabase;Integrated Security=True" />
+</parameters>
