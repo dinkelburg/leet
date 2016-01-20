@@ -4,7 +4,7 @@
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
     <profile>Development</profile>
-    <metadataAddress>http://localhost:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
+    <metadataAddress>http://minorbldsrv:4000/Design_Time_Addresses/Kantilever/BSCatalogusBeheer/mex</metadataAddress>
   </serviceLocation>
   <serviceLocation>
     <name>BSCatalogusBeheer</name>
