@@ -83,7 +83,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.Tests
                 Besteldatum = new DateTime(2015, 12, 12),
                 Bestellingsregels = GetDummyDTOBestellinsregels(),
                 ID = 1,
-                Status = V1.Schema.BestellingStatus.Nieuw,
+                Status = (int) BestellingStatus.Nieuw,
                 Bestelnummer = 123456,
                 Klantnummer = "ANCD",
             };

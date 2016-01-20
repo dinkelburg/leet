@@ -2,16 +2,19 @@
 using minorcase3pcsbestellen.v1.schema;
 using schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
 using minorcase3bsklantbeheer.v1.schema;
+using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using PcSBestellen = minorcase3pcsbestellen.v1.schema;
+
 
 namespace Leet.Kantilever.FEBestellingen.Site.Tests
 {
     public static class DummyData
     {
-        public static BestellingCollection GetBestellingCollection()
+        public static PcSBestellen.BestellingCollection GetBestellingCollection()
         {
-            return new BestellingCollection
+            return new PcSBestellen.BestellingCollection
             {
-                new Bestelling
+                new PcSBestellen.Bestelling
                 {
                     ID = 1,
                     Besteldatum = new System.DateTime(2015, 1, 8),
@@ -22,17 +25,17 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
         }
 
 
-        public static Bestelling GetBestelling()
+        public static PcSBestellen.Bestelling GetBestelling()
         {
-            return new Bestelling
+            return new PcSBestellen.Bestelling
             {
                 ID = 1,
                 Besteldatum = new System.DateTime(2015, 1, 8),
                 Bestelnummer = 1,
-                Status = minorcase3bsbestellingenbeheer.v1.schema.BestellingStatus.Nieuw,
-                BestellingsregelCollection = new BestellingsregelCollection
+                Status = (int)BestellingStatus.Nieuw,
+                BestellingsregelCollection = new PcSBestellen.BestellingsregelCollection
             {
-                new Bestellingsregel
+                new PcSBestellen.Bestellingsregel
                 {
                     Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
                     {
@@ -42,7 +45,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                     },
                     Aantal = 3,
                 },
-                new Bestellingsregel
+                new PcSBestellen.Bestellingsregel
                 {
                     Product = new schemaswwwkantilevernl.bscatalogusbeheer.product.v1.Product
                     {
@@ -67,11 +70,11 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
             };
         }
 
-        public static BestellingsregelCollection GetBestellingsRegelCollection()
+        public static PcSBestellen.BestellingsregelCollection GetBestellingsRegelCollection()
         {
-            return new BestellingsregelCollection
+            return new PcSBestellen.BestellingsregelCollection
             {
-                new Bestellingsregel
+                new PcSBestellen.Bestellingsregel
                 {
                     Product = new Product
                     {

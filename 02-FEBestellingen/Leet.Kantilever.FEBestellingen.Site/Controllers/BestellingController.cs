@@ -1,6 +1,7 @@
-﻿using Leet.Kantilever.FEBestellingen.Agent;
+﻿using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using Leet.Kantilever.FEBestellingen.Agent;
 using Leet.Kantilever.FEBestellingen.Site.ViewModels;
-using minorcase3pcsbestellen.v1.schema;
+using PcSBestellen = minorcase3pcsbestellen.v1.schema;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -30,7 +31,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         public ActionResult FinishOrder(long bestelnummer)
         {
             var bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
-            bestelling.Status = minorcase3bsbestellingenbeheer.v1.schema.BestellingStatus.Ingepakt;
+            bestelling.Status = (int)BestellingStatus.Ingepakt;
             _agent.UpdateBestelling(bestelling);
             return RedirectToAction("ToonFactuur", new { bestelnummer = bestelnummer } );
         }
@@ -38,7 +39,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         // GET: Bestelling
         public ActionResult Index()
         {
-            BestellingCollection bestellingen = _agent.FindAllBestellingen();
+            PcSBestellen.BestellingCollection bestellingen = _agent.FindAllBestellingen();
             IEnumerable<BestellingVM> bestellingVM = Mapper.MapBestellingToVMList(bestellingen);
             return View(bestellingVM);
         }
@@ -52,7 +53,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             BestellingVM bestellingVM = null;
             try
             {
-                Bestelling bestelling = _agent.FindVolgendeOpenBestelling();
+                PcSBestellen.Bestelling bestelling = _agent.FindVolgendeOpenBestelling();
                 bestellingVM = Mapper.MapBestellingToVMList(bestelling);
             }
             catch (FaultException ex)
@@ -71,7 +72,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         /// <returns></returns>
         public ActionResult ToonFactuur(long bestelnummer)
         {
-            Bestelling bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
+            PcSBestellen.Bestelling bestelling = _agent.FindBestellingByBestelnummer(bestelnummer);
             var factuur = Mapper.BestellingToFactuurVM(bestelling);
             return View(factuur);
         }

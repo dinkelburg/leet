@@ -1,11 +1,6 @@
-﻿using Leet.Kantilever.FEBestellingen.Agent;
-using minorcase3bsbestellingenbeheer.v1.schema;
-using minorcase3pcsbestellen.v1.schema;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using Leet.Kantilever.FEBestellingen.Agent;
 using System.ServiceModel;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Controllers
@@ -50,16 +45,14 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         {
             if (bestelnummer >= 1)
             {
-                Bestelling bestelling = null;
+                minorcase3pcsbestellen.v1.schema.Bestelling bestelling = null;
                 try
                 {
                     bestelling = _agentPcSBestellen.FindBestellingByBestelnummer(bestelnummer);
-                    if(bestelling.Status != BestellingStatus.Ingepakt && 
-                        bestelling.Status != BestellingStatus.Goedgekeurd && 
-                        bestelling.Status != BestellingStatus.Nieuw &&
-                        bestelling.Status != BestellingStatus.Inpakken)
+                    BestellingStatus bestellingStatus = (BestellingStatus)bestelling.Status;
+                    if ((bestellingStatus & BestellingStatus.Geweigerd) > 0 || (bestellingStatus & BestellingStatus.Betaald) > 0)
                     {
-                        ModelState.AddModelError("bestelnummer", $"De factuur met het bestelnummer {bestelnummer} heeft niet de juiste status om goedgekeurd te kunnen worden. (Huidige status is {bestelling.Status.ToString()})");
+                        ModelState.AddModelError("bestelnummer", $"De factuur met het bestelnummer {bestelnummer} heeft niet de juiste status om goedgekeurd te kunnen worden.");
                         return View();
                     }
 
@@ -87,7 +80,11 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
         public ActionResult RegistreerBetaling (long bestelnummer)
         {
             var bestelling = _agentPcSBestellen.FindBestellingByBestelnummer(bestelnummer);
-            bestelling.Status = BestellingStatus.Betaald;
+
+            BestellingStatus bestellingStatus = (BestellingStatus)bestelling.Status;
+            bestellingStatus = bestellingStatus | BestellingStatus.Betaald;
+
+            bestelling.Status = (int)bestellingStatus;
 
             _agentPcSBestellen.UpdateBestelling(bestelling);
 

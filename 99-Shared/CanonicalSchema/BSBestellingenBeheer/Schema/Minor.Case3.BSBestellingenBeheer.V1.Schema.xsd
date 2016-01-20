@@ -15,18 +15,54 @@
       <xsd:element name="Bestellingsregels" type="tns:BestellingsregelCollection" />
       <xsd:element name="Besteldatum" type="xsd:dateTime" />
       <xsd:element name="Klantnummer" type="xsd:string" />
-      <xsd:element name="Status" type="tns:BestellingStatus" />
+      <xsd:element name="Status" type="xsd:int" />
     </xsd:sequence>
   </xsd:complexType>
 
   <xsd:simpleType name="BestellingStatus">
-    <xsd:restriction base="xsd:string">
-      <xsd:enumeration value="Nieuw"/>
-      <xsd:enumeration value="Geweigerd"/>
-      <xsd:enumeration value="Goedgekeurd"/>
-      <xsd:enumeration value="Inpakken"/>
-      <xsd:enumeration value="Ingepakt"/>
-      <xsd:enumeration value="Betaald"/>
+    <xsd:restriction base="xsd:string">     
+      <xsd:enumeration value="Nieuw">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Betaald">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Geweigerd">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Goedgekeurd">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Inpakken">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="Ingepakt">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:enumeration>
     </xsd:restriction>
   </xsd:simpleType>
 
