@@ -51,7 +51,9 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                return context.Bestellingen.ToList();
+                return context.Bestellingen
+                    .Include(Bestellingen => Bestellingen.Bestellingsregels)
+                    .ToList();
             }
         }
 

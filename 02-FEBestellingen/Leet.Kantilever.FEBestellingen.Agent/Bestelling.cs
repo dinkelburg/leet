@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Leet.Kantilever.BSBestellingenbeheer.V1.Schema
+namespace minorcase3pcsbestellen.v1.schema
 {
     public partial class Bestelling
     {

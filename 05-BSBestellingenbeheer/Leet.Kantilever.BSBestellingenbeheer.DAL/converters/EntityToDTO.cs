@@ -63,13 +63,26 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL
 
             foreach (var b in bestellingen)
             {
+                var bestellingsregelcollection = new V1.Schema.BestellingsregelCollection();
+
+                foreach (var regel in b.Bestellingsregels)
+                {
+                    bestellingsregelcollection.Add(new V1.Schema.Bestellingsregel
+                    {
+                        Aantal = regel.Aantal,
+                        Prijs = regel.Prijs,
+                        ProductID = regel.ProductID,
+                    });
+                }
+
                 dtoCollection.Add(new V1.Schema.Bestelling
                 {
                     Besteldatum = b.Besteldatum,
                     Bestelnummer = b.Bestelnummer,
                     ID = b.ID,
                     Klantnummer = b.Klantnummer,
-                    Status = (int)b.Status
+                    Status = (int)b.Status,
+                    Bestellingsregels = bestellingsregelcollection,
                 });
             }
 

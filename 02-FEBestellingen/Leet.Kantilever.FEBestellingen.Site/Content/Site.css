@@ -104,3 +104,7 @@ textarea {
 #factuurTable td:last-child {
     text-align: right;
 }
+
+#KlantAdresBestelling {
+    float: right;
+}

@@ -6,7 +6,7 @@
 @if (Model != null)
 {
     @Html.Partial("ToonFactuur", Model)
-    <a href="@Url.Action("RegistreerBetaling", new { bestelnummer = Model.Bestelling.Bestelnummer })" class="btn btn-primary">Betaling registreren</a>
+    <a href="@Url.Action("BestellingGoedkeuren", new { bestelnummer = Model.Bestelling.Bestelnummer })" class="btn btn-primary">Bestelling goedkeuren</a>
 }
 else
 {

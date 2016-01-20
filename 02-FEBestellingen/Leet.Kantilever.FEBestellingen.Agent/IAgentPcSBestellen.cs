@@ -15,5 +15,6 @@ namespace Leet.Kantilever.FEBestellingen.Agent
         Bestelling FindVolgendeOpenBestelling();
 
         void UpdateBestelling(Bestelling bestelling);
+        IEnumerable<Bestelling> FindAllNewBestellingen();
     }
 }

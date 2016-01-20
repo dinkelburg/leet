@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Leet.Kantilever.FEBestellingen.Site.ViewModels.BestellingListVM>
+
+@{
+    ViewBag.Title = "ShowListOfNieuweBestellingen";
+}
+
+<h2>Goed te keuren bestellingen</h2>
+
+@if (Model.Any())
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AantalProducten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotaalprijsInclusiefBtw)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totaalprijs)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AantalProducten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotaalprijsInclusiefBtw)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Totaalprijs)
+        </td>
+        <td>
+            @Html.ActionLink("Bekijk bestelling", "GetBestellingOpBestelnummer", new { bestelnummer = item.Bestelnummer })
+        </td>
+    </tr>
+}
+
+</table>
+}
+else
+{
+    <h3>Er zijn geen bestellingen gevonden die moeten worden goedgekeurd</h3>
+}

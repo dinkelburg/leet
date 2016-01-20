@@ -57,6 +57,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -100,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BestellingControllerTests.cs" />
+    <Compile Include="Controllers\BetalingControllerTests.cs" />
     <Compile Include="DummyData.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

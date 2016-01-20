@@ -1,4 +1,5 @@
 ﻿using Leet.Kantilever.FEWebwinkel.Site;
+using minorcase3bsklantbeheer.v1.schema;
 using System;
 using System.Collections.Generic;
 using System.Linq;

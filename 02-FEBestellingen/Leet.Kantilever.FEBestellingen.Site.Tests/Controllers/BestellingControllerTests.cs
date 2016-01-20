@@ -18,7 +18,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
         public void ToonFactuur_RoeptFindBestellingByBestelnummerVanAgentAanTest()
         {
             //arrange
-            var agentMock = new Mock<IAgentPcSBestellen>();
+            var agentMock = new Mock<IAgentPcSBestellen>(MockBehavior.Strict);
             agentMock.Setup(a => a.FindBestellingByBestelnummer(It.IsAny<long>())).Returns(DummyData.GetBestelling());
             var controller = new BestellingController(agentMock.Object);
 
@@ -36,7 +36,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
         public void VolgendeBestelling_RoeptFindVolgendeOpenBestellingVanAgentAanTest()
         {
             //arrange
-            var agentMock = new Mock<IAgentPcSBestellen>();
+            var agentMock = new Mock<IAgentPcSBestellen>(MockBehavior.Strict);
             agentMock.Setup(a => a.FindVolgendeOpenBestelling()).Returns(DummyData.GetBestelling());
             var controller = new BestellingController(agentMock.Object);
 
@@ -54,7 +54,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests.Controllers
         public void Index_RoeptFindAllBestellingenVanAgentAanTest()
         {
             //arrange
-            var agentMock = new Mock<IAgentPcSBestellen>();
+            var agentMock = new Mock<IAgentPcSBestellen>(MockBehavior.Strict);
             agentMock.Setup(a => a.FindAllBestellingen()).Returns(DummyData.GetBestellingCollection());
             var controller = new BestellingController(agentMock.Object);
 

@@ -50,8 +50,7 @@ namespace Leet.Kantilever.BSBestellingenbeheer.Implementation
         /// <returns></returns>
         public GetAllBestellingenResponseMessage FindAllBestelling()
         {
-            var bestellingen = new BestellingCollection();
-
+            var bestellingen = EntityToDTO.BestellingCollectionToDto(_mapper.FindAll());
             return new GetAllBestellingenResponseMessage
             {
                 BestellingCollection = bestellingen
