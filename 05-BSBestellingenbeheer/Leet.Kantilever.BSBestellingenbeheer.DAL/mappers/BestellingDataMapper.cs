@@ -29,9 +29,8 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
         {
             using (var context = new BestellingContext())
             {
-                var asdf = context.Bestellingen.Include(b => b.Bestellingsregels)
+                return context.Bestellingen.Include(b => b.Bestellingsregels)
                                             .Where(predicate).ToList();
-                return asdf;
             }
         }
 
