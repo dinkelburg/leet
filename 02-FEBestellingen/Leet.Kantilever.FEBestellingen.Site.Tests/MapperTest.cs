@@ -71,7 +71,23 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
             Assert.AreEqual("Batavus", result.Bestelling.Bestellingsregels.First().LeveranciersNaam);
             Assert.AreEqual(BestellingVM.BestellingStatusVM.Nieuw, result.Bestelling.Status);
             Assert.AreEqual("Testdummy", result.Klant.Voornaam);
-            
-        }    
+
+        }
+
+        [TestMethod]
+        public void BestellingListToBestellingListVM_GeeftCorrecteBestellingListVMMTest()
+        {
+            //arrange
+            var bestelling = DummyData.GetBestellingList();
+
+            //act
+            var result = Mapper.BestellingListToBestellingListVM(bestelling);
+
+            //assert
+            Assert.AreEqual(1, result.Count());
+            Assert.AreEqual(5, result.First().AantalProducten);
+            Assert.AreEqual(1, result.First().Bestelnummer);
+            Assert.AreEqual(4350M, result.First().TotaalPrijs);
+        }
     }
 }
