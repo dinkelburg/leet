@@ -4,7 +4,7 @@ using schemaswwwkantilevernl.bscatalogusbeheer.product.v1;
 using minorcase3bsklantbeheer.v1.schema;
 using Leet.Kantilever.BSBestellingenbeheer.V1.Schema;
 using PcSBestellen = minorcase3pcsbestellen.v1.schema;
-
+using System.Collections.Generic;
 
 namespace Leet.Kantilever.FEBestellingen.Site.Tests
 {
@@ -84,6 +84,14 @@ namespace Leet.Kantilever.FEBestellingen.Site.Tests
                     },
                     Aantal = 3,
                 }
+            };
+        }
+
+        public static IEnumerable<PcSBestellen.Bestelling> GetBestellingList()
+        {
+            return new List<PcSBestellen.Bestelling>()
+            {
+                GetBestelling(),
             };
         }
     }

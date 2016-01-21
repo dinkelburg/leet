@@ -63,5 +63,15 @@ namespace Leet.Kantilever.FEBestellingen.Site
             };
         }
 
+        public static IEnumerable<BestellingListVM> BestellingListToBestellingListVM(IEnumerable<Bestelling> bestellingen)
+        {
+            return bestellingen.Select(b => new BestellingListVM
+            {
+                Bestelnummer = b.Bestelnummer,
+                TotaalPrijs = b.BestellingsregelCollection.Sum(br => br.Product.Prijs * br.Aantal).Value,
+                AantalProducten = b.BestellingsregelCollection.Sum(br => br.Aantal),
+            });
+        }
+
     }
 }

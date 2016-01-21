@@ -4,6 +4,8 @@ using Moq;
 using Minor.ServiceBus.Agent.Implementation;
 using minorcase3pcsbestellen.v1.messages;
 using minorcase3pcsbestellen.v1.schema;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Leet.Kantilever.FEBestellingen.Agent.Tests
 {
@@ -30,7 +32,50 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
 
             Assert.AreEqual(1, bestellingCollection.Count);
             AssertBestellingCollection(bestellingCollection, DummyData.GetBestellingCollection());
+        }
 
+        [TestMethod]
+        public void FindAllNewBestellingen_Geeft0ProductenTerugVerkeerdeStatusTest()
+        {
+            // Arrange
+            var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
+            serviceMock.Setup(service => service.FindAllBestellingen()).Returns(DummyData.GetAllBestellingenResponseMessage());
+            var factoryMock = new Mock<ServiceFactory<IBestellenService>>(MockBehavior.Strict);
+            factoryMock.Setup(factory => factory.CreateAgent()).Returns(serviceMock.Object);
+            var agent = new AgentPcSBestellen(factoryMock.Object);
+
+            // Act
+            var bestellingCollection = agent.FindAllNewBestellingen();
+
+            // Assert
+            serviceMock.Verify(service => service.FindAllBestellingen());
+            factoryMock.Verify(factory => factory.CreateAgent());
+
+            Assert.AreEqual(0, bestellingCollection.Count());
+        }
+
+        [TestMethod]
+        public void FindAllNewBestellingen_Geeft1ProductTerugTest()
+        {
+            // Arrange
+            var serviceMock = new Mock<IBestellenService>(MockBehavior.Strict);
+            var bestellingen = DummyData.GetAllBestellingenResponseMessage();
+            bestellingen.BestellingCollection.First().Status = (int)BSBestellingenbeheer.V1.Schema.Bestellingsstatus.Nieuw;
+            serviceMock.Setup(service => service.FindAllBestellingen()).Returns(bestellingen);
+            var factoryMock = new Mock<ServiceFactory<IBestellenService>>(MockBehavior.Strict);
+            factoryMock.Setup(factory => factory.CreateAgent()).Returns(serviceMock.Object);
+            var agent = new AgentPcSBestellen(factoryMock.Object);
+
+            // Act
+            var bestellingCollection = agent.FindAllNewBestellingen();
+
+            // Assert
+            serviceMock.Verify(service => service.FindAllBestellingen());
+            factoryMock.Verify(factory => factory.CreateAgent());
+
+            Assert.AreEqual(1, bestellingCollection.Count());
+
+            AssertBestellingCollection(bestellingCollection, DummyData.GetBestellingCollection());
         }
 
         [TestMethod]
@@ -55,6 +100,24 @@ namespace Leet.Kantilever.FEBestellingen.Agent.Tests
         private void AssertBestellingCollection(BestellingCollection actualBestellingCollection, BestellingCollection expectedBestellingCollection)
         {
             for (int i = 0; i < actualBestellingCollection.Count; i++)
+            {
+                Assert.AreEqual(expectedBestellingCollection[i].ID, actualBestellingCollection[i].ID);
+                Assert.AreEqual(expectedBestellingCollection[i].Besteldatum, actualBestellingCollection[i].Besteldatum);
+                Assert.AreEqual(expectedBestellingCollection[i].Bestelnummer, actualBestellingCollection[i].Bestelnummer);
+                for (int j = 0; j < expectedBestellingCollection[i].BestellingsregelCollection.Count; j++)
+                {
+                    Assert.AreEqual(expectedBestellingCollection[i].BestellingsregelCollection[j].Product.Naam, actualBestellingCollection[i].BestellingsregelCollection[j].Product.Naam);
+                    Assert.AreEqual(expectedBestellingCollection[i].BestellingsregelCollection[j].Product.LeveranciersProductId, actualBestellingCollection[i].BestellingsregelCollection[j].Product.LeveranciersProductId);
+                    Assert.AreEqual(expectedBestellingCollection[i].BestellingsregelCollection[j].Aantal, actualBestellingCollection[i].BestellingsregelCollection[j].Aantal);
+
+                }
+            }
+        }
+
+        private void AssertBestellingCollection(IEnumerable<Bestelling> actualBestellingList, BestellingCollection expectedBestellingCollection)
+        {
+            var actualBestellingCollection = actualBestellingList.ToArray();
+            for (int i = 0; i < actualBestellingCollection.Count(); i++)
             {
                 Assert.AreEqual(expectedBestellingCollection[i].ID, actualBestellingCollection[i].ID);
                 Assert.AreEqual(expectedBestellingCollection[i].Besteldatum, actualBestellingCollection[i].Besteldatum);

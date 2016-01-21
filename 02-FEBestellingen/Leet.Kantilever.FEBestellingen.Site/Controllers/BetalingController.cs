@@ -92,32 +92,24 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             return View(bestelnummer);
         }
 
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Shows a list in a view of the Bestellingen with the status Nieuw
+        /// </summary>
+        /// <returns>View</returns>
         public ActionResult ShowListOfNieuweBestellingen()
         {
             var bestellingen = _agentPcSBestellen.FindAllNewBestellingen();
-
-            var bestellingenVM = bestellingen.Select(b => new BestellingListVM
-            {
-                Bestelnummer = b.Bestelnummer,
-                TotaalPrijs = b.BestellingsregelCollection.Sum(br => br.Product.Prijs * br.Aantal).Value,
-                AantalProducten = b.BestellingsregelCollection.Sum(br => br.Aantal),
-            });
-
+            var bestellingenVM = Mapper.BestellingListToBestellingListVM(bestellingen);
             return View(bestellingenVM);
         }
 
+        /// <summary>
+        /// Get bestelling bij bestelnummer and shows the factuur in the Factuur_BestellingGoedkeuren view
+        /// </summary>
+        /// <param name="bestelnummer">Bestelnummer of the bestelling</param>
+        /// <returns>View Factuur_BestellingGoedkeuren if everything is correct otherwise ShowListOfNieuweBestellingen</returns>
         public ActionResult GetBestellingOpBestelnummer(long bestelnummer)
         {
-
             PcSBestellen.Bestelling bestelling = null;
             try
             {
@@ -131,6 +123,7 @@ namespace Leet.Kantilever.FEBestellingen.Site.Controllers
             }
             catch (FaultException)
             {
+                //Return the ShowListOfNieuweBestellingen view
             }
 
             return View("ShowListOfNieuweBestellingen");
