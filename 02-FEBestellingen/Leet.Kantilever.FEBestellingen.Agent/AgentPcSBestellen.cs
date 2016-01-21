@@ -36,7 +36,7 @@ namespace Leet.Kantilever.FEBestellingen.Agent
         {
             var proxy = _factory.CreateAgent();
             var getBestellingenResponseMessage = proxy.FindAllBestellingen();
-            return getBestellingenResponseMessage.BestellingCollection.Where(bestelling => bestelling.Status == (int)Bestellingsstatus.Nieuw);
+            return getBestellingenResponseMessage.BestellingCollection.Where(bestelling => (((Bestellingsstatus)bestelling.Status) & Bestellingsstatus.Nieuw) > 0 );
         }
 
         public PcSBestellen.Bestelling FindVolgendeOpenBestelling()

@@ -79,12 +79,20 @@ namespace Leet.Kantilever.BSBestellingenbeheer.DAL.mappers
                     {
                         concurrencyExceptionCaught = false;
                         bestelling = context.Bestellingen.Include(b => b.Bestellingsregels).OrderBy(b => b.Besteldatum)
-                           .FirstOrDefault(b => b.Status == Entities.Bestelling.BestellingStatus.Goedgekeurd);
+                           .FirstOrDefault(b => (b.Status & Entities.Bestelling.BestellingStatus.Goedgekeurd) > 0);
                         if (bestelling == null)
                         {
                             throw new ArgumentException("Er zijn geen bestellingen meer die moeten worden ingepakt");
                         }
-                        bestelling.Status = Entities.Bestelling.BestellingStatus.Inpakken;
+
+                        if((bestelling.Status & Bestelling.BestellingStatus.Betaald) > 0)
+                        {
+                            bestelling.Status = Entities.Bestelling.BestellingStatus.Inpakken | Bestelling.BestellingStatus.Betaald;
+                        }
+                        else
+                        {
+                            bestelling.Status = Entities.Bestelling.BestellingStatus.Inpakken;
+                        }
                         context.SaveChanges();
                     }
                     catch (DbUpdateConcurrencyException)
